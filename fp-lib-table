@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "INCLI-VA")(type "KiCad")(uri "${KIPRJMOD}/lib/INCLI-VA.pretty")(options "")(descr "Huellas propias del proyecto INCLI-VA"))
+)

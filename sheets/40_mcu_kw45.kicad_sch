@@ -1,0 +1,747 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "4b2bdca0-f79f-44f1-9b6a-4d083855e519")
+	(paper "A3")
+	(title_block
+		(title "MCU NXP KW45 + RF")
+		(date "2026-10-24")
+		(rev "A")
+		(comment 1 "Hoja 40_mcu_kw45")
+		(comment 2 "Inclinómetro de chasis CAN/BLE — INCLI-VA")
+	)
+	(lib_symbols
+		(symbol "INCLI-VA:+3V3_D"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+3V3_D"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 3.3 V digital (dominio ISO)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3V3_D_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_D_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+3V3_D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INCLI-VA:GND_ISO"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND_ISO"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_ISO_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_ISO_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND_ISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "RIELES USADOS EN ESTA HOJA"
+		(exclude_from_sim no)
+		(at 238.76 203.2 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "4935961d-86cd-4702-95d7-0346f054e33a")
+	)
+	(text "BLOQUE 40 — MCU NXP KW45B41Z  [dominio ISO]   (alternativa: 40_mcu_esp32s3)\n\nINTERFAZ IDÉNTICA a 40_mcu_esp32s3: para cambiar de MCU, en 00_top editar el\nbloque MCU → campo \"Sheetfile\" → sheets/40_mcu_esp32s3.kicad_sch.\n\nComponentes:\n  U10  NXP KW45B41Z (con radio BLE, 1 MB flash — confirmar en guía de pedido)\n  Y1   Cristal 32 MHz (radio) pegado al KW45   Y2  Cristal 32.768 kHz\n  RF   Red de adaptación + antena (chip o impresa) — COPIAR diseño de referencia NXP\n       sin cambiar topología ni valores (KW45B41Z-LOC)\n  TP   Pads SWD Tag-Connect: SWDIO, SWCLK, RESET (sin conector externo)\n\nMapeo de periféricos:\n  LPSPI0  → SPI_SCK/MOSI/MISO, CS_INC, CS_IMU, CS_ROT     GPIO/IRQ ← IMU_INT1\n  FlexCAN0 → CAN_TX, CAN_RX (CAN FD nativo)              GPIO → CAN_STBY\n  CANFD_SCK/MOSI/MISO, CS_CAN, INT_CAN: NO SE USAN con KW45 → poner No-Connect\n  GPIO → DO1_EN, DO2_EN (alto = salida activa)  ← DO1_DIAG, DO2_DIAG\n  GPIO → WDI, WD_EN   ← MCU_RST_N (desde TPS3431)\n  ADC  ← VMON_5V, VMON_3V3     GPIO ← VAR_ID0/1    GPIO → LED_G, LED_R\nAsignación exacta de pines con MCUXpresso Config Tools (conflictos con la radio).\nDesacople de cada pin VDD junto al pin, con valor y encapsulado."
+		(exclude_from_sim no)
+		(at 20.32 20.32 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+			)
+			(justify left top)
+		)
+		(uuid "a2da80c9-84fc-42f6-9333-e9f08a609ec6")
+	)
+	(text "INTERFAZ DE LA HOJA (pines jerárquicos)"
+		(exclude_from_sim no)
+		(at 238.76 22.86 0)
+		(effects
+			(font
+				(size 1.524 1.524)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "a99943db-d617-4e60-b926-b284d53c39b0")
+	)
+	(hierarchical_label "CS_INC"
+		(shape output)
+		(at 375.92 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0351c347-60a8-4f4f-8dad-344289e1b8af")
+	)
+	(hierarchical_label "SPI_MOSI"
+		(shape output)
+		(at 375.92 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "06f22303-1ceb-4206-b610-171c89ff0bc1")
+	)
+	(hierarchical_label "DO2_EN"
+		(shape output)
+		(at 238.76 35.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0b1ef851-d7c6-4945-9e36-5972f533cca4")
+	)
+	(hierarchical_label "CS_IMU"
+		(shape output)
+		(at 375.92 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0e88c24d-d986-465e-915b-358fa1f26d29")
+	)
+	(hierarchical_label "CAN_STBY"
+		(shape output)
+		(at 375.92 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1f613da7-4e81-46a4-a342-65fb3e464bcd")
+	)
+	(hierarchical_label "LED_R"
+		(shape output)
+		(at 238.76 91.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "356f21bc-f87b-4baf-96c2-c64e34f07d1f")
+	)
+	(hierarchical_label "DO1_EN"
+		(shape output)
+		(at 238.76 30.48 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3f2cf488-f020-4bef-904f-64436ebf3bfd")
+	)
+	(hierarchical_label "LED_G"
+		(shape output)
+		(at 238.76 86.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "404ed77b-2b21-4d59-a240-192b17554460")
+	)
+	(hierarchical_label "SPI_SCK"
+		(shape output)
+		(at 375.92 30.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5c38b5f6-807f-4607-8ac6-fb46e5eb27aa")
+	)
+	(hierarchical_label "CS_CAN"
+		(shape output)
+		(at 375.92 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "629bd02f-0927-4f64-a5cb-d973f6de2087")
+	)
+	(hierarchical_label "CANFD_SCK"
+		(shape output)
+		(at 375.92 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "66bbda75-9d80-4168-a4fc-9f3a87f67b95")
+	)
+	(hierarchical_label "DO1_DIAG"
+		(shape input)
+		(at 238.76 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "816caf65-4fb0-42bd-a59e-e6a3b7603df6")
+	)
+	(hierarchical_label "CAN_TX"
+		(shape output)
+		(at 375.92 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "976554e6-931f-4906-b167-74fdde21b5b0")
+	)
+	(hierarchical_label "CANFD_MOSI"
+		(shape output)
+		(at 375.92 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "980b2880-ab1b-4ff8-9e17-d05a8eeae48c")
+	)
+	(hierarchical_label "VMON_3V3"
+		(shape input)
+		(at 238.76 55.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9983b421-10af-45e1-9a0e-10c4032555eb")
+	)
+	(hierarchical_label "MCU_RST_N"
+		(shape input)
+		(at 238.76 71.12 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a2e2582f-fd7c-4378-8499-ca0dd6b2c642")
+	)
+	(hierarchical_label "CS_ROT"
+		(shape output)
+		(at 375.92 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ae2e59d3-811f-436d-8d69-231065fb202d")
+	)
+	(hierarchical_label "WDI"
+		(shape output)
+		(at 238.76 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "affc132b-0e1c-48c1-88c4-a08a0502c728")
+	)
+	(hierarchical_label "CANFD_MISO"
+		(shape input)
+		(at 375.92 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b28ed38e-8374-4238-9f6d-6c6c242434eb")
+	)
+	(hierarchical_label "WD_EN"
+		(shape output)
+		(at 238.76 66.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cd50c592-e858-4b75-97a6-44cc56649074")
+	)
+	(hierarchical_label "DO2_DIAG"
+		(shape input)
+		(at 238.76 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cfb22d96-a39f-4e4b-9d2e-d055f6a3f1f9")
+	)
+	(hierarchical_label "CAN_RX"
+		(shape input)
+		(at 375.92 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d4be044e-51a1-4259-9650-3a5c535f55ed")
+	)
+	(hierarchical_label "IMU_INT1"
+		(shape input)
+		(at 375.92 60.96 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dd453bac-13c2-4940-9a0e-3b5d8ba2aefd")
+	)
+	(hierarchical_label "SPI_MISO"
+		(shape input)
+		(at 375.92 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "df3cf323-16e5-401e-ba5a-a770578bb779")
+	)
+	(hierarchical_label "VAR_ID1"
+		(shape input)
+		(at 238.76 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "df5ee07d-ca8f-4383-9b6c-588ac38282a7")
+	)
+	(hierarchical_label "VAR_ID0"
+		(shape input)
+		(at 238.76 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e2780d46-36ed-4086-98e6-66b00ba07973")
+	)
+	(hierarchical_label "VMON_5V"
+		(shape input)
+		(at 238.76 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e8b589ae-e879-42a2-8189-6b68cdfcf8e9")
+	)
+	(hierarchical_label "INT_CAN"
+		(shape input)
+		(at 375.92 101.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ee86bfb0-8b23-41bd-8b82-0019b72c764b")
+	)
+	(symbol
+		(lib_id "INCLI-VA:+3V3_D")
+		(at 243.84 215.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "64d8ffe9-4beb-43b6-b9e4-2b3ec1af2a9c")
+		(property "Reference" "#PWR014"
+			(at 243.84 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3_D"
+			(at 243.84 212.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 243.84 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 243.84 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 243.84 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0f1f73d6-f9b8-4658-8613-1958782174c9")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "INCLI-VA:GND_ISO")
+		(at 264.16 215.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bcf665cd-168c-40d5-91d0-6ee3de552376")
+		(property "Reference" "#PWR015"
+			(at 264.16 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND_ISO"
+			(at 264.16 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 264.16 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 264.16 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 264.16 215.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4989dea3-96e0-4cd8-85b6-0ed34f97e5a5")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+)
