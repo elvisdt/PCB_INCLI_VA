@@ -5,3 +5,4 @@ fp-info-cache
 *.kicad_prl
 _autosave-*
 fab/*.zip
+.history/
