@@ -1135,7 +1135,7 @@
 		)
 		(uuid "505d00c1-ef7d-406d-a378-ad0ff2da229e")
 	)
-	(text "BLOQUE 60 — CAN AISLADO, BARRERA 2  [ISO ║ BUS]   [Variant=CAN]\n>>> Reutilizar el diseño del TP de DCI (réplica EVAL-ADM3055E) <<<\n\n  U30  ADI ADM3055E — transceiver CAN FD aislado con isoPower\n       VCC ← +5V_ISO   VIO ← +3V3_D   VISO solo alimenta al propio transceiver\n  R    Terminación 120 Ω conmutable (jumper/solder bridge)\n  D    ESD en CAN_H / CAN_L junto al conector\n  FB   Ferritas y desacoples según UG-1372 (C a < 2 mm del pin)\n\nCAN clásico (J1939) desde el TWAI nativo del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nSin controlador CAN FD externo (MCP2518FD eliminado).\n\nCAN_STBY: pull-up/down para que el transceiver arranque en standby (bus en silencio).\nPuntos de prueba en CAN_H y CAN_L."
+	(text "BLOQUE 60 — CAN AISLADO, BARRERA 2  [ISO ║ BUS]   [Variant=CAN]\n>>> Reutilizar el diseño del TP de DCI (réplica EVAL-ADM3055E) <<<\n\n  U30  ADI ADM3055E — transceiver CAN FD aislado con isoPower\n       VCC ← +5V_ISO   VIO ← +3V3_D   VISO solo alimenta al propio transceiver\n       ICC dominante (RL 60 Ω): 180 mA típ / 260 mA máx;  IIO 3.6 / 5 mA  (datasheet Rev. D, tabla 1)\n  R    Terminación 120 Ω conmutable (jumper/solder bridge)\n  D    ESD en CAN_H / CAN_L junto al conector\n  FB   Ferritas y desacoples según UG-1372 (C a < 2 mm del pin)\n\nCAN clásico (J1939) desde el TWAI nativo del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nSin controlador CAN FD externo (MCP2518FD eliminado).\n\nCAN_STBY: pull-up/down para que el transceiver arranque en standby (bus en silencio).\nPuntos de prueba en CAN_H y CAN_L."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
