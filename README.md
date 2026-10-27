@@ -10,7 +10,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `sheets/30_regulation` | Desde +5V_ISO: buck +3V3_D, LDO +3V3_A, divisores VMON |
 | `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1-N8R2 (único MCU), USB-C nativo con ESD, UART0, BOOT/RESET |
 | `sheets/40_mcu_kw45` | Solo referencia: no está en la jerarquía |
-| `sheets/50_sensors` | SCL3300, ASM330LHH, AS5147U |
+| `sheets/50_sensors` | SCL3300-D01 (inclinómetro), ASM330LHH (IMU), AS5147U (ángulo de pluma, solo variante ROT) en SPI compartido |
 | `sheets/60_can` | ADM3055E (barrera 2) desde el TWAI del ESP32-S3 (CAN clásico, J1939), terminación, ESD — reutiliza TP DCI |
 | `sheets/70_output_ch` | 1 canal low-side (drenador abierto, relé externo), instanciado 2 veces (DO1, DO2) |
 | `sheets/80_supervision` | TPS3431, ID de variante, LED |
