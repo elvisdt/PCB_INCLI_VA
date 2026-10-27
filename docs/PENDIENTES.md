@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (fase 5: 50_sensors).
+Última actualización: 2026-10-27, Claude Code (fase 5: 50_sensors; preguntas para el usuario).
 
 ## Fases terminadas (esquemático)
 Las seis hojas tienen 0 violaciones de ERC.
@@ -37,6 +37,42 @@ Estado del ERC al 2026-10-27 (fase 5): 66 violaciones en total.
 | 60_can | 25 |
 | 80_supervision | 2 |
 | 10, 20, 30, 40, 50, 70 | 0 |
+
+## Decisiones del usuario
+Preguntas que necesito que respondas para terminar 60_can y 80_supervision y empezar el PCB. Donde tengo una recomendación, va marcada con **(rec.)**; si estás de acuerdo, basta con "ok".
+
+### 60_can (ADM3055E, barrera 2)
+1. **Variantes:** ¿el CAN se monta en todas las variantes, o es DNP en la variante base (`Variant=CAN`)? ¿Qué variantes existen en total (base, CAN, OUT, ROT, CABIN) y cuáles se combinan?
+2. **Terminación de 120 Ω:** ¿solder jumper **(rec.)**, header con jumper o terminación partida (2 × 60 Ω + 4.7 nF a GND_CAN)? ¿Por defecto conectada o abierta?
+3. **ESD en CAN_H/CAN_L:** ¿aceptas un TVS doble para CAN apto para sistemas de 24 V (p. ej., ESD2CAN24-Q1 o PESD2CAN24, SOT-23) **(rec.)**?
+4. **Choke de modo común** (p. ej., ACT45B-510): ¿se monta, se deja como DNP con puentes de 0 Ω **(rec.)**, o se omite?
+5. **CAN_STBY al arrancar:** ¿standby (pull-up, el bus queda en silencio hasta que el firmware lo habilite) **(rec.)** o modo normal (pull-down)?
+6. **CAN_GND (J1, pin 5):** ¿va directo a GND_CAN (masa aislada del bus) **(rec.)**, a través de una resistencia o queda sin conexión?
+7. **Velocidad del bus:** ¿250 kbit/s (J1939 estándar) o 500 kbit/s? Afecta la elección del ESD y del choke (capacitancia).
+8. **"Reutilizar el TP de DCI":** ¿tienes los archivos de ese diseño (esquemático o layout del EVAL-ADM3055E) para copiar la disposición de la barrera 2? ¿Dónde los dejo, o los dejas tú en `docs/`?
+
+### 80_supervision
+9. **Timeout del watchdog TPS3431:** ¿el valor de fábrica (pin CWD sin conectar) o uno programado con un capacitor en CWD? Si es programado, ¿qué tiempo quieres (el firmware patea por WDI)?
+10. **Tabla de ID de variante (VAR_ID1, VAR_ID0):** la hoja propone 00 base | 01 CAN | 10 CAN+OUT | 11 grúa (CAN+OUT+ROT). ¿La confirmas? ¿Alcanzan 2 bits si se suma CABIN, o hace falta un tercer bit (o un divisor leído por ADC1)?
+11. **Implementación del ID:** ¿resistencias de 0 Ω / DNP **(rec.)** o solder jumpers?
+12. **LED de estado:** ¿bicolor verde/rojo en un solo encapsulado (0805 o 1206) **(rec.)** o dos LED separados? ¿Se ve a través de la caja ABS, o hace falta un light pipe o una ventana?
+13. **Variante CABIN (buzzer + LEDs):** ¿entra en esta revisión o queda para más adelante?
+
+### PCB (no empiezo hasta que lo pidas)
+14. **Caja y contorno:** ¿modelo o MPN de la caja ABS? ¿Dimensiones máximas de la placa, forma y altura máxima de componentes (lo limitan PS201, de 10.2 mm, y C105)?
+15. **Fijaciones:** ¿cuántos agujeros, qué diámetro y en qué posición? ¿Separadores metálicos o plásticos? Con separadores metálicos, ¿a qué masa se conectan los agujeros (ninguna, GND_VEH o chasis)? Recomiendo **agujeros sin cobre y separadores plásticos**, para no puentear las barreras.
+16. **Cara de montaje y orientación:** ¿qué cara de la caja va contra el chasis de acero? ¿Cómo queda la placa respecto del vehículo (qué eje de la placa es el eje longitudinal o lateral del vehículo)? Lo necesito para la antena y para la serigrafía de los ejes de los sensores.
+17. **Variante ROT:** la placa va centrada sobre el eje del pivote. ¿El imán queda del lado de los componentes o del lado opuesto? ¿A qué distancia? ¿Hace falta un agujero o una zona libre para el eje?
+18. **Conectores:** ¿J1 (MSTB de 5 pines) y J2 (MSTB de 2 pines) en el mismo borde? ¿El USB-C tiene que ser accesible desde afuera de la caja, o es solo para el banco con la caja abierta? ¿Dónde va el header UART0?
+19. **Capas y espesor:** 4 capas (señal / GND / alimentación / señal), 1.6 mm, cobre de 1 oz **(rec.)**: da plano de masa para RF, sensores y barreras. ¿O tiene que ser de 2 capas por costo?
+20. **Fabricante:** ¿JLCPCB, PCBWay u otro? Define las reglas mínimas (pista, separación, vías) y si se pide stencil.
+21. **Montaje:** ¿todo de un solo lado **(rec.)**, para soldar a mano? ¿El ASM330LHH (LGA) lo sueldas tú con aire caliente o lo monta el fabricante?
+22. **Barniz o conformal coating:** ¿sí o no? Cambia el grado de contaminación supuesto (PD2) para la fuga de las barreras.
+
+### BOM
+23. **F101:** ¿confirmas el Bourns SF-2410FPA-W (2 A, ≥ 250 VDC)? Si sí, creo la huella 2410 en `lib/INCLI-VA.pretty` a partir del datasheet de Bourns (pásame el PDF).
+24. **Header de J2:** ¿confirmas el Phoenix MSTB 2,5/2-GF-5,08? Necesito el número de pedido del header, por ejemplo de tu proveedor.
+25. **C105 (hold-up, DNP):** ¿definimos ahora el MPN (radial de 1000 µF / 50 V, alto ≤ X mm) o lo dejamos sin MPN mientras no se monte?
 
 ## Requisitos para el firmware (SPI de 50_sensors)
 Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` por sensor, cada uno con su modo y su frecuencia:
