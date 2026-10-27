@@ -10,3 +10,6 @@ fab/*.zip
 # Reportes generados por kicad-mcp (ERC/DRC)
 output/
 .mcp.json
+
+# Configuración local de Codex
+.codex/
