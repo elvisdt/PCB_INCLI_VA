@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "INCLI-VA")(type "KiCad")(uri "${KIPRJMOD}/lib/INCLI-VA.kicad_sym")(options "")(descr "Simbolos propios del proyecto INCLI-VA"))
   (lib (name "antmicro_adm3055ebriz")(type "KiCad")(uri "${KIPRJMOD}/lib/antmicro_adm3055ebriz.kicad_sym")(options "")(descr "ADM3055E (Antmicro), extraido del cache del esquematico"))
+  (lib (name "easyeda2kicad")(type "KiCad")(uri "${KIPRJMOD}/lib/easyeda2kicad/easyeda2kicad.kicad_sym")(options "")(descr "Importados con easyeda2kicad (LCSC)"))
 )
