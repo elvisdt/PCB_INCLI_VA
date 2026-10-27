@@ -1899,7 +1899,7 @@
 				(justify left top)
 			)
 		)
-		(pin "VEH_DO1" input
+		(pin "VEH_DO1" passive
 			(at 30.48 43.18 180)
 			(uuid "87c86a24-d0e1-4222-8ca0-96dfcf810c5b")
 			(effects
@@ -1909,7 +1909,7 @@
 				(justify left)
 			)
 		)
-		(pin "VEH_DO2" input
+		(pin "VEH_DO2" passive
 			(at 30.48 45.72 180)
 			(uuid "cf4d99cb-687d-414b-b0fb-1309b10404d8")
 			(effects
@@ -1932,6 +1932,16 @@
 		(pin "BUS_CAN_L" bidirectional
 			(at 76.2 45.72 0)
 			(uuid "686812c0-9bbb-4d1a-a20d-1bd5a7f1108c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VEH_PWR_FLT_N" output
+			(at 76.2 48.26 0)
+			(uuid "fede3817-198d-44cf-9cad-f3b16dc343b9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2063,6 +2073,26 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "VEH_PWR_FLT_N" input
+			(at 203.2 53.34 0)
+			(uuid "1b1ebed0-4454-4bab-8f92-fe01ab546e6e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWR_FLT" output
+			(at 157.48 53.34 180)
+			(uuid "7943dd4d-7f83-4c7c-9ad3-d0de43358394")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
@@ -2411,6 +2441,16 @@
 				(justify right)
 			)
 		)
+		(pin "PWR_FLT" input
+			(at 157.48 160.02 180)
+			(uuid "5e40c7ec-1cd9-4acf-8bba-ba58e755addb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
@@ -2477,7 +2517,7 @@
 				(justify left)
 			)
 		)
-		(pin "OUT" output
+		(pin "OUT" passive
 			(at 342.9 78.74 0)
 			(uuid "5580f31b-472b-47a1-9fd9-06d7a6d619c4")
 			(effects
@@ -2485,6 +2525,16 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "PWR_FLT_N" input
+			(at 297.18 83.82 180)
+			(uuid "61792b62-098b-4dfb-876c-da300199edcc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
@@ -2553,7 +2603,7 @@
 				(justify left)
 			)
 		)
-		(pin "OUT" output
+		(pin "OUT" passive
 			(at 342.9 43.18 0)
 			(uuid "e6ab1eb7-3e05-41d4-af61-ca6ae44933f1")
 			(effects
@@ -2561,6 +2611,16 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "PWR_FLT_N" input
+			(at 297.18 48.26 180)
+			(uuid "9c9ab7b3-a30f-4a75-87a4-a5264810e3e6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
@@ -2716,6 +2776,126 @@
 			(justify right bottom)
 		)
 		(uuid "618c954f-e6e8-42e7-a95e-a6c1f9e2388a")
+	)
+	(wire
+		(pts
+			(xy 76.2 48.26) (xy 78.74 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fad03730-211a-4de7-8bbb-d2bc0f1576c5")
+	)
+	(label "VEH_PWR_FLT_N"
+		(at 78.74 48.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "36ef12ed-9999-4721-b689-51551b38ceb8")
+	)
+	(wire
+		(pts
+			(xy 203.2 53.34) (xy 205.74 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e043647-3e8d-4868-b207-5719eaafbc87")
+	)
+	(label "VEH_PWR_FLT_N"
+		(at 205.74 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4d2214c4-9153-4552-83a4-fe407b0048e5")
+	)
+	(wire
+		(pts
+			(xy 157.48 53.34) (xy 154.94 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4764775c-f2a3-4b78-8c59-5e6d66729eb8")
+	)
+	(label "PWR_FLT"
+		(at 154.94 53.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a4737e51-977f-4d4d-80a7-f4dba6b7aedb")
+	)
+	(wire
+		(pts
+			(xy 157.48 160.02) (xy 154.94 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6df77c5e-8e99-44d5-bb17-a3f782cdce02")
+	)
+	(label "PWR_FLT"
+		(at 154.94 160.02 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0739b799-68bb-4a00-beb3-379c2800949f")
+	)
+	(wire
+		(pts
+			(xy 297.18 48.26) (xy 294.64 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a2f5db8-5850-4691-b669-d226219cec37")
+	)
+	(label "VEH_PWR_FLT_N"
+		(at 294.64 48.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "886608db-7481-4b00-90dc-b717615ed266")
+	)
+	(wire
+		(pts
+			(xy 297.18 83.82) (xy 294.64 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17ca074d-6a24-4227-95f3-8eba62a0ddfa")
+	)
+	(label "VEH_PWR_FLT_N"
+		(at 294.64 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ec3b42cc-1705-4f44-9c93-e02aa7beb7fb")
 	)
 	(sheet_instances
 		(path "/"

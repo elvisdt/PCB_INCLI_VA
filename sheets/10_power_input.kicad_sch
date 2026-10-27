@@ -2180,7 +2180,7 @@
 		(uuid "f4288662-b872-45f1-8725-6768e81694a0")
 	)
 	(hierarchical_label "VEH_DO1"
-		(shape input)
+		(shape passive)
 		(at 238.76 30.48 180)
 		(effects
 			(font
@@ -2213,7 +2213,7 @@
 		(uuid "de1e6b9a-a058-4db2-a4ec-912dfb827eaa")
 	)
 	(hierarchical_label "VEH_DO2"
-		(shape input)
+		(shape passive)
 		(at 238.76 35.56 180)
 		(effects
 			(font
@@ -3705,5 +3705,16 @@
 				)
 			)
 		)
+	)
+	(hierarchical_label "VEH_PWR_FLT_N"
+		(shape output)
+		(at 375.92 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dbac1b6e-3fb5-420d-b0b5-34209a3a4288")
 	)
 )

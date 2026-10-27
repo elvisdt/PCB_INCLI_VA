@@ -11,7 +11,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `sheets/40_mcu_kw45` / `40_mcu_esp32s3` | MCU (interfaz idéntica, intercambiables) |
 | `sheets/50_sensors` | SCL3300, ASM330LHH, AS5147U |
 | `sheets/60_can` | ADM3055E (barrera 2), terminación, ESD, MCP2518FD opcional — reutiliza TP DCI |
-| `sheets/70_output_ch` | 1 canal high-side, instanciado 2 veces (DO1, DO2) |
+| `sheets/70_output_ch` | 1 canal low-side (drenador abierto, relé externo), instanciado 2 veces (DO1, DO2) |
 | `sheets/80_supervision` | TPS3431, ID de variante, LED |
 | `lib/` | Librería propia: símbolos (`INCLI-VA.kicad_sym`), huellas (`.pretty`), 3D |
 | `docs/` | Propuestas KW45 y ESP32-S3 |

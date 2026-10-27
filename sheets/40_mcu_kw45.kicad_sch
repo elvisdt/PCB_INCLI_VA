@@ -766,4 +766,15 @@
 		)
 		(uuid "da954add-9402-43f2-952e-a23748a497fa")
 	)
+	(hierarchical_label "PWR_FLT"
+		(shape input)
+		(at 238.76 96.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "23c18b9d-774c-4180-a3ee-b2412e054b4b")
+	)
 )

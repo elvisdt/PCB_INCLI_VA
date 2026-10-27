@@ -6,10 +6,12 @@ Proyecto KiCad 10 jerárquico. Estructura y convenciones de redes/rieles: ver `R
 
 ### Librerías
 - Usar primero las librerías oficiales de KiCad: `Device`, `Connector*`, `Regulator_*`, `Interface_CAN_LIN`, `Sensor_*`, `Package_*`, etc.
-- Si un componente no existe en las oficiales, **no dibujar el símbolo ni la huella a mano**. Avisar al usuario y darle el código LCSC (`Cxxxxx`) para que lo importe a `lib/easyeda2kicad` con:
-  ```
-  easyeda2kicad --full --lcsc_id=Cxxxxx --output lib/easyeda2kicad/easyeda2kicad
-  ```
+- Si un símbolo o huella no está en las librerías oficiales ni en `lib/`: **no buscarlo en el disco ni dibujarlo a mano**. Detenerse y pedírselo al usuario, indicando el **MPN exacto** y el **encapsulado**.
+  - El usuario lo consigue y lo deja en `lib/`: en `lib/easyeda2kicad/` si viene de easyeda2kicad, o en `lib/vendor/<MPN>/` si viene del fabricante.
+  - Cuando el usuario avise:
+    1. Registrar la librería en `sym-lib-table` y `fp-lib-table` con rutas `${KIPRJMOD}`.
+    2. Comparar la huella con el land pattern del datasheet y reportar cualquier diferencia.
+    3. Seguir con el diseño.
 - Los símbolos de potencia (rieles y masas) salen de la librería propia `INCLI-VA`, como indica el `README.md`.
 
 ### Campos obligatorios

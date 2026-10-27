@@ -1324,4 +1324,26 @@
 			)
 		)
 	)
+	(hierarchical_label "VEH_PWR_FLT_N"
+		(shape input)
+		(at 375.92 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f5c3973c-2c19-4148-b7e0-8ef91de331d7")
+	)
+	(hierarchical_label "PWR_FLT"
+		(shape output)
+		(at 238.76 50.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "212696c4-c743-4bba-aa51-c8457c7ee267")
+	)
 )
