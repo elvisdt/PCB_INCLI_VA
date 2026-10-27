@@ -259,7 +259,7 @@
 		)
 		(uuid "4935961d-86cd-4702-95d7-0346f054e33a")
 	)
-	(text "BLOQUE 40 — MCU NXP KW45B41Z  [dominio ISO]   (alternativa: 40_mcu_esp32s3)\n\nINTERFAZ IDÉNTICA a 40_mcu_esp32s3: para cambiar de MCU, en 00_top editar el\nbloque MCU → campo \"Sheetfile\" → sheets/40_mcu_esp32s3.kicad_sch.\n\nComponentes:\n  U10  NXP KW45B41Z (con radio BLE, 1 MB flash — confirmar en guía de pedido)\n  Y1   Cristal 32 MHz (radio) pegado al KW45   Y2  Cristal 32.768 kHz\n  RF   Red de adaptación + antena (chip o impresa) — COPIAR diseño de referencia NXP\n       sin cambiar topología ni valores (KW45B41Z-LOC)\n  TP   Pads SWD Tag-Connect: SWDIO, SWCLK, RESET (sin conector externo)\n\nMapeo de periféricos:\n  LPSPI0  → SPI_SCK/MOSI/MISO, CS_INC, CS_IMU, CS_ROT     GPIO/IRQ ← IMU_INT1\n  FlexCAN0 → CAN_TX, CAN_RX (CAN FD nativo)              GPIO → CAN_STBY\n  CANFD_SCK/MOSI/MISO, CS_CAN, INT_CAN: NO SE USAN con KW45 → poner No-Connect\n  GPIO → DO1_EN, DO2_EN (alto = salida activa)  ← DO1_DIAG, DO2_DIAG\n  GPIO → WDI, WD_EN   ← MCU_RST_N (desde TPS3431)\n  ADC  ← VMON_5V, VMON_3V3     GPIO ← VAR_ID0/1    GPIO → LED_G, LED_R\nAsignación exacta de pines con MCUXpresso Config Tools (conflictos con la radio).\nDesacople de cada pin VDD junto al pin, con valor y encapsulado."
+	(text "BLOQUE 40 — MCU NXP KW45B41Z  [dominio ISO]   SOLO REFERENCIA: fuera de la jerarquía, el diseño usa 40_mcu_esp32s3\n\nINTERFAZ IDÉNTICA a 40_mcu_esp32s3: para cambiar de MCU, en 00_top editar el\nbloque MCU → campo \"Sheetfile\" → sheets/40_mcu_esp32s3.kicad_sch.\n\nComponentes:\n  U10  NXP KW45B41Z (con radio BLE, 1 MB flash — confirmar en guía de pedido)\n  Y1   Cristal 32 MHz (radio) pegado al KW45   Y2  Cristal 32.768 kHz\n  RF   Red de adaptación + antena (chip o impresa) — COPIAR diseño de referencia NXP\n       sin cambiar topología ni valores (KW45B41Z-LOC)\n  TP   Pads SWD Tag-Connect: SWDIO, SWCLK, RESET (sin conector externo)\n\nMapeo de periféricos:\n  LPSPI0  → SPI_SCK/MOSI/MISO, CS_INC, CS_IMU, CS_ROT     GPIO/IRQ ← IMU_INT1\n  FlexCAN0 → CAN_TX, CAN_RX (CAN FD nativo)              GPIO → CAN_STBY\n  CANFD_SCK/MOSI/MISO, CS_CAN, INT_CAN: NO SE USAN con KW45 → poner No-Connect\n  GPIO → DO1_EN, DO2_EN (alto = salida activa)  ← DO1_DIAG, DO2_DIAG\n  GPIO → WDI, WD_EN   ← MCU_RST_N (desde TPS3431)\n  ADC  ← VMON_5V, VMON_3V3     GPIO ← VAR_ID0/1    GPIO → LED_G, LED_R\nAsignación exacta de pines con MCUXpresso Config Tools (conflictos con la radio).\nDesacople de cada pin VDD junto al pin, con valor y encapsulado."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -336,6 +336,17 @@
 			(justify left)
 		)
 		(uuid "1f613da7-4e81-46a4-a342-65fb3e464bcd")
+	)
+	(hierarchical_label "PWR_FLT"
+		(shape input)
+		(at 238.76 96.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "23c18b9d-774c-4180-a3ee-b2412e054b4b")
 	)
 	(hierarchical_label "LED_R"
 		(shape output)
@@ -524,6 +535,17 @@
 		)
 		(uuid "d4be044e-51a1-4259-9650-3a5c535f55ed")
 	)
+	(hierarchical_label "CAN_SILENT"
+		(shape output)
+		(at 375.92 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "da954add-9402-43f2-952e-a23748a497fa")
+	)
 	(hierarchical_label "IMU_INT1"
 		(shape input)
 		(at 375.92 60.96 0)
@@ -589,6 +611,17 @@
 			(justify left)
 		)
 		(uuid "ee86bfb0-8b23-41bd-8b82-0019b72c764b")
+	)
+	(hierarchical_label "IMU_INT2"
+		(shape input)
+		(at 375.92 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fa2e93ee-cff0-4ce0-9b08-de850134de77")
 	)
 	(symbol
 		(lib_id "INCLI-VA:+3V3_D")
@@ -743,38 +776,5 @@
 				)
 			)
 		)
-	)
-	(hierarchical_label "IMU_INT2"
-		(shape input)
-		(at 375.92 106.68 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "fa2e93ee-cff0-4ce0-9b08-de850134de77")
-	)
-	(hierarchical_label "CAN_SILENT"
-		(shape output)
-		(at 375.92 111.76 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "da954add-9402-43f2-952e-a23748a497fa")
-	)
-	(hierarchical_label "PWR_FLT"
-		(shape input)
-		(at 238.76 96.52 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "23c18b9d-774c-4180-a3ee-b2412e054b4b")
 	)
 )

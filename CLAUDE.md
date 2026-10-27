@@ -2,6 +2,10 @@
 
 Proyecto KiCad 10 jerárquico. Estructura y convenciones de redes/rieles: ver `README.md`.
 
+## Alcance
+- MCU único: **ESP32-S3-WROOM-1** (`sheets/40_mcu_esp32s3`). La KW45 está descartada: `sheets/40_mcu_kw45.kicad_sch` se conserva solo como referencia, fuera de la jerarquía. No editarla ni volver a enlazarla desde la raíz.
+- Dimensionar la alimentación para el ESP32-S3 con WiFi activo (picos de TX).
+
 ## Esquemático
 
 ### Librerías
