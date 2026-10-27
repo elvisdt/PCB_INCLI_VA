@@ -1601,6 +1601,16 @@
 				(justify right)
 			)
 		)
+		(pin "CAN_SILENT" input
+			(at 297.18 228.6 180)
+			(uuid "62ca1eda-bcf9-4319-9400-ad3d4c164e4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
@@ -1833,6 +1843,16 @@
 				(justify left)
 			)
 		)
+		(pin "IMU_INT2" output
+			(at 297.18 144.78 180)
+			(uuid "e2d1117e-9731-42be-8af4-e1cc8cc13bf7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
@@ -2055,7 +2075,7 @@
 	)
 	(sheet
 		(at 157.48 124.46)
-		(size 45.72 43.18)
+		(size 45.72 48.26)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -2081,7 +2101,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/40_mcu_kw45.kicad_sch"
-			(at 157.48 168.23 0)
+			(at 157.48 173.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2371,6 +2391,26 @@
 				(justify right)
 			)
 		)
+		(pin "CAN_SILENT" output
+			(at 203.2 165.1 0)
+			(uuid "7fd53bf0-27ee-40b6-b576-0d014cc639c6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IMU_INT2" input
+			(at 203.2 167.64 0)
+			(uuid "388d708e-e5bc-4047-87c8-8007ae8a53dd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
@@ -2596,6 +2636,86 @@
 				)
 			)
 		)
+	)
+	(wire
+		(pts
+			(xy 203.2 165.1) (xy 205.74 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70e30734-164e-4407-9c74-bf06c07c74bb")
+	)
+	(label "CAN_SILENT"
+		(at 205.74 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e5526644-3dfa-415c-82bc-1a424a51be48")
+	)
+	(wire
+		(pts
+			(xy 203.2 167.64) (xy 205.74 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "454a7e65-b61b-4935-b7d5-ec01585e85af")
+	)
+	(label "IMU_INT2"
+		(at 205.74 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5a4aabf9-8736-4fe3-8ea1-562e3e37a6c4")
+	)
+	(wire
+		(pts
+			(xy 297.18 228.6) (xy 294.64 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b081fc7f-647f-4b37-9440-3188971ce664")
+	)
+	(label "CAN_SILENT"
+		(at 294.64 228.6 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "35082530-784a-4364-aaae-31de8a841131")
+	)
+	(wire
+		(pts
+			(xy 297.18 144.78) (xy 294.64 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d44b1e46-c350-450b-889c-8ae6c9bbbae9")
+	)
+	(label "IMU_INT2"
+		(at 294.64 144.78 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "618c954f-e6e8-42e7-a95e-a6c1f9e2388a")
 	)
 	(sheet_instances
 		(path "/"

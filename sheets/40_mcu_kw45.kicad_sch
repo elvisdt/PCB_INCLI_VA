@@ -744,4 +744,26 @@
 			)
 		)
 	)
+	(hierarchical_label "IMU_INT2"
+		(shape input)
+		(at 375.92 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "fa2e93ee-cff0-4ce0-9b08-de850134de77")
+	)
+	(hierarchical_label "CAN_SILENT"
+		(shape output)
+		(at 375.92 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "da954add-9402-43f2-952e-a23748a497fa")
+	)
 )

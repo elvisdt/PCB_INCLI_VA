@@ -72,4 +72,26 @@
  (pin "1" (uuid bfbac28e-0bb5-4fa2-8da7-5054f6cf69d9))
  (instances (project "INCLI-VA" (path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6" (reference "#PWR017") (unit 1)))))
 (embedded_fonts no)
+	(hierarchical_label "IMU_INT2"
+		(shape input)
+		(at 375.92 106.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2995e210-0511-4200-a18c-ce0deb2f7952")
+	)
+	(hierarchical_label "CAN_SILENT"
+		(shape output)
+		(at 375.92 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "93938ea7-4c30-43db-9191-8f1d7332e790")
+	)
 )

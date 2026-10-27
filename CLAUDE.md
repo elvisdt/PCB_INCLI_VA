@@ -14,7 +14,18 @@ Proyecto KiCad 10 jerárquico. Estructura y convenciones de redes/rieles: ver `R
 
 ### Campos obligatorios
 - Todo componente lleva `Footprint`, `MPN`, `Manufacturer` y `Datasheet` (además de `Alt_MPN` y `Variant` cuando aplique, según el `README.md`).
-- Pasivos (R, C, L, ferritas): **0603 por defecto**, salvo que el diseño exija otro tamaño (tensión, potencia, capacitancia, corriente). Si se usa otro, justificarlo.
+
+### Versión prototipo (soldadura a mano)
+Esta revisión es un demo que se va a soldar a mano. Hasta que el usuario indique que pasamos a producción:
+- Pasivos (R, C, ferritas): **0603 por defecto**, con las huellas estándar de las librerías oficiales (no hace falta la variante _HandSolder).
+- Subir a 0805 o más solo por razones eléctricas o mecánicas: lado vehicular (tensión ≥ 50 V, pérdida de capacitancia por DC bias, flexión cerca del conector), potencia disipada o capacitancia alta. Justificarlo en el campo "Notes" del símbolo.
+- LEDs en 0805 o 1206, diodos en SOD-123 o más grandes, transistores en SOT-23 o más grandes.
+- ICs: preferir encapsulados con pines visibles (SOIC, TSSOP, MSOP, SOT). Si no hay alternativa a QFN, DFN o LGA, avisar al usuario antes de elegirlo.
+- En QFN y DFN con pad expuesto, poner vías en el pad para poder soldar con cautín desde abajo.
+- Para el MCU, preferir módulo con pads castellados antes que el chip desnudo.
+- Marcar polaridad y pin 1 en la serigrafía, y dejar al menos 1 mm entre courtyards para que entre la punta del cautín.
+- Añadir test points en los rieles de potencia y en las señales clave (CAN, SPI, reset).
+- Si un componente se elige por ser fácil de soldar y en producción convendría otro, dejarlo anotado en el campo "Notes" del símbolo.
 
 ### Conexiones entre hojas
 - Las señales entre hojas van por **pines jerárquicos**, no por etiquetas globales.

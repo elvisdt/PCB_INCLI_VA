@@ -6,3 +6,6 @@ fp-info-cache
 _autosave-*
 fab/*.zip
 .history/
+
+# Reportes generados por kicad-mcp (ERC/DRC)
+output/

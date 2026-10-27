@@ -1777,121 +1777,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:GND"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(text "RIELES USADOS EN ESTA HOJA"
 		(exclude_from_sim no)
@@ -2372,7 +2257,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 202.8952 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -2383,7 +2268,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=CGA4J2X7R2A104K125AA"
 			(at 201.93 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -2395,6 +2280,61 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 201.93 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "CGA4J2X7R2A104K125AA"
+			(at 201.93 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TDK"
+			(at 201.93 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" ""
+			(at 201.93 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Rating" "100V X7R 0805 AEC-Q200"
+			(at 201.93 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "0805 en vez de 0603: lado vehicular (transitorios hasta ~94 V tras D1), menor perdida por DC bias que 0603 a 100 V y mas robusto a flexion cerca del conector"
 			(at 201.93 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -2454,7 +2394,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 188.9252 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -2465,7 +2405,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GCM21BR72A223KA37%23"
 			(at 187.96 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -2477,6 +2417,61 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 187.96 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GCM21BR72A223KA37L"
+			(at 187.96 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 187.96 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" ""
+			(at 187.96 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Rating" "100V X7R 0805 AEC-Q200"
+			(at 187.96 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "0805 en vez de 0603: lado vehicular (transitorios hasta ~94 V tras D1), menor perdida por DC bias que 0603 a 100 V y mas robusto a flexion cerca del conector"
 			(at 187.96 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -2503,7 +2498,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 226.06 147.32 0)
 		(unit 1)
 		(body_style 1)
@@ -2525,7 +2520,7 @@
 				)
 			)
 		)
-		(property "Value" "GND"
+		(property "Value" "GND_VEH"
 			(at 226.06 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2680,7 +2675,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47 uF"
+		(property "Value" "47uF"
 			(at 269.24 136.2709 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2691,7 +2686,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:CP_Elec_10x10"
 			(at 266.3952 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -2702,7 +2697,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://industrial.panasonic.com/ww/products/pt/aluminum-cap-smd/models/EEEHA2A470UP"
 			(at 265.43 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -2714,6 +2709,61 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 265.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "EEE-HA2A470UP"
+			(at 265.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 265.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C344077"
+			(at 265.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" ""
+			(at 265.43 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Rating" "100V 105C AEC-Q200 10x10.2"
 			(at 265.43 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -3026,7 +3076,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 187.96 152.4 0)
 		(unit 1)
 		(body_style 1)
@@ -3048,7 +3098,7 @@
 				)
 			)
 		)
-		(property "Value" "GND"
+		(property "Value" "GND_VEH"
 			(at 187.96 157.48 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3104,7 +3154,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 265.43 147.32 0)
 		(unit 1)
 		(body_style 1)
@@ -3126,7 +3176,7 @@
 				)
 			)
 		)
-		(property "Value" "GND"
+		(property "Value" "GND_VEH"
 			(at 265.43 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3382,7 +3432,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Fuse:Fuse_1812_4532Metric"
 			(at 152.4 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -3406,6 +3456,39 @@
 			)
 		)
 		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+			(at 147.32 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TBD (I_hold pendiente)"
+			(at 147.32 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "TBD"
+			(at 147.32 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" ""
 			(at 147.32 120.65 0)
 			(hide yes)
 			(show_name no)
