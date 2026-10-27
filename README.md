@@ -8,7 +8,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `sheets/10_power_input` | Conectores MSTB (J1, J2), fusible, LM74930-Q1 (corte OV 38.4 V, breaker), TVS, filtro LC → +VPROT |
 | `sheets/20_isolation` | DC-DC aislado PS201 Cincon EC4AW8-48S05 (6 W, 9–75 V, 3 kVDC, barrera 1), LDO TPS7A1650-Q1 +5V_VEH, aislador ISO7763FQDWRQ1 |
 | `sheets/30_regulation` | Desde +5V_ISO: buck +3V3_D, LDO +3V3_A, divisores VMON |
-| `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1 (único MCU del diseño) |
+| `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1-N8R2 (único MCU), USB-C nativo con ESD, UART0, BOOT/RESET |
 | `sheets/40_mcu_kw45` | Solo referencia: no está en la jerarquía |
 | `sheets/50_sensors` | SCL3300, ASM330LHH, AS5147U |
 | `sheets/60_can` | ADM3055E (barrera 2) desde el TWAI del ESP32-S3 (CAN clásico, J1939), terminación, ESD — reutiliza TP DCI |
