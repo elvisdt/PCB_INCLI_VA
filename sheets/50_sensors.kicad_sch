@@ -348,6 +348,17 @@
 		)
 		(uuid "c4415c28-89e0-48e5-a7f3-21456c46ddd7")
 	)
+	(hierarchical_label "IMU_INT2"
+		(shape output)
+		(at 238.76 66.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c930566c-9356-4d9b-bbfc-63ae333051ba")
+	)
 	(hierarchical_label "CS_INC"
 		(shape input)
 		(at 238.76 45.72 180)
@@ -512,16 +523,5 @@
 				)
 			)
 		)
-	)
-	(hierarchical_label "IMU_INT2"
-		(shape output)
-		(at 238.76 66.04 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c930566c-9356-4d9b-bbfc-63ae333051ba")
 	)
 )
