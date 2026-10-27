@@ -1874,7 +1874,7 @@
 	)
 	(text "RIELES USADOS EN ESTA HOJA: GND_VEH"
 		(exclude_from_sim no)
-		(at 20.32 195.58 0)
+		(at 21.59 250.698 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1885,7 +1885,7 @@
 	)
 	(text "INTERFAZ: EN (in, 5 V lado VEH), PWR_FLT_N (in, activo bajo), DIAG (out, 5 V), OUT (pasivo, a J2)"
 		(exclude_from_sim no)
-		(at 20.32 190.5 0)
+		(at 21.59 245.618 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1895,44 +1895,44 @@
 		(uuid "6a2f1fdd-72ef-457d-8f06-70c449a46866")
 	)
 	(junction
-		(at 167.64 106.68)
+		(at 213.36 137.16)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0efaacda-8483-4701-9a92-3c1cda13f48f")
 	)
 	(junction
-		(at 144.78 101.6)
+		(at 190.5 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "370ce159-da3f-4bcf-8266-7207ea8cbfc7")
 	)
 	(junction
-		(at 177.8 86.36)
+		(at 223.52 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "65983c77-71e6-439c-adfe-326f99e09619")
 	)
 	(junction
-		(at 193.04 86.36)
+		(at 238.76 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "74fd6911-e649-449b-93ad-b0b0e02452f0")
 	)
 	(junction
-		(at 203.2 101.6)
+		(at 248.92 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7f466904-b510-4a62-a9c3-ef66c2efc548")
 	)
 	(junction
-		(at 193.04 101.6)
+		(at 238.76 132.08)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8e7b5332-5f2b-4e61-b21f-8b2ec07adb38")
 	)
 	(wire
 		(pts
-			(xy 177.8 86.36) (xy 193.04 86.36)
+			(xy 223.52 116.84) (xy 238.76 116.84)
 		)
 		(stroke
 			(width 0)
@@ -1942,7 +1942,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 101.6) (xy 203.2 101.6)
+			(xy 238.76 132.08) (xy 248.92 132.08)
 		)
 		(stroke
 			(width 0)
@@ -1952,7 +1952,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 86.36) (xy 177.8 86.36)
+			(xy 213.36 116.84) (xy 223.52 116.84)
 		)
 		(stroke
 			(width 0)
@@ -1962,7 +1962,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 106.68) (xy 160.02 106.68)
+			(xy 213.36 137.16) (xy 205.74 137.16)
 		)
 		(stroke
 			(width 0)
@@ -1972,7 +1972,7 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 86.36) (xy 213.36 86.36)
+			(xy 238.76 116.84) (xy 259.08 116.84)
 		)
 		(stroke
 			(width 0)
@@ -1982,7 +1982,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 101.6) (xy 144.78 101.6)
+			(xy 187.96 132.08) (xy 190.5 132.08)
 		)
 		(stroke
 			(width 0)
@@ -1992,7 +1992,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 96.52) (xy 167.64 86.36)
+			(xy 213.36 127) (xy 213.36 116.84)
 		)
 		(stroke
 			(width 0)
@@ -2002,7 +2002,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 101.6) (xy 210.82 101.6)
+			(xy 248.92 132.08) (xy 256.54 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2012,7 +2012,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 101.6) (xy 160.02 101.6)
+			(xy 190.5 132.08) (xy 205.74 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2022,7 +2022,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 96.52) (xy 144.78 101.6)
+			(xy 190.5 127) (xy 190.5 132.08)
 		)
 		(stroke
 			(width 0)
@@ -2031,7 +2031,7 @@
 		(uuid "f2b1be05-daa5-4d92-bcef-2f609281361a")
 	)
 	(label "LATCH"
-		(at 121.92 87.63 270)
+		(at 167.64 118.11 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2041,7 +2041,7 @@
 		(uuid "1f3a6fa4-c079-4305-a1cd-385ac9fc270f")
 	)
 	(label "TRIG"
-		(at 96.52 116.84 180)
+		(at 142.24 147.32 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2051,7 +2051,7 @@
 		(uuid "2755a7b7-9cac-4614-bf93-dffcb3a50de6")
 	)
 	(label "LATCH"
-		(at 104.14 111.76 90)
+		(at 149.86 142.24 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2061,7 +2061,7 @@
 		(uuid "6e347097-e78e-463c-bc74-4244958c2a3d")
 	)
 	(label "TRIG"
-		(at 104.14 76.2 90)
+		(at 149.86 106.68 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2071,7 +2071,7 @@
 		(uuid "8df88566-43dc-4a9c-87c9-f7785f43362e")
 	)
 	(label "SENSE"
-		(at 160.02 106.68 180)
+		(at 205.74 137.16 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2081,7 +2081,7 @@
 		(uuid "9d8822c9-584e-4b07-9b2c-e03df5b75399")
 	)
 	(label "SENSE"
-		(at 67.31 104.14 180)
+		(at 113.03 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2091,7 +2091,7 @@
 		(uuid "b3bd4107-0f84-4bae-9898-ed6da32ddbae")
 	)
 	(label "TRIG"
-		(at 74.93 104.14 0)
+		(at 120.65 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2101,7 +2101,7 @@
 		(uuid "b9aa1201-212c-4185-93f9-c8642bbba927")
 	)
 	(label "LATCH"
-		(at 152.4 91.44 0)
+		(at 198.12 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2111,7 +2111,7 @@
 		(uuid "d6fcb88c-883a-4ab7-bfc0-014c344e187a")
 	)
 	(label "TRIG"
-		(at 78.74 116.84 90)
+		(at 124.46 147.32 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2121,7 +2121,7 @@
 		(uuid "dbd22765-822c-4a84-aae2-35a062358c87")
 	)
 	(label "TRIG"
-		(at 88.9 116.84 90)
+		(at 134.62 147.32 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2131,7 +2131,7 @@
 		(uuid "ec3d832c-e31b-4795-811e-81dd7cd2fbaf")
 	)
 	(label "LATCH"
-		(at 96.52 88.9 180)
+		(at 142.24 119.38 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2142,7 +2142,7 @@
 	)
 	(hierarchical_label "EN"
 		(shape input)
-		(at 134.62 101.6 180)
+		(at 180.34 132.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2153,7 +2153,7 @@
 	)
 	(hierarchical_label "PWR_FLT_N"
 		(shape input)
-		(at 137.16 91.44 180)
+		(at 182.88 121.92 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2164,7 +2164,7 @@
 	)
 	(hierarchical_label "DIAG"
 		(shape output)
-		(at 210.82 101.6 0)
+		(at 256.54 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2175,7 +2175,7 @@
 	)
 	(hierarchical_label "EN"
 		(shape input)
-		(at 121.92 80.01 90)
+		(at 167.64 110.49 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2186,7 +2186,7 @@
 	)
 	(hierarchical_label "OUT"
 		(shape passive)
-		(at 213.36 86.36 0)
+		(at 259.08 116.84 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2197,7 +2197,7 @@
 	)
 	(hierarchical_label "EN"
 		(shape input)
-		(at 104.14 93.98 270)
+		(at 149.86 124.46 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2208,7 +2208,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 104.14 121.92 0)
+		(at 149.86 152.4 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2218,7 +2218,7 @@
 		(dnp no)
 		(uuid "28bf27c6-2827-416d-bd81-69be923f60e2")
 		(property "Reference" "#PWR043"
-			(at 104.14 128.27 0)
+			(at 149.86 158.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2229,7 +2229,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 104.14 125.73 0)
+			(at 149.86 156.21 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2239,7 +2239,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 104.14 121.92 0)
+			(at 149.86 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2250,7 +2250,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 121.92 0)
+			(at 149.86 152.4 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2261,7 +2261,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 104.14 121.92 0)
+			(at 149.86 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2288,7 +2288,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 88.9 124.46 0)
+		(at 134.62 154.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2298,7 +2298,7 @@
 		(dnp no)
 		(uuid "2a82244b-b5cd-42d6-b490-96333f7bc8a7")
 		(property "Reference" "#PWR045"
-			(at 88.9 130.81 0)
+			(at 134.62 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2309,7 +2309,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 88.9 128.27 0)
+			(at 134.62 158.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2319,7 +2319,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 88.9 124.46 0)
+			(at 134.62 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2330,7 +2330,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 88.9 124.46 0)
+			(at 134.62 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2341,7 +2341,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 88.9 124.46 0)
+			(at 134.62 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2368,7 +2368,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 177.8 93.98 0)
+		(at 223.52 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2378,7 +2378,7 @@
 		(dnp no)
 		(uuid "2d526d4d-b538-496c-b6f6-51451bb4b046")
 		(property "Reference" "#PWR035"
-			(at 177.8 100.33 0)
+			(at 223.52 130.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2389,7 +2389,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 177.8 97.79 0)
+			(at 223.52 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2399,7 +2399,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 177.8 93.98 0)
+			(at 223.52 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2410,7 +2410,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 93.98 0)
+			(at 223.52 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2421,7 +2421,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 177.8 93.98 0)
+			(at 223.52 124.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2448,7 +2448,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_BJT:Q_NPN_BEC")
-		(at 101.6 116.84 0)
+		(at 147.32 147.32 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2458,7 +2458,7 @@
 		(dnp no)
 		(uuid "2f8ca274-6cb5-43a1-a217-a34ee4b51fd5")
 		(property "Reference" "Q702"
-			(at 106.68 115.57 0)
+			(at 152.4 146.05 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2469,7 +2469,7 @@
 			)
 		)
 		(property "Value" "BC817-40"
-			(at 106.68 118.11 0)
+			(at 152.4 148.59 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2480,7 +2480,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2491,7 +2491,7 @@
 			)
 		)
 		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf"
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2502,7 +2502,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2512,7 +2512,7 @@
 			)
 		)
 		(property "MPN" "BC817-40,215"
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2523,7 +2523,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2534,7 +2534,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 101.6 116.84 0)
+			(at 147.32 147.32 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2568,7 +2568,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 193.04 105.41 0)
+		(at 238.76 135.89 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2578,7 +2578,7 @@
 		(dnp no)
 		(uuid "331e59c9-e5d5-4e3c-ad20-f3aeba313056")
 		(property "Reference" "R710"
-			(at 195.58 104.14 0)
+			(at 241.3 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2589,7 +2589,7 @@
 			)
 		)
 		(property "Value" "220k"
-			(at 195.58 106.68 0)
+			(at 241.3 137.16 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2600,7 +2600,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2611,7 +2611,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2622,7 +2622,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2632,7 +2632,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-07220KL"
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2643,7 +2643,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2654,7 +2654,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 193.04 105.41 0)
+			(at 238.76 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2685,7 +2685,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_FET:IPD50R380CE")
-		(at 165.1 101.6 0)
+		(at 210.82 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2695,7 +2695,7 @@
 		(dnp no)
 		(uuid "3569f2f0-f8b8-45b3-99e9-eb988792c2a0")
 		(property "Reference" "Q701"
-			(at 170.18 100.33 0)
+			(at 215.9 130.81 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2706,7 +2706,7 @@
 			)
 		)
 		(property "Value" "FDD7N25LZ"
-			(at 170.18 102.87 0)
+			(at 215.9 133.35 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2717,7 +2717,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:TO-252-2"
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2728,7 +2728,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.onsemi.com/download/data-sheet/pdf/fdd7n25lz-d.pdf"
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2739,7 +2739,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2749,7 +2749,7 @@
 			)
 		)
 		(property "MPN" "FDD7N25LZTM"
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2760,7 +2760,7 @@
 			)
 		)
 		(property "Manufacturer" "onsemi"
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2771,7 +2771,7 @@
 			)
 		)
 		(property "Notes" "DEMO, NO es AEC-Q101 (el datasheet onsemi/Fairchild Rev 1.5 no lo indica). PRODUCCION: buscar MOSFET de 300 V. RDS(on) a VGS=5 V: 0.45 typ / 0.57 max ohm a 25 C (ID 3.1 A); a 85 C x1.6 (Fig. 8) = ~0.72 typ / ~0.91 max ohm. Margen a 85 C contra D701 SMCJ188A (recorte ~252 V): estimado ~13 V; con Fig. 7 (BVDSS x1.07 = >=267 V) son ~15 V. SOA (Fig. 9): corto a +32 V = ~2 A (autolimitado por R701) durante <=3 us hasta que dispara el latch, muy dentro de la recta de 30 us."
-			(at 165.1 101.6 0)
+			(at 210.82 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2805,7 +2805,7 @@
 	)
 	(symbol
 		(lib_id "Diode:BAT54A")
-		(at 144.78 91.44 0)
+		(at 190.5 121.92 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2815,7 +2815,7 @@
 		(dnp no)
 		(uuid "386d4cd1-9af8-489e-961f-437d87e4bb6a")
 		(property "Reference" "D702"
-			(at 144.78 87.63 0)
+			(at 190.5 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2825,7 +2825,7 @@
 			)
 		)
 		(property "Value" "BAT54A"
-			(at 144.78 90.17 0)
+			(at 190.5 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2835,7 +2835,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2846,7 +2846,7 @@
 			)
 		)
 		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAT54_SER.pdf"
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2857,7 +2857,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2867,7 +2867,7 @@
 			)
 		)
 		(property "MPN" "BAT54A,215"
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2878,7 +2878,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2889,7 +2889,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 144.78 91.44 0)
+			(at 190.5 121.92 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2923,7 +2923,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 167.64 110.49 0)
+		(at 213.36 140.97 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2933,7 +2933,7 @@
 		(dnp no)
 		(uuid "4fa25b2f-09d3-4c29-b468-2cfce17d7ccd")
 		(property "Reference" "R701"
-			(at 170.18 109.22 0)
+			(at 215.9 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2944,7 +2944,7 @@
 			)
 		)
 		(property "Value" "1R"
-			(at 170.18 111.76 0)
+			(at 215.9 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2955,7 +2955,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2966,7 +2966,7 @@
 			)
 		)
 		(property "Datasheet" "https://industrial.panasonic.com/ww/products/pt/general-purpose-chip-resistors/models/ERJP08F1R00V"
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2977,7 +2977,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2987,7 +2987,7 @@
 			)
 		)
 		(property "MPN" "ERJ-P08F1R00V"
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2998,7 +2998,7 @@
 			)
 		)
 		(property "Manufacturer" "Panasonic"
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3009,7 +3009,7 @@
 			)
 		)
 		(property "Notes" "1206 anti-surge en vez de 0603: 0.25 W a 0.5 A y pulsos de corto a +V. Fija el disparo del latch: ~0.7 A."
-			(at 167.64 110.49 0)
+			(at 213.36 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3040,7 +3040,7 @@
 	)
 	(symbol
 		(lib_id "Diode:SM6T200A")
-		(at 177.8 90.17 270)
+		(at 223.52 120.65 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3050,7 +3050,7 @@
 		(dnp no)
 		(uuid "63923d5a-4613-4401-b344-f9dcb19078d2")
 		(property "Reference" "D701"
-			(at 180.34 88.9 270)
+			(at 226.06 119.38 270)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3061,7 +3061,7 @@
 			)
 		)
 		(property "Value" "SMCJ188A"
-			(at 180.34 91.44 270)
+			(at 226.06 121.92 270)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3072,7 +3072,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_SMC"
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3083,7 +3083,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.littelfuse.com/products/overvoltage-protection/tvs-diodes/surface-mount/smcj"
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3094,7 +3094,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3104,7 +3104,7 @@
 			)
 		)
 		(property "MPN" "SMCJ188A"
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3115,7 +3115,7 @@
 			)
 		)
 		(property "Manufacturer" "Littelfuse"
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3126,7 +3126,7 @@
 			)
 		)
 		(property "Notes" "Recorta el pico inductivo de la bobina externa: ~223-252 V a 0.5 A entre -40 y 85 C, por debajo del BVDSS de Q701. VBR 209-231 V: a -40 C puede conducir ~5 ms en el pico de 202 V (~0.1 A por la bobina, ~0.06 J)."
-			(at 177.8 90.17 0)
+			(at 223.52 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3157,7 +3157,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 193.04 97.79 0)
+		(at 238.76 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3167,7 +3167,7 @@
 		(dnp no)
 		(uuid "6473dfe3-8836-4c1a-93a2-6b1bc387aaa3")
 		(property "Reference" "R709"
-			(at 195.58 96.52 0)
+			(at 241.3 127 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3178,7 +3178,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 195.58 99.06 0)
+			(at 241.3 129.54 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3189,7 +3189,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3200,7 +3200,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3211,7 +3211,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3221,7 +3221,7 @@
 			)
 		)
 		(property "MPN" "AC1206FR-07100KL"
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3232,7 +3232,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3243,7 +3243,7 @@
 			)
 		)
 		(property "Notes" "1206 por tension: el drenador llega a ~250 V; dos en serie, ~125 V cada una."
-			(at 193.04 97.79 0)
+			(at 238.76 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3274,7 +3274,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 88.9 120.65 0)
+		(at 134.62 151.13 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3284,7 +3284,7 @@
 		(dnp no)
 		(uuid "66b7d9bf-4b71-4d95-9704-f3d31b515f66")
 		(property "Reference" "R707"
-			(at 91.44 119.38 0)
+			(at 137.16 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3295,7 +3295,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 91.44 121.92 0)
+			(at 137.16 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3306,7 +3306,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3317,7 +3317,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3328,7 +3328,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3338,7 +3338,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-0710KL"
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3349,7 +3349,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3360,7 +3360,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 88.9 120.65 0)
+			(at 134.62 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3391,7 +3391,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 78.74 124.46 0)
+		(at 124.46 154.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3401,7 +3401,7 @@
 		(dnp no)
 		(uuid "6a95aef9-5db5-4756-b94f-e4b0d20ec7c6")
 		(property "Reference" "#PWR047"
-			(at 78.74 130.81 0)
+			(at 124.46 161.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3412,7 +3412,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 78.74 128.27 0)
+			(at 124.46 158.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3422,7 +3422,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 78.74 124.46 0)
+			(at 124.46 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3433,7 +3433,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 78.74 124.46 0)
+			(at 124.46 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3444,7 +3444,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 124.46 0)
+			(at 124.46 154.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3471,7 +3471,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 121.92 83.82 0)
+		(at 167.64 114.3 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3481,7 +3481,7 @@
 		(dnp no)
 		(uuid "716e403f-3f1c-409c-92f1-674a8b3d58ea")
 		(property "Reference" "R704"
-			(at 124.46 82.55 0)
+			(at 170.18 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3492,7 +3492,7 @@
 			)
 		)
 		(property "Value" "47k"
-			(at 124.46 85.09 0)
+			(at 170.18 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3503,7 +3503,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3514,7 +3514,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3525,7 +3525,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3535,7 +3535,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-0747KL"
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3546,7 +3546,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3557,7 +3557,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 121.92 83.82 0)
+			(at 167.64 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3588,7 +3588,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 144.78 105.41 0)
+		(at 190.5 135.89 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3598,7 +3598,7 @@
 		(dnp no)
 		(uuid "73afbbfd-3ead-49f7-a86c-30f1f7c4acf8")
 		(property "Reference" "R703"
-			(at 147.32 104.14 0)
+			(at 193.04 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3609,7 +3609,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 147.32 106.68 0)
+			(at 193.04 137.16 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3620,7 +3620,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3631,7 +3631,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3642,7 +3642,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3652,7 +3652,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-07100KL"
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3663,7 +3663,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3674,7 +3674,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 144.78 105.41 0)
+			(at 190.5 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3705,7 +3705,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_BJT:Q_PNP_BEC")
-		(at 101.6 88.9 0)
+		(at 147.32 119.38 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3715,7 +3715,7 @@
 		(dnp no)
 		(uuid "81569535-c729-4853-b656-4eeb8b976391")
 		(property "Reference" "Q703"
-			(at 106.68 87.63 0)
+			(at 152.4 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3726,7 +3726,7 @@
 			)
 		)
 		(property "Value" "BC807-40"
-			(at 106.68 90.17 0)
+			(at 152.4 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3737,7 +3737,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3748,7 +3748,7 @@
 			)
 		)
 		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BC807_SER.pdf"
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3759,7 +3759,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3769,7 +3769,7 @@
 			)
 		)
 		(property "MPN" "BC807-40,215"
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3780,7 +3780,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3791,7 +3791,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 101.6 88.9 0)
+			(at 147.32 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3825,7 +3825,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 193.04 109.22 0)
+		(at 238.76 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3835,7 +3835,7 @@
 		(dnp no)
 		(uuid "82315c6f-33cd-45a3-803f-4c0fe1150dae")
 		(property "Reference" "#PWR037"
-			(at 193.04 115.57 0)
+			(at 238.76 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3846,7 +3846,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 193.04 113.03 0)
+			(at 238.76 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3856,7 +3856,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 193.04 109.22 0)
+			(at 238.76 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3867,7 +3867,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 193.04 109.22 0)
+			(at 238.76 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3878,7 +3878,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 193.04 109.22 0)
+			(at 238.76 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3905,7 +3905,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 203.2 109.22 0)
+		(at 248.92 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3915,7 +3915,7 @@
 		(dnp no)
 		(uuid "932c76ed-d38f-4e42-bd6b-db028acf6037")
 		(property "Reference" "#PWR039"
-			(at 203.2 115.57 0)
+			(at 248.92 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3926,7 +3926,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 203.2 113.03 0)
+			(at 248.92 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3936,7 +3936,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 203.2 109.22 0)
+			(at 248.92 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3947,7 +3947,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 203.2 109.22 0)
+			(at 248.92 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3958,7 +3958,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 203.2 109.22 0)
+			(at 248.92 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3985,7 +3985,7 @@
 	)
 	(symbol
 		(lib_id "Diode:BZX84Cxx")
-		(at 203.2 105.41 270)
+		(at 248.92 135.89 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3995,7 +3995,7 @@
 		(dnp no)
 		(uuid "96c811af-69e2-4432-a5b2-60fa208f8939")
 		(property "Reference" "D703"
-			(at 205.74 104.14 270)
+			(at 251.46 134.62 270)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4006,7 +4006,7 @@
 			)
 		)
 		(property "Value" "BZX84-C5V1"
-			(at 205.74 106.68 270)
+			(at 251.46 137.16 270)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4017,7 +4017,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4028,7 +4028,7 @@
 			)
 		)
 		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BZX84_SER.pdf"
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4039,7 +4039,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4049,7 +4049,7 @@
 			)
 		)
 		(property "MPN" "BZX84-C5V1,215"
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4060,7 +4060,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4071,7 +4071,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 203.2 105.41 0)
+			(at 248.92 135.89 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4105,7 +4105,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 167.64 114.3 0)
+		(at 213.36 144.78 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4115,7 +4115,7 @@
 		(dnp no)
 		(uuid "b5b47598-4aa7-49a7-ac1a-a328aacd4614")
 		(property "Reference" "#PWR033"
-			(at 167.64 120.65 0)
+			(at 213.36 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4126,7 +4126,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 167.64 118.11 0)
+			(at 213.36 148.59 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4136,7 +4136,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 167.64 114.3 0)
+			(at 213.36 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4147,7 +4147,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 114.3 0)
+			(at 213.36 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4158,7 +4158,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 167.64 114.3 0)
+			(at 213.36 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4185,7 +4185,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 138.43 101.6 90)
+		(at 184.15 132.08 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4195,7 +4195,7 @@
 		(dnp no)
 		(uuid "b9becb10-5a72-4f9e-bb4d-3de66c2a56aa")
 		(property "Reference" "R702"
-			(at 138.43 99.06 90)
+			(at 184.15 129.54 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4205,7 +4205,7 @@
 			)
 		)
 		(property "Value" "4k7"
-			(at 138.43 104.14 90)
+			(at 184.15 134.62 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4215,7 +4215,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4226,7 +4226,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4237,7 +4237,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4247,7 +4247,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-074K7L"
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4258,7 +4258,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4269,7 +4269,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 138.43 101.6 0)
+			(at 184.15 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4300,7 +4300,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 193.04 90.17 0)
+		(at 238.76 120.65 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4310,7 +4310,7 @@
 		(dnp no)
 		(uuid "bd1f8794-7c4a-49fb-84ae-293e79769581")
 		(property "Reference" "R708"
-			(at 195.58 88.9 0)
+			(at 241.3 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4321,7 +4321,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 195.58 91.44 0)
+			(at 241.3 121.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4332,7 +4332,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4343,7 +4343,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4354,7 +4354,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4364,7 +4364,7 @@
 			)
 		)
 		(property "MPN" "AC1206FR-07100KL"
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4375,7 +4375,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4386,7 +4386,7 @@
 			)
 		)
 		(property "Notes" "1206 por tension: el drenador llega a ~250 V; dos en serie, ~125 V cada una."
-			(at 193.04 90.17 0)
+			(at 238.76 120.65 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4417,7 +4417,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 144.78 109.22 0)
+		(at 190.5 139.7 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4427,7 +4427,7 @@
 		(dnp no)
 		(uuid "d83c1232-ce03-4ab7-888f-40ec07fa6eea")
 		(property "Reference" "#PWR041"
-			(at 144.78 115.57 0)
+			(at 190.5 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4438,7 +4438,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 144.78 113.03 0)
+			(at 190.5 143.51 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4448,7 +4448,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 144.78 109.22 0)
+			(at 190.5 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4459,7 +4459,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.78 109.22 0)
+			(at 190.5 139.7 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4470,7 +4470,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 144.78 109.22 0)
+			(at 190.5 139.7 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4497,7 +4497,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 78.74 120.65 0)
+		(at 124.46 151.13 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4507,7 +4507,7 @@
 		(dnp no)
 		(uuid "db95569d-df35-45ae-8aee-35a1250c55ec")
 		(property "Reference" "C701"
-			(at 81.28 119.38 0)
+			(at 127 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4518,7 +4518,7 @@
 			)
 		)
 		(property "Value" "1nF"
-			(at 81.28 121.92 0)
+			(at 127 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4529,7 +4529,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4540,7 +4540,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GCM188R71H102KA37%23"
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4551,7 +4551,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4561,7 +4561,7 @@
 			)
 		)
 		(property "MPN" "GCM188R71H102KA37D"
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4572,7 +4572,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4583,7 +4583,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 78.74 120.65 0)
+			(at 124.46 151.13 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4614,7 +4614,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 104.14 80.01 0)
+		(at 149.86 110.49 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4624,7 +4624,7 @@
 		(dnp no)
 		(uuid "dc9ce955-c616-4c74-94d4-526f1489c21a")
 		(property "Reference" "R705"
-			(at 106.68 78.74 0)
+			(at 152.4 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4635,7 +4635,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 106.68 81.28 0)
+			(at 152.4 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4646,7 +4646,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4657,7 +4657,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4668,7 +4668,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4678,7 +4678,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-0710KL"
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4689,7 +4689,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4700,7 +4700,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 104.14 80.01 0)
+			(at 149.86 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4731,7 +4731,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 71.12 104.14 90)
+		(at 116.84 134.62 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4741,7 +4741,7 @@
 		(dnp no)
 		(uuid "e24e28db-2bc2-46bd-b7fe-0176dd5fdd89")
 		(property "Reference" "R706"
-			(at 71.12 101.6 90)
+			(at 116.84 132.08 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4751,7 +4751,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 71.12 106.68 90)
+			(at 116.84 137.16 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4761,7 +4761,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4772,7 +4772,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4783,7 +4783,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4793,7 +4793,7 @@
 			)
 		)
 		(property "MPN" "AC0603FR-071KL"
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4804,7 +4804,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4815,7 +4815,7 @@
 			)
 		)
 		(property "Notes" ""
-			(at 71.12 104.14 0)
+			(at 116.84 134.62 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

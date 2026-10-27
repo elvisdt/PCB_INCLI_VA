@@ -5530,7 +5530,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "INCLI-VA:FUSE-SMD_L6.1-W2.5-1"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5541,7 +5541,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C3159902.pdf"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -6096,7 +6096,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_5-GF-5,08_1x05_P5.08mm_Horizontal_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_5-GF-3.81_1x05_P3.81mm_Vertical_ThreadedFlange"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -7498,7 +7498,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_2-GF-5,08_1x02_P5.08mm_Horizontal_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_2-GF-3.81_1x02_P3.81mm_Vertical_ThreadedFlange"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
