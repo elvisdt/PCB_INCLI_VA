@@ -41,3 +41,5 @@ Esta revisión es un demo que se va a soldar a mano. Hasta que el usuario indiqu
 
 ## PCB
 - **No modificar `INCLI-VA.kicad_pcb`** (ni stackup, reglas, netclasses de placa ni "Update PCB from Schematic") hasta que el usuario lo pida explícitamente.
+- **Pad 25 de U101 (LM74930-Q1, EP/RTN):** su red (pad expuesto, vías e isla en B.Cu) **nunca** se une a GND ni a otra red. Los rellenos de cobre deben respetar su separación. Fuente: datasheet TI SNOSDF6, tabla 5-1 y sección 8.3 (conectarlo a GND anula la protección de polaridad inversa).
+  - Al empezar el PCB: crear una regla DRC personalizada (`.kicad_dru`) para esa red que aísle la red de U101 pad 25 de cualquier otra red y de los rellenos.

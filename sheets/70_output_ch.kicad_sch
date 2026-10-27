@@ -1949,7 +1949,7 @@
 				)
 			)
 		)
-		(property "Notes" "DEMO: 250 V nivel logico. Con D701 SMCJ188A el margen a 85 C es ~13 V (recorte ~252 V vs BVDSS min ~265 V). PRODUCCION: buscar MOSFET de 300 V. PENDIENTE: confirmar RDS(on) a 5 V y grado automotriz en el datasheet."
+		(property "Notes" "DEMO, NO es AEC-Q101 (el datasheet onsemi/Fairchild Rev 1.5 no lo indica). PRODUCCION: buscar MOSFET de 300 V. RDS(on) a VGS=5 V: 0.45 typ / 0.57 max ohm a 25 C (ID 3.1 A); a 85 C x1.6 (Fig. 8) = ~0.72 typ / ~0.91 max ohm. Margen a 85 C contra D701 SMCJ188A (recorte ~252 V): estimado ~13 V; con Fig. 7 (BVDSS x1.07 = >=267 V) son ~15 V. SOA (Fig. 9): corto a +32 V = ~2 A (autolimitado por R701) durante <=3 us hasta que dispara el latch, muy dentro de la recta de 30 us."
 			(at 165.1 101.6 0)
 			(hide yes)
 			(show_name no)

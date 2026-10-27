@@ -9808,4 +9808,17 @@
 		)
 		(uuid "e0d814e6-d669-4ab2-81f1-19ecd2e67a17")
 	)
+	(text "EP/RTN flotante: NO conectar a GND (datasheet SNOSDF6, tabla 5-1 y sección 8.3)"
+		(exclude_from_sim no)
+		(at 152.4 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+				(color 200 0 0 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "ba779818-7f87-4dc0-a180-bb9c12cbcb78")
+	)
 )
