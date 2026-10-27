@@ -2828,7 +2828,7 @@
 					)
 				)
 			)
-			(property "Footprint" "easyeda2kicad:VQFN-24_L4.0-W4.0-P0.50-TL-EP2.1"
+			(property "Footprint" "INCLI-VA:TI_RGE0024T_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1mm_HandSolder_IsolatedVias"
 				(at 0 -25.4 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6233,7 +6233,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:VQFN-24_L4.0-W4.0-P0.50-TL-EP2.1"
+		(property "Footprint" "INCLI-VA:TI_RGE0024T_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1mm_HandSolder_IsolatedVias"
 			(at 134.62 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -6277,7 +6277,7 @@
 				)
 			)
 		)
-		(property "Notes" "VQFN-24 aceptado para el demo. Pad expuesto = RTN: dejar FLOTANTE (TI), no conectar a GND. Huella importada con diferencias vs RGE0024T: ver conversación de diseño. LCSC C22428070."
+		(property "Notes" "VQFN-24 aceptado para el demo. Pad expuesto = RTN: dejar FLOTANTE (TI), no conectar a GND. Huella INCLI-VA (corregida desde RGE0024T): paso exacto, pasta 4x0.94 mm, 5 vías a isla aislada en B.Cu (RTN), courtyard +-2.7 mm. LCSC C22428070."
 			(at 134.62 106.68 0)
 			(hide yes)
 			(show_name no)

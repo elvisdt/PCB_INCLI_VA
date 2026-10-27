@@ -12,6 +12,7 @@ Proyecto KiCad 10 jerárquico. Estructura y convenciones de redes/rieles: ver `R
     1. Registrar la librería en `sym-lib-table` y `fp-lib-table` con rutas `${KIPRJMOD}`.
     2. Comparar la huella con el land pattern del datasheet y reportar cualquier diferencia.
     3. Seguir con el diseño.
+- Excepción: las huellas de **pasivos de 2 terminales** (fusibles, resistencias, inductores) sí se pueden crear a partir de las dimensiones del datasheet. Se guardan en `lib/INCLI-VA.pretty` y su descripción indica la fuente (fabricante, documento y revisión).
 - Los símbolos de potencia (rieles y masas) salen de la librería propia `INCLI-VA`, como indica el `README.md`.
 
 ### Campos obligatorios

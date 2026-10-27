@@ -28,7 +28,7 @@
 				)
 			)
 		)
-		(property "Footprint" "easyeda2kicad:VQFN-24_L4.0-W4.0-P0.50-TL-EP2.1"
+		(property "Footprint" "INCLI-VA:TI_RGE0024T_VQFN-24-1EP_4x4mm_P0.5mm_EP2.1mm_HandSolder_IsolatedVias"
 			(at 0 -25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
