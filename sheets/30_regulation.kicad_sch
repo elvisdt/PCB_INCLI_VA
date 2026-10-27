@@ -2245,7 +2245,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_Coilcraft_XAL4020-XXX"
+		(property "Footprint" "INCLI-VA:L_Coilcraft_XAL4020_HandSolder"
 			(at 119.38 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2300,7 +2300,7 @@
 				)
 			)
 		)
-		(property "Notes" "1.0 uH +-20 %, Isat 8.7 A, DCR 14.6 mohm máx, AEC-Q200. Isat > límite de corriente de U301 (3.3 A máx) para soportar el corto. TI admite 0.3-1.2 uH efectivos. Huella oficial KiCad."
+		(property "Notes" "1.0 uH +-20 %, Isat 8.7 A, DCR 14.6 mohm máx, AEC-Q200. Isat > límite de corriente de U301 (3.3 A máx) para soportar el corto. TI admite 0.3-1.2 uH efectivos. Huella INCLI-VA:L_Coilcraft_XAL4020_HandSolder: land pattern de Coilcraft Doc 806-4 (rev. 02/25/26, 0.98 x 3.4 mm, centros 2.37 mm) con pads extendidos 1 mm fuera del cuerpo para soldar a mano. En producción volver a Inductor_SMD:L_Coilcraft_XAL4020-XXX."
 			(at 119.38 100.33 0)
 			(show_name no)
 			(do_not_autoplace no)

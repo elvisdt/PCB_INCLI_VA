@@ -763,7 +763,7 @@
 		)
 		(uuid "02e9b754-32bd-478b-a389-3b3e25ddd7c0")
 	)
-	(label "PWR_FLT"
+	(label "PWR_FLT_N"
 		(at 154.94 160.02 180)
 		(effects
 			(font
@@ -1223,7 +1223,7 @@
 		)
 		(uuid "a3b0b9ec-9a79-415e-ac47-d7a7a71603a0")
 	)
-	(label "PWR_FLT"
+	(label "PWR_FLT_N"
 		(at 154.94 53.34 180)
 		(effects
 			(font
@@ -2035,7 +2035,7 @@
 				(justify right)
 			)
 		)
-		(pin "PWR_FLT" output
+		(pin "PWR_FLT_N" output
 			(at 157.48 53.34 180)
 			(uuid "7943dd4d-7f83-4c7c-9ad3-d0de43358394")
 			(effects
@@ -2341,7 +2341,7 @@
 				(justify right)
 			)
 		)
-		(pin "PWR_FLT" input
+		(pin "PWR_FLT_N" input
 			(at 157.48 160.02 180)
 			(uuid "5e40c7ec-1cd9-4acf-8bba-ba58e755addb")
 			(effects
