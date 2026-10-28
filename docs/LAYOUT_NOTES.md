@@ -1,12 +1,41 @@
-# Estudio de tamaño y ubicación — Codex, 2026-10-27
+# Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28
 
-## Actualización de objetivo — 2026-10-28
+## Propuesta vigente: 100 × 100 mm — 2026-10-28
+
+El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal y la propuesta de 120 × 80 mm se conservan sin cambios.
+
+Vista por bloques: **`layout/ubicacion-100x100.png`** (también SVG). Exportación nativa de KiCad de cobre frontal, serigrafía y contorno: `layout/placa-100x100.svg`. Son vistas de revisión, no archivos de fabricación.
+
+### Distribución
+
+- Contorno nominal **100 × 100 mm**, esquinas de radio 4 mm y muesca de antena de 8 × 35 mm en el borde derecho. La reserva RF se extiende fuera del contorno; también deberá quedar libre en la caja.
+- Entrada y protección arriba a la izquierda; J1 en el borde izquierdo. Se conserva el espacio de C105 y de todos los DNP.
+- J2 arriba, con DO1 y DO2 en dos bloques de distribución equivalente debajo del conector.
+- CAN a la izquierda, debajo de la entrada; dominio aislado hacia J1 y lógica hacia el interior.
+- Buck de 5 V abajo a la izquierda; regulación de 3.3 V en la zona inferior central.
+- AS5147U (U503) exactamente en **(50,50) mm** locales. SCL3300 U501 en **(63,49)** y ASM330LHH U502 en **(76,42)**; sus ejes conservan la orientación previa.
+- H5 en **(54,60)**, cerca del conjunto de sensores y separado del eje ROT. H1/H2/H3 en (5,5)/(95,5)/(5,95); H4 en (87,95), desplazado hacia dentro para respetar la antena. Posiciones propuestas, pendientes de validar contra la caja.
+- ESP32 en el borde derecho, hacia la mitad inferior; USB-C en el borde inferior. UART0 en la zona inferior central y pulsadores accesibles en la parte superior/derecha.
+- Coordenadas locales respecto de la esquina superior izquierda del contorno; en KiCad el origen de esa esquina es (100,50) mm.
+
+### Comprobaciones y límites
+
+- **186 huellas**; igualdad con el PCB principal de referencias, UUID, valores, librerías, campos, atributos/DNP y pads/redes. No se cambió ningún componente ni conexión.
+- Separación mínima entre envolventes de courtyards/pads: **1.01 mm** (Q102–TP102). El cuerpo de U401 y su reserva RF se verifican por separado.
+- **DRC: 0 errores geométricos, 1 aviso** conocido `lib_footprint_mismatch` en U401 por la serigrafía recortada. **396 conexiones sin rutear**, 0 pistas y 0 zonas de placa. El resultado no es un DRC limpio para fabricación.
+- Las siete instancias de pad 25 de U101 conservan `/10_power_input/U101_RTN`; su regla de aislamiento está copiada sin cambios. Se conserva el keep-out de antena de U401.
+- Reportes persistentes: `layout/reports/drc-100x100.json` e `integridad-100x100.json`. Revisión visual manual de la imagen completada. No se editaron hojas eléctricas ni se repitió ERC.
+- Reproducción desde la raíz: `/usr/bin/python3 scripts/layout_100x100.py`, seguido de `/usr/bin/python3 scripts/review_layout_100x100.py`. Los scripts escriben únicamente la propuesta y sus vistas/reportes, no el PCB principal. El DRC se ejecuta por separado con `kicad-cli pcb drc`.
+
+**El encaje geométrico de 100 × 100 mm está comprobado.** Sigue siendo una ubicación preliminar: falta afinar los desacoples y lazos de los bucks/ADM3055E, revisar retornos, fijaciones/caja/imán y la huella definitiva de C105. Las referencias están en F.Fab; la serigrafía final y el ruteo quedan pendientes. No rutear hasta el visto bueno de ubicación.
+
+## Antecedente: evaluación por área — 2026-10-28
 
 El usuario plantea **100 × 100 mm como máximo**. Es una alternativa favorable por área: 10000 mm² nominales, un 4.2 % más que 120 × 80 mm. Aplicando las mismas deducciones del estudio (muesca de 8 × 35 mm y cuatro esquinas de radio 4 mm), quedarían aproximadamente 9706 mm² útiles y una ocupación estimada del 57.0 % para la reserva de 5536 mm².
 
-Esta comparación no es una ubicación comprobada: hace falta reorganizar los bloques para el formato cuadrado y verificar mecánica, RF, aislamiento y ruteabilidad. La propuesta de 120 × 80 mm que se describe abajo sigue siendo la única de estas dos dimensiones con ubicación comprobada geométricamente. El siguiente estudio tendrá como objetivo 100 × 100 mm; aún no se modificó ningún PCB para ese tamaño.
+Esta comparación inicial solo evaluaba área. La propuesta de 100 × 100 mm descrita arriba ya incorpora la redistribución y verificación geométrica; todavía no demuestra ruteabilidad ni comportamiento eléctrico.
 
-## Recomendación
+## Antecedente: propuesta de 120 × 80 mm (2026-10-27)
 
 Usar **120 × 80 mm** como base de revisión para 186 huellas, dos capas y acceso de soldadura manual. La propuesta es `layout/INCLI-VA-120x80.kicad_pcb`; la vista a escala está en `layout/ubicacion-120x80.png` y `.svg`. El PCB principal conserva su contorno y ubicación previos hasta confirmar el tamaño. No se añadió ruteo.
 

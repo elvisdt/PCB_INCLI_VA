@@ -1,0 +1,145 @@
+(version 1)
+
+# ============================================================================
+# INCLI-VA - reglas de diseño personalizadas (KiCad 10)
+# Fabricante: JLCPCB, 2 capas, FR-4 1.6 mm, cobre exterior 1 oz.
+# Fuente: https://jlcpcb.com/capabilities/pcb-capabilities (consultado 2026-10-27)
+#   Pista/espacio 0.10/0.10 mm (2 capas, 1 oz). Via: hueco min 0.15 mm, preferido >= 0.2 mm;
+#   "0.2mm or 0.25mm hole size with via diameter less than 0.45mm, will cost more".
+#   Anillo PTH: recomendado >= 0.25 mm, minimo absoluto 0.18 mm (2 capas, 1 oz).
+#   Hueco a hueco: pads 0.45 mm, vias 0.2 mm. Via a pista 0.2 mm; PTH a pista 0.28 mm (0.35 rec.).
+#   Cobre a borde fresado >= 0.2 mm (V-cut >= 0.4 mm). Puente de mascara (verde) 0.10 mm.
+#   Serigrafia: linea >= 0.15 mm, texto >= 1.0 mm.
+# Los valores de abajo dejan margen sobre esos minimos (prototipo soldado a mano, sin costo extra).
+# El puente minimo de mascara (0.10 mm) no se puede expresar aqui: va en Board Setup.
+# ============================================================================
+
+# ---------------------------- Capacidades del fabricante --------------------
+(rule "JLC_espacio_cobre"
+	(constraint clearance (min 0.15mm)))
+
+(rule "JLC_ancho_pista"
+	(condition "A.Type == 'Track'")
+	(constraint track_width (min 0.15mm)))
+
+(rule "JLC_via"
+	(condition "A.Type == 'Via'")
+	(constraint hole_size (min 0.3mm))
+	(constraint via_diameter (min 0.6mm))
+	(constraint annular_width (min 0.15mm)))
+
+# Huecos de pads: el minimo lo fijan las vias termicas de las huellas
+# (U101: 0.2/0.4 mm -> costo extra en JLCPCB; U201: 0.2/0.5 mm).
+(rule "JLC_hueco_min"
+	(constraint hole_size (min 0.2mm)))
+
+(rule "JLC_anillo_PTH"
+	(condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole' && A.Hole_Size_X > 0.35mm")
+	(constraint annular_width (min 0.18mm)))
+
+(rule "JLC_hueco_a_hueco"
+	(constraint hole_to_hole (min 0.45mm)))
+
+(rule "JLC_hueco_a_cobre_via"
+	(condition "A.Type == 'Via'")
+	(constraint hole_clearance (min 0.2mm)))
+
+(rule "JLC_hueco_a_cobre_PTH"
+	(condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'")
+	(constraint hole_clearance (min 0.28mm)))
+
+# JLCPCB pide >= 0.2 mm al borde fresado; el proyecto usa 0.5 mm.
+(rule "JLC_borde"
+	(constraint edge_clearance (min 0.5mm)))
+
+(rule "JLC_serigrafia"
+	(layer "?.Silkscreen")
+	(constraint text_height (min 1.0mm))
+	(constraint text_thickness (min 0.15mm)))
+
+# ---------------------------- U101 pad 25 (EP = RTN) ------------------------
+# TI SNOSDF6, tabla 5-1 y seccion 8.3: el pad expuesto del LM74930-Q1 es RTN y debe quedar
+# FLOTANTE. Unirlo a GND anula la proteccion de polaridad inversa.
+# La red /10_power_input/U101_RTN agrupa el EP, sus vias y la isla en B.Cu (todos son el pad 25).
+# Se excluyen los objetos sin red (las aberturas de pasta del EP en la huella).
+(rule "U101_RTN_aislado"
+	(condition "A.NetName == '/10_power_input/U101_RTN' && B.NetName != '/10_power_input/U101_RTN' && B.NetName != ''")
+	(constraint clearance (min 0.3mm))
+	(constraint zone_connection none)
+	(constraint physical_clearance (min 0.3mm)))
+
+# Seguro contra cambios de red: si el pad 25 de U101 termina en GND_VEH, es un error.
+(rule "U101_pad25_nunca_GND"
+	(severity error)
+	(condition "A.memberOfFootprint('U101') && A.Pad_Number == '25' && A.NetName != '/10_power_input/U101_RTN'")
+	(constraint disallow pad))
+
+# ---------------------------- Alta tension en la entrada --------------------
+# VIN_VEH y VBAT_F (antes del corte del LM74930) ven hasta 202 V (load dump sin suprimir de 24 V,
+# ISO 16750-2 prueba A) y ~140 V en el pulso 2a de ISO 7637-2.
+# IPC-2221B tabla 6-1, columna B2 (externa, sin recubrimiento, < 3050 m): 171-250 V -> 1.25 mm.
+# Pad contra pad se excluye: lo fija el encapsulado de cada componente.
+(rule "HV_entrada_202V"
+	(condition "(A.NetName == '/10_power_input/VIN_VEH' || A.NetName == '/10_power_input/VBAT_F') && B.NetName != '/10_power_input/VIN_VEH' && B.NetName != '/10_power_input/VBAT_F' && !(A.Type == 'Pad' && B.Type == 'Pad')")
+	(constraint clearance (min 1.25mm)))
+
+# Salidas DO: drenador hasta 58 V (load dump suprimido) + pico inductivo recortado por D701 a <= 93.6 V.
+# IPC-2221B B2, 51-100 V -> 0.6 mm.
+(rule "MV_salidas_DO_100V"
+	(condition "(A.NetName == '/VEH_DO1' || A.NetName == '/VEH_DO2') && B.NetName != A.NetName && !(A.Type == 'Pad' && B.Type == 'Pad')")
+	(constraint clearance (min 0.6mm)))
+
+# Rieles de la entrada protegida (<= 38.4 V, corte por OV): IPC-2221B B2, 31-50 V -> 0.6 mm
+# entre conductores (pistas, vias y zonas). Los pines de U101 (QFN de 0.5 mm) quedan fuera de esta regla.
+(rule "MV_entrada_protegida_40V"
+	(condition "(A.NetName == '+VPROT' || A.NetName == '/10_power_input/VA' || A.NetName == '/10_power_input/C_ID' || A.NetName == '/10_power_input/VOUT') && B.NetName != A.NetName && A.Type != 'Pad' && B.Type != 'Pad'")
+	(constraint clearance (min 0.6mm)))
+
+# ---------------------------- Barrera del ADM3055E (U601) -------------------
+# El ADM3055E garantiza CLR = CRP = 8.3 mm en el encapsulado (datasheet ADI Rev. D, especificaciones
+# de aislamiento). El aislamiento de esta placa es FUNCIONAL (lazos y offset de masa del bus CAN),
+# no de seguridad. Por eso:
+#  1) Entre el dominio CAN (GND_CAN) y el resto: >= 2.5 mm (IPC-2221B B2, 301-500 V). Se puede
+#     cumplir junto a J1 (MSTB de 5.08 mm, donde CAN_H esta al lado de GND_VEH).
+#  2) Ningun relleno de cobre debajo del cuerpo de U601: asi la placa no reduce los 8.3 mm del encapsulado.
+(rule "ISO_CAN_barrera"
+	(condition "(A.NetName == 'GND_CAN' || A.NetName == '/BUS_CAN_H' || A.NetName == '/BUS_CAN_L' || A.NetName == '/60_can/V_SOIN' || A.NetName == '/60_can/V_SOOUT' || A.NetName == '/60_can/GNDISO_CAN' || A.NetName == '/60_can/CAN_RS' || A.NetName == 'Net-(C609-Pad1)') && !(B.NetName == 'GND_CAN' || B.NetName == '/BUS_CAN_H' || B.NetName == '/BUS_CAN_L' || B.NetName == '/60_can/V_SOIN' || B.NetName == '/60_can/V_SOOUT' || B.NetName == '/60_can/GNDISO_CAN' || B.NetName == '/60_can/CAN_RS' || B.NetName == 'Net-(C609-Pad1)') && !(A.memberOfFootprint('U601') && B.memberOfFootprint('U601')) && !(A.memberOfFootprint('J1') && B.memberOfFootprint('J1'))")
+	(constraint clearance (min 2.5mm)))
+
+(rule "ISO_sin_relleno_bajo_U601"
+	(condition "A.Type == 'Zone' && A.intersectsCourtyard('U601')")
+	(constraint disallow zone))
+
+# ---------------------------- Anchos de pista (IPC-2152) --------------------
+# IPC-2152, 1 oz, aumento de 10 C (tabla de ejemplo de Altium, "1 oz./sq. ft. Copper/10 C"):
+# 1 A -> 10 mil (0.25 mm); 2 A -> 30 mil (0.76 mm). Se redondea hacia arriba con margen.
+# Entrada (F101 de 2 A; breaker del LM74930 a 1 A): 1.0 mm.
+(rule "IPC2152_entrada_2A"
+	(condition "A.Type == 'Track' && (A.NetName == '/10_power_input/VIN_VEH' || A.NetName == '/10_power_input/VBAT_F' || A.NetName == '/10_power_input/VA' || A.NetName == '/10_power_input/C_ID' || A.NetName == '/10_power_input/VOUT' || A.NetName == '+VPROT')")
+	(constraint track_width (min 1.0mm)))
+
+# Salidas DO (rele <= 0.5 A; disparo del latch DNP ~0.7 A): 0.5 mm.
+(rule "IPC2152_salidas_DO"
+	(condition "A.Type == 'Track' && (A.NetName == '/VEH_DO1' || A.NetName == '/VEH_DO2' || A.NetName == '/70_output_DO1/SENSE' || A.NetName == '/70_output_DO2/SENSE')")
+	(constraint track_width (min 0.5mm)))
+
+# Riel de 5 V y nodo de conmutacion del buck (<= 1 A): 0.5 mm.
+(rule "IPC2152_buck_5V"
+	(condition "A.Type == 'Track' && (A.NetName == '+5V_VEH' || A.NetName == '/20_buck_5v/BUCK_SW')")
+	(constraint track_width (min 0.5mm)))
+
+# ---------------------------- Antena del ESP32-S3-WROOM-1 -------------------
+# La huella oficial RF_Module:ESP32-S3-WROOM-1 ya trae un rule area de keep-out (48 x 21 mm,
+# todas las capas de cobre: sin pistas, vias, pads, rellenos ni huellas), equivalente a 15 mm
+# alrededor de la antena. Lo verifica el DRC nativo; no hace falta una regla aca.
+# Espressif (ESP32-S3 Hardware Design Guidelines, "General Principles of PCB Layout for Modules"):
+# antena fuera de la placa o en el borde; si no, recortar la placa debajo y a ambos lados.
+
+# ---------------------------- Excepciones aceptadas -------------------------
+# J401 (USB-C GCT USB4105-GF-A, huella oficial Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal):
+# el pad GND (A1/B12 y A12/B1) queda a 0.1944 mm del NPTH de la espiga. Es el land pattern oficial del
+# fabricante y queda 6 um por debajo del minimo de JLCPCB para NPTH a cobre (0.2 mm). Aceptado por el
+# usuario (2026-10-27). La regla aplica solo dentro de J401 y mantiene un piso de 0.19 mm.
+(rule "J401_land_pattern_oficial"
+	(condition "A.memberOfFootprint('J401') && B.memberOfFootprint('J401')")
+	(constraint hole_clearance (min 0.19mm)))

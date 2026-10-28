@@ -1,0 +1,19 @@
+{
+  "footprints": 186,
+  "footprint_identity_fields_pads_nets_DNP_preserved": true,
+  "nominal_size_mm": [
+    100,
+    100
+  ],
+  "minimum_envelope_gap_mm": 1.009999999999979,
+  "minimum_pair": [
+    "Q102",
+    "TP102"
+  ],
+  "tracks": 0,
+  "board_zones": 0,
+  "U101_pad25_net": "/10_power_input/U101_RTN",
+  "U101_pad25_instances": 7,
+  "U401_rule_areas": 1,
+  "scope": "Placement review only; electrical loop optimization and routing pending."
+}

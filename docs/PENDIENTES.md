@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Codex (retoma tras apagado; evaluar 100 × 100 mm como máximo solicitado).
+Última actualización: 2026-10-28, Codex (propuesta 100 × 100 mm preparada; 186 huellas ubicadas, DRC geométrico sin errores, revisión de ubicación pendiente).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -295,9 +295,18 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Próximo paso: redistribuir en una copia de 100 × 100 mm y comprobar antena, aislamiento CAN, fijaciones, reserva ROT, acceso para soldar y lazos de alimentación. Mantener las huellas DNP. Presentar ubicación antes de rutear.
 - En esta retoma solo se actualizó documentación: no se modificaron esquemáticos ni PCB y no se repitieron ERC/DRC.
 
+## Propuesta de 100 × 100 mm preparada — Codex, 2026-10-28
+- Autorización del usuario: preparar el formato cuadrado y reubicar componentes. Hecho en **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, con proyecto y reglas adjuntos; principal y propuesta 120 × 80 conservados.
+- **186 huellas ubicadas**, incluyendo DNP. Entrada/CAN a la izquierda, dos DO arriba, bucks abajo, sensores en la zona central, ESP32 en el borde derecho y USB abajo.
+- U503 en (50,50) mm locales; H5 en (54,60), próximo a los sensores; cinco fijaciones NPTH. Muesca RF de 8 × 35 mm y esquinas de radio 4 mm.
+- **DRC de la propuesta: 0 errores geométricos, 1 aviso intencional de U401 y 396 conexiones sin rutear**. Sin pistas ni zonas. Separación mínima de envolventes: 1.01 mm.
+- Verificada igualdad de UUID/referencias, valores, campos, DNP, geometría básica de pads y redes frente al PCB principal. U101 pad 25 conserva su red y reglas; keep-out de U401 conservado.
+- Imagen revisada: `docs/layout/ubicacion-100x100.png`; exportación nativa: `placa-100x100.svg`. Reportes en `docs/layout/reports/`; scripts reproducibles en `scripts/`.
+- No se editaron esquemáticos; no correspondió repetir ERC ni QA de hojas. Falta ajuste eléctrico de detalle, validación mecánica y visto bueno antes de rutear.
+
 ## Falta
-- Evaluar la distribución de **100 × 100 mm máximo** solicitada el 2026-10-28. La propuesta de 120 × 80 mm queda como referencia comparativa; aún falta afinar eléctricamente la ubicación antes de aprobar el ruteo. Ver `LAYOUT_NOTES.md`.
-- [ ] Ubicar todos los componentes y H1–H5; resolver separación CAN y acceso de soldadura. Presentar ubicación para visto bueno del usuario **antes de rutear**.
+- [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
+- [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
