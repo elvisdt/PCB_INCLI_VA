@@ -22,6 +22,7 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 2. **R109 queda en 1.62 k** (corte por OV a 38.4 V). Decisión final del usuario: con el buck de 80 V ya no hace falta bajarlo.
 3. **Opción B, no aislada: aprobada.** Se quitan PS201, U202 (ISO7763) y U201 (TPS7A1650), y entra un buck de +VPROT a 5 V. El aislamiento queda solo en el CAN (ADM3055E).
    - **Buck: TI LMR38010SQDDARQ1** (80 V, 1 A, PFM + spread spectrum, AEC-Q100, HSOIC-8 PowerPAD DDA). El usuario confirma el stock.
+   - **Prototipo: LMR38010SDDAR** (LCSC C5219310), equivalente comercial. En el símbolo: `MPN = LMR38010SQDDARQ1` (PROD) y `MPN_PROTO = LMR38010SDDAR` (ver "Equivalencia LMR38010").
    - Si la producción termina en JLCPCB, se revisa la disponibilidad más adelante.
    - Huella: pad expuesto con vías térmicas, soldable con aire caliente.
 8. **C105:** DNP en PROTO y montado en PROD (hold-up para load dump y arranque en frío). De acuerdo, con dos condiciones (ver "Hoja 20: diseño listo").
@@ -89,9 +90,34 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
   - Para esos vehículos haría falta un MOSFET de ≥ 250 V (otra huella) o supresión en el propio relé.
 - El latch de sobrecorriente de las DO está como DNP: en el prototipo, un corto de la carga a +V no está limitado.
 
+## Equivalencia LMR38010 (prototipo y producción)
+Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table", y TI SNVSC72B (LMR38010-Q1), sección 4.
+
+| Orderable | Datasheet | FPWM | Spread spectrum | Modo en carga liviana |
+|---|---|---|---|---|
+| LMR38010SDDAR (LCSC C5219310) | SNVSC73B | No | Sí | PFM |
+| LMR38010FDDAR (LCSC C5219308) | SNVSC73B | Sí | No | PWM forzado |
+| LMR38010FSDDAR (LCSC C5219309) | SNVSC73B | Sí | Sí | PWM forzado |
+| **LMR38010SQDDARQ1** | SNVSC72B | No | Sí | PFM |
+| LMR38010FSQDDARQ1 | SNVSC72B | Sí | Sí | PWM forzado |
+
+- **F** = FPWM (PWM forzado: frecuencia fija también sin carga, más consumo). Sin F = PFM en carga liviana (IQ 40 µA, "PFM variant only").
+- **S** = spread spectrum (±8 %, FSPREAD).
+- **Q / Q1** = AEC-Q100.
+- **LMR38010SDDAR ≡ LMR38010SQDDARQ1.** Coinciden en:
+  - Modo (PFM + spread spectrum).
+  - Pinout (1 GND, 2 EN, 3 VIN, 4 RT/SYNC, 5 FB, 6 PG, 7 BOOT, 8 SW, EP).
+  - Encapsulado DDA0008B.
+  - Parámetros revisados: VREF 1 V ±1.5 %, IHS-LIMIT 1.3/1.6/1.9 A, ILS-LIMIT 0.9/1.2/1.5 A, tON-MIN 80/131 ns, IPEAK-MIN 0.25 A, TJ −40 a 150 °C, RθJA 42.9 °C/W.
+  - La única diferencia es la calificación AEC-Q100.
+  - El -Q1 especifica FOSC con RT = 64.9 kΩ: 320/400/480 kHz. Es el RT elegido.
+- No usar las variantes F en el prototipo: cambian el comportamiento en carga liviana (consumo con solo BLE) y no representan a producción.
+- **Campo nuevo `MPN_PROTO`:** se usa solo cuando el prototipo lleva otro número de parte, equivalente al de producción. El BOM de prototipo toma `MPN_PROTO` si existe y, si no, `MPN`.
+
 ## Hoja 20: diseño listo, falta aplicarlo
 **Bloqueos:**
-- **Símbolo del LMR38010:** no existe en las librerías oficiales de KiCad ni en `lib/`. Pedido al usuario: **MPN LMR38010SQDDARQ1, encapsulado HSOIC-8 PowerPAD (TI DDA0008B)**. Va en `lib/vendor/LMR38010SQDDARQ1/` o en `lib/easyeda2kicad/`.
+- **Símbolo del LMR38010:** no existe en las librerías oficiales de KiCad ni en `lib/`. Pedido al usuario: **MPN LMR38010SQDDARQ1 / LMR38010SDDAR, encapsulado HSOIC-8 PowerPAD (TI DDA0008B)**. Va en `lib/vendor/LMR38010SQDDARQ1/` o en `lib/easyeda2kicad/`. Opción: easyeda2kicad con LCSC C5219310.
+  - Del import solo se usa el símbolo. La huella será la oficial con vías térmicas.
 - **KiCad estaba abierto** durante el turno: el usuario guardó a las 21:24 cambios de layout en `70_output_ch`, que siguen sin commit.
   - Mis ediciones de las hojas 20/30/40/50/60/80 y la raíz se deshicieron (`git checkout`). El disco quedó como HEAD más los cambios del usuario en la hoja 70.
   - Se aplican de nuevo con KiCad cerrado. El script es reproducible.
@@ -105,7 +131,7 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
 
 | Ref. | Valor | MPN | Notas |
 |---|---|---|---|
-| U201 | LMR38010SQDDARQ1 | TI | EN y VIN → +VPROT; PG sin uso. Pin a pin con el LMR38020 (2 A) |
+| U201 | LMR38010SQDDARQ1 (PROD) / LMR38010SDDAR (PROTO, LCSC C5219310) | TI | EN y VIN → +VPROT; PG sin uso. Pin a pin con el LMR38020 (2 A) |
 | C201 | 4.7 µF 100 V 1210 | CGA6M3X7S2A475K200AB (TDK) | C_IN (TI: ≥ 4.7 µF). A verificar |
 | C202 | 100 nF 100 V 0603 | GCM188R72A104KA64D | Bypass de VIN, pegado a los pines 3 y 1 |
 | C203 | 100 nF 0603 | GCM188R71H104KA57D | C_BOOT (pines 7 y 8) |

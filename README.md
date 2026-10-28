@@ -24,6 +24,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 - Señales entre hojas: pines jerárquicos; en el top se unen por etiquetas del mismo nombre.
 - Prefijos de red por dominio: `VEH_`, `ISO_`, `BUS_`.
 - Campos por componente: `MPN`, `Manufacturer`, `Datasheet`, `Alt_MPN`, `Variant` (CAN, OUT, ROT, CABIN), `Notes` y `DNP`.
+- `MPN_PROTO`: solo cuando el prototipo usa un equivalente distinto del MPN de producción (por ejemplo, la versión comercial de una pieza -Q1). El BOM de prototipo usa `MPN_PROTO` si existe y, si no, `MPN`.
 - **Prototipo = producción:** es el mismo esquemático; solo cambia qué se monta. El campo `DNP` define los dos BOM:
   - vacío: se monta siempre.
   - `PROTO`: no se monta en el prototipo.
