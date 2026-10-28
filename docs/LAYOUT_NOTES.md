@@ -2,7 +2,7 @@
 
 ## Propuesta vigente: 100 × 100 mm — 2026-10-28
 
-**Revisión posterior del usuario:** se mantiene la propuesta cuadrada, se dejan **cuatro fijaciones H1–H4** y los **19 puntos de prueba en Bottom (B.Cu)**. H5 está retirado de esta propuesta. Su retirada del esquemático y la sincronización del PCB base quedan pendientes de confirmar que KiCad está cerrado (se detectó el bloqueo del proyecto y se consultó al usuario, según AGENTS.md). No incorporar de nuevo H5 al sincronizar la propuesta.
+**Revisión posterior del usuario:** se mantiene la propuesta cuadrada, se dejan **cuatro fijaciones H1–H4** y los **19 puntos de prueba en Bottom (B.Cu)**. H5 está retirado de esta propuesta y, tras la confirmación del usuario, también del esquemático raíz. El PCB base anterior conserva H5 hasta que se adopte la propuesta vigente como principal.
 
 El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal y la propuesta de 120 × 80 mm se conservan sin cambios.
 
@@ -23,11 +23,11 @@ Vistas por cara: **`layout/ubicacion-100x100.png`** (superior) y **`layout/ubica
 
 ### Comprobaciones y límites
 
-- **185 huellas**; igualdad de UUID, valores, librerías, campos, atributos/DNP y pads/redes de las referencias conservadas respecto del PCB principal. La única referencia retirada es H5, todavía presente en el PCB principal y el esquemático. Ninguna posición XY de las otras 185 huellas cambió respecto de la propuesta anterior; solo cambian la cara y serigrafía de los TP.
+- **185 huellas**; igualdad de UUID, valores, librerías, campos, atributos/DNP y pads/redes de las referencias conservadas respecto del PCB principal. La única referencia retirada es H5, todavía presente en el PCB principal anterior, pero ya eliminada del esquemático. Ninguna posición XY de las otras 185 huellas cambió respecto de la propuesta anterior; solo cambian la cara y serigrafía de los TP.
 - Separación mínima entre envolventes de courtyards/pads: **1.01 mm** (Q102–TP102). El cuerpo de U401 y su reserva RF se verifican por separado.
 - **DRC: 0 errores geométricos, 1 aviso** conocido `lib_footprint_mismatch` en U401 por la serigrafía recortada. **396 conexiones sin rutear**, 0 pistas y 0 zonas de placa. El resultado no es un DRC limpio para fabricación.
 - Las siete instancias de pad 25 de U101 conservan `/10_power_input/U101_RTN`; su regla de aislamiento está copiada sin cambios. Se conserva el keep-out de antena de U401.
-- Reportes persistentes: `layout/reports/drc-100x100.json` e `integridad-100x100.json` (incluye mapa TP → red y exclusión explícita de H5 al comparar con el PCB base). Revisión visual manual por caras y de la exportación nativa inferior completada. No se editaron hojas eléctricas ni se repitió ERC.
+- Reportes persistentes: `layout/reports/drc-100x100.json` e `integridad-100x100.json` (incluye mapa TP → red y exclusión explícita de H5 al comparar con el PCB base). Revisión visual manual por caras y de la exportación nativa inferior completada. Tras retirar H5 del esquemático se repitió ERC: 0 errores/1 aviso conocido en U101_RTN (`layout/reports/erc-sin-h5.json`). La raíz exportada se revisó visualmente; `sch_visual_qa` no está disponible en esta sesión.
 - Reproducción desde la raíz: `/usr/bin/python3 scripts/layout_100x100.py`, seguido de `/usr/bin/python3 scripts/review_layout_100x100.py`. Los scripts escriben únicamente la propuesta y sus vistas/reportes, no el PCB principal. El DRC se ejecuta por separado con `kicad-cli pcb drc`.
 
 **El encaje geométrico de 100 × 100 mm está comprobado.** Sigue siendo una ubicación preliminar: falta afinar los desacoples y lazos de los bucks/ADM3055E, revisar retornos, fijaciones/caja/imán y la huella definitiva de C105. Las referencias de componentes están en F.Fab y las de TP en B.Silkscreen; el resto de la serigrafía final y el ruteo quedan pendientes. No rutear hasta el visto bueno de ubicación.

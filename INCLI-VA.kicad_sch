@@ -2878,7 +2878,7 @@
 			)
 		)
 	)
-	(text "AGUJEROS DE FIJACION: H1-H4 (esquinas) + H5 (central) M3 sin cobre (en el esquematico para que 'Update PCB from Schematic' no los borre)."
+	(text "AGUJEROS DE FIJACION: H1-H4, cuatro agujeros M3 sin cobre (en el esquematico para que 'Update PCB from Schematic' no los borre)."
 		(exclude_from_sim no)
 		(at 50.8 246.38 0)
 		(effects
@@ -2888,126 +2888,6 @@
 			(justify left top)
 		)
 		(uuid "60a5566c-5e10-4cd7-8de7-89437b810468")
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 142.24 256.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "d833f82b-e928-4e63-82e7-a4f5091426bf")
-		(property "Reference" "H5"
-			(at 144.78 255.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole_M3"
-			(at 144.78 257.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(hide yes)
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "N/A (agujero NPTH)"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "N/A"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Agujero CENTRAL de fijacion M3 (3.2 mm), SIN cobre: sube la primera resonancia de la placa (con solo 4 esquinas, estimada en 150-200 Hz, dentro de la banda de ISO 16750-3). Ubicarlo cerca de U501 (inclinometro). Posicion: la define el layout."
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H5")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(sheet_instances
 		(path "/"

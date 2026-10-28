@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Codex (propuesta 100 × 100 revisada: 19 TP en Bottom, cuatro fijaciones, 185 huellas; H5 pendiente de retirar del esquemático al confirmar KiCad cerrado).
+Última actualización: 2026-10-28, Codex (H5 retirado del esquemático; ERC 0 errores/1 aviso conocido; cierre para revisión del usuario y push solicitado).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -312,8 +312,16 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - DRC repetido: **0 errores geométricos, 1 aviso conocido de U401, 396 conexiones sin rutear**. U101_RTN y reserva RF conservados.
 - **Pendiente H5 en esquemático/PCB base:** hay un archivo de bloqueo del proyecto. Se preguntó si KiCad está cerrado, como exige AGENTS.md; sin respuesta aún al documentar este turno. No se editaron esquemáticos ni PCB principal, ni se repitió ERC/QA de hojas. La comparación de integridad excluye H5 explícitamente; no afirmar paridad completa hasta sincronizar.
 
+## Cierre para revisión del usuario — Codex, 2026-10-28
+- El usuario respondió afirmativamente a la consulta pendiente y pidió retirar H5 del esquemático. Se eliminó únicamente su símbolo/instancia en `INCLI-VA.kicad_sch` y se actualizó la nota a cuatro agujeros H1–H4. Las conexiones y hojas eléctricas no cambian.
+- ERC repetido, reporte persistente `docs/layout/reports/erc-sin-h5.json`: **0 errores y 1 aviso intencional `isolated_pin_label` en U101_RTN**. El JSON agrupa ese aviso bajo `/`; las hojas eléctricas restantes tienen 0 incidencias.
+- Hoja raíz exportada por KiCad y revisada visualmente: H1–H4 y nota correctos, sin solapes nuevos. **`sch_visual_qa` no está disponible** en el catálogo de herramientas ni como ejecutable; esta revisión manual no equivale a ejecutar esa herramienta.
+- El usuario solicita commit final y push para revisar en detalle esquemático y PCB. Comparar la raíz con **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, que ya tiene 185 huellas, cuatro fijaciones y TP en Bottom. La placa principal y la propuesta 120 × 80 siguen siendo referencias previas, con H5; no se cambiaron en este cierre del esquemático.
+
 ## Falta
-- [ ] Confirmar KiCad cerrado; retirar H5 y actualizar la nota de fijaciones en la raíz, sincronizar esa baja en el PCB base y repetir ERC/QA de la raíz. Evitar reintroducir H5 al actualizar la propuesta.
+- [x] Retirar H5 y actualizar la nota de fijaciones en la raíz; repetir ERC y revisión visual manual.
+- [ ] Ejecutar `sch_visual_qa` de la raíz cuando esté disponible.
+- [ ] Al adoptar la propuesta 100 × 100 como PCB principal, sustituir la base anterior y comprobar paridad completa; H5 ya no está en el esquemático ni en la propuesta vigente.
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
 - [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
