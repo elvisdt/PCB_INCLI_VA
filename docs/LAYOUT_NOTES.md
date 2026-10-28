@@ -2,9 +2,11 @@
 
 ## Propuesta vigente: 100 × 100 mm — 2026-10-28
 
+**Revisión posterior del usuario:** se mantiene la propuesta cuadrada, se dejan **cuatro fijaciones H1–H4** y los **19 puntos de prueba en Bottom (B.Cu)**. H5 está retirado de esta propuesta. Su retirada del esquemático y la sincronización del PCB base quedan pendientes de confirmar que KiCad está cerrado (se detectó el bloqueo del proyecto y se consultó al usuario, según AGENTS.md). No incorporar de nuevo H5 al sincronizar la propuesta.
+
 El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal y la propuesta de 120 × 80 mm se conservan sin cambios.
 
-Vista por bloques: **`layout/ubicacion-100x100.png`** (también SVG). Exportación nativa de KiCad de cobre frontal, serigrafía y contorno: `layout/placa-100x100.svg`. Son vistas de revisión, no archivos de fabricación.
+Vistas por cara: **`layout/ubicacion-100x100.png`** (superior) y **`layout/ubicacion-100x100-bottom.png`** (inferior, mirada desde abajo, espejada), también en SVG. Exportaciones nativas de KiCad: `layout/placa-100x100.svg` y `layout/placa-100x100-bottom.svg`. Son vistas de revisión, no archivos de fabricación. La ilustración anterior combinaba las caras: TP401–TP405 ya estaban en B.Cu; ahora cada imagen solo muestra los pads de su propia cara.
 
 ### Distribución
 
@@ -14,20 +16,21 @@ Vista por bloques: **`layout/ubicacion-100x100.png`** (también SVG). Exportaci�
 - CAN a la izquierda, debajo de la entrada; dominio aislado hacia J1 y lógica hacia el interior.
 - Buck de 5 V abajo a la izquierda; regulación de 3.3 V en la zona inferior central.
 - AS5147U (U503) exactamente en **(50,50) mm** locales. SCL3300 U501 en **(63,49)** y ASM330LHH U502 en **(76,42)**; sus ejes conservan la orientación previa.
-- H5 en **(54,60)**, cerca del conjunto de sensores y separado del eje ROT. H1/H2/H3 en (5,5)/(95,5)/(5,95); H4 en (87,95), desplazado hacia dentro para respetar la antena. Posiciones propuestas, pendientes de validar contra la caja.
+- Cuatro agujeros M3 NPTH sin cobre: H1/H2/H3 en (5,5)/(95,5)/(5,95); H4 en (87,95), desplazado hacia dentro para respetar la antena. H5 eliminado por decisión del usuario. Posiciones propuestas, pendientes de validar contra la caja; la rigidez/vibración con cuatro apoyos sigue pendiente de ensayo.
 - ESP32 en el borde derecho, hacia la mitad inferior; USB-C en el borde inferior. UART0 en la zona inferior central y pulsadores accesibles en la parte superior/derecha.
+- Todos los TP son pads de prueba de Ø 1.5 mm en **B.Cu/B.Mask**, sin taladro; los identificadores están en **B.Silkscreen**, espejados para leerse desde abajo (altura 1 mm, trazo 0.15 mm). Catorce TP cambiaron de cara y cinco ya estaban en Bottom. Se mantienen sus posiciones XY y sus redes. La tapa inferior deberá ser accesible durante las mediciones; las vías de conexión se resolverán al rutear.
 - Coordenadas locales respecto de la esquina superior izquierda del contorno; en KiCad el origen de esa esquina es (100,50) mm.
 
 ### Comprobaciones y límites
 
-- **186 huellas**; igualdad con el PCB principal de referencias, UUID, valores, librerías, campos, atributos/DNP y pads/redes. No se cambió ningún componente ni conexión.
+- **185 huellas**; igualdad de UUID, valores, librerías, campos, atributos/DNP y pads/redes de las referencias conservadas respecto del PCB principal. La única referencia retirada es H5, todavía presente en el PCB principal y el esquemático. Ninguna posición XY de las otras 185 huellas cambió respecto de la propuesta anterior; solo cambian la cara y serigrafía de los TP.
 - Separación mínima entre envolventes de courtyards/pads: **1.01 mm** (Q102–TP102). El cuerpo de U401 y su reserva RF se verifican por separado.
 - **DRC: 0 errores geométricos, 1 aviso** conocido `lib_footprint_mismatch` en U401 por la serigrafía recortada. **396 conexiones sin rutear**, 0 pistas y 0 zonas de placa. El resultado no es un DRC limpio para fabricación.
 - Las siete instancias de pad 25 de U101 conservan `/10_power_input/U101_RTN`; su regla de aislamiento está copiada sin cambios. Se conserva el keep-out de antena de U401.
-- Reportes persistentes: `layout/reports/drc-100x100.json` e `integridad-100x100.json`. Revisión visual manual de la imagen completada. No se editaron hojas eléctricas ni se repitió ERC.
+- Reportes persistentes: `layout/reports/drc-100x100.json` e `integridad-100x100.json` (incluye mapa TP → red y exclusión explícita de H5 al comparar con el PCB base). Revisión visual manual por caras y de la exportación nativa inferior completada. No se editaron hojas eléctricas ni se repitió ERC.
 - Reproducción desde la raíz: `/usr/bin/python3 scripts/layout_100x100.py`, seguido de `/usr/bin/python3 scripts/review_layout_100x100.py`. Los scripts escriben únicamente la propuesta y sus vistas/reportes, no el PCB principal. El DRC se ejecuta por separado con `kicad-cli pcb drc`.
 
-**El encaje geométrico de 100 × 100 mm está comprobado.** Sigue siendo una ubicación preliminar: falta afinar los desacoples y lazos de los bucks/ADM3055E, revisar retornos, fijaciones/caja/imán y la huella definitiva de C105. Las referencias están en F.Fab; la serigrafía final y el ruteo quedan pendientes. No rutear hasta el visto bueno de ubicación.
+**El encaje geométrico de 100 × 100 mm está comprobado.** Sigue siendo una ubicación preliminar: falta afinar los desacoples y lazos de los bucks/ADM3055E, revisar retornos, fijaciones/caja/imán y la huella definitiva de C105. Las referencias de componentes están en F.Fab y las de TP en B.Silkscreen; el resto de la serigrafía final y el ruteo quedan pendientes. No rutear hasta el visto bueno de ubicación.
 
 ## Antecedente: evaluación por área — 2026-10-28
 

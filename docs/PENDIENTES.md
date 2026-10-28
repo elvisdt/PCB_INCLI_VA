@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Codex (propuesta 100 × 100 mm preparada; 186 huellas ubicadas, DRC geométrico sin errores, revisión de ubicación pendiente).
+Última actualización: 2026-10-28, Codex (propuesta 100 × 100 revisada: 19 TP en Bottom, cuatro fijaciones, 185 huellas; H5 pendiente de retirar del esquemático al confirmar KiCad cerrado).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -304,13 +304,22 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Imagen revisada: `docs/layout/ubicacion-100x100.png`; exportación nativa: `placa-100x100.svg`. Reportes en `docs/layout/reports/`; scripts reproducibles en `scripts/`.
 - No se editaron esquemáticos; no correspondió repetir ERC ni QA de hojas. Falta ajuste eléctrico de detalle, validación mecánica y visto bueno antes de rutear.
 
+## Revisión: TP en Bottom y cuatro fijaciones — Codex, 2026-10-28
+- El usuario prefiere 100 × 100 mm, propone TP en la cara inferior y cuatro agujeros de sujeción. Aplicado en la copia `docs/layout/INCLI-VA-100x100.kicad_pcb`.
+- **19 TP en B.Cu**, pads Ø 1.5 mm sin taladro. Catorce cambiaron de cara; TP401–TP405 ya estaban abajo. Referencias legibles desde abajo en B.Silkscreen, 1 mm/0.15 mm, sin colisiones detectadas por DRC.
+- **H5 retirado de la propuesta**; quedan H1–H4 NPTH M3. Se conservan las posiciones XY de las otras 185 huellas y todas sus redes/campos/DNP. La rigidez con cuatro apoyos requiere validación mecánica.
+- Vistas separadas por cara: `ubicacion-100x100.png` y `ubicacion-100x100-bottom.png`. Corregida la ilustración anterior, que mostraba juntos los pads de ambas caras. Exportaciones SVG nativas actualizadas; revisión visual inferior completada.
+- DRC repetido: **0 errores geométricos, 1 aviso conocido de U401, 396 conexiones sin rutear**. U101_RTN y reserva RF conservados.
+- **Pendiente H5 en esquemático/PCB base:** hay un archivo de bloqueo del proyecto. Se preguntó si KiCad está cerrado, como exige AGENTS.md; sin respuesta aún al documentar este turno. No se editaron esquemáticos ni PCB principal, ni se repitió ERC/QA de hojas. La comparación de integridad excluye H5 explícitamente; no afirmar paridad completa hasta sincronizar.
+
 ## Falta
+- [ ] Confirmar KiCad cerrado; retirar H5 y actualizar la nota de fijaciones en la raíz, sincronizar esa baja en el PCB base y repetir ERC/QA de la raíz. Evitar reintroducir H5 al actualizar la propuesta.
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
 - [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
-- [ ] Mantener reserva del eje del imán ROT, compatible con H5 cerca de U501.
+- [ ] Mantener reserva del eje del imán ROT; H5 central descartado por el usuario. Validar rigidez/vibración con los cuatro apoyos restantes.
 - [x] Supervisión con TPS3828 aplicada. WD_EN/TPS3431 quedaron obsoletos.
 - [x] F101: nueva huella documentada en librería e incorporada al PCB; sustituye la importación antigua.
 - [x] Regla e isla lógica U101_RTN implementadas; las vías del EP comparten una sola red.

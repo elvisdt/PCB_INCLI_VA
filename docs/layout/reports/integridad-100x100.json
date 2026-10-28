@@ -1,5 +1,5 @@
 {
-  "footprints": 186,
+  "footprints": 185,
   "footprint_identity_fields_pads_nets_DNP_preserved": true,
   "nominal_size_mm": [
     100,
@@ -15,5 +15,36 @@
   "U101_pad25_net": "/10_power_input/U101_RTN",
   "U101_pad25_instances": 7,
   "U401_rule_areas": 1,
+  "mounting_holes": [
+    "H1",
+    "H2",
+    "H3",
+    "H4"
+  ],
+  "testpoints_bottom": 19,
+  "reference_board_exclusions": [
+    "H5"
+  ],
+  "testpoint_map": {
+    "TP101": "+VPROT",
+    "TP102": "/10_power_input/VBAT_F",
+    "TP103": "GND_VEH",
+    "TP104": "/PWR_FLT_N",
+    "TP201": "+5V_VEH",
+    "TP301": "+5V_VEH",
+    "TP302": "+3V3_D",
+    "TP303": "+3V3_A",
+    "TP304": "GND_VEH",
+    "TP305": "/30_regulation/PG_3V3D",
+    "TP401": "/MCU_RST_N",
+    "TP402": "/40_mcu/BOOT",
+    "TP403": "/40_mcu/VBUS",
+    "TP404": "/CAN_TX",
+    "TP405": "/CAN_RX",
+    "TP501": "/SPI_SCK",
+    "TP502": "/SPI_MOSI",
+    "TP503": "/SPI_MISO",
+    "TP504": "/IMU_INT1"
+  },
   "scope": "Placement review only; electrical loop optimization and routing pending."
 }

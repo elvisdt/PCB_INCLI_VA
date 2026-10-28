@@ -6,9 +6,12 @@ Coordinates in the placement JSON are relative to (100, 50) mm in KiCad.
 """
 import json
 import math
+import gc
 from pathlib import Path
 import shutil
 
+# Retain SWIG wrapper lifetimes throughout this short-lived batch process.
+gc.disable()
 import pcbnew as pcb
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,8 +20,10 @@ STEM = 'INCLI-VA-100x100'
 old = json.loads((OUT / 'posiciones-120x80.json').read_text())
 board = pcb.LoadBoard(str(OUT / 'INCLI-VA-120x80.kicad_pcb'))
 fps = {f.GetReference(): f for f in board.GetFootprints()}
-groups = old['groups']
-positions = {r: list(v) for r, v in old['positions'].items()}
+removed_h5 = fps.pop('H5')
+board.Remove(removed_h5)
+groups = {r: g for r, g in old['groups'].items() if r != 'H5'}
+positions = {r: list(v) for r, v in old['positions'].items() if r != 'H5'}
 
 def shift(group, dx, dy):
     for ref, pos in positions.items():
@@ -39,7 +44,7 @@ for ref in list(positions):
 
 positions.update({
     'H1': [5, 5, 0], 'H2': [95, 5, 0], 'H3': [5, 95, 0],
-    'H4': [87, 95, 0], 'H5': [54, 60, 0],
+    'H4': [87, 95, 0],
     'U401': [84.94, 70.25, -90],
     'U503': [50, 50, 0], 'C507': [56, 50, 90], 'R503': [43.5, 50, 0],
     'J401': [75, 94.5, 0], 'U402': [66.5, 97, 0],
@@ -118,7 +123,7 @@ def fits(box, ref, placed):
 
 # Preserve the mechanically significant anchors and the existing input/CAN
 # arrangements. Resolve conflicts among remaining parts near their target.
-fixed = ['U401', 'U503', 'H1', 'H2', 'H3', 'H4', 'H5', 'J1', 'J2', 'J401']
+fixed = ['U401', 'U503', 'H1', 'H2', 'H3', 'H4', 'J1', 'J2', 'J401']
 fixed += [r for r in fps if groups[r] in ('1', '6', '5') and r not in fixed]
 placed = {}
 for r in fixed:
@@ -160,7 +165,8 @@ for ref in remaining:
 
 # Rebuild the outline, retaining the established 8 x 35 mm antenna notch and
 # radius-4 corners. Footprint-contained antenna keep-out moves with U401.
-for d in list(board.GetDrawings()):
+removed_drawings = list(board.GetDrawings())
+for d in removed_drawings:
     if d.GetLayer() == pcb.Edge_Cuts:
         board.Remove(d)
 
@@ -189,14 +195,18 @@ arc((100,96),(100-d,100-d),(96,100)); line((96,100),(4,100))
 arc((4,100),(d,100-d),(0,96)); line((0,96),(0,4)); arc((0,4),(d,d),(4,0))
 
 for ref, f in fps.items():
+    if ref.startswith('TP') and f.GetLayer() != pcb.B_Cu:
+        f.Flip(f.GetPosition(), pcb.FLIP_DIRECTION_LEFT_RIGHT)
+    positions[ref][2] = f.GetOrientationDegrees()
     b = placed[ref]
     label = f.Reference()
     if not hasattr(label, 'SetLayer'):
         field = pcb.PCB_FIELD.__new__(pcb.PCB_FIELD)
         field.this = label
         label = field
-    label.SetLayer(pcb.F_Fab)
+    label.SetLayer(pcb.B_SilkS if ref.startswith('TP') else pcb.F_Fab)
     label.SetVisible(True)
+    label.SetMirrored(ref.startswith('TP'))
     label.SetTextAngle(pcb.EDA_ANGLE(0, pcb.DEGREES_T))
     label.SetTextSize(vector(0.7, 0.7))
     label.SetTextThickness(pcb.FromMM(0.12))
@@ -208,6 +218,35 @@ for ref, f in fps.items():
         value = field
     value.SetVisible(False)
 
+# Readable bottom-side TP identifiers. Keep ink clear of bottom pads, existing
+# silkscreen and earlier TP identifiers; use the native DRC as final authority.
+obstacles = []
+for f in fps.values():
+    obstacles += [item_box(p) for p in f.Pads() if p.IsOnLayer(pcb.B_Cu)]
+    obstacles += [item_box(g) for g in f.GraphicalItems() if g.GetLayer() == pcb.B_SilkS]
+for ref in sorted(r for r in fps if r.startswith('TP')):
+    f = fps[ref]
+    label = f.Reference()
+    if not hasattr(label, 'SetLayer'):
+        field = pcb.PCB_FIELD.__new__(pcb.PCB_FIELD)
+        field.this = label
+        label = field
+    label.SetTextSize(vector(1,1))
+    label.SetTextThickness(pcb.FromMM(0.15))
+    x,y,_ = positions[ref]
+    candidates = [(dx*dx+dy*dy,dx,dy) for dy in (-2,2,-2.5,2.5,-3,3,-4,4)
+                  for dx in (0,-1,1,-2,2,-3,3)]
+    for _,dx,dy in sorted(candidates):
+        label.SetPosition(vector(100+x+dx,50+y+dy))
+        lb = item_box(label)
+        if (min(lb[:2]) >= .5 and max(lb[2:]) <= 99.5
+                and gap(lb, notch) >= .3 and gap(lb,rf) >= .3
+                and all(gap(lb,ob) >= .2 for ob in obstacles)):
+            obstacles.append(lb)
+            break
+    else:
+        raise RuntimeError(f'No clear bottom identifier position for {ref}')
+
 pcb.SaveBoard(str(OUT / (STEM + '.kicad_pcb')), board)
 for ext in ('.kicad_pro', '.kicad_dru'):
     shutil.copyfile(ROOT / ('INCLI-VA'+ext), OUT / (STEM+ext))
@@ -215,6 +254,7 @@ for ext in ('.kicad_pro', '.kicad_dru'):
 pairs = [(gap(a,b), r,s) for r,a in placed.items() for s,b in placed.items() if r<s]
 minimum = min(pairs)
 data = {'positions': positions, 'boxes': placed, 'groups': groups,
+        'layers': {r:f.GetLayerName() for r,f in fps.items()},
         'origin_mm': [100,50], 'size_mm': [100,100], 'rf_keepout': rf,
         'notch': notch, 'minimum_envelope_gap_mm': minimum[0],
         'minimum_pair': list(minimum[1:]), 'adjusted_from_targets': adjusted}
