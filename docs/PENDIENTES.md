@@ -313,6 +313,22 @@ Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` 
 - ASM330LHH: configurar `I2C_disable = 1` (CTRL4_C) y `DEVICE_CONF = 1` (CTRL9_XL); INT1/INT2 en push-pull (IO40/IO41).
 - Variante estándar: U503 no está montado; no inicializarlo (leer VAR_ID antes de tocar CS_ROT).
 
+## Conectores J1 y J2 (confirmado por el usuario, 2026-10-27)
+Phoenix Contact COMBICON **MSTB 2,5**, **horizontal**, paso **5.08 mm** y **brida roscada (GF)**. Cada header lleva su enchufe con brida atornillable **STF**: los tornillos del enchufe roscan en la brida del header, lo que sirve contra la vibración.
+
+| Ref. | Función | Header en placa (MPN) | Polos | Enchufe del arnés (no va en la placa) |
+|---|---|---|---|---|
+| J1 | 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND | MSTB 2,5/5-GF-5,08 (**1776537**) | 5 | MSTB 2,5/5-STF-5,08 (**1778014**) |
+| J2 | 1 DO1, 2 DO2 | MSTB 2,5/2-GF-5,08 (**1776508**) | 2 | MSTB 2,5/2-STF-5,08 (**1777989**) |
+
+- Huellas oficiales:
+  - `Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_5-GF-5,08_1x05_P5.08mm_Horizontal_ThreadedFlange`
+  - `Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_2-GF-5,08_1x02_P5.08mm_Horizontal_ThreadedFlange`
+- Enchufes: 12 A, 320 V, cable de 0.2–2.5 mm² (24–12 AWG), tornillo con manguito de tensión.
+- **El PCB todavía tiene MCV 1,5 de 3.81 mm verticales** (commit `2cabf1d` del usuario). El esquemático ya está bien; se corrige con "Update PCB from Schematic" (pendiente de aprobación de la hoja 80).
+- **BOM del arnés:** los enchufes 1778014 y 1777989 no salen del BOM de la placa. Si se quiere, se pueden agregar como ítems mecánicos.
+- **Tensión nominal:** el extracto de catálogo de 2010 da 250 V para el header 1776537; los listados actuales dan 320 V. Sobra para 24 V con load dump de 202 V. Confirmar con la página de Phoenix al congelar el BOM.
+
 ## Pendientes de BOM
 - [ ] **C105 (PROD)** (pedido del usuario, 2026-10-27): electrolítico **SMD** automotriz **AEC-Q200**, **≥ 50 V**, 1000–2200 µF, 105–125 °C, en versión **resistente a vibración** (con terminales extra de anclaje), con MPN.
   - Hoy: huella `Capacitor_SMD:CP_Elec_16x17.5` y MPN pendiente.
