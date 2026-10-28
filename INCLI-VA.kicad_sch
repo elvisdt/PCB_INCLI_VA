@@ -833,7 +833,7 @@
 		)
 		(uuid "62d59f67-3347-4bb4-91cc-a5c65ab0bba5")
 	)
-	(label "WD_EN"
+	(label "VAR_ID2"
 		(at 154.94 144.78 180)
 		(effects
 			(font
@@ -1043,7 +1043,7 @@
 		)
 		(uuid "a055daba-a91a-4535-88ba-40759ea8b516")
 	)
-	(label "WD_EN"
+	(label "VAR_ID2"
 		(at 27.94 210.82 180)
 		(effects
 			(font
@@ -1417,7 +1417,7 @@
 				(justify left)
 			)
 		)
-		(pin "WD_EN" input
+		(pin "VAR_ID2" output
 			(at 30.48 210.82 180)
 			(uuid "29040d90-e8bc-43f7-8fad-b8dcbe3fe355")
 			(effects
@@ -1861,7 +1861,7 @@
 				(justify left)
 			)
 		)
-		(pin "WD_EN" output
+		(pin "VAR_ID2" input
 			(at 157.48 144.78 180)
 			(uuid "e3fb43cc-bbab-43f9-a67b-4177c3d7e0ef")
 			(effects

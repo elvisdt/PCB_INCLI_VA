@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(layer "F.Cu")
-	(descr "TI LM74930-Q1 RGE0024T VQFN-24 4x4 mm, P0.5 mm, EP 2.1 mm. Fuente: datasheet TI SNOSDF6 (Oct 2023), Example Board Layout / Stencil 4228214/A. Pads alargados a 0.85 mm (TI 0.6) con el mismo borde interior para soldar a mano. Pasta del EP en 4x 0.94 mm (77 %%). 5 vias dia 0.2 mm en el EP hacia una isla aislada en B.Cu: el EP es RTN y TI pide dejarlo flotante, NO conectar a GND.")
+	(descr "TI LM74930-Q1 RGE0024T VQFN-24 4x4 mm, P0.5 mm, EP 2.1 mm. Fuente: datasheet TI SNOSDF6 (Oct 2023), Example Board Layout / Stencil 4228214/A. Pads alargados a 0.85 mm (TI 0.6) con el mismo borde interior para soldar a mano. Pasta del EP en 4x 0.94 mm (77 %%). 5 vias en el EP (hueco 0.2 mm, Ø 0.45 mm: sin recargo en JLCPCB) hacia una isla aislada en B.Cu: el EP es RTN y TI pide dejarlo flotante, NO conectar a GND.")
 	(tags "VQFN-24 RGE0024T LM74930 thermal vias hand solder")
 	(property "Reference" "REF**"
 		(at 0 -3.6 0)
@@ -371,7 +371,7 @@
 	)
 	(pad "25" thru_hole circle
 		(at -0.8 0)
-		(size 0.4 0.4)
+		(size 0.45 0.45)
 		(drill 0.2)
 		(layers "*.Cu")
 		(remove_unused_layers no)
@@ -379,7 +379,7 @@
 	)
 	(pad "25" thru_hole circle
 		(at 0 -0.8)
-		(size 0.4 0.4)
+		(size 0.45 0.45)
 		(drill 0.2)
 		(layers "*.Cu")
 		(remove_unused_layers no)
@@ -387,7 +387,7 @@
 	)
 	(pad "25" thru_hole circle
 		(at 0 0)
-		(size 0.4 0.4)
+		(size 0.45 0.45)
 		(drill 0.2)
 		(layers "*.Cu")
 		(remove_unused_layers no)
@@ -408,7 +408,7 @@
 	)
 	(pad "25" thru_hole circle
 		(at 0 0.8)
-		(size 0.4 0.4)
+		(size 0.45 0.45)
 		(drill 0.2)
 		(layers "*.Cu")
 		(remove_unused_layers no)
@@ -416,7 +416,7 @@
 	)
 	(pad "25" thru_hole circle
 		(at 0.8 0)
-		(size 0.4 0.4)
+		(size 0.45 0.45)
 		(drill 0.2)
 		(layers "*.Cu")
 		(remove_unused_layers no)

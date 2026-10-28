@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (limpieza de librerías, red U101_RTN, INCLI-VA.kicad_dru para JLCPCB, propuesta de la hoja 80).
+Última actualización: 2026-10-27, Claude Code (hoja 80 aplicada, J1/J2 verticales, contorno con muesca para la antena; falta Update PCB from Schematic).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -222,31 +222,41 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
     - Los agujeros H2–H4 no coinciden con la librería.
   - **Costo en JLCPCB:** las vías del EP de U101 (hueco 0.2 mm, Ø 0.4 mm) tienen recargo ("0.2mm or 0.25mm hole size with via diameter less than 0.45mm, will cost more"). Para evitarlo hay que subir el Ø a ≥ 0.45 mm en `TI_RGE0024T_..._IsolatedVias`. Pendiente de decisión.
 
-## Hoja 80: propuesta (pendiente de aprobación; no aplicada)
-- **U801 TPS3828-33QDBVRQ1** (TI SGLS143E): SOT-23-5, AEC-Q100. Reemplaza al TPS3431, que solo viene en VSON-8.
-  - Supervisa +3V3_D: reset por debajo de 2.84–3.0 V, que dura 120–300 ms.
-  - Watchdog con timeout de 0.9/1.6/2.5 s.
-  - Salida RESET de drenador abierto → MCU_RST_N (wire-OR con R401, C403 y SW401).
-  - Con WDI en alta impedancia, el watchdog se deshabilita solo (sección 7.3.4). El GPIO17 está en alta impedancia durante el boot y el flasheo, así que **WD_EN deja de hacer falta: se libera IO18** y se quitan el pin y las etiquetas.
-  - Símbolo oficial: `Power_Supervisor:TPS3823-xxDBV`, mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD).
-- **Componentes:**
-  - C801: 100 nF.
-  - R802: 0 Ω en serie con RESET, montado. Si se saca, la placa funciona sin supervisor (depuración).
-  - R801: 1 k de WDI a GND, DNP. Obliga a que el watchdog esté siempre activo, si en producción se quiere así.
-  - MR sin conexión (pull-up interno de 90 k).
-- **LED:** D801 verde y D802 rojo (0805), con R803 y R804 de 470 Ω desde IO6 e IO7 (~2.7 mA).
-- **VAR_ID:**
-  - R805 (IO4) y R806 (IO5): 0 Ω a GND, montados o no según el campo `Variant`. El firmware activa los pull-ups internos.
-  - R807: 0 Ω a GND en IO8 para un tercer bit (CABIN), DNP.
-  - Tabla propuesta, con 1 = sin montar: 11 base | 10 CAN | 01 CAN+OUT | 00 grúa (CAN+OUT+ROT).
-- **Firmware:**
-  - Patear WDI cada ≤ 0.5 s.
-  - Una vez inicializado, dejar GPIO17 siempre como salida.
-  - Antes de dormir más de 0.9 s, pasar WDI a alta impedancia.
+## Hoja 80 y cierre del esquemático (aplicado, 2026-10-27)
+- **Hoja 80 aprobada y aplicada.**
+  - U801 TPS3828-33QDBVRQ1, C801, R802 (0 Ω en serie con RESET).
+  - R801 (1 k de WDI a GND): DNP en PROTO y PROD.
+  - MR sin conexión.
+- **WD_EN eliminado:** se quitó de las hojas 40 y 80 y de la raíz, e IO18 quedó libre (con marca de no-conexión).
+  - El pin que ocupaba en las hojas se reutilizó para **VAR_ID2 (IO8)**.
+- **VAR_ID**, tabla del usuario (ID1 ID0): **11 base | 10 CAN | 01 solo DO | 00 CAN + DO**.
+  - R805 (IO4): `Variant = CAN`. R806 (IO5): `Variant = OUT`.
+  - R807 (IO8, tercer bit, CABIN): `DNP = PROTO,PROD`.
+  - La variante **ROT se detecta por SPI**, sin bit de VAR_ID (decisión del usuario).
+- **LED:** la caja ABS es opaca. D801 (verde, LTST-C171KGKT), D802 (rojo, LTST-C171KRKT), R803 y R804 (470 Ω): montados en PROTO, `DNP = PROD`. MPN de los LED a verificar.
+- **Barrera CAN de 2.5 mm:** aprobada por el usuario (aislamiento funcional).
+- **J1 y J2 pasan a verticales**, MSTBV 2,5 GF de 5.08 mm (decisión del usuario: el cable entra por un conector circular de 8 hilos en la caja).
+  - J1 = MSTBV 2,5/5-GF-5,08 (1777109).
+  - J2 = MSTBV 2,5/2-GF-5,08 (1777073, **verificar** en phoenixcontact.com).
+  - Los enchufes STF no cambian.
+- **Librería:** se borraron los símbolos `URB2405YMD-10WR3_C5369754` y `TPS7A1650QDGNRQ1` de `lib/INCLI-VA.kicad_sym`.
+- **U101:** las vías del EP pasan a Ø 0.45 mm (hueco 0.2 mm), en la huella de `lib/INCLI-VA.pretty` y en la instancia del PCB. Ya no tienen recargo en JLCPCB.
+- **ERC del proyecto: 0 errores y 1 aviso.** El aviso es `isolated_pin_label` en `U101_RTN`, y es intencional: la etiqueta sobre un solo pin es la que mantiene unida la red del pad 25.
+
+## PCB (2026-10-27)
+- **Contorno:**
+  - Los dos rectángulos superpuestos eran la placa (100 × 70 mm, radio 4) y un **recorte para la antena** (x 192–200, y 65–100, bajo el área de antena de U401, que apunta a +x).
+  - Se reemplazaron por un solo contorno cerrado (líneas y arcos) con una muesca de 8 × 35 mm (Espressif: recortar la placa bajo la antena y a los costados).
+  - `invalid_outline` resuelto.
+- **Serigrafía de U401:** se recortaron los dos laterales del módulo en x = 191.8 y se quitó la línea frontal, que caía sobre la muesca.
+  - Ahora U401 figura como `lib_footprint_mismatch`. **No usar "Update footprints from library" en U401**: se perdería el recorte.
+- **J401 (USB-C):** huella oficial `USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal`. El pad GND (A1/B12) queda a **0.194 mm** del NPTH de la espiga.
+  - Eso es menos que el mínimo de JLCPCB para NPTH a cobre (0.2 mm) y que el `hole_clearance` del proyecto (0.25 mm).
+  - Pendiente de decisión del usuario.
+- **"Update PCB from Schematic":** no se puede hacer por línea de comandos (ni `kicad-cli` ni el MCP lo tienen). Lo hace el usuario en la interfaz (F8); después se corre el DRC y se corrige.
 
 ## Falta
-- [ ] **Hoja 80:** aplicar cuando el usuario apruebe. Después, "Update PCB from Schematic", también pendiente de aprobación.
-- [ ] **Librería INCLI-VA:** los símbolos `URB2405YMD-10WR3_C5369754` y `TPS7A1650QDGNRQ1` ya no se usan y apuntan a huellas borradas. ¿Se borran?
+- [ ] **Update PCB from Schematic** (usuario, en la interfaz de KiCad) y DRC posterior.
 - [ ] **`80_supervision`:** pendiente.
   - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
   - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.

@@ -6249,7 +6249,7 @@
 				)
 			)
 		)
-		(property "Value" "MSTB 2,5/5-GF-5,08"
+		(property "Value" "MSTBV 2,5/5-GF-5,08"
 			(at 97.79 90.17 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6259,7 +6259,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_5-GF-5,08_1x05_P5.08mm_Horizontal_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTBV_2,5_5-GF-5,08_1x05_P5.08mm_Vertical_ThreadedFlange"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6270,7 +6270,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/1776537"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/1777109"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6291,7 +6291,7 @@
 				)
 			)
 		)
-		(property "MPN" "1776537"
+		(property "MPN" "1777109"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6313,7 +6313,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header MSTB 2,5/5-GF-5,08 (1776537) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A."
+		(property "Notes" "Header vertical MSTBV 2,5/5-GF-5,08 (1777109) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A. Cableado interno hasta el conector circular de 8 hilos de la caja."
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -7630,7 +7630,7 @@
 				)
 			)
 		)
-		(property "Value" "MSTB 2,5/2-GF-5,08"
+		(property "Value" "MSTBV 2,5/2-GF-5,08"
 			(at 97.79 120.65 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7640,7 +7640,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_2-GF-5,08_1x02_P5.08mm_Horizontal_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTBV_2,5_2-GF-5,08_1x02_P5.08mm_Vertical_ThreadedFlange"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7651,7 +7651,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/1776508"
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/1777073"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7672,7 +7672,7 @@
 				)
 			)
 		)
-		(property "MPN" "1776508"
+		(property "MPN" "1777073"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7694,7 +7694,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header MSTB 2,5/2-GF-5,08 (1776508) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2."
+		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2."
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)

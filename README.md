@@ -13,7 +13,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `sheets/50_sensors` | SCL3300-D01 (inclinómetro), ASM330LHH (IMU), AS5147U (ángulo de pluma, solo variante ROT) en SPI compartido |
 | `sheets/60_can` | ADM3055E (CAN aislado con isoPower, único aislamiento de la placa) desde el TWAI del ESP32-S3 (CAN clásico, J1939). Terminación partida 2 × 60.4 Ω + 4.7 nF. ESD externo ESD2CAN24-Q1 como DNP |
 | `sheets/70_output_ch` | 1 canal low-side (drenador abierto, relé externo), instanciado 2 veces (DO1, DO2): buffer 74AHCT1G126 (3.3 → 5 V), DMN10H220LQ 100 V, zener de gate y SMAJ58A. Latch de sobrecorriente y diagnóstico como huellas DNP |
-| `sheets/80_supervision` | TPS3431, ID de variante, LED |
+| `sheets/80_supervision` | U801 TPS3828-33-Q1 (supervisor de +3V3_D + watchdog, WDI ← IO17), LED verde/rojo (DNP en PROD), VAR_ID0/1/2 por 0 Ω a GND |
 | `lib/` | Librería propia: símbolos (`INCLI-VA.kicad_sym`), huellas (`.pretty`), 3D |
 | `docs/` | Propuestas ESP32-S3 (vigente) y KW45 (descartada), datasheets |
 | `fab/` | Gerbers, BOM por variante, pick & place |
@@ -43,4 +43,6 @@ CAN: TWAI nativo (CAN clásico, J1939) directo al ADM3055E; no hay controlador C
 ## Requisitos para el firmware
 - Salidas DO1/DO2 (`70_output_ch`): el latch de sobrecorriente y el diagnóstico son huellas DNP. Si se montan: tras un disparo del latch (DIAG alto con EN=1), bajar EN para rearmarlo y **no reintentar antes de 100 ms**.
 - Arranque del motor en vehículos de 12 V y load dump de 24 V (corte por OV del LM74930, ≤ 350 ms): sin C105 (DNP) la placa se reinicia. El firmware debe arrancar limpio tras un brownout (sin estado corrupto, salidas abiertas hasta reinicializar).
+- Watchdog externo (U801): patear WDI (IO17) cada ≤ 0.5 s (timeout mínimo 0.9 s). Una vez inicializado, no dejar IO17 en alta impedancia (eso deshabilita el watchdog), salvo antes de dormir más de 0.9 s.
+- VAR_ID (IO4 = ID0, IO5 = ID1, IO8 = ID2): activar los pull-ups internos y leer al arrancar. ID1 ID0: 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ID2 reservado para CABIN. ROT se detecta por SPI (AS5147U responde).
 - Radio: stack BLE **NimBLE**; WiFi desactivado en operación normal (solo para OTA en taller). El hardware se dimensiona igual con WiFi activo.

@@ -3551,7 +3551,7 @@
 		)
 		(uuid "25fb25fa-459b-496e-abef-684047ffe821")
 	)
-	(text "ASIGNACIÓN DE PINES (aprobada 2026-10-27; fuentes: WROOM-1 v1.8 tabla 3-1, ESP32-S3 Series v2.2 tablas 2-1 y 2-2)\nCriterios: VMON solo en ADC1 (ADC2 no se puede usar con WiFi). GPIO1–14, 17, 18: glitch BAJO de ~60 µs al encender → solo CS, SCK,\nMOSI, LEDs, entradas resistivas o analógicas, WDI/WD_EN. Señales críticas en pines sin glitch ni pull: IO21, IO35–38, IO40–42, IO47/48.\nSPI en los pines IO MUX de FSPI. Strapping (0, 3, 45, 46), USB (19/20) y UART0 (43/44) reservados.\n\nIO12 SPI_SCK   IO11 SPI_MOSI   IO13 SPI_MISO   IO10 CS_INC (FSPICS0)   IO9 CS_IMU   IO14 CS_ROT\nIO40 IMU_INT1  IO41 IMU_INT2   (sin glitch: salida push-pull del IMU)\nIO47 CAN_TX (sin glitch: un bajo sería un dominante en el bus)   IO48 CAN_RX   IO21 CAN_STBY   IO42 CAN_SILENT\nIO35 DO1_EN  IO36 DO2_EN (sin glitch ni pull; R203/R204 en hoja 20)   IO37 DO1_DIAG  IO38 DO2_DIAG  IO39 PWR_FLT_N\nIO1 VMON_5V (ADC1_CH0)   IO2 VMON_3V3 (ADC1_CH1)   IO4 VAR_ID0   IO5 VAR_ID1   IO6 LED_G   IO7 LED_R\nIO17 WDI   IO18 WD_EN (requiere pull-down en la hoja 80)   Libres: IO8, IO15, IO16.\nRiesgo: IO39–42 son el JTAG por pads; se usa el JTAG por USB. No habilitar el JTAG por pads con eFuse."
+	(text "ASIGNACIÓN DE PINES (aprobada 2026-10-27; fuentes: WROOM-1 v1.8 tabla 3-1, ESP32-S3 Series v2.2 tablas 2-1 y 2-2)\nCriterios: VMON solo en ADC1 (ADC2 no se puede usar con WiFi). GPIO1–14, 17, 18: glitch BAJO de ~60 µs al encender → solo CS, SCK,\nMOSI, LEDs, entradas resistivas o analógicas, WDI/WD_EN. Señales críticas en pines sin glitch ni pull: IO21, IO35–38, IO40–42, IO47/48.\nSPI en los pines IO MUX de FSPI. Strapping (0, 3, 45, 46), USB (19/20) y UART0 (43/44) reservados.\n\nIO12 SPI_SCK   IO11 SPI_MOSI   IO13 SPI_MISO   IO10 CS_INC (FSPICS0)   IO9 CS_IMU   IO14 CS_ROT\nIO40 IMU_INT1  IO41 IMU_INT2   (sin glitch: salida push-pull del IMU)\nIO47 CAN_TX (sin glitch: un bajo sería un dominante en el bus)   IO48 CAN_RX   IO21 CAN_STBY   IO42 CAN_SILENT\nIO35 DO1_EN  IO36 DO2_EN (sin glitch ni pull; R203/R204 en hoja 20)   IO37 DO1_DIAG  IO38 DO2_DIAG  IO39 PWR_FLT_N\nIO1 VMON_5V (ADC1_CH0)   IO2 VMON_3V3 (ADC1_CH1)   IO4 VAR_ID0   IO5 VAR_ID1   IO6 LED_G   IO7 LED_R\nIO17 WDI (TPS3828, hoja 80)   IO8 VAR_ID2 (CABIN)   Libres: IO15, IO16, IO18.\nRiesgo: IO39–42 son el JTAG por pads; se usa el JTAG por USB. No habilitar el JTAG por pads con eFuse."
 		(exclude_from_sim no)
 		(at 21.336 227.838 0)
 		(effects
@@ -3706,10 +3706,6 @@
 	(no_connect
 		(at 292.1 78.74)
 		(uuid "2561d6d1-fcaa-4c86-a0d7-2406a3edfbd0")
-	)
-	(no_connect
-		(at 185.42 142.24)
-		(uuid "5bb71df7-f90d-4b4b-b6e8-f5c2e4db6500")
 	)
 	(no_connect
 		(at 292.1 76.2)
@@ -4222,16 +4218,6 @@
 			(type default)
 		)
 		(uuid "8e14136f-db5d-4f19-99c2-bdf2fc4ac829")
-	)
-	(wire
-		(pts
-			(xy 215.9 124.46) (xy 220.98 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "92081bd7-9367-4cdc-b0ff-b221d9316f46")
 	)
 	(wire
 		(pts
@@ -5049,17 +5035,6 @@
 			(justify left)
 		)
 		(uuid "e7e5ab58-a999-4e87-b0f1-4db2e3c9870b")
-	)
-	(hierarchical_label "WD_EN"
-		(shape output)
-		(at 220.98 124.46 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ea912997-477b-4fc5-9896-ae27b5df512d")
 	)
 	(hierarchical_label "VMON_5V"
 		(shape input)
@@ -8884,5 +8859,30 @@
 				)
 			)
 		)
+	)
+	(no_connect
+		(at 215.9 124.46)
+		(uuid "1423914b-e183-48b0-970f-d5d152391999")
+	)
+	(wire
+		(pts
+			(xy 185.42 142.24) (xy 180.34 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9bdeadb-0927-482e-8eb8-11774c3e1ee7")
+	)
+	(hierarchical_label "VAR_ID2"
+		(shape input)
+		(at 180.34 142.24 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0fdb11c9-7725-43c5-82d8-52d3ed1cfae6")
 	)
 )
