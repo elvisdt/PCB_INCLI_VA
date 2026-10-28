@@ -1,5 +1,11 @@
 # Estudio de tamaño y ubicación — Codex, 2026-10-27
 
+## Actualización de objetivo — 2026-10-28
+
+El usuario plantea **100 × 100 mm como máximo**. Es una alternativa favorable por área: 10000 mm² nominales, un 4.2 % más que 120 × 80 mm. Aplicando las mismas deducciones del estudio (muesca de 8 × 35 mm y cuatro esquinas de radio 4 mm), quedarían aproximadamente 9706 mm² útiles y una ocupación estimada del 57.0 % para la reserva de 5536 mm².
+
+Esta comparación no es una ubicación comprobada: hace falta reorganizar los bloques para el formato cuadrado y verificar mecánica, RF, aislamiento y ruteabilidad. La propuesta de 120 × 80 mm que se describe abajo sigue siendo la única de estas dos dimensiones con ubicación comprobada geométricamente. El siguiente estudio tendrá como objetivo 100 × 100 mm; aún no se modificó ningún PCB para ese tamaño.
+
 ## Recomendación
 
 Usar **120 × 80 mm** como base de revisión para 186 huellas, dos capas y acceso de soldadura manual. La propuesta es `layout/INCLI-VA-120x80.kicad_pcb`; la vista a escala está en `layout/ubicacion-120x80.png` y `.svg`. El PCB principal conserva su contorno y ubicación previos hasta confirmar el tamaño. No se añadió ruteo.

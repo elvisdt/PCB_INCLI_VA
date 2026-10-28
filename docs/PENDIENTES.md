@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Codex (propuesta visual 120 × 80 mm; tamaño y ubicación pendientes de visto bueno).
+Última actualización: 2026-10-28, Codex (retoma tras apagado; evaluar 100 × 100 mm como máximo solicitado).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -288,8 +288,15 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - DRC de la copia: 0 errores geométricos, 1 aviso conocido de U401, 396 conexiones pendientes. Referencias en F.Fab; falta serigrafía final.
 - **Falta confirmar tamaño y revisar bloques**, luego afinar desacoples/retornos y mecánica antes del visto bueno final para rutear.
 
+## Retoma y tamaño objetivo — Codex, 2026-10-28
+- El usuario consulta si el diseño puede entrar en **100 × 100 mm como máximo**. Se toma como objetivo para la siguiente revisión de ubicación; todavía no hay una propuesta verificada de ese tamaño.
+- Evaluación preliminar: 10000 mm² nominales frente a 9600 mm² de 120 × 80 mm (**4.2 % más**). Con las mismas deducciones geométricas y reserva de huellas del estudio anterior, la ocupación estimada sería **57.0 %**. Es favorable por área, pero no demuestra encaje ni ruteabilidad.
+- Estado recuperado: propuesta de 120 × 80 mm con 186 huellas y sin ruteo, guardada en `docs/layout/`; último commit previo `1bb7e6a`. El árbol de trabajo estaba limpio.
+- Próximo paso: redistribuir en una copia de 100 × 100 mm y comprobar antena, aislamiento CAN, fijaciones, reserva ROT, acceso para soldar y lazos de alimentación. Mantener las huellas DNP. Presentar ubicación antes de rutear.
+- En esta retoma solo se actualizó documentación: no se modificaron esquemáticos ni PCB y no se repitieron ERC/DRC.
+
 ## Falta
-- La primera prueba de 100 × 70 mm quedó descartada. Ahora hay una propuesta de 120 × 80 mm para revisar tamaño y bloques; aún falta afinar eléctricamente la ubicación antes de aprobar el ruteo. Ver `LAYOUT_NOTES.md`.
+- Evaluar la distribución de **100 × 100 mm máximo** solicitada el 2026-10-28. La propuesta de 120 × 80 mm queda como referencia comparativa; aún falta afinar eléctricamente la ubicación antes de aprobar el ruteo. Ver `LAYOUT_NOTES.md`.
 - [ ] Ubicar todos los componentes y H1–H5; resolver separación CAN y acceso de soldadura. Presentar ubicación para visto bueno del usuario **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
