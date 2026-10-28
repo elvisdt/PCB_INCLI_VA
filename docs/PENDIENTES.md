@@ -266,6 +266,11 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
   - **29 errores de `ISO_CAN_barrera`:** los pasivos nuevos de la hoja 60 quedaron apilados por la actualización, mezclando el lado CAN y el lado de la placa. Se resuelven al ubicar los componentes (pendiente; el usuario pidió no moverlos todavía).
   - 1 aviso `lib_footprint_mismatch` en U401: intencional (serigrafía recortada en la muesca).
 
+## Cierre del esquemático (2026-10-27)
+- **El PCB (ubicación y ruteo) lo hace Codex.** Claude Code no toca `INCLI-VA.kicad_pcb`.
+- H1–H4 agregados en la raíz: `Mechanical:MountingHole`, huella `MountingHole:MountingHole_3.2mm_M3` (NPTH, sin cobre, courtyard de Ø 6.9 mm), fuera del BOM. La posición la define el layout.
+- La revisión final (ERC, campos, huellas, ESP32, DNP, BOM y PENDIENTES) se entregó al usuario como reporte. **Los cambios que propone esperan su aprobación.** Después vienen los BOM de PROTO y PROD, el PDF, `docs/LAYOUT_NOTES.md`, el commit "esquemático congelado para layout" y el tag `schematic-v1`.
+
 ## Falta
 - [ ] **Ubicación de componentes y ruteo** (cuando el usuario lo pida). Corregir la barrera CAN al ubicar.
 - [ ] **Agujeros de montaje H1–H4:** agregarlos al esquemático (Mechanical:MountingHole + huella) y volver a ubicarlos. Hay que decidir el tipo (con o sin cobre; ver la pregunta 15 de PCB).
