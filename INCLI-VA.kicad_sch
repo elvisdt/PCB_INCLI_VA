@@ -2818,7 +2818,127 @@
 			)
 		)
 	)
-	(text "AGUJEROS DE FIJACION: H1-H4, cuatro agujeros M3 sin cobre (en el esquematico para que 'Update PCB from Schematic' no los borre)."
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 142.24 256.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a7c615b1-b313-4104-9459-b501cbfcf4a3")
+		(property "Reference" "H5"
+			(at 144.78 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_M3"
+			(at 144.78 257.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(hide yes)
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.kicad.org/libraries/"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (agujero NPTH)"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "AGUJEROS DE FIJACION: H1-H5, cinco agujeros M3 sin cobre: H1-H4 en las esquinas y H5 intermedio junto a los sensores, fuera del eje de ROT (en el esquematico para que 'Update PCB from Schematic' no los borre)."
 		(exclude_from_sim no)
 		(at 50.8 246.38 0)
 		(effects

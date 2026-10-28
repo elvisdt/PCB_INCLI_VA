@@ -1,0 +1,98 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-28T08:10:34",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3",
+            "violations": [
+                {
+                    "description": "Label connected to only one pin",
+                    "items": [
+                        {
+                            "description": "Label 'U101_RTN'",
+                            "pos": {
+                                "x": 229.87,
+                                "y": 135.89
+                            },
+                            "uuid": "a6e4456a-3d77-4ea1-a1b0-7aec18511e62"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "isolated_pin_label"
+                }
+            ]
+        },
+        {
+            "path": "/10_power_input/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30",
+            "violations": []
+        },
+        {
+            "path": "/20_buck_5v/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a",
+            "violations": []
+        },
+        {
+            "path": "/30_regulation/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/e820859b-353c-4670-907b-04aca6cb5816",
+            "violations": []
+        },
+        {
+            "path": "/40_mcu/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6",
+            "violations": []
+        },
+        {
+            "path": "/50_sensors/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4",
+            "violations": []
+        },
+        {
+            "path": "/60_can/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3036af0c-b072-4a36-8ec1-d374aba21569",
+            "violations": []
+        },
+        {
+            "path": "/70_output_DO1/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/c6606065-5ef9-41e4-af17-886440d0e060",
+            "violations": []
+        },
+        {
+            "path": "/70_output_DO2/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/b202007f-7fb6-45c9-bd77-aa87a79a96e1",
+            "violations": []
+        },
+        {
+            "path": "/80_supervision/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/36e48972-b26d-42f8-9a56-9151ebeed19a",
+            "violations": []
+        }
+    ],
+    "source": "INCLI-VA.kicad_sch"
+}

@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Claude Code (propuesta 100 × 100 adoptada como PCB principal; latch de DO retirado del esquemático).
+Última actualización: 2026-10-28, Claude Code (reacomodo por bloques del PCB principal, H5 intermedio, franja de barrera CAN).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -318,6 +318,15 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Hoja raíz exportada por KiCad y revisada visualmente: H1–H4 y nota correctos, sin solapes nuevos. **`sch_visual_qa` no está disponible** en el catálogo de herramientas ni como ejecutable; esta revisión manual no equivale a ejecutar esa herramienta.
 - El usuario solicita commit final y push para revisar en detalle esquemático y PCB. Comparar la raíz con **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, que ya tiene 185 huellas, cuatro fijaciones y TP en Bottom. La placa principal y la propuesta 120 × 80 siguen siendo referencias previas, con H5; no se cambiaron en este cierre del esquemático.
 
+## Reacomodo por bloques — Claude Code, 2026-10-28
+- El usuario hizo F8 en KiCad tras retirar el latch: commit aparte `30380cc`, paridad 0.
+- **H5 agregado** en el esquemático raíz (M3, sin cobre, UUID a7c615b1…) y en el PCB en (68.2, 53) mm locales. Queda junto a U501/U502 y a 18 mm del eje de ROT.
+- **Reubicación por bloques según `docs/reference/`** (UG-230 e INCLIMAX). Detalle, tablas antes/después y límites en `LAYOUT_NOTES.md`; imagen en `docs/layout/reacomodo-antes-despues.png`.
+- **Barrera `BARRERA_CAN`** (rule area en las dos caras). Solo la cruza U601. **FB602 no cruza:** sus dos redes (GNDISO_CAN y GND_CAN) son del lado aislado.
+- `INCLI-VA.kicad_dru`: el pin 17 de U601 (AUXOUT, sin conexión) cuenta como dominio CAN en `ISO_CAN_barrera`.
+- DRC 0 errores / 1 aviso U401 / paridad 0. ERC 0 / 1 aviso conocido. `sch_visual_qa` raíz: PASS.
+- **Sin ruteo ni zonas de cobre.**
+
 ## PCB principal = propuesta 100 × 100 — Claude Code, 2026-10-28
 - Pedido explícito del usuario: pasar la propuesta al layout principal. `docs/layout/INCLI-VA-100x100.kicad_pcb` se copió sobre `INCLI-VA.kicad_pcb`. El principal no tenía cambios desde `17a9676`, así que no se perdió nada.
 - Borrada la copia `docs/layout/INCLI-VA-100x100.{kicad_pcb,kicad_pro,kicad_dru,kicad_prl}` y su `fp-lib-table`. `.kicad_dru` y las reglas de `.kicad_pro` eran idénticas a las del principal. Vistas, posiciones y reportes se quedan en `docs/layout/`. Los scripts `layout_100x100.py` y `review_layout_100x100.py` quedan como históricos.
@@ -352,16 +361,17 @@ Solo verificación; no se editó esquemático ni PCB.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
 
 ## Falta
-- [ ] Sincronizar `INCLI-VA.kicad_pcb` con el esquemático (Update PCB from Schematic) (quitar las 18 huellas del latch, unir la fuente de Q701/Q751 a GND_VEH) y repetir DRC/paridad.
+- [x] Sincronizar `INCLI-VA.kicad_pcb` con el esquemático (F8 del usuario, `30380cc`); paridad 0 también tras agregar H5.
 - [x] Retirar H5 y actualizar la nota de fijaciones en la raíz; repetir ERC y revisión visual manual.
 - [x] Ejecutar `sch_visual_qa` de la raíz: PASS (Claude Code, 2026-10-28).
 - [x] Propuesta 100 × 100 adoptada como PCB principal (2026-10-28). Falta la paridad completa (ver el ítem siguiente).
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
-- [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
+- [~] Desacoples/lazos afinados en el reacomodo por bloques (tablas en LAYOUT_NOTES). Faltan C601 (10 nF VIO, 4.8 mm), L201/C203 y el visto bueno del usuario a la ubicación **antes de rutear**.
+- [ ] Ruteo: plano GND_VEH continuo en B.Cu (sin cortes bajo el buck ni los sensores), GND_CAN propio en la isla, costura de vías.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
-- [ ] Mantener reserva del eje del imán ROT; H5 central descartado por el usuario. Validar rigidez/vibración con los cuatro apoyos restantes.
+- [ ] Validar la posición de H5 (68.2, 53) y H1–H4 contra la caja y la mecánica del imán ROT; ensayo de vibración.
 - [x] Supervisión con TPS3828 aplicada. WD_EN/TPS3431 quedaron obsoletos.
 - [x] F101: nueva huella documentada en librería e incorporada al PCB; sustituye la importación antigua.
 - [x] Regla e isla lógica U101_RTN implementadas; las vías del EP comparten una sola red.

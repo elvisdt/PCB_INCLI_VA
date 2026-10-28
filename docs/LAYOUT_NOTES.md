@@ -1,5 +1,106 @@
 # Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28
 
+## Reacomodo por bloques (referencia UG-230 / INCLIMAX) — Claude Code, 2026-10-28
+
+Pedido del usuario: cada conector en el borde con su circuito pegado, en el orden en que fluye la potencia o la señal (fotos en `docs/reference/`). Aplicado sobre **`INCLI-VA.kicad_pcb`**. Sin ruteo. Vista: **`layout/reacomodo-antes-despues.png`** (coloreada por hoja; los TP de la cara inferior en línea punteada). Las vistas `ubicacion-100x100*` y `placa-100x100*` quedan como históricas.
+
+**Bloques**
+- **Entrada y buck (arriba a la izquierda):** J1 pines 1–2 → F101 → D101/D102 (TVS con su GND junto al pin 2 de J1) → Q101 → Q102 → R103 → C105 (esquina) / C104 (junto al pin VOUT de U101) → L101 → C106/C107 → buck U201 (C202/C201 sobre VIN, L201, C204–C206 bajo U201). Pasivos de U101 alrededor de sus pines.
+- **CAN aislado (izquierda, bajo la entrada):** U601 sobre la barrera, con el lado aislado (pines 11–20) hacia los pines 3–5 de J1. En la isla solo hay piezas del bus: D601, R602/R603/C609, R605, C607/C608, C610/C606, FB601 y FB602.
+  - **FB602 no cruza la barrera:** une GNDISO_CAN con GND_CAN, y las dos redes son del lado aislado. **Solo U601 cruza.**
+- **Barrera:** rule area `BARRERA_CAN` en F.Cu y B.Cu, sin pistas, vías, rellenos ni pads.
+  - Forma: franja entre los pines 2 y 3 de J1 (y 60.4–62.9), franja vertical bajo el cuerpo de U601 (x 24.6–31.4) y franja inferior (y 87.5–90).
+  - En `INCLI-VA.kicad_dru`, el pin 17 de U601 (AUXOUT, sin conexión) pasa a contar como dominio aislado, porque está en ese lado del encapsulado.
+- **Salidas (arriba, bajo J2):** se corrigió el cruce. El bloque DO2 queda bajo el pin 2 (izquierda) y el DO1 bajo el pin 1 (derecha). J2 se corrió 6 mm a la derecha y conserva su orientación (cable hacia el borde).
+- **MCU:**
+  - USB-C J401 al borde derecho, sobre la muesca, con U402 en línea. D+/D- bajan a los pines 13/14 por un pasillo libre a su izquierda, así no cruzan ninguna otra señal.
+  - SW401 junto al EN, con la zona libre de antena a su derecha.
+  - C402 sobre los pines 1/2 y C401 detrás. C403/R401 junto al EN.
+  - Supervisor, LED y VAR_ID en filas sobre el borde superior del módulo.
+  - SW402 (BOOT) y J402 (UART) en el borde inferior. C309/C310 bajo los pines ADC.
+- **Sensores:** U501 (SCL3300) a ~9 mm de **H5** (68.2, 53) y U502 (ASM330) arriba de H5. Distancia al eje de ROT (U503 en 50, 50, sin mover): 18 mm. U501 queda a más de 35 mm de L201, L301, C105 y de cualquier conector.
+- **3,3 V:** U301/L301 abajo al centro, lejos de los sensores; U302 (LDO de +3V3_A) entre los dos.
+
+**Verificación:** DRC 0 errores, 1 aviso conocido (U401), 362 conexiones sin rutear y **paridad 0**, ya con H5 (`layout/reports/drc-reacomodo.json`). ERC 0 errores / 1 aviso conocido (`erc-con-h5.json`). `sch_visual_qa` de la raíz: PASS. Courtyards ≥ 1 mm en cada cara (verificador propio). Ninguna pieza en el keep-out de antena ni en la barrera.
+
+**Longitudes aproximadas** (árbol mínimo entre los pads de cada red, en línea recta; no son longitudes de ruteo):
+
+| Red | Nodos | Antes (mm) | Después (mm) |
+|---|---:|---:|---:|
+| ILIM | 2 | 41.2 | 4.2 |
+| SW | 2 | 41.8 | 5.7 |
+| +VPROT | 7 | 117.0 | 26.3 |
+| BUCK_SW | 3 | 11.4 | 9.2 |
+| MCU_RST_N | 6 | 93.8 | 18.3 |
+| BUS_CAN_H | 4 | 34.7 | 24.2 |
+| BUS_CAN_L | 4 | 31.2 | 20.4 |
+| USB_D+ | 3 | 41.1 | 33.9 |
+| USB_D- | 3 | 40.5 | 35.2 |
+
+**Desacoples y pasivos clave:** separación borde a borde entre el pad de la pieza y el pin del IC en la red indicada. Para los de salida del buck se mide el retorno a GND.
+
+| Pieza → pin | Red | Antes (mm) | Después (mm) |
+|---|---|---:|---:|
+| R106 → U101 (3) | SW | 40.87 | 4.74 |
+| R110 → U101 (11) | ILIM | 40.37 | 3.31 |
+| R107 → U101 (4) | UVLO | 5.88 | 4.38 |
+| R109 → U101 (5) | OV | 29.38 | 4.64 |
+| C102 → U101 (22) | VS | 7.23 | 4.64 |
+| C103 → U101 (18) | C_ID | 22.77 | 2.35 |
+| C108 → U101 (23) | CAP | 12.02 | 1.89 |
+| C110 → U101 (9) | TMR | 19.98 | 3.21 |
+| C104 → U101 (19) | VOUT | 20.16 | 6.09 |
+| R104 → U101 (20) | CSP | 18.7 | 2.51 |
+| C107 → L101 (2) | +VPROT | 33.51 | 1.62 |
+| C106 → L101 (2) | +VPROT | 14.54 | 2.06 |
+| C202 → U201 (2) | +VPROT | 3.11 | 1.62 |
+| C201 → U201 (3) | +VPROT | 4.53 | 4.22 |
+| C203 → U201 (7) | BUCK_BOOT | 2.43 | 3.13 |
+| L201 → U201 (8) | BUCK_SW | 3.81 | 5.25 |
+| C204 → U201 (9) | GND_VEH | 13.43 | 4.38 |
+| C205 → U201 (9) | GND_VEH | 13.64 | 4.38 |
+| C206 → U201 (9) | GND_VEH | 14.64 | 4.54 |
+| C302 → U301 (3) | +5V_VEH | 4.47 | 4.44 |
+| C301 → U301 (3) | +5V_VEH | 4.4 | 3.1 |
+| L301 → U301 (2) | Net-(U301-SW) | 4.39 | 2.93 |
+| C307 → U302 (5) | +3V3_A | 2.04 | 2.21 |
+| C306 → U302 (1) | Net-(U302-EN) | 3.57 | 3.6 |
+| C402 → U401 (2) | +3V3_D | 4.28 | 1.7 |
+| C401 → U401 (2) | +3V3_D | 6.47 | 4.28 |
+| C403 → U401 (3) | MCU_RST_N | 9.62 | 3.09 |
+| C309 → U401 (39) | VMON_5V | 29.08 | 3.17 |
+| C310 → U401 (38) | VMON_3V3 | 41.03 | 3.23 |
+| C501 → U501 (4) | +3V3_A | 1.75 | 2.15 |
+| C504 → U501 (9) | +3V3_A | 2.25 | 0.59 |
+| C502 → U501 (2) | SCL_AEXTC | 2.39 | 2.15 |
+| C503 → U501 (10) | SCL_DEXTC | 3.45 | 1.09 |
+| C505 → U502 (5) | +3V3_A | 4.12 | 2.44 |
+| C506 → U502 (8) | +3V3_A | 1.85 | 1.65 |
+| C508 → U502 (5) | +3V3_A | 2.76 | 3.46 |
+| C507 → U503 (12) | +3V3_A | 1.98 | 3.29 |
+| C601 → U601 (4) | +3V3_D | 1.67 | 4.81 |
+| C602 → U601 (4) | +3V3_D | 3.65 | 1.6 |
+| C605 → U601 (4) | +3V3_D | 7.76 | 5.78 |
+| C603 → U601 (3) | +5V_VEH | 2.76 | 5.84 |
+| C604 → U601 (3) | +5V_VEH | 4.55 | 1.81 |
+| C606 → U601 (19) | V_SOOUT | 3.88 | 3.18 |
+| C610 → U601 (19) | V_SOOUT | 4.25 | 1.64 |
+| C607 → U601 (16) | V_SOIN | 3.8 | 2.15 |
+| C608 → U601 (16) | V_SOIN | 5.94 | 1.62 |
+| C702 → U701 (5) | +5V_VEH | 3.57 | 1.69 |
+| C752 → U751 (5) | +5V_VEH | 3.57 | 1.7 |
+| C801 → U801 (5) | +3V3_D | 4.32 | 4.1 |
+
+
+**Lo que no se logró (y por qué)**
+- **ADM3055E:** los de 100 nF/220 nF/10 nF quedan a ≤ 2.2 mm (C602, C604, C608, C610, C607). C601 (10 nF en VIO) queda a 4.8 mm y los de 10 µF a 3–6 mm. Con 1 mm entre courtyards (soldadura a mano) no entran más de dos o tres capacitores a ≤ 2 mm por lado sin tapar las señales RX/TX/STBY/SILENT.
+- **Buck de 5 V:** el lazo de entrada (C202) mejoró, pero L201 (5.3 mm) y C203 (3.1 mm) quedaron un poco más lejos que antes, para dejar el retorno de C204–C206 a ~4.4 mm (antes 13–15 mm).
+- **USB:** baja de ~41 a ~34–35 mm. El pinout del módulo (D+/D- en la esquina superior izquierda) y la antena a la derecha no dejan un recorrido más corto sin cruzar SPI/CAN.
+- **Pendiente para el ruteo:** plano GND_VEH continuo en B.Cu, sin cortes bajo el buck ni bajo los sensores. En la isla CAN, GND_CAN propio fuera de la franja. Costura de vías.
+
+**Reproducción:** `scripts/layout_bloques/`. `plan.py` tiene la intención de ubicación; `legal.py` la separa a 1 mm; `barrier.py` crea la franja; `lay.py` hace check/metrics/render. Uso:
+`/usr/bin/python3 legal.py <pcb_entrada> <pcb_salida> plan.py && /usr/bin/python3 barrier.py <pcb> <pcb>`
+
 ## Propuesta vigente: 100 × 100 mm — 2026-10-28
 
 **Adoptada como PCB principal (2026-10-28, pedido del usuario, Claude Code):** `INCLI-VA.kicad_pcb` es ahora esta placa. La copia `layout/INCLI-VA-100x100.*` se borró para no tener dos placas; se recupera del commit `20b862e`. Las rutas a `layout/INCLI-VA-100x100.kicad_pcb` de abajo son históricas, igual que `scripts/layout_100x100.py` y `scripts/review_layout_100x100.py`, que todavía apuntan a esa copia.

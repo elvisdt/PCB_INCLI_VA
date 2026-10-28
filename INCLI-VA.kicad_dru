@@ -102,8 +102,9 @@
 #  1) Entre el dominio CAN (GND_CAN) y el resto: >= 2.5 mm (IPC-2221B B2, 301-500 V). Se puede
 #     cumplir junto a J1 (MSTB de 5.08 mm, donde CAN_H esta al lado de GND_VEH).
 #  2) Ningun relleno de cobre debajo del cuerpo de U601: asi la placa no reduce los 8.3 mm del encapsulado.
+#  El pin 17 (AUXOUT, sin conexion) esta en el lado aislado del encapsulado: cuenta como dominio CAN.
 (rule "ISO_CAN_barrera"
-	(condition "(A.NetName == 'GND_CAN' || A.NetName == '/BUS_CAN_H' || A.NetName == '/BUS_CAN_L' || A.NetName == '/60_can/V_SOIN' || A.NetName == '/60_can/V_SOOUT' || A.NetName == '/60_can/GNDISO_CAN' || A.NetName == '/60_can/CAN_RS' || A.NetName == 'Net-(C609-Pad1)') && !(B.NetName == 'GND_CAN' || B.NetName == '/BUS_CAN_H' || B.NetName == '/BUS_CAN_L' || B.NetName == '/60_can/V_SOIN' || B.NetName == '/60_can/V_SOOUT' || B.NetName == '/60_can/GNDISO_CAN' || B.NetName == '/60_can/CAN_RS' || B.NetName == 'Net-(C609-Pad1)') && !(A.memberOfFootprint('U601') && B.memberOfFootprint('U601')) && !(A.memberOfFootprint('J1') && B.memberOfFootprint('J1'))")
+	(condition "(A.NetName == 'GND_CAN' || A.NetName == '/BUS_CAN_H' || A.NetName == '/BUS_CAN_L' || A.NetName == '/60_can/V_SOIN' || A.NetName == '/60_can/V_SOOUT' || A.NetName == '/60_can/GNDISO_CAN' || A.NetName == '/60_can/CAN_RS' || A.NetName == 'Net-(C609-Pad1)' || A.NetName == 'unconnected-(U601-AUX_{OUT}-Pad17)') && !(B.NetName == 'GND_CAN' || B.NetName == '/BUS_CAN_H' || B.NetName == '/BUS_CAN_L' || B.NetName == '/60_can/V_SOIN' || B.NetName == '/60_can/V_SOOUT' || B.NetName == '/60_can/GNDISO_CAN' || B.NetName == '/60_can/CAN_RS' || B.NetName == 'Net-(C609-Pad1)' || B.NetName == 'unconnected-(U601-AUX_{OUT}-Pad17)') && !(A.memberOfFootprint('U601') && B.memberOfFootprint('U601')) && !(A.memberOfFootprint('J1') && B.memberOfFootprint('J1'))")
 	(constraint clearance (min 2.5mm)))
 
 (rule "ISO_sin_relleno_bajo_U601"
