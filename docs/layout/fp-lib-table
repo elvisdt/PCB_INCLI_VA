@@ -1,0 +1,6 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "INCLI-VA") (type "KiCad") (uri "${KIPRJMOD}/../../lib/INCLI-VA.pretty") (options "") (descr "Huellas propias del proyecto INCLI-VA"))
+	(lib (name "easyeda2kicad") (type "KiCad") (uri "${KIPRJMOD}/../../lib/easyeda2kicad/easyeda2kicad.pretty") (options "") (descr "Importados con easyeda2kicad (LCSC)"))
+	(lib (name "Phoenix_MSTB_local") (type "KiCad") (uri "${KIPRJMOD}/../../lib/Connector_Phoenix_MSTB.pretty") (options "") (descr ""))
+)
