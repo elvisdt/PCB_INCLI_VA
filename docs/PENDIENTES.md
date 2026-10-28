@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Codex (validación y sincronización previas al layout; ubicación pendiente de visto bueno).
+Última actualización: 2026-10-27, Codex (propuesta visual 120 × 80 mm; tamaño y ubicación pendientes de visto bueno).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -281,8 +281,15 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - U101 pad 25 y vías conservan `/10_power_input/U101_RTN`; contorno, reglas y keep-out de U401 conservados.
 - La información histórica anterior describe etapas previas y no sustituye este estado.
 
+## Propuesta visual de tamaño — Codex, 2026-10-27
+- Se recomienda **120 × 80 mm** para la revisión de ubicación; 100 × 70 mm queda ajustado (ocupación estimada 82.6 % frente a 59.5 %). No se afirma que 100 × 70 sea imposible de rutear.
+- Propuesta separada: `docs/layout/INCLI-VA-120x80.kicad_pcb`; vista `docs/layout/ubicacion-120x80.png`; metodología y límites en `docs/LAYOUT_NOTES.md`.
+- Las 186 huellas están ubicadas en la propuesta, con margen geométrico de 1.01 mm entre envolventes, redes/DNP conservados y ningún ruteo. El PCB principal no se cambió.
+- DRC de la copia: 0 errores geométricos, 1 aviso conocido de U401, 396 conexiones pendientes. Referencias en F.Fab; falta serigrafía final.
+- **Falta confirmar tamaño y revisar bloques**, luego afinar desacoples/retornos y mecánica antes del visto bueno final para rutear.
+
 ## Falta
-- La primera propuesta de ubicación se probó solo en copias temporales y se descartó para el PCB principal: aún no cumple el espacio de 1 mm ni la proximidad de desacoples. No hay ubicación aprobable todavía. Ver `VALIDACION_PRE_LAYOUT.md`.
+- La primera prueba de 100 × 70 mm quedó descartada. Ahora hay una propuesta de 120 × 80 mm para revisar tamaño y bloques; aún falta afinar eléctricamente la ubicación antes de aprobar el ruteo. Ver `LAYOUT_NOTES.md`.
 - [ ] Ubicar todos los componentes y H1–H5; resolver separación CAN y acceso de soldadura. Presentar ubicación para visto bueno del usuario **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
