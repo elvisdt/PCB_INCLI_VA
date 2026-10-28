@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Claude Code (latch de las DO retirado del esquemático; propuesta 120 × 80 borrada).
+Última actualización: 2026-10-28, Claude Code (propuesta 100 × 100 adoptada como PCB principal; latch de DO retirado del esquemático).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -318,6 +318,11 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Hoja raíz exportada por KiCad y revisada visualmente: H1–H4 y nota correctos, sin solapes nuevos. **`sch_visual_qa` no está disponible** en el catálogo de herramientas ni como ejecutable; esta revisión manual no equivale a ejecutar esa herramienta.
 - El usuario solicita commit final y push para revisar en detalle esquemático y PCB. Comparar la raíz con **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, que ya tiene 185 huellas, cuatro fijaciones y TP en Bottom. La placa principal y la propuesta 120 × 80 siguen siendo referencias previas, con H5; no se cambiaron en este cierre del esquemático.
 
+## PCB principal = propuesta 100 × 100 — Claude Code, 2026-10-28
+- Pedido explícito del usuario: pasar la propuesta al layout principal. `docs/layout/INCLI-VA-100x100.kicad_pcb` se copió sobre `INCLI-VA.kicad_pcb`. El principal no tenía cambios desde `17a9676`, así que no se perdió nada.
+- Borrada la copia `docs/layout/INCLI-VA-100x100.{kicad_pcb,kicad_pro,kicad_dru,kicad_prl}` y su `fp-lib-table`. `.kicad_dru` y las reglas de `.kicad_pro` eran idénticas a las del principal. Vistas, posiciones y reportes se quedan en `docs/layout/`. Los scripts `layout_100x100.py` y `review_layout_100x100.py` quedan como históricos.
+- DRC del principal: 0 errores, 1 aviso conocido de U401 y 396 conexiones sin rutear. **Paridad: 22 diferencias** por el latch retirado. **No se hizo "Update PCB from Schematic"**: espera el pedido del usuario.
+
 ## Latch de DO retirado y 120 × 80 borrada — Claude Code, 2026-10-28
 Decisiones del usuario en este turno:
 - **Aislamiento:** el usuario preguntó por la etapa aislada. Se recordó la decisión 3 (opción B, commit `5030862`); no cambia nada.
@@ -347,10 +352,10 @@ Solo verificación; no se editó esquemático ni PCB.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
 
 ## Falta
-- [ ] Sincronizar la propuesta 100 × 100 con el esquemático (quitar las 18 huellas del latch, unir la fuente de Q701/Q751 a GND_VEH) y repetir DRC/paridad.
+- [ ] Sincronizar `INCLI-VA.kicad_pcb` con el esquemático (Update PCB from Schematic) (quitar las 18 huellas del latch, unir la fuente de Q701/Q751 a GND_VEH) y repetir DRC/paridad.
 - [x] Retirar H5 y actualizar la nota de fijaciones en la raíz; repetir ERC y revisión visual manual.
 - [x] Ejecutar `sch_visual_qa` de la raíz: PASS (Claude Code, 2026-10-28).
-- [ ] Al adoptar la propuesta 100 × 100 como PCB principal, sustituir la base anterior y comprobar paridad completa; H5 ya no está en el esquemático ni en la propuesta vigente.
+- [x] Propuesta 100 × 100 adoptada como PCB principal (2026-10-28). Falta la paridad completa (ver el ítem siguiente).
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
 - [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.

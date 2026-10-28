@@ -2,6 +2,8 @@
 
 ## Propuesta vigente: 100 × 100 mm — 2026-10-28
 
+**Adoptada como PCB principal (2026-10-28, pedido del usuario, Claude Code):** `INCLI-VA.kicad_pcb` es ahora esta placa. La copia `layout/INCLI-VA-100x100.*` se borró para no tener dos placas; se recupera del commit `20b862e`. Las rutas a `layout/INCLI-VA-100x100.kicad_pcb` de abajo son históricas, igual que `scripts/layout_100x100.py` y `scripts/review_layout_100x100.py`, que todavía apuntan a esa copia.
+
 **Revisión posterior del usuario:** se mantiene la propuesta cuadrada, se dejan **cuatro fijaciones H1–H4** y los **19 puntos de prueba en Bottom (B.Cu)**. H5 está retirado de esta propuesta y, tras la confirmación del usuario, también del esquemático raíz. El PCB base anterior conserva H5 hasta que se adopte la propuesta vigente como principal.
 
 El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal se conserva sin cambios. La propuesta de 120 × 80 mm se retiró del repositorio el 2026-10-28 (decisión del usuario); se recupera del commit `aa0a41b`.
