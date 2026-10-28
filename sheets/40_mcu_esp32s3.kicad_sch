@@ -3551,7 +3551,7 @@
 		)
 		(uuid "25fb25fa-459b-496e-abef-684047ffe821")
 	)
-	(text "ASIGNACIÓN DE PINES (aprobada 2026-10-27; fuentes: WROOM-1 v1.8 tabla 3-1, ESP32-S3 Series v2.2 tablas 2-1 y 2-2)\nCriterios: VMON solo en ADC1 (ADC2 no se puede usar con WiFi). GPIO1–14, 17, 18: glitch BAJO de ~60 µs al encender → solo CS, SCK,\nMOSI, LEDs, entradas resistivas o analógicas, WDI/WD_EN. Señales críticas en pines sin glitch ni pull: IO21, IO35–38, IO40–42, IO47/48.\nSPI en los pines IO MUX de FSPI. Strapping (0, 3, 45, 46), USB (19/20) y UART0 (43/44) reservados.\n\nIO12 SPI_SCK   IO11 SPI_MOSI   IO13 SPI_MISO   IO10 CS_INC (FSPICS0)   IO9 CS_IMU   IO14 CS_ROT\nIO40 IMU_INT1  IO41 IMU_INT2   (sin glitch: salida push-pull del IMU)\nIO47 CAN_TX (sin glitch: un bajo sería un dominante en el bus)   IO48 CAN_RX   IO21 CAN_STBY   IO42 CAN_SILENT\nIO35 DO1_EN  IO36 DO2_EN (sin glitch ni pull; R203/R204 en hoja 20)   IO37 DO1_DIAG  IO38 DO2_DIAG  IO39 PWR_FLT_N\nIO1 VMON_5V (ADC1_CH0)   IO2 VMON_3V3 (ADC1_CH1)   IO4 VAR_ID0   IO5 VAR_ID1   IO6 LED_G   IO7 LED_R\nIO17 WDI (TPS3828, hoja 80)   IO8 VAR_ID2 (CABIN)   Libres: IO15, IO16, IO18.\nRiesgo: IO39–42 son el JTAG por pads; se usa el JTAG por USB. No habilitar el JTAG por pads con eFuse."
+	(text "ASIGNACIÓN DE PINES (aprobada 2026-10-27; fuentes: WROOM-1 v1.8 tabla 3-1, ESP32-S3 Series v2.2 tablas 2-1 y 2-2)\nCriterios: VMON solo en ADC1 (ADC2 no se puede usar con WiFi). GPIO1–14, 17, 18: glitch BAJO de ~60 µs al encender → solo CS, SCK,\nMOSI, LEDs, entradas resistivas o analógicas, WDI. Señales críticas en pines sin glitch ni pull: IO21, IO35–38, IO40–42, IO47/48.\nSPI en los pines IO MUX de FSPI. Strapping (0, 3, 45, 46), USB (19/20) y UART0 (43/44) reservados.\n\nIO12 SPI_SCK   IO11 SPI_MOSI   IO13 SPI_MISO   IO10 CS_INC (FSPICS0)   IO9 CS_IMU   IO14 CS_ROT\nIO40 IMU_INT1  IO41 IMU_INT2   (sin glitch: salida push-pull del IMU)\nIO47 CAN_TX (sin glitch: un bajo sería un dominante en el bus)   IO48 CAN_RX   IO21 CAN_STBY   IO42 CAN_SILENT\nIO35 DO1_EN  IO36 DO2_EN (sin glitch ni pull; R711/R761 en las salidas DO)   IO37 DO1_DIAG  IO38 DO2_DIAG  IO39 PWR_FLT_N\nIO1 VMON_5V (ADC1_CH0)   IO2 VMON_3V3 (ADC1_CH1)   IO4 VAR_ID0   IO5 VAR_ID1   IO6 LED_G   IO7 LED_R\nIO17 WDI (TPS3828, hoja 80)   IO8 VAR_ID2 (CABIN)   Libres: IO15, IO16, IO18.\nRiesgo: IO39–42 son el JTAG por pads; se usa el JTAG por USB. No habilitar el JTAG por pads con eFuse."
 		(exclude_from_sim no)
 		(at 21.336 227.838 0)
 		(effects
@@ -3561,17 +3561,6 @@
 			(justify left top)
 		)
 		(uuid "30b327e0-8a5d-41da-9e67-cf75db8877f9")
-	)
-	(text "OPCIÓN DE BANCO (DNP): +5V_VEH ← JP401 ← D401 ← VBUS\n+5V_VEH ≈ 4.6 V; CAN no garantizado en este modo."
-		(exclude_from_sim no)
-		(at 325.12 96.52 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6c8a1bce-a664-42e9-8b67-33468d6b6dce")
 	)
 	(text "TEST POINTS TWAI"
 		(exclude_from_sim no)
@@ -3596,7 +3585,7 @@
 		)
 		(uuid "8c489e13-963e-4e26-a9e0-6640faa78097")
 	)
-	(text "EN: RC de Espressif + WDO del TPS3431 + RESET"
+	(text "EN: RC de Espressif + WDO del TPS3828 + RESET"
 		(exclude_from_sim no)
 		(at 81.28 96.52 0)
 		(effects
@@ -3608,7 +3597,7 @@
 		)
 		(uuid "9c09113a-5ba0-483a-af58-d3288d7ef8c7")
 	)
-	(text "BLOQUE 40 — MCU ESP32-S3-WROOM-1-N8R2   (MCU único del diseño)\n\nU401  ESP32-S3-WROOM-1-N8R2: 8 MB flash + 2 MB PSRAM quad, antena PCB, −40…+85 °C (WROOM-1 v1.8).\n      PSRAM quad → IO35–IO37 libres (en R8/R16, PSRAM octal, no lo están). IO26–IO32 no salen del módulo (flash).\n3V3   C401 22 µF + C402 100 nF: con C304 (22 µF, hoja 30) completan el presupuesto de 47 µF de +3V3_D. No agregar bulk.\nEN    R401 10k + C403 1 µF (Espressif). MCU_RST_N = WDO del TPS3431 (80), drenador abierto, sobre el mismo nodo. SW401 RESET.\nBoot  GPIO0: R402 10k + SW402 BOOT. GPIO45/46 sin conexión (pull-down interno: VDD_SPI 3.3 V, descarga por USB habilitada).\n      GPIO3 (fuente de JTAG) sin conexión: se ignora mientras no se queme EFUSE_STRAP_JTAG_SEL.\nUSB   J401 USB-C → U402 USBLC6-2SC6 → IO19/IO20. VBUS no alimenta la placa (solo ESD, TP403 y la opción DNP de banco).\nUART  J402: TXD0 = IO43, RXD0 = IO44 (logs).\nRadio NimBLE en operación; WiFi solo para OTA en taller. Alimentación dimensionada con WiFi activo."
+	(text "BLOQUE 40 — MCU ESP32-S3-WROOM-1-N8R2   (MCU único del diseño)\n\nU401  ESP32-S3-WROOM-1-N8R2: 8 MB flash + 2 MB PSRAM quad, antena PCB, −40…+85 °C (WROOM-1 v1.8).\n      PSRAM quad → IO35–IO37 libres (en R8/R16, PSRAM octal, no lo están). IO26–IO32 no salen del módulo (flash).\n3V3   C401 22 µF + C402 100 nF: con C304 (22 µF, hoja 30) completan el presupuesto de 47 µF de +3V3_D. No agregar bulk.\nEN    R401 10k + C403 1 µF (Espressif). MCU_RST_N = WDO del TPS3828 (80), drenador abierto, sobre el mismo nodo. SW401 RESET.\nBoot  GPIO0: R402 10k + SW402 BOOT. GPIO45/46 sin conexión (pull-down interno: VDD_SPI 3.3 V, descarga por USB habilitada).\n      GPIO3 (fuente de JTAG) sin conexión: se ignora mientras no se queme EFUSE_STRAP_JTAG_SEL.\nUSB   J401 USB-C → U402 USBLC6-2SC6 → IO19/IO20. VBUS no alimenta la placa (solo ESD y TP403).\nUART  J402: TXD0 = IO43, RXD0 = IO44 (logs).\nRadio NimBLE en operación; WiFi solo para OTA en taller. Alimentación dimensionada con WiFi activo."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -3728,16 +3717,6 @@
 			(type default)
 		)
 		(uuid "020ce0f5-f2d7-4e3e-8a6d-6cbc4186fea8")
-	)
-	(wire
-		(pts
-			(xy 347.98 109.22) (xy 354.33 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "02887fa3-2d08-4c28-a1cf-6ee4bdb0f610")
 	)
 	(wire
 		(pts
@@ -4281,16 +4260,6 @@
 	)
 	(wire
 		(pts
-			(xy 361.95 109.22) (xy 367.03 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a4ee43df-ca1a-4a58-8eb1-f05bc17a2336")
-	)
-	(wire
-		(pts
 			(xy 185.42 154.94) (xy 180.34 154.94)
 		)
 		(stroke
@@ -4358,16 +4327,6 @@
 			(type default)
 		)
 		(uuid "cbb81795-74f2-4b4e-8f0f-c05127aefd0e")
-	)
-	(wire
-		(pts
-			(xy 337.82 109.22) (xy 337.82 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc5b8710-88ea-4883-8a40-e844395e32f1")
 	)
 	(wire
 		(pts
@@ -4708,16 +4667,6 @@
 			(justify left bottom)
 		)
 		(uuid "c824563d-e34d-4ef4-b2b1-b974aa2ee304")
-	)
-	(label "VBUS"
-		(at 367.03 109.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d16060a6-f592-41c2-98c2-96cadfcacbde")
 	)
 	(label "VBUS"
 		(at 355.6 121.92 0)
@@ -5305,7 +5254,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 322.58 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -5904,7 +5853,7 @@
 				)
 			)
 		)
-		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout)."
+		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8)."
 			(at 200.66 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6184,252 +6133,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 358.14 109.22 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp yes)
-		(uuid "540fe449-1f92-41b7-aa89-0809c2cc4878")
-		(property "Reference" "D401"
-			(at 358.14 104.77 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PMEG3020EH"
-			(at 358.14 106.68 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-123F"
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PMEG3020EH_EJ.pdf"
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "PMEG3020EH"
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Nexperia"
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "DNP. Opción de banco: alimenta +5V_VEH desde VBUS para flashear sin vehículo (cerrar JP401). +5V_VEH queda en ~4.6 V: el CAN (ADM3055E, VCC mín. 4.5 V) no está garantizado en este modo. Limitar la carga a lo que entrega el puerto (WiFi apagado). Con el buck activo el diodo queda en inversa. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" "PROTO,PROD"
-			(at 358.14 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "62e5ca20-a380-43a3-bc2b-805b45d59950")
-		)
-		(pin "2"
-			(uuid "6a89a3dc-acef-4eda-a6e3-60520621aa7f")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6"
-					(reference "D401")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 342.9 109.22 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "59ad0936-8a8b-4262-9899-09b137baa744")
-		(property "Reference" "JP401"
-			(at 342.9 113.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BANCO_USB"
-			(at 342.9 115.57 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "-"
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "-"
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Abierto de fábrica. Cerrar solo en el banco, junto con D401, para alimentar +5V_VEH desde USB. Abrir antes de instalar en el vehículo."
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 342.9 109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8fcebf92-1c70-4e27-b68b-b68e86b9620e")
-		)
-		(pin "2"
-			(uuid "c4d40987-febf-4127-a2bf-984ec5f54dac")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6"
-					(reference "JP401")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
 		(at 190.5 101.6 0)
 		(unit 1)
@@ -6675,7 +6378,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 350.52 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -6797,7 +6500,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 322.58 193.04 0)
 			(hide yes)
 			(show_name no)
@@ -7091,7 +6794,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3431 en 80_supervision."
+		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3828 en 80_supervision."
 			(at 106.68 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -8057,7 +7760,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 127 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -8415,83 +8118,6 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_VEH")
-		(at 337.82 106.68 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "e4b16c0b-8963-4488-8dc1-dfd64e9bf97e")
-		(property "Reference" "#PWR414"
-			(at 337.82 102.87 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V_VEH"
-			(at 337.82 102.87 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 337.82 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 337.82 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 337.82 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "c8bec7de-188e-48ca-beb6-d380f1b1e2d4")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6"
-					(reference "#PWR414")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
 		(at 337.82 73.66 0)
 		(unit 1)
@@ -8782,7 +8408,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 137.16 111.76 0)
 			(hide yes)
 			(show_name no)

@@ -2781,7 +2781,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 154.94 162.56 0)
 			(hide yes)
 			(show_name no)
@@ -3379,7 +3379,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "1e484fa8-772b-4ab0-9b4e-999f4c351cb8")
 		(property "Reference" "R503"
 			(at 187.96 86.36 0)
@@ -5258,7 +5258,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 154.94 132.08 0)
 			(hide yes)
 			(show_name no)
@@ -5345,7 +5345,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "9a0d07ad-bf05-4f32-bb09-d387083c4c19")
 		(property "Reference" "C507"
 			(at 238.76 114.3 0)
@@ -5516,7 +5516,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 154.94 152.4 0)
 			(hide yes)
 			(show_name no)
@@ -5757,7 +5757,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "ac0a72f7-748c-4a73-846c-cedbad96b561")
 		(property "Reference" "U503"
 			(at 229.87 76.2 0)
@@ -6405,7 +6405,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 154.94 142.24 0)
 			(hide yes)
 			(show_name no)

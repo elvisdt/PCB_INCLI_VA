@@ -3615,7 +3615,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "BLOQUE 10 — ENTRADA DE ALIMENTACIÓN, CONECTORES  [dominio VEH]\n\nJ1 (MSTB 5 pines): V+, GND_VEH, CAN_H, CAN_L, CAN_GND.   J2 (MSTB 2 pines): DO1, DO2 (low-side de 70_output; su protección va junto a J2).\nF101  fusible 2 A / 250 VDC, solo para fallas graves (el breaker del LM74930 actúa antes, a 1 A).\nD101 ES2G + D102 SMCJ33A: TVS- para ISO 7637-2 pulso 1 (-600 V) y bloqueo en polaridad inversa.\nU101 LM74930-Q1 (ref. TI 8.2, load dump de 202 V sin suprimir): Q101 STD18NF25 (corte, 250 V) + Q102 IPD30N10S3L-34 (diodo ideal).\n  Corte por OV a 38.4 V (R108/R112/R109)   UVLO ~6.5 V (R106/R107)   breaker 1 A (R110, R103 10 mohm)   corto 2 A   C110 68 nF.\n  VS: R102 10k + D103 (clamp ~57-63 V) + D104 BAS21 + C102 1 uF.   FLT -> VEH_PWR_FLT_N: apaga DO1/DO2 por hardware y va al MCU.\n  Pad expuesto (RTN) FLOTANTE: no conectar a GND (TI).   C105 = hold-up NO MONTADO.\nFiltro LC (L101 + C106/C107) -> +VPROT (<= ~40 V).   Puntos de prueba: TP101 +VPROT, TP102 VBAT_F, TP103 GND_VEH, TP104 FLT."
+	(text "BLOQUE 10 — ENTRADA DE ALIMENTACIÓN, CONECTORES  [dominio VEH]\n\nJ1 (MSTB 5 pines): V+, GND_VEH, CAN_H, CAN_L, CAN_GND.   J2 (MSTB 2 pines): DO1, DO2 (low-side de 70_output; su protección va junto a J2).\nF101  fusible 2 A / 250 VDC, solo para fallas graves (el breaker del LM74930 actúa antes, a 1 A).\nD101 ES2G + D102 SMCJ33A: TVS- para ISO 7637-2 pulso 1 (-600 V) y bloqueo en polaridad inversa.\nU101 LM74930-Q1 (ref. TI 8.2, load dump de 202 V sin suprimir): Q101 STD18NF25 (corte, 250 V) + Q102 IPD30N10S3L-34 (diodo ideal).\n  Corte por OV a 38.4 V (R108/R112/R109)   UVLO ~6.5 V (R106/R107)   breaker 1 A (R110, R103 10 mohm)   corto 2 A   C110 68 nF.\n  VS: R102 10k + D103 (clamp ~57-63 V) + D104 BAS21 + C102 1 uF.   FLT -> VEH_PWR_FLT_N: apaga DO1/DO2 por hardware y va al MCU.\n  Pad expuesto (RTN) FLOTANTE: no conectar a GND (TI).   C105 = hold-up DNP en PROTO, montado en PROD.\nFiltro LC (L101 + C106/C107) -> +VPROT (<= ~40 V).   Puntos de prueba: TP101 +VPROT, TP102 VBAT_F, TP103 GND_VEH, TP104 FLT."
 		(exclude_from_sim no)
 		(at 20.32 17.78 0)
 		(effects
@@ -3639,7 +3639,7 @@
 		)
 		(uuid "ba779818-7f87-4dc0-a180-bb9c12cbcb78")
 	)
-	(text "RIELES USADOS EN ESTA HOJA: GND_VEH, GND_CAN, +VPROT (sale), +5V_VEH (pull-up de FLT)"
+	(text "RIELES USADOS EN ESTA HOJA: GND_VEH, GND_CAN, +VPROT (sale), +3V3_D (pull-up de FLT)"
 		(exclude_from_sim no)
 		(at 20.32 190.5 0)
 		(effects
@@ -4751,7 +4751,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 318.77 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5053,7 +5053,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1000uF"
+		(property "Value" "1000uF 50V"
 			(at 255.27 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5075,7 +5075,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.mouser.com/ProductDetail/Panasonic/EEE-FK1H102AM"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5096,7 +5096,7 @@
 				)
 			)
 		)
-		(property "MPN" "PENDIENTE (hold-up, no montado)"
+		(property "MPN" "EEE-FK1H102AM"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5107,7 +5107,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Panasonic"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5118,7 +5118,7 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD. Mantiene la logica en el corte por OV del LM74930 (load dump suprimido 24 V, <= 350 ms) y en el arranque en frio de 12 V (4.5-6 V, 15-40 ms). Energia 28->6 V: 0.37 J (~0.7 s a 0.5 W, ~0.25 s a 1.5 W con WiFi). Requiere C109 = 100 nF (inrush). PROD: electrolitico SMD automotriz AEC-Q200, >= 50 V, 105-125 C, version resistente a vibracion; MPN pendiente (ver PENDIENTES)."
+		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). Panasonic serie FK, AEC-Q200, 1000 uF / 50 V, 105 C, cuerpo 16 x 16.5 mm, 2 terminales: FIJAR CON ADHESIVO (vibracion). Alt_MPN EEE-FK1H102AV (FK antivibracion, 30 G) requiere su land pattern con terminales de anclaje: no se pudo verificar (datasheet Panasonic no accesible). Verificar el land pattern J16 contra CP_Elec_16x17.5 antes de produccion. Requiere C109 = 100 nF (inrush)."
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5130,6 +5130,17 @@
 			)
 		)
 		(property "DNP" "PROTO"
+			(at 252.73 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" "EEE-FK1H102AV"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5660,7 +5671,7 @@
 				)
 			)
 		)
-		(property "Footprint" "INCLI-VA:FUSE-SMD_L6.1-W2.5-1"
+		(property "Footprint" "INCLI-VA:Fuse_Bourns_SF-2410"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5671,7 +5682,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C3159902.pdf"
+		(property "Datasheet" "https://www.bourns.com/docs/Product-Datasheets/SF-2410FPA-W.pdf"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5714,7 +5725,7 @@
 				)
 			)
 		)
-		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella importada con easyeda2kicad (pads 2.0 x 2.8 mm a +-2.5 mm): PENDIENTE comparar con el land pattern del datasheet de Bourns."
+		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella INCLI-VA:Fuse_Bourns_SF-2410 segun el 'Recommended Pad Layout' de Bourns (pads 2.8 x 3.15 mm, separacion 3.0 mm)."
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -7716,6 +7727,17 @@
 				)
 			)
 		)
+		(property "Variant" "OUT"
+			(at 100.33 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8e5bbbd2-7112-4b1a-984f-611f5025942c")
 		)
@@ -8593,7 +8615,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 209.55 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8962,7 +8984,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 229.87 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -9858,7 +9880,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "N/A (pad de prueba)"
 			(at 219.71 166.37 0)
 			(hide yes)
 			(show_name no)

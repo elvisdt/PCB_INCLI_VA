@@ -1,4 +1,5 @@
 (module easyeda2kicad:DFL-12_L8.6-W7.0-P1.00-LS7.6-BL (layer F.Cu) (tedit 5DC5F6A4)
+	(descr "SCL3300-D01 (Murata), importada con easyeda2kicad (LCSC C22416657). Comparada con Murata SCL3300-D01 Doc. 4921, figura 11 (Recommended PWB pad layout): pads 0.61 x 0.98 mm, paso 1.0 mm, 7.87 mm de borde exterior a borde exterior. Esta huella: 0.65 x 1.30 mm, centros a +-3.63 mm; mismo borde interior (2.98 mm) y pads 0.345 mm mas largos hacia afuera para soldar a mano. Apta tambien para reflow.")
 	(attr smd)
 	(fp_text reference REF** (at 0.000 -7.631) (layer F.SilkS)
 		(effects (font (size 1 1) (thickness 0.15)))

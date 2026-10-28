@@ -2796,6 +2796,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 295.91 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "80fed1ff-ccb4-4f9c-a200-e75c33cfb143")
 		)
@@ -3000,6 +3011,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 82.55 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2f87ae40-7038-4ca2-829a-b82ac4ce98ca")
 		)
@@ -3194,6 +3216,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 109.22 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 109.22 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -3482,6 +3515,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 289.56 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "793d9764-633a-4391-a6b1-6d7f7ee7214c")
 		)
@@ -3686,6 +3730,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 281.94 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4031c9ce-6678-47fd-a97f-2ebe5cd75d29")
 		)
@@ -3800,6 +3855,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 290.83 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 290.83 204.47 0)
 			(hide yes)
 			(show_name no)
@@ -4232,6 +4298,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 121.92 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3d0642c6-c0ff-4a21-9037-b387680f0566")
 		)
@@ -4514,6 +4591,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 304.8 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1c0fa337-a69d-4896-821c-c51f17c192e0")
 		)
@@ -4630,6 +4718,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 121.92 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 121.92 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -4998,6 +5097,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 266.7 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6c236fd0-adfc-4f1d-9c26-670be45b7b26")
 		)
@@ -5201,6 +5311,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 170.18 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6775c6e2-6ddb-49e8-8202-af7343593fe8")
 		)
@@ -5317,6 +5438,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 284.48 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 284.48 127 0)
 			(hide yes)
 			(show_name no)
@@ -5453,6 +5585,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 284.48 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "98830aeb-c39d-4852-a4c1-69739b08073b")
 		)
@@ -5569,6 +5712,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 109.22 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 109.22 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -5948,6 +6102,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 259.08 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b8c6d6a3-2eec-4970-b852-4cde6f8e693f")
 		)
@@ -6216,6 +6381,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 233.68 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "320f2d8c-3768-4ca4-bd93-66184366eb23")
 		)
@@ -6428,6 +6604,17 @@
 				)
 			)
 		)
+		(property "Variant" "CAN"
+			(at 152.4 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "35d6fc72-1627-4317-83ba-ea24f26dddd7")
 		)
@@ -6630,6 +6817,17 @@
 			)
 		)
 		(property "DNP" "PROTO,PROD"
+			(at 248.92 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
 			(at 248.92 116.84 0)
 			(hide yes)
 			(show_name no)

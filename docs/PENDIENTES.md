@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (PCB actualizado por el usuario, J1/J2 confirmados en Phoenix, regla para J401, DRC).
+Última actualización: 2026-10-27, Codex (validación y sincronización previas al layout; ubicación pendiente de visto bueno).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -271,37 +271,27 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - H1–H4 agregados en la raíz: `Mechanical:MountingHole`, huella `MountingHole:MountingHole_3.2mm_M3` (NPTH, sin cobre, courtyard de Ø 6.9 mm), fuera del BOM. La posición la define el layout.
 - La revisión final (ERC, campos, huellas, ESP32, DNP, BOM y PENDIENTES) se entregó al usuario como reporte. **Los cambios que propone esperan su aprobación.** Después vienen los BOM de PROTO y PROD, el PDF, `docs/LAYOUT_NOTES.md`, el commit "esquemático congelado para layout" y el tag `schematic-v1`.
 
+## Estado previo al layout — Codex, 2026-10-27
+- Turno cedido por el usuario: Claude terminó. Se incorporan sus cambios locales de cierre junto con la sincronización del PCB.
+- PCB sincronizado: 186 huellas, H1–H5 añadidos (NPTH, posiciones pendientes), F101 actualizado a `Fuse_Bourns_SF-2410`, D401/JP401 retirados; campos y DNP transferidos. Paridad CLI: **0 diferencias**.
+- ERC: **0 errores y 1 aviso** intencional `isolated_pin_label` en U101_RTN. Todas las hojas eléctricas sin errores.
+- Revisión visual manual de las diez páginas exportadas: completada. Valores de H1–H5 y TP201 ocultados para evitar solapes; notas de TPS3828, alimentación USB y pull-up de FLT corregidas.
+- `sch_visual_qa`: no disponible en el perfil MCP `analysis`; la revisión manual no equivale a ejecutar esa herramienta. Repetir cuando esté disponible.
+- DRC previo a ubicación: **29 errores de separación CAN**, **1 aviso de U401** por serigrafía recortada intencional y **396 conexiones sin rutear**. Sin pistas ni zonas.
+- U101 pad 25 y vías conservan `/10_power_input/U101_RTN`; contorno, reglas y keep-out de U401 conservados.
+- La información histórica anterior describe etapas previas y no sustituye este estado.
+
 ## Falta
-- [ ] **Ubicación de componentes y ruteo** (cuando el usuario lo pida). Corregir la barrera CAN al ubicar.
-- [ ] **Agujeros de montaje H1–H4:** agregarlos al esquemático (Mechanical:MountingHole + huella) y volver a ubicarlos. Hay que decidir el tipo (con o sin cobre; ver la pregunta 15 de PCB).
-- [ ] **`80_supervision`:** pendiente.
-  - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
-  - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.
-  - VAR_ID0/1 → IO4/IO5; LED_G/LED_R ← IO6/IO7.
-- [ ] **Huella importada sin revisar** (regla de `AGENTS.md`): FUSE-SMD_L6.1-W2.5-1 (F101). Comparar con el land pattern de Bourns y documentar la fuente en su descripción.
-  - Las tres están en `lib/INCLI-VA.pretty` sin descripción de fuente.
-  - F101: comparar con el land pattern de Bourns y documentar la fuente.
-- [x] **Limpieza del repositorio:** se borraron `fp-lib-table.bak`, `lib/Connector_Phoenix_MSTB.pretty.bak/` y las huellas y modelos 3D de URB2405 y HVSSOP-8 (2026-10-27).
-  - La librería local `Phoenix_MSTB_local` duplica la oficial y ya no se usa (J1 y J2 usan `Connector_Phoenix_MSTB`).
-- [ ] **Integración:** cuando estén todas las hojas:
-  - ERC del proyecto completo en 0.
-  - Revisión del netlist entre hojas.
-- [ ] **PCB:** el usuario ya colocó huellas (commits `81c5d45`, `22dc6d2`, `2cabf1d`), pero falta "Update PCB from Schematic" con estos cambios.
-  - **No tocar el PCB** hasta que el usuario lo pida.
-  - Al retomarlo:
-    - Crear la regla `.kicad_dru` para el pad 25 de U101.
-    - Unir las 7 redes `unconnected-(U101-EP-Pad25)` en una sola.
-    - Ver la estimación de espacio (100 × 70 mm).
-
-Estado del ERC al 2026-10-27 (después de la opción B):
-
-| Hoja | Violaciones |
-|---|---|
-| Raíz | 7 errores `label_dangling` + 18 avisos `isolated_pin_label`: señales de 80_supervision (WDI, WD_EN, MCU_RST_N, VAR_ID0/1, LED_G/R), que esa hoja todavía no usa |
-| 80_supervision | 2 errores (hoja vacía: símbolos de potencia sin conectar) |
-| 10, 20, 30, 40, 50, 60, 70 (DO1 y DO2) | 0 |
-
-`sch_visual_qa` en 20_buck_5v: 1 aviso menor (TP201 junto a su símbolo de potencia).
+- La primera propuesta de ubicación se probó solo en copias temporales y se descartó para el PCB principal: aún no cumple el espacio de 1 mm ni la proximidad de desacoples. No hay ubicación aprobable todavía. Ver `VALIDACION_PRE_LAYOUT.md`.
+- [ ] Ubicar todos los componentes y H1–H5; resolver separación CAN y acceso de soldadura. Presentar ubicación para visto bueno del usuario **antes de rutear**.
+- [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
+- [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
+- [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
+- [ ] Mantener reserva del eje del imán ROT, compatible con H5 cerca de U501.
+- [x] Supervisión con TPS3828 aplicada. WD_EN/TPS3431 quedaron obsoletos.
+- [x] F101: nueva huella documentada en librería e incorporada al PCB; sustituye la importación antigua.
+- [x] Regla e isla lógica U101_RTN implementadas; las vías del EP comparten una sola red.
+- [x] Opción de banco D401/JP401 eliminada del esquemático y del PCB.
 
 ## Decisiones del usuario aún abiertas
 Preguntas anteriores que siguen sin respuesta (las de 60_can y BOM ya están resueltas arriba).
@@ -310,14 +300,14 @@ Preguntas anteriores que siguen sin respuesta (las de 60_can y BOM ya están res
 1. **Variantes:** ¿el CAN se monta en todas las variantes, o es DNP en la base (`Variant=CAN`)? ¿Qué variantes existen en total y cuáles se combinan?
 7. **Velocidad del bus:** ¿250 kbit/s (J1939) o 500 kbit/s? Define si R605 queda en 0 Ω o en 47 k (control de pendiente).
 
-### 80_supervision
+### 80_supervision — preguntas históricas, resueltas por TPS3828 y tabla VAR_ID vigente
 9. **Timeout del watchdog TPS3431:** ¿el valor de fábrica (pin CWD sin conectar) o uno programado con un capacitor en CWD? Si es programado, ¿qué tiempo quieres (el firmware patea por WDI)?
 10. **Tabla de ID de variante (VAR_ID1, VAR_ID0):** la hoja propone 00 base | 01 CAN | 10 CAN+OUT | 11 grúa (CAN+OUT+ROT). ¿La confirmas? ¿Alcanzan 2 bits si se suma CABIN, o hace falta un tercer bit (o un divisor leído por ADC1)?
 11. **Implementación del ID:** ¿resistencias de 0 Ω / DNP **(rec.)** o solder jumpers?
 12. **LED de estado:** ¿bicolor verde/rojo en un solo encapsulado (0805 o 1206) **(rec.)** o dos LED separados? ¿Se ve a través de la caja ABS, o hace falta un light pipe o una ventana?
 13. **Variante CABIN (buzzer + LEDs):** ¿entra en esta revisión o queda para más adelante?
 
-### PCB (no empiezo hasta que lo pidas)
+### PCB — decisiones mecánicas pendientes; ubicación autorizada, ruteo requiere visto bueno
 14. **Caja y contorno:** ¿modelo o MPN de la caja ABS? ¿Dimensiones máximas de la placa, forma y altura máxima de componentes (lo limitan PS201, de 10.2 mm, y C105)?
 15. **Fijaciones:** ¿cuántos agujeros, qué diámetro y en qué posición? ¿Separadores metálicos o plásticos? Con separadores metálicos, ¿a qué masa se conectan los agujeros (ninguna, GND_VEH o chasis)? Recomiendo **agujeros sin cobre y separadores plásticos**, para no puentear las barreras.
 16. **Cara de montaje y orientación:** ¿qué cara de la caja va contra el chasis de acero? ¿Cómo queda la placa respecto del vehículo (qué eje de la placa es el eje longitudinal o lateral del vehículo)? Lo necesito para la antena y para la serigrafía de los ejes de los sensores.
@@ -388,7 +378,7 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
   - 40_mcu_esp32s3:
     - C401 GRM21BZ71A226ME15L
     - C403 GCM188R71C105KA64D
-    - D401 PMEG3020EH (DNP, opción de banco)
+    - D401 eliminado junto con JP401; ya no aplica.
   - 50_sensors:
     - C508 GCM21BR71A106KE22L
 
@@ -396,6 +386,6 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
 - Variante ROT: U503, C507 y R503 tienen `dnp yes` y el campo `Variant = ROT`. En la variante ROT la placa va centrada sobre el eje del pivote.
 - Huella del SCL3300 (easyeda2kicad DFL-12): pads 0.32 mm más largos que el land pattern de Murata, para soldar a mano; en producción volver al de Murata.
 - Pines del ESP32-S3: la tabla aprobada y sus criterios están en un texto de la hoja 40. No mover señales críticas a GPIO1–14/17/18 (glitch de encendido) ni a strapping.
-- Opción de banco (D401 + JP401, DNP): con JP401 cerrado, +5V_ISO queda en ~4.6 V y el CAN no está garantizado. Abrir JP401 antes de instalar en el vehículo. Revisar al pasar a la opción B (el buck y el USB comparten el riel de 5 V).
+- Opción de banco D401/JP401 eliminada. USB no alimenta +5V_VEH; usar la entrada vehicular para energizar la placa.
 - Firmware: los requisitos están en `README.md` ("Requisitos para el firmware").
 - KiCad: antes de editar archivos `.kicad_sch` a mano o con scripts, confirmar que KiCad está cerrado. Si estaba abierto, recargar las hojas antes de guardar.

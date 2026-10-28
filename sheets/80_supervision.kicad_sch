@@ -1043,6 +1043,28 @@
 				)
 			)
 		)
+		(property "MPN_PROTO" "TPS3828-33DBVR"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Alt_MPN" "TPS3828-33DBVR"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "732dbdb5-8766-4f5a-a619-a53b3c9458b2")
 		)
