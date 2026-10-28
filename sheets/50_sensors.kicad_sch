@@ -559,111 +559,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:GND_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND_ISO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_ISO_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_ISO_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "easyeda2kicad:AS5147U-HTSM_C38675951"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1749,8 +1644,113 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "INCLI-VA:GND_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND_VEH"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: Masa del vehículo (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_VEH_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_VEH_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
-	(text "NOTAS DE LAYOUT\n• U501 (SCL3300) cerca de los puntos de fijación de la placa; lejos de PS201, L301, U302, del ADM3055E y de toda fuente de calor.\n  Plano de masa bajo el encapsulado y sin pistas bajo él en la capa superior (Murata, Doc. 4921). Capacitores pegados a cada pin.\n• Ejes X/Y/Z de U501 y U502 alineados entre sí y con los bordes de la placa; marcar los ejes en la serigrafía.\n• Variante ROT: la placa va CENTRADA sobre el eje del pivote; U503 centrado sobre el eje del imán diametral (on-axis),\n  a la distancia del datasheet AS5147U. Sin material ferromagnético cerca del imán.\n• U502 (LGA): sin vías en los pads; dejar acceso para aire caliente."
+	(text "NOTAS DE LAYOUT\n• U501 (SCL3300) cerca de los puntos de fijación de la placa; lejos de U201/L201 (buck), L301, U302, del ADM3055E y de toda fuente de calor.\n  Plano de masa bajo el encapsulado y sin pistas bajo él en la capa superior (Murata, Doc. 4921). Capacitores pegados a cada pin.\n• Ejes X/Y/Z de U501 y U502 alineados entre sí y con los bordes de la placa; marcar los ejes en la serigrafía.\n• Variante ROT: la placa va CENTRADA sobre el eje del pivote; U503 centrado sobre el eje del imán diametral (on-axis),\n  a la distancia del datasheet AS5147U. Sin material ferromagnético cerca del imán.\n• U502 (LGA): sin vías en los pads; dejar acceso para aire caliente."
 		(exclude_from_sim no)
 		(at 20.32 253.492 0)
 		(effects
@@ -1809,7 +1809,7 @@
 		)
 		(uuid "b005c1f1-2ec2-493f-8fca-cd78deef3405")
 	)
-	(text "BLOQUE 50 — SENSORES  [dominio ISO, riel +3V3_A]\n\nBus SPI compartido (SPI_SCK, SPI_MOSI, SPI_MISO) con un CS por sensor y pull-up de 10 k a +3V3_A en cada CS.\nMISO en alta impedancia con CS alto en los tres sensores (SCL3300 \"Tri State\"; AS5147U tOZ = 10 ns; ASM330LHH SDO).\n\nMODOS SPI PARA EL FIRMWARE (un spi_device por sensor en ESP-IDF; el modo cambia según el CS):\n  U501 SCL3300-D01   modo 0 (CPOL=0, CPHA=0)   fSCK máx. 8 MHz, recomendado 2–4 MHz     CS_INC → IO10\n  U502 ASM330LHH     modo 3 (CPOL=1, CPHA=1)   fc(SPC) máx. 10 MHz                      CS_IMU → IO9   INT1 → IO40, INT2 → IO41\n  U503 AS5147U       modo 1 (CPOL=0, CPHA=1)   fSCK máx. 10 MHz                         CS_ROT → IO14  (solo variante ROT)"
+	(text "BLOQUE 50 — SENSORES  [riel +3V3_A]\n\nBus SPI compartido (SPI_SCK, SPI_MOSI, SPI_MISO) con un CS por sensor y pull-up de 10 k a +3V3_A en cada CS.\nMISO en alta impedancia con CS alto en los tres sensores (SCL3300 \"Tri State\"; AS5147U tOZ = 10 ns; ASM330LHH SDO).\n\nMODOS SPI PARA EL FIRMWARE (un spi_device por sensor en ESP-IDF; el modo cambia según el CS):\n  U501 SCL3300-D01   modo 0 (CPOL=0, CPHA=0)   fSCK máx. 8 MHz, recomendado 2–4 MHz     CS_INC → IO10\n  U502 ASM330LHH     modo 3 (CPOL=1, CPHA=1)   fc(SPC) máx. 10 MHz                      CS_IMU → IO9   INT1 → IO40, INT2 → IO41\n  U503 AS5147U       modo 1 (CPOL=0, CPHA=1)   fSCK máx. 10 MHz                         CS_ROT → IO14  (solo variante ROT)"
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -3015,7 +3015,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 109.22 198.12 0)
 		(unit 1)
 		(body_style 1)
@@ -3036,7 +3036,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 109.22 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3294,7 +3294,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 106.68 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -3315,7 +3315,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 106.68 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3507,7 +3507,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 76.2 87.63 270)
 		(unit 1)
 		(body_style 1)
@@ -3528,7 +3528,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 72.39 87.63 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3739,7 +3739,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 93.98 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -3760,7 +3760,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 93.98 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4221,7 +4221,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 119.38 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -4242,7 +4242,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 119.38 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4625,7 +4625,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 80.01 172.72 270)
 		(unit 1)
 		(body_style 1)
@@ -4646,7 +4646,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 76.2 172.72 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4703,7 +4703,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 64.77 162.56 270)
 		(unit 1)
 		(body_style 1)
@@ -4724,7 +4724,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 60.96 162.56 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4906,7 +4906,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 83.82 198.12 0)
 		(unit 1)
 		(body_style 1)
@@ -4927,7 +4927,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 83.82 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4983,7 +4983,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 254 83.82 90)
 		(unit 1)
 		(body_style 1)
@@ -5004,7 +5004,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 257.81 83.82 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5138,7 +5138,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 81.28 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -5159,7 +5159,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 81.28 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5921,7 +5921,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 96.52 198.12 0)
 		(unit 1)
 		(body_style 1)
@@ -5942,7 +5942,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 96.52 201.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6284,7 +6284,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 76.2 82.55 270)
 		(unit 1)
 		(body_style 1)
@@ -6305,7 +6305,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 72.39 82.55 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6484,7 +6484,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 121.92 82.55 90)
 		(unit 1)
 		(body_style 1)
@@ -6505,7 +6505,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 125.73 82.55 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6764,7 +6764,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 203.2 91.44 270)
 		(unit 1)
 		(body_style 1)
@@ -6785,7 +6785,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 199.39 91.44 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6998,7 +6998,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 236.22 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -7019,7 +7019,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 236.22 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)

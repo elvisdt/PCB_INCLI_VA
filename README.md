@@ -6,7 +6,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | Ruta | Contenido |
 |---|---|
 | `sheets/10_power_input` | Conectores Phoenix MSTB 2,5 de 5.08 mm GF (J1, J2), fusible F101 SF-2410FPA200W-2, LM74930-Q1 (diodo ideal, corte por OV, breaker de 1 A), TVS, filtro LC → +VPROT. C105 (hold-up) es huella DNP |
-| `sheets/20_isolation` | **En transición a la opción B (no aislada):** se reemplazará por un buck de 60–100 V de +VPROT a 5 V (ver `docs/PENDIENTES.md`, A1). Hoy todavía tiene PS201 (URB2405YMD-10WR3), U201 TPS7A1650-Q1 y U202 ISO7763, que salen del diseño |
+| `sheets/20_buck_5v` | Buck no aislado U201 LMR38010SQDDARQ1 (PROTO: LMR38010SDDAR): +VPROT → +5V_VEH, 5.02 V / 1 A a 400 kHz. Sin pines jerárquicos |
 | `sheets/30_regulation` | Desde el riel de 5 V: buck TPS62A02-Q1 → +3V3_D, LDO LP5907-Q1 → +3V3_A, divisores VMON |
 | `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1-N8R2 (único MCU), USB-C nativo con ESD, UART0, BOOT/RESET |
 | `sheets/40_mcu_kw45` | Solo referencia: no está en la jerarquía |
@@ -19,8 +19,9 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `fab/` | Gerbers, BOM por variante, pick & place |
 
 ## Convenciones
-- Rieles/masas: símbolos de potencia de la lib `INCLI-VA`: `+VPROT +5V_VEH +5V_ISO +3V3_D +3V3_A GND_VEH GND_ISO GND_CAN`. Nunca `GND` genérico.
-  - Con la opción B (no aislada) desaparece la barrera 1: GND_ISO se unifica con GND_VEH y +5V_ISO con +5V_VEH. GND_CAN (lado bus del ADM3055E) sigue aislada.
+- Rieles/masas: símbolos de potencia de la lib `INCLI-VA`: `+VPROT +5V_VEH +3V3_D +3V3_A GND_VEH GND_CAN`. Nunca `GND` genérico.
+  - Opción B (no aislada): toda la placa usa GND_VEH. GND_CAN (lado bus del ADM3055E) es el único dominio aislado.
+  - `GND_ISO` y `+5V_ISO` siguen en la librería, pero ya no se usan.
 - Señales entre hojas: pines jerárquicos; en el top se unen por etiquetas del mismo nombre.
 - Prefijos de red por dominio: `VEH_`, `ISO_`, `BUS_`.
 - Campos por componente: `MPN`, `Manufacturer`, `Datasheet`, `Alt_MPN`, `Variant` (CAN, OUT, ROT, CABIN), `Notes` y `DNP`.

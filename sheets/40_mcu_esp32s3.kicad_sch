@@ -1625,240 +1625,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:+5V_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "+5V_ISO"
-				(at 0 3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Salida del DC-DC aislado (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+5V_ISO_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+5V_ISO_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+5V_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "INCLI-VA:GND_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND_ISO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_ISO_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_ISO_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Jumper:SolderJumper_2_Open"
 			(pin_numbers
 				(hide yes)
@@ -3526,6 +3292,240 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "INCLI-VA:GND_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND_VEH"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: Masa del vehículo (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_VEH_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_VEH_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INCLI-VA:+5V_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5V_VEH"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 5 V lado A del aislador (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5V_VEH_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_VEH_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+5V_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "UART0 (logs)"
 		(exclude_from_sim no)
@@ -3562,7 +3562,7 @@
 		)
 		(uuid "30b327e0-8a5d-41da-9e67-cf75db8877f9")
 	)
-	(text "OPCIÓN DE BANCO (DNP): +5V_ISO ← JP401 ← D401 ← VBUS\n+5V_ISO ≈ 4.6 V; CAN no garantizado en este modo."
+	(text "OPCIÓN DE BANCO (DNP): +5V_VEH ← JP401 ← D401 ← VBUS\n+5V_VEH ≈ 4.6 V; CAN no garantizado en este modo."
 		(exclude_from_sim no)
 		(at 325.12 96.52 0)
 		(effects
@@ -3585,7 +3585,7 @@
 		)
 		(uuid "77425e86-474a-4dda-9c26-5f27b2a6f108")
 	)
-	(text "NOTA DE LAYOUT — ANTENA (Espressif, WROOM-1 v1.8 y ESP32-S3 HW Design Guidelines)\n• Antena del módulo en el borde de la placa: sobresaliendo del borde, o con keepout bajo la antena\n  (sin cobre, pistas ni rellenos en TODAS las capas) según el plano de la huella del datasheet.\n• Antena orientada hacia el lado OPUESTO a la cara que se monta sobre el chasis\n  (caja ABS fijada a acero): el metal debe quedar detrás del plano de masa, no frente a la antena.\n• Lejos de PS201, L301 y del ADM3055E. Sin componentes altos ni metal cerca de la antena."
+	(text "NOTA DE LAYOUT — ANTENA (Espressif, WROOM-1 v1.8 y ESP32-S3 HW Design Guidelines)\n• Antena del módulo en el borde de la placa: sobresaliendo del borde, o con keepout bajo la antena\n  (sin cobre, pistas ni rellenos en TODAS las capas) según el plano de la huella del datasheet.\n• Antena orientada hacia el lado OPUESTO a la cara que se monta sobre el chasis\n  (caja ABS fijada a acero): el metal debe quedar detrás del plano de masa, no frente a la antena.\n• Lejos de U201/L201 (buck), L301 y del ADM3055E. Sin componentes altos ni metal cerca de la antena."
 		(exclude_from_sim no)
 		(at 20.32 50.8 0)
 		(effects
@@ -3608,7 +3608,7 @@
 		)
 		(uuid "9c09113a-5ba0-483a-af58-d3288d7ef8c7")
 	)
-	(text "BLOQUE 40 — MCU ESP32-S3-WROOM-1-N8R2  [dominio ISO]   (MCU único del diseño)\n\nU401  ESP32-S3-WROOM-1-N8R2: 8 MB flash + 2 MB PSRAM quad, antena PCB, −40…+85 °C (WROOM-1 v1.8).\n      PSRAM quad → IO35–IO37 libres (en R8/R16, PSRAM octal, no lo están). IO26–IO32 no salen del módulo (flash).\n3V3   C401 22 µF + C402 100 nF: con C304 (22 µF, hoja 30) completan el presupuesto de 47 µF de +3V3_D. No agregar bulk.\nEN    R401 10k + C403 1 µF (Espressif). MCU_RST_N = WDO del TPS3431 (80), drenador abierto, sobre el mismo nodo. SW401 RESET.\nBoot  GPIO0: R402 10k + SW402 BOOT. GPIO45/46 sin conexión (pull-down interno: VDD_SPI 3.3 V, descarga por USB habilitada).\n      GPIO3 (fuente de JTAG) sin conexión: se ignora mientras no se queme EFUSE_STRAP_JTAG_SEL.\nUSB   J401 USB-C → U402 USBLC6-2SC6 → IO19/IO20. VBUS no alimenta la placa (solo ESD, TP403 y la opción DNP de banco).\nUART  J402: TXD0 = IO43, RXD0 = IO44 (logs).\nRadio NimBLE en operación; WiFi solo para OTA en taller. Alimentación dimensionada con WiFi activo."
+	(text "BLOQUE 40 — MCU ESP32-S3-WROOM-1-N8R2   (MCU único del diseño)\n\nU401  ESP32-S3-WROOM-1-N8R2: 8 MB flash + 2 MB PSRAM quad, antena PCB, −40…+85 °C (WROOM-1 v1.8).\n      PSRAM quad → IO35–IO37 libres (en R8/R16, PSRAM octal, no lo están). IO26–IO32 no salen del módulo (flash).\n3V3   C401 22 µF + C402 100 nF: con C304 (22 µF, hoja 30) completan el presupuesto de 47 µF de +3V3_D. No agregar bulk.\nEN    R401 10k + C403 1 µF (Espressif). MCU_RST_N = WDO del TPS3431 (80), drenador abierto, sobre el mismo nodo. SW401 RESET.\nBoot  GPIO0: R402 10k + SW402 BOOT. GPIO45/46 sin conexión (pull-down interno: VDD_SPI 3.3 V, descarga por USB habilitada).\n      GPIO3 (fuente de JTAG) sin conexión: se ignora mientras no se queme EFUSE_STRAP_JTAG_SEL.\nUSB   J401 USB-C → U402 USBLC6-2SC6 → IO19/IO20. VBUS no alimenta la placa (solo ESD, TP403 y la opción DNP de banco).\nUART  J402: TXD0 = IO43, RXD0 = IO44 (logs).\nRadio NimBLE en operación; WiFi solo para OTA en taller. Alimentación dimensionada con WiFi activo."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -5073,7 +5073,7 @@
 		(uuid "f0bdaef2-5fde-4f2d-adc6-43ccd5e869bd")
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 322.58 162.56 0)
 		(unit 1)
 		(body_style 1)
@@ -5094,7 +5094,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 322.58 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5409,7 +5409,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 116.84 121.92 0)
 		(unit 1)
 		(body_style 1)
@@ -5430,7 +5430,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 116.84 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5486,7 +5486,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 200.66 172.72 0)
 		(unit 1)
 		(body_style 1)
@@ -5507,7 +5507,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 200.66 176.53 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5688,7 +5688,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 317.5 114.3 0)
 		(unit 1)
 		(body_style 1)
@@ -5709,7 +5709,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 317.5 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5765,7 +5765,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 180.34 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -5786,7 +5786,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 180.34 105.41 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5929,7 +5929,7 @@
 				)
 			)
 		)
-		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_ISO. Antena al borde de la placa con keepout (ver nota de layout)."
+		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout)."
 			(at 200.66 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6171,7 +6171,7 @@
 				)
 			)
 		)
-		(property "Notes" "Botón BOOT: GPIO0 a GND_ISO. Mantener apretado y soltar RESET para entrar en descarga."
+		(property "Notes" "Botón BOOT: GPIO0 a GND_VEH. Mantener apretado y soltar RESET para entrar en descarga."
 			(at 116.84 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -6294,7 +6294,7 @@
 				)
 			)
 		)
-		(property "Notes" "DNP. Opción de banco: alimenta +5V_ISO desde VBUS para flashear sin vehículo (cerrar JP401). +5V_ISO queda en ~4.6 V: el CAN (ADM3055E, VCC mín. 4.5 V) no está garantizado en este modo. Limitar la carga a lo que entrega el puerto (WiFi apagado). Con PS201 activo el diodo queda en inversa. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "DNP. Opción de banco: alimenta +5V_VEH desde VBUS para flashear sin vehículo (cerrar JP401). +5V_VEH queda en ~4.6 V: el CAN (ADM3055E, VCC mín. 4.5 V) no está garantizado en este modo. Limitar la carga a lo que entrega el puerto (WiFi apagado). Con el buck activo el diodo queda en inversa. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
 			(at 358.14 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -6417,7 +6417,7 @@
 				)
 			)
 		)
-		(property "Notes" "Abierto de fábrica. Cerrar solo en el banco, junto con D401, para alimentar +5V_ISO desde USB. Abrir antes de instalar en el vehículo."
+		(property "Notes" "Abierto de fábrica. Cerrar solo en el banco, junto con D401, para alimentar +5V_VEH desde USB. Abrir antes de instalar en el vehículo."
 			(at 342.9 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -6455,7 +6455,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 190.5 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -6476,7 +6476,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 190.5 105.41 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6988,7 +6988,7 @@
 				)
 			)
 		)
-		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_ISO. Adaptador USB-UART de 3.3 V."
+		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_VEH. Adaptador USB-UART de 3.3 V."
 			(at 330.2 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -7154,7 +7154,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 276.86 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -7175,7 +7175,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 276.86 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7318,7 +7318,7 @@
 				)
 			)
 		)
-		(property "Notes" "Botón RESET: lleva EN a GND_ISO. THT 6 x 6 mm, fácil de soldar a mano."
+		(property "Notes" "Botón RESET: lleva EN a GND_VEH. THT 6 x 6 mm, fácil de soldar a mano."
 			(at 127 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -7962,7 +7962,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 127 124.46 0)
 		(unit 1)
 		(body_style 1)
@@ -7983,7 +7983,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 127 128.27 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8161,7 +8161,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 116.84 162.56 0)
 		(unit 1)
 		(body_style 1)
@@ -8182,7 +8182,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 116.84 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8363,7 +8363,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 302.26 114.3 0)
 		(unit 1)
 		(body_style 1)
@@ -8384,7 +8384,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 302.26 118.11 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8440,7 +8440,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 337.82 106.68 0)
 		(unit 1)
 		(body_style 1)
@@ -8461,7 +8461,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 337.82 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8517,7 +8517,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 337.82 73.66 0)
 		(unit 1)
 		(body_style 1)
@@ -8538,7 +8538,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 337.82 77.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8681,7 +8681,7 @@
 				)
 			)
 		)
-		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_ISO: la PC queda aislada del vehículo por la barrera 1. Blindaje a GND_ISO."
+		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_VEH: SIN aislamiento (opción B), la PC comparte masa con el vehículo; en el vehículo usar aislador USB/UART o laptop a batería. Blindaje a GND_VEH."
 			(at 276.86 63.5 0)
 			(hide yes)
 			(show_name no)

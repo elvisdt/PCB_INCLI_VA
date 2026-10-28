@@ -12,7 +12,7 @@
 		(comment 2 "Inclinómetro de chasis CAN/BLE — INCLI-VA")
 	)
 	(lib_symbols)
-	(text "00_TOP — INCLI-VA\nRieles y masas = símbolos de potencia globales (lib INCLI-VA): no se cablean entre hojas.\nSeñales = pines jerárquicos; aquí se unen por etiquetas con el mismo nombre.\nMasas separadas: GND_VEH | GND_ISO | GND_CAN — nunca GND genérico.\nMCU: ESP32-S3-WROOM-1 (bloque 40_mcu → sheets/40_mcu_esp32s3). 40_mcu_kw45 queda solo como referencia, fuera de la jerarquía.\n70_output_ch.kicad_sch se instancia dos veces (DO1, DO2).\nVariant: CAN, OUT, ROT, CABIN.  Campos por componente: MPN, Manufacturer, Alt_MPN."
+	(text "00_TOP — INCLI-VA\nRieles y masas = símbolos de potencia globales (lib INCLI-VA): no se cablean entre hojas.\nSeñales = pines jerárquicos; aquí se unen por etiquetas con el mismo nombre.\nMasas: GND_VEH (toda la placa; opción B, sin aislamiento de alimentación) | GND_CAN (lado bus del ADM3055E, aislado) — nunca GND genérico.\nMCU: ESP32-S3-WROOM-1 (bloque 40_mcu → sheets/40_mcu_esp32s3). 40_mcu_kw45 queda solo como referencia, fuera de la jerarquía.\n70_output_ch.kicad_sch se instancia dos veces (DO1, DO2).\nVariant: CAN, OUT, ROT, CABIN.  Campos por componente: MPN, Manufacturer, Alt_MPN."
 		(exclude_from_sim no)
 		(at 30.48 15.24 0)
 		(effects
@@ -32,16 +32,6 @@
 			(type default)
 		)
 		(uuid "0505732f-8cf2-4e47-8997-91a952e67832")
-	)
-	(wire
-		(pts
-			(xy 157.48 45.72) (xy 154.94 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c8ef499-c132-48b4-8778-c9e091a84a22")
 	)
 	(wire
 		(pts
@@ -85,26 +75,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 50.8) (xy 154.94 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20310340-1d54-4759-9b74-caa382e21474")
-	)
-	(wire
-		(pts
-			(xy 157.48 43.18) (xy 154.94 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "28a8c504-3c07-4759-ace0-1f0c106a6f81")
-	)
-	(wire
-		(pts
 			(xy 76.2 43.18) (xy 78.74 43.18)
 		)
 		(stroke
@@ -145,16 +115,6 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 43.18) (xy 205.74 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3923ed07-633d-425a-bf30-9b8a934075c9")
-	)
-	(wire
-		(pts
 			(xy 297.18 132.08) (xy 294.64 132.08)
 		)
 		(stroke
@@ -172,16 +132,6 @@
 			(type default)
 		)
 		(uuid "3c07a83c-bff8-4219-afc4-a15d68e0107e")
-	)
-	(wire
-		(pts
-			(xy 157.48 48.26) (xy 154.94 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3de8fe59-afcb-4a6a-ad3f-fb3648a16864")
 	)
 	(wire
 		(pts
@@ -205,16 +155,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 53.34) (xy 154.94 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4764775c-f2a3-4b78-8c59-5e6d66729eb8")
-	)
-	(wire
-		(pts
 			(xy 297.18 45.72) (xy 294.64 45.72)
 		)
 		(stroke
@@ -222,36 +162,6 @@
 			(type default)
 		)
 		(uuid "482d2729-79f5-49ac-b198-aa25b19d998b")
-	)
-	(wire
-		(pts
-			(xy 203.2 48.26) (xy 205.74 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c73025f-7617-457c-99b5-fa6bb41d4dc2")
-	)
-	(wire
-		(pts
-			(xy 203.2 53.34) (xy 205.74 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e043647-3e8d-4868-b207-5719eaafbc87")
-	)
-	(wire
-		(pts
-			(xy 203.2 45.72) (xy 205.74 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "519de20e-d695-484a-bc96-e3029b2a91e8")
 	)
 	(wire
 		(pts
@@ -342,16 +252,6 @@
 			(type default)
 		)
 		(uuid "7337a107-956b-472a-a768-1ec1ccca3cf4")
-	)
-	(wire
-		(pts
-			(xy 203.2 50.8) (xy 205.74 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73e50d56-9870-4829-b7a4-63613bb1bc64")
 	)
 	(wire
 		(pts
@@ -753,7 +653,7 @@
 		)
 		(uuid "00efade9-e5cf-4337-b040-ce64be398aaf")
 	)
-	(label "VEH_DO1_EN"
+	(label "DO1_EN"
 		(at 294.64 43.18 180)
 		(effects
 			(font
@@ -772,16 +672,6 @@
 			(justify right bottom)
 		)
 		(uuid "0739b799-68bb-4a00-beb3-379c2800949f")
-	)
-	(label "VEH_DO1_DIAG"
-		(at 205.74 48.26 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0ba9d23e-270a-46ae-8f71-8a6855d2e20b")
 	)
 	(label "DO2_EN"
 		(at 154.94 129.54 180)
@@ -813,7 +703,7 @@
 		)
 		(uuid "19277681-442b-4b1f-ac34-fc25f303dd2b")
 	)
-	(label "VEH_DO2_EN"
+	(label "DO2_EN"
 		(at 294.64 78.74 180)
 		(effects
 			(font
@@ -853,7 +743,7 @@
 		)
 		(uuid "35082530-784a-4364-aaae-31de8a841131")
 	)
-	(label "VEH_PWR_FLT_N"
+	(label "PWR_FLT_N"
 		(at 78.74 48.26 0)
 		(effects
 			(font
@@ -882,16 +772,6 @@
 			(justify right bottom)
 		)
 		(uuid "4a23b0e9-0beb-4c51-a9f5-b110fbca2281")
-	)
-	(label "VEH_PWR_FLT_N"
-		(at 205.74 53.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4d2214c4-9153-4552-83a4-fe407b0048e5")
 	)
 	(label "VEH_DO2"
 		(at 345.44 78.74 0)
@@ -933,26 +813,6 @@
 		)
 		(uuid "5a4aabf9-8736-4fe3-8ea1-562e3e37a6c4")
 	)
-	(label "VEH_DO2_DIAG"
-		(at 205.74 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5c6f09bc-d7d7-4980-9e2d-c7e061f10fa2")
-	)
-	(label "VEH_DO1_EN"
-		(at 205.74 43.18 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "61564098-1933-4a86-a793-aa3a39cc3b93")
-	)
 	(label "IMU_INT2"
 		(at 294.64 144.78 180)
 		(effects
@@ -982,16 +842,6 @@
 			(justify right bottom)
 		)
 		(uuid "650f1f20-9b11-4b22-b182-25d28c369ce2")
-	)
-	(label "DO1_DIAG"
-		(at 154.94 48.26 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "65a4819c-805a-4cea-b036-7dd0a649e0c5")
 	)
 	(label "VMON_5V"
 		(at 154.94 137.16 180)
@@ -1063,7 +913,7 @@
 		)
 		(uuid "6f7cfe8f-3ae9-4b78-b371-51beba0d74a8")
 	)
-	(label "VEH_DO2_DIAG"
+	(label "DO2_DIAG"
 		(at 294.64 81.28 180)
 		(effects
 			(font
@@ -1113,16 +963,6 @@
 		)
 		(uuid "7d53c247-e815-4bd7-a3d0-cc4f0ed6cce6")
 	)
-	(label "DO1_EN"
-		(at 154.94 43.18 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7e24c484-321c-480e-9583-612164567a05")
-	)
 	(label "IMU_INT1"
 		(at 205.74 142.24 0)
 		(effects
@@ -1133,7 +973,7 @@
 		)
 		(uuid "7fe7d60c-0061-4d3e-9054-f68d9dd60886")
 	)
-	(label "VEH_PWR_FLT_N"
+	(label "PWR_FLT_N"
 		(at 294.64 48.26 180)
 		(effects
 			(font
@@ -1223,16 +1063,6 @@
 		)
 		(uuid "a3b0b9ec-9a79-415e-ac47-d7a7a71603a0")
 	)
-	(label "PWR_FLT_N"
-		(at 154.94 53.34 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "a4737e51-977f-4d4d-80a7-f4dba6b7aedb")
-	)
 	(label "SPI_MISO"
 		(at 294.64 132.08 180)
 		(effects
@@ -1262,16 +1092,6 @@
 			(justify right bottom)
 		)
 		(uuid "b8138c32-be4b-4c17-8507-ac2e87c667b3")
-	)
-	(label "DO2_EN"
-		(at 154.94 45.72 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "b84d2b71-8e5b-4354-9cd9-3f2150d5a45c")
 	)
 	(label "SPI_MOSI"
 		(at 205.74 129.54 0)
@@ -1363,7 +1183,7 @@
 		)
 		(uuid "e5b0b790-ba68-48fb-aee4-6cf47d1f85e9")
 	)
-	(label "VEH_DO1_DIAG"
+	(label "DO1_DIAG"
 		(at 294.64 45.72 180)
 		(effects
 			(font
@@ -1373,7 +1193,7 @@
 		)
 		(uuid "ebc8c13b-520c-4cdd-9307-c921d07596ba")
 	)
-	(label "VEH_PWR_FLT_N"
+	(label "PWR_FLT_N"
 		(at 294.64 83.82 180)
 		(effects
 			(font
@@ -1442,26 +1262,6 @@
 			(justify right bottom)
 		)
 		(uuid "f7cf337e-43ab-4c6b-ae26-393e5685b8a6")
-	)
-	(label "DO2_DIAG"
-		(at 154.94 50.8 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f97c1d53-6b02-4850-b773-5f135d00a634")
-	)
-	(label "VEH_DO2_EN"
-		(at 205.74 45.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fd9c33d7-a332-4dce-b367-ec7d1f7d8802")
 	)
 	(sheet
 		(at 297.18 205.74)
@@ -1923,7 +1723,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a")
-		(property "Sheetname" "20_isolation"
+		(property "Sheetname" "20_buck_5v"
 			(at 157.48 39.93 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1934,7 +1734,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "sheets/20_isolation.kicad_sch"
+		(property "Sheetfile" "sheets/20_buck_5v.kicad_sch"
 			(at 157.48 56.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1943,106 +1743,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
-			)
-		)
-		(pin "DO1_EN" input
-			(at 157.48 43.18 180)
-			(uuid "efcc796b-4e99-468c-8fff-eec5ef96eac9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO2_EN" input
-			(at 157.48 45.72 180)
-			(uuid "a9b043cc-ce30-4d77-ab03-8691a93e32d5")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO1_DIAG" output
-			(at 157.48 48.26 180)
-			(uuid "fadcbb15-ebfb-4427-95cd-3a05915642c0")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO2_DIAG" output
-			(at 157.48 50.8 180)
-			(uuid "9b6da08a-0b9d-49d7-baac-e15416f5b193")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VEH_DO1_EN" output
-			(at 203.2 43.18 0)
-			(uuid "debee6df-a54a-4c0a-b5ec-82294fd5af8c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VEH_DO2_EN" output
-			(at 203.2 45.72 0)
-			(uuid "4eb32f46-ff74-40fb-a919-dbb5c5bb6088")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VEH_DO1_DIAG" input
-			(at 203.2 48.26 0)
-			(uuid "09d589c1-96fc-48f2-aff2-602b48cc08af")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VEH_DO2_DIAG" input
-			(at 203.2 50.8 0)
-			(uuid "ae89ce5b-a934-46fb-8236-16e007da1ba3")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VEH_PWR_FLT_N" input
-			(at 203.2 53.34 0)
-			(uuid "1b1ebed0-4454-4bab-8f92-fe01ab546e6e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "PWR_FLT_N" output
-			(at 157.48 53.34 180)
-			(uuid "7943dd4d-7f83-4c7c-9ad3-d0de43358394")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 		(instances

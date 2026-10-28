@@ -3485,6 +3485,135 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "INCLI-VA:+3V3_D"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+3V3_D"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 3.3 V digital (dominio ISO)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3V3_D_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_D_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+3V3_D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "BLOQUE 10 — ENTRADA DE ALIMENTACIÓN, CONECTORES  [dominio VEH]\n\nJ1 (MSTB 5 pines): V+, GND_VEH, CAN_H, CAN_L, CAN_GND.   J2 (MSTB 2 pines): DO1, DO2 (low-side de 70_output; su protección va junto a J2).\nF101  fusible 2 A / 250 VDC, solo para fallas graves (el breaker del LM74930 actúa antes, a 1 A).\nD101 ES2G + D102 SMCJ33A: TVS- para ISO 7637-2 pulso 1 (-600 V) y bloqueo en polaridad inversa.\nU101 LM74930-Q1 (ref. TI 8.2, load dump de 202 V sin suprimir): Q101 STD18NF25 (corte, 250 V) + Q102 IPD30N10S3L-34 (diodo ideal).\n  Corte por OV a 38.4 V (R108/R112/R109)   UVLO ~6.5 V (R106/R107)   breaker 1 A (R110, R103 10 mohm)   corto 2 A   C110 68 nF.\n  VS: R102 10k + D103 (clamp ~57-63 V) + D104 BAS21 + C102 1 uF.   FLT -> VEH_PWR_FLT_N: apaga DO1/DO2 por hardware y va al MCU.\n  Pad expuesto (RTN) FLOTANTE: no conectar a GND (TI).   C105 = hold-up NO MONTADO.\nFiltro LC (L101 + C106/C107) -> +VPROT (<= ~40 V).   Puntos de prueba: TP101 +VPROT, TP102 VBAT_F, TP103 GND_VEH, TP104 FLT."
 		(exclude_from_sim no)
@@ -4989,7 +5118,7 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up OPCIONAL (huella reservada, DNP): mantiene viva la logica durante el corte por OV del LM74930 (load dump suprimido de 24 V, <= 350 ms) y los huecos de arranque en frio de 12 V (4.5-6 V, 15-40 ms). No hace falta para los pulsos ISO 7637 (rapidos). Sin C105 la placa se reinicia en esos eventos (estado funcional C). 1000-2200 uF / 50 V radial 16 mm."
+		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD. Mantiene la logica en el corte por OV del LM74930 (load dump suprimido 24 V, <= 350 ms) y en el arranque en frio de 12 V (4.5-6 V, 15-40 ms). Energia 28->6 V: 0.37 J (~0.7 s a 0.5 W, ~0.25 s a 1.5 W con WiFi). Requiere C109 = 100 nF (inrush). PROD: electrolitico SMD automotriz AEC-Q200, >= 50 V, 105-125 C, version resistente a vibracion; MPN pendiente (ver PENDIENTES)."
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5000,7 +5129,7 @@
 				)
 			)
 		)
-		(property "DNP" "PROTO,PROD"
+		(property "DNP" "PROTO"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5297,82 +5426,6 @@
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
 					(reference "R104")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "INCLI-VA:GND_VEH")
-		(at 113.03 101.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "35159915-b994-4acf-b782-f1824c3c590e")
-		(property "Reference" "#PWR124"
-			(at 113.03 108.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND_VEH"
-			(at 113.03 105.41 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 113.03 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 113.03 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 113.03 101.6 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "3e42073b-e790-4336-b56a-8c772a83f3a1")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
-					(reference "#PWR124")
 					(unit 1)
 				)
 			)
@@ -7480,7 +7533,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_VEH")
+		(lib_id "INCLI-VA:+3V3_D")
 		(at 199.39 162.56 0)
 		(unit 1)
 		(body_style 1)
@@ -7501,7 +7554,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_VEH"
+		(property "Value" "+3V3_D"
 			(at 199.39 158.75 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7544,7 +7597,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "ad02c353-c260-4303-a920-0f9f8505fa11")
+			(uuid "e49aa9c6-fda8-4cd9-89b6-a4b661c2d856")
 		)
 		(instances
 			(project "INCLI-VA"
@@ -8270,7 +8323,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF"
+		(property "Value" "100nF"
 			(at 191.77 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8292,7 +8345,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=GCM188R72A103KA37%23"
+		(property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GCM188R72A104KA64D"
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -8313,7 +8366,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R72A103KA37D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -8335,7 +8388,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_dVdT: limita el inrush (100 V en 0603)."
+		(property "Notes" "C_dVdT (TI ec. 2): Iinrush = C_OUT x 55 uA / C_dVdT. Con C105 montado (~1.07 mF): 0.59 A < breaker 1 A (con 10 nF eran 5.9 A y disparaba). Sin C105: ~34 mA. Arranque ~60 ms. 100 V en 0603."
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -8828,7 +8881,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de FLT (open drain)."
+		(property "Notes" "Pull-up de FLT (drenador abierto) a +3V3_D: PWR_FLT_N va directo a un GPIO del ESP32 (opcion B)."
 			(at 199.39 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -10604,82 +10657,6 @@
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
 					(reference "D103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 113.03 101.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "fcbddc0a-c014-4440-b3e0-de92054c280c")
-		(property "Reference" "#FLG123"
-			(at 113.03 95.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 113.03 97.79 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 113.03 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 113.03 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 113.03 101.6 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "1c457cfa-05a0-4793-8ae9-68bd84c748fd")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
-					(reference "#FLG123")
 					(unit 1)
 				)
 			)

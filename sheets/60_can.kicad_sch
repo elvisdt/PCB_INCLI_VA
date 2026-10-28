@@ -577,111 +577,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:GND_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND_ISO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_ISO_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_ISO_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "antmicro_adm3055ebriz:ADM3055E"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1313,135 +1208,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:+5V_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "+5V_ISO"
-				(at 0 3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Salida del DC-DC aislado (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+5V_ISO_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+5V_ISO_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+5V_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:D_TVS_Dual_AAC"
 			(pin_names
 				(offset 1.016)
@@ -1771,6 +1537,240 @@
 					)
 					(fill
 						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INCLI-VA:GND_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND_VEH"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: Masa del vehículo (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_VEH_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_VEH_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INCLI-VA:+5V_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5V_VEH"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 5 V lado A del aislador (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5V_VEH_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_VEH_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+5V_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
 					)
 				)
 			)
@@ -2530,7 +2530,7 @@
 		(uuid "edd2a7aa-3c7b-4339-b488-94e4bbac0e4e")
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 121.92 182.88 0)
 		(unit 1)
 		(body_style 1)
@@ -2552,7 +2552,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 121.92 187.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3298,7 +3298,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 170.18 179.07 0)
 		(unit 1)
 		(body_style 1)
@@ -3319,7 +3319,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 170.18 182.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4326,7 +4326,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 109.22 147.32 0)
 		(unit 1)
 		(body_style 1)
@@ -4348,7 +4348,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 109.22 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4656,7 +4656,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 102.87 130.81 0)
 		(unit 1)
 		(body_style 1)
@@ -4678,7 +4678,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 102.87 125.73 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4734,7 +4734,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 179.07 181.61 0)
 		(unit 1)
 		(body_style 1)
@@ -4755,7 +4755,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 179.07 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4810,7 +4810,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 121.92 147.32 0)
 		(unit 1)
 		(body_style 1)
@@ -4832,7 +4832,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 121.92 152.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5014,7 +5014,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 175.26 149.86 0)
 		(unit 1)
 		(body_style 1)
@@ -5036,7 +5036,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 175.26 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5673,7 +5673,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 109.22 182.88 0)
 		(unit 1)
 		(body_style 1)
@@ -5695,7 +5695,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 109.22 187.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5751,7 +5751,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 82.55 182.88 0)
 		(unit 1)
 		(body_style 1)
@@ -5773,7 +5773,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 82.55 187.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6020,7 +6020,7 @@
 		(uuid "353f352a-e2ae-4ca1-ae5f-629b1691ddd9")
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 173.99 163.83 270)
 		(unit 1)
 		(body_style 1)
@@ -6041,7 +6041,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 173.99 163.83 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6855,7 +6855,7 @@
 		)
 		(uuid "0bca530c-d193-4b1b-92bf-3dc09d4f8c7c")
 	)
-	(text "BLOQUE 60 - CAN AISLADO (ADM3055E, barrera 2)   [Variant=CAN]\nFuente: datasheet ADI ADM3055E/ADM3057E Rev. D (tablas 10 y 12, PCB layout).\n\n  U601  ADM3055EBRIZ: CAN aislado con isoPower. VCC <- +5V_ISO (180 mA tip / 260 mA max en dominante), VIO <- +3V3_D.\n  Desacople (tabla 10): VCC 10 uF + 0.1 uF | VIO 0.01 + 0.1 uF | VISOIN 0.01 + 0.1 uF | VISOOUT 0.22 + 10 uF a GNDISO.\n  FB601 VISOOUT -> VISOIN y FB602 GNDISO -> GND2 (~2 kohm a 100 MHz-1 GHz; reducen emisiones, no son funcionales).\n  RS -> GND2 por R605 (0 ohm = velocidad completa; 47k = control de pendiente).  AUXIN -> GND1 (sin uso), AUXOUT sin conexion.\n  STBY: pull-up R604 -> arranca en standby hasta que el firmware baje CAN_STBY.  SILENT: pull-down R601 (normal).\n  Terminacion partida R602 + R603 + C609: montar solo en nodos de extremo del bus.\n  D601 ESD2CAN24-Q1 (SOT-23): DNP. El ADM3055E ya integra IEC 61000-4-2 +-8 kV y +-40 V de falla en CANH/CANL.\n\nCAN clasico (J1939) desde el TWAI del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nLayout: capacitores a < 2 mm de los pines; verificar el land pattern SOIC-20W contra el plano RI-20-1 (creepage de la barrera 2)."
+	(text "BLOQUE 60 - CAN AISLADO (ADM3055E, barrera 2)   [Variant=CAN]\nFuente: datasheet ADI ADM3055E/ADM3057E Rev. D (tablas 10 y 12, PCB layout).\n\n  U601  ADM3055EBRIZ: CAN aislado con isoPower. VCC <- +5V_VEH (180 mA tip / 260 mA max en dominante), VIO <- +3V3_D.\n  Desacople (tabla 10): VCC 10 uF + 0.1 uF | VIO 0.01 + 0.1 uF | VISOIN 0.01 + 0.1 uF | VISOOUT 0.22 + 10 uF a GNDISO.\n  FB601 VISOOUT -> VISOIN y FB602 GNDISO -> GND2 (~2 kohm a 100 MHz-1 GHz; reducen emisiones, no son funcionales).\n  RS -> GND2 por R605 (0 ohm = velocidad completa; 47k = control de pendiente).  AUXIN -> GND1 (sin uso), AUXOUT sin conexion.\n  STBY: pull-up R604 -> arranca en standby hasta que el firmware baje CAN_STBY.  SILENT: pull-down R601 (normal).\n  Terminacion partida R602 + R603 + C609: montar solo en nodos de extremo del bus.\n  D601 ESD2CAN24-Q1 (SOT-23): DNP. El ADM3055E ya integra IEC 61000-4-2 +-8 kV y +-40 V de falla en CANH/CANL.\n\nCAN clasico (J1939) desde el TWAI del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nLayout: capacitores a < 2 mm de los pines; verificar el land pattern SOIC-20W contra el plano RI-20-1 (creepage de la barrera 2)."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects

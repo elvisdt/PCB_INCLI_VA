@@ -141,7 +141,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:GND_ISO"
+		(symbol "INCLI-VA:GND_VEH"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -166,7 +166,7 @@
 					)
 				)
 			)
-			(property "Value" "GND_ISO"
+			(property "Value" "GND_VEH"
 				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -198,7 +198,7 @@
 					)
 				)
 			)
-			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
+			(property "Description" "Símbolo de potencia: Masa del vehículo (dominio VEH)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -209,7 +209,7 @@
 					)
 				)
 			)
-			(symbol "GND_ISO_0_1"
+			(symbol "GND_VEH_0_1"
 				(polyline
 					(pts
 						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
@@ -223,12 +223,12 @@
 					)
 				)
 			)
-			(symbol "GND_ISO_1_1"
+			(symbol "GND_VEH_1_1"
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
 					(hide yes)
-					(name "GND_ISO"
+					(name "GND_VEH"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -247,7 +247,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "BLOQUE 80 — SUPERVISIÓN  [dominio ISO]  (común)\n\n  U50  TI TPS3431 — watchdog externo   WDI ← MCU, EN ← WD_EN, WDO → MCU_RST_N\n  R    Resistencias de ID de variante → VAR_ID0, VAR_ID1 (leídas en el arranque)\n         ID1 ID0 :  00 base | 01 CAN | 10 CAN+OUT | 11 grúa (CAN+OUT+ROT)  ← definir\n  D50  LED bicolor (verde/rojo) de estado + resistencias\n\nSi el watchdog dispara, el reset del MCU lleva las salidas a estado seguro (abiertas).\nVariante cabina [Variant=CABIN]: buzzer + LEDs (hoja aparte cuando se defina)."
+	(text "BLOQUE 80 — SUPERVISIÓN  (común)\n\n  U50  TI TPS3431 — watchdog externo   WDI ← MCU, EN ← WD_EN, WDO → MCU_RST_N\n  R    Resistencias de ID de variante → VAR_ID0, VAR_ID1 (leídas en el arranque)\n         ID1 ID0 :  00 base | 01 CAN | 10 CAN+OUT | 11 grúa (CAN+OUT+ROT)  ← definir\n  D50  LED bicolor (verde/rojo) de estado + resistencias\n\nSi el watchdog dispara, el reset del MCU lleva las salidas a estado seguro (abiertas).\nVariante cabina [Variant=CABIN]: buzzer + LEDs (hoja aparte cuando se defina)."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -360,7 +360,7 @@
 		(uuid "f6aedbc5-4c7f-413b-bf8a-d346c3f25bb1")
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 264.16 215.9 0)
 		(unit 1)
 		(body_style 1)
@@ -381,7 +381,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 264.16 219.71 0)
 			(show_name no)
 			(do_not_autoplace no)

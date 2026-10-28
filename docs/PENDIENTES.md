@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (decisiones de la hoja 20; diseño del buck listo, bloqueado por el símbolo del LMR38010 y por KiCad abierto).
+Última actualización: 2026-10-27, Claude Code (opción B aplicada: hoja 20_buck_5v con LMR38010, masas unificadas).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -114,13 +114,25 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - No usar las variantes F en el prototipo: cambian el comportamiento en carga liviana (consumo con solo BLE) y no representan a producción.
 - **Campo nuevo `MPN_PROTO`:** se usa solo cuando el prototipo lleva otro número de parte, equivalente al de producción. El BOM de prototipo toma `MPN_PROTO` si existe y, si no, `MPN`.
 
-## Hoja 20: diseño listo, falta aplicarlo
-**Bloqueos:**
-- **Símbolo del LMR38010:** no existe en las librerías oficiales de KiCad ni en `lib/`. Pedido al usuario: **MPN LMR38010SQDDARQ1 / LMR38010SDDAR, encapsulado HSOIC-8 PowerPAD (TI DDA0008B)**. Va en `lib/vendor/LMR38010SQDDARQ1/` o en `lib/easyeda2kicad/`. Opción: easyeda2kicad con LCSC C5219310.
-  - Del import solo se usa el símbolo. La huella será la oficial con vías térmicas.
-- **KiCad estaba abierto** durante el turno: el usuario guardó a las 21:24 cambios de layout en `70_output_ch`, que siguen sin commit.
-  - Mis ediciones de las hojas 20/30/40/50/60/80 y la raíz se deshicieron (`git checkout`). El disco quedó como HEAD más los cambios del usuario en la hoja 70.
-  - Se aplican de nuevo con KiCad cerrado. El script es reproducible.
+## Hoja 20 (`20_buck_5v`): aplicada (2026-10-27)
+- Opción B aplicada en toda la jerarquía:
+  - `sheets/20_isolation.kicad_sch` → `sheets/20_buck_5v.kicad_sch` (`git mv`), sin pines jerárquicos.
+  - Se quitaron PS201, U202 (ISO7763), U201 (TPS7A1650) y sus pasivos.
+  - U201 nuevo: LMR38010 con los componentes de la tabla de abajo.
+  - Todas las hojas: GND_ISO → GND_VEH y +5V_ISO → +5V_VEH.
+  - Raíz: DO1_EN, DO2_EN, DO1_DIAG, DO2_DIAG y PWR_FLT_N van directo entre las hojas 40, 70 y 10 (las etiquetas `VEH_*` de esas señales se renombraron).
+  - Hoja 10: R111 → +3V3_D, C109 = 100 nF, C105 `DNP = PROTO`.
+- **Símbolo U201:** `INCLI-VA_easyeda:LMR38010SDDAR` (easyeda2kicad, LCSC C5219310), registrado en `sym-lib-table`.
+  - Coincide pin por pin con la tabla 6-1 del datasheet.
+  - Ajustes sobre el import:
+    - Tipos de pin: GND/VIN/EP power_in, EN/FB input, RT/BOOT passive, PG open_collector, SW output.
+    - Huella → la oficial con vías térmicas.
+    - Fabricante → "Texas Instruments".
+- **Campos de U201:** `MPN = LMR38010SQDDARQ1`, `MPN_PROTO = LMR38010SDDAR`, `LCSC_PROTO = C5219310`.
+- **Se quitó un PWR_FLAG suelto en GND_VEH** (#FLG123 + #PWR124, hoja 10): chocaba con GND1 del ADM3055E, ahora en la misma masa.
+- **Textos actualizados** en las hojas 30, 40, 50 y 80 y en la raíz.
+  - Hoja 40, J402/USB: ahora dice que no hay aislamiento. **En el vehículo, la PC comparte masa con la placa:** usar un aislador USB/UART o una laptop a batería.
+- Los cambios de layout del usuario en `70_output_ch` (hechos en KiCad, 21:24) entran en el mismo commit.
 
 **Huella:** `Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.95x4.9mm_Mask2.71x3.4mm_ThermalVias` (oficial). Comparada con el DDA0008B del datasheet:
 - Cobre del EP: 2.95 × 4.9 mm. Máscara: 2.71 × 3.4 mm. Vías: 6 × 0.2 mm, igual que TI.
@@ -163,20 +175,12 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Arranque en frío de 12 V (de 12 a 6 V): 54 mJ, que dan ~36 ms a 1.5 W o ~108 ms a 0.5 W.
 
 ## Falta
-- [ ] **Hoja 20 → opción B:** diseño en "Hoja 20: diseño listo". Esperando el símbolo del LMR38010 y que KiCad esté cerrado. Pasos:
-  - Quitar PS201, U202, U201 y sus pasivos.
-  - Buck de +VPROT a 5 V.
-  - Unificar masas y rieles en toda la jerarquía: GND_ISO → GND_VEH y +5V_ISO → +5V_VEH (el +5V_VEH del LDO desaparece).
-  - DO1_EN y DO2_EN del MCU directo a las hojas 70 (entrada EN de 3.3 V). DIAG directo al MCU.
-  - VEH_PWR_FLT_N directo al MCU. R111 (pull-up de FLT, hoja 10) pasa de +5V_VEH a +3V3_D.
-  - Quitar R201–R204: ya los reemplazan R711 y R703 en la hoja 70.
-  - Actualizar el texto de las hojas 10, 30 y 40 que mencionan el aislamiento y la barrera 1.
 - [ ] **`.kicad_dru` y red del pad 25 de U101:** próximo paso del usuario, antes de tocar el PCB.
 - [ ] **`80_supervision`:** pendiente.
   - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
   - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.
   - VAR_ID0/1 → IO4/IO5; LED_G/LED_R ← IO6/IO7.
-- [ ] **Huellas importadas sin revisar** (regla de `AGENTS.md`): FUSE-SMD_L6.1-W2.5-1 (F101), PWRM-TH_URBXXXXYMD_10WR3 (PS201; sale con la opción B) y HVSSOP-8 (TPS7A1650; sale con la opción B).
+- [ ] **Huellas importadas sin revisar** (regla de `AGENTS.md`): FUSE-SMD_L6.1-W2.5-1 (F101). Con la opción B, PWRM-TH_URBXXXXYMD_10WR3 y HVSSOP-8 ya no se usan: ¿se borran de `lib/INCLI-VA.pretty`?
   - Las tres están en `lib/INCLI-VA.pretty` sin descripción de fuente.
   - F101: comparar con el land pattern de Bourns y documentar la fuente.
 - [ ] **Limpieza del repositorio:** `fp-lib-table.bak` y `lib/Connector_Phoenix_MSTB.pretty.bak/`.
@@ -191,15 +195,15 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
     - Unir las 7 redes `unconnected-(U101-EP-Pad25)` en una sola.
     - Ver la estimación de espacio (100 × 70 mm).
 
-Estado del ERC al 2026-10-27 (después de este turno):
+Estado del ERC al 2026-10-27 (después de la opción B):
 
 | Hoja | Violaciones |
 |---|---|
-| Raíz | 7 errores (label_dangling de 80) + 18 avisos |
-| 20_isolation | 4 avisos (pines "unspecified" de PS201; desaparecen con la opción B) |
-| 60_can | 1 error: +5V_ISO sin fuente declarada (PS201 tiene pines "unspecified"); se resuelve con el buck |
-| 80_supervision | 2 errores (hoja vacía) |
-| 10, 30, 40, 50, 70 | 0 |
+| Raíz | 7 errores `label_dangling` + 18 avisos `isolated_pin_label`: señales de 80_supervision (WDI, WD_EN, MCU_RST_N, VAR_ID0/1, LED_G/R), que esa hoja todavía no usa |
+| 80_supervision | 2 errores (hoja vacía: símbolos de potencia sin conectar) |
+| 10, 20, 30, 40, 50, 60, 70 (DO1 y DO2) | 0 |
+
+`sch_visual_qa` en 20_buck_5v: 1 aviso menor (TP201 junto a su símbolo de potencia).
 
 ## Decisiones del usuario aún abiertas
 Preguntas anteriores que siguen sin respuesta (las de 60_can y BOM ya están resueltas arriba).
@@ -239,6 +243,14 @@ Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` 
 - Variante estándar: U503 no está montado; no inicializarlo (leer VAR_ID antes de tocar CS_ROT).
 
 ## Pendientes de BOM
+- [ ] **C105 (PROD)** (pedido del usuario, 2026-10-27): electrolítico **SMD** automotriz **AEC-Q200**, **≥ 50 V**, 1000–2200 µF, 105–125 °C, en versión **resistente a vibración** (con terminales extra de anclaje), con MPN.
+  - Hoy: huella `Capacitor_SMD:CP_Elec_16x17.5` y MPN pendiente.
+  - Al elegirlo, revisar que la huella coincida con su land pattern y que las terminales de anclaje tengan pads.
+  - Revisar el inrush con C109 = 100 nF y la ESR/ripple.
+- [ ] **R102** (pedido del usuario, 2026-10-27): resistencia **anti-pulso en el mismo encapsulado 2512**, si aguanta el pulso del load dump sin suprimir.
+  - Pulso: ~2 W durante 350 ms (0.68–0.74 J rectangular) con 85 °C de temperatura inicial (REVISION_CODEX I2).
+  - Comparar con la curva de pulso único del fabricante, por ejemplo series anti-surge 2512.
+  - Si ninguna 2512 alcanza, proponer otra opción antes de cambiar la huella.
 - [ ] **Compra de sensores:**
   - SCL3300-D01 y AS5147U-HTSM: sin stock en LCSC → comprar en DigiKey o Mouser.
   - ASM330LHHTR: con stock en LCSC (C459826).

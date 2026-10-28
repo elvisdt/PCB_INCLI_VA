@@ -1031,240 +1031,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:+5V_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "+5V_ISO"
-				(at 0 3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Salida del DC-DC aislado (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+5V_ISO_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+5V_ISO_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+5V_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "INCLI-VA:GND_ISO"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "GND_ISO"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: Masa lógica aislada (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "GND_ISO_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_ISO_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(hide yes)
-					(name "GND_ISO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Regulator_Linear:LP5907MFX-3.3"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1784,6 +1550,240 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "INCLI-VA:GND_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND_VEH"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: Masa del vehículo (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_VEH_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_VEH_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "INCLI-VA:+5V_VEH"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5V_VEH"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 5 V lado A del aislador (dominio VEH)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5V_VEH_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5V_VEH_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+5V_VEH"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "MONITOREO  → ADC1 del ESP32-S3"
 		(exclude_from_sim no)
@@ -1797,7 +1797,7 @@
 		)
 		(uuid "06e41b16-5aa7-4286-ba97-856c8cbbd06b")
 	)
-	(text "LDO  +5V_ISO → +3V3_A  (sensores)"
+	(text "LDO  +5V_VEH → +3V3_A  (sensores)"
 		(exclude_from_sim no)
 		(at 82.55 180.34 0)
 		(effects
@@ -1809,7 +1809,7 @@
 		)
 		(uuid "32490f9e-eb8d-4333-b37e-6aa585ea5ade")
 	)
-	(text "BUCK  +5V_ISO → +3V3_D"
+	(text "BUCK  +5V_VEH → +3V3_D"
 		(exclude_from_sim no)
 		(at 72.39 81.28 0)
 		(effects
@@ -1821,7 +1821,7 @@
 		)
 		(uuid "912e19e9-b93a-456a-9699-231f6b44b668")
 	)
-	(text "BLOQUE 30 — REGULACIÓN  [dominio ISO]\n\nEntrada: +5V_ISO (PS1, hoja 20).  Salidas: +3V3_D (buck U301) y +3V3_A (LDO U302).  Interfaz: VMON_5V, VMON_3V3 (out, a ADC1).\n\nU301  TPS62A02QDRLRQ1, 2.2 MHz, PSM.  L301 1 µH XAL4020-102MEC (Isat 8.7 A).\n      ΔIL = 3.3·(1−3.3/5) / (1 µH·2.2 MHz) = 0.51 A pp;  pico a 0.68 A de carga ≈ 0.94 A  (límite HS ≥ 2.7 A).\n      FB: R303 453k / R304 100k → 0.6·(1 + 4.53) = 3.318 V ±1.5 %.  C303 10 pF = C_FF de TI para 3.3 V.\n      C_OUT ≤ 47 µF en todo +3V3_D: C304 22 µF + módulo 22 µF + 100 nF (40_mcu) + ~0.5 µF de desacoples ≈ 44.6 µF.\nU302  LP5907QMFX-3.3Q1 (< 6.5 µVrms).  FB301 separa +3V3_A del rizado del buck en +5V_ISO.\nVMON: R305/R306 → 1.66 V a 5 V;  R307/R308 → 1.65 V a 3.3 V;  C309/C310 100 nF.\n\nPresupuesto (pico, WiFi TX):  +3V3_D 521 mA ×1.3 = 0.68 A  |  +3V3_A 18 mA ×1.3 = 25 mA  |  +5V_ISO 3.35 W ×1.5 = 5.0 W\nLayout: C301/C302 pegados a VIN-GND de U301; lazo SW–L301–C304 mínimo; nodo FB corto y lejos de SW."
+	(text "BLOQUE 30 — REGULACIÓN\n\nEntrada: +5V_VEH (buck LMR38010, hoja 20_buck_5v).  Salidas: +3V3_D (buck U301) y +3V3_A (LDO U302).  Interfaz: VMON_5V, VMON_3V3 (out, a ADC1).\n\nU301  TPS62A02QDRLRQ1, 2.2 MHz, PSM.  L301 1 µH XAL4020-102MEC (Isat 8.7 A).\n      ΔIL = 3.3·(1−3.3/5) / (1 µH·2.2 MHz) = 0.51 A pp;  pico a 0.68 A de carga ≈ 0.94 A  (límite HS ≥ 2.7 A).\n      FB: R303 453k / R304 100k → 0.6·(1 + 4.53) = 3.318 V ±1.5 %.  C303 10 pF = C_FF de TI para 3.3 V.\n      C_OUT ≤ 47 µF en todo +3V3_D: C304 22 µF + módulo 22 µF + 100 nF (40_mcu) + ~0.5 µF de desacoples ≈ 44.6 µF.\nU302  LP5907QMFX-3.3Q1 (< 6.5 µVrms).  FB301 separa +3V3_A del rizado del buck en +5V_VEH.\nVMON: R305/R306 → 1.66 V a 5 V;  R307/R308 → 1.65 V a 3.3 V;  C309/C310 100 nF.\n\nPresupuesto (pico, WiFi TX):  +3V3_D 521 mA ×1.3 = 0.68 A  |  +3V3_A 18 mA ×1.3 = 25 mA  |  +5V_VEH 3.35 W ×1.5 = 5.0 W\nLayout: C301/C302 pegados a VIN-GND de U301; lazo SW–L301–C304 mínimo; nodo FB corto y lejos de SW."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -3301,7 +3301,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 189.23 109.22 0)
 		(unit 1)
 		(body_style 1)
@@ -3322,7 +3322,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 189.23 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3378,7 +3378,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 229.87 109.22 0)
 		(unit 1)
 		(body_style 1)
@@ -3399,7 +3399,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 229.87 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3455,7 +3455,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 80.01 91.44 0)
 		(unit 1)
 		(body_style 1)
@@ -3476,7 +3476,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 80.01 87.63 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3532,7 +3532,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 138.43 111.76 0)
 		(unit 1)
 		(body_style 1)
@@ -3553,7 +3553,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 138.43 115.57 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3859,7 +3859,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 95.25 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -3880,7 +3880,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 95.25 105.41 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4186,7 +4186,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 168.91 119.38 0)
 		(unit 1)
 		(body_style 1)
@@ -4207,7 +4207,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 168.91 123.19 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4386,7 +4386,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 156.21 200.66 0)
 		(unit 1)
 		(body_style 1)
@@ -4407,7 +4407,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 156.21 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4463,7 +4463,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 356.87 165.1 0)
 		(unit 1)
 		(body_style 1)
@@ -4484,7 +4484,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 356.87 168.91 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4662,7 +4662,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 85.09 190.5 0)
 		(unit 1)
 		(body_style 1)
@@ -4683,7 +4683,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 85.09 186.69 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4837,7 +4837,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 231.14 103.51 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5063,7 +5063,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 318.77 165.1 0)
 		(unit 1)
 		(body_style 1)
@@ -5084,7 +5084,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 318.77 168.91 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5484,7 +5484,7 @@
 				)
 			)
 		)
-		(property "Notes" "EN de U301 a +5V_ISO: el buck arranca con el riel (EN no puede quedar flotante, TI)."
+		(property "Notes" "EN de U301 a +5V_VEH: el buck arranca con el riel (EN no puede quedar flotante, TI)."
 			(at 115.57 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -5543,7 +5543,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 127 88.27 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5894,7 +5894,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 138.43 203.2 0)
 		(unit 1)
 		(body_style 1)
@@ -5915,7 +5915,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 138.43 207.01 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6093,7 +6093,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 105.41 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -6114,7 +6114,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 105.41 105.41 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6255,7 +6255,7 @@
 				)
 			)
 		)
-		(property "Notes" "Aísla la entrada del LDO del rizado que el buck inyecta en +5V_ISO. 1.4 A, ~25 mA de carga. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "Aísla la entrada del LDO del rizado que el buck inyecta en +5V_VEH. 1.4 A, ~25 mA de carga. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
 			(at 99.06 190.5 0)
 			(hide yes)
 			(show_name no)
@@ -6370,7 +6370,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 346.71 166.37 0)
 		(unit 1)
 		(body_style 1)
@@ -6391,7 +6391,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 346.71 170.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6447,7 +6447,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 308.61 166.37 0)
 		(unit 1)
 		(body_style 1)
@@ -6468,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 308.61 170.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6524,7 +6524,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:GND_ISO")
+		(lib_id "INCLI-VA:GND_VEH")
 		(at 110.49 200.66 0)
 		(unit 1)
 		(body_style 1)
@@ -6545,7 +6545,7 @@
 				)
 			)
 		)
-		(property "Value" "GND_ISO"
+		(property "Value" "GND_VEH"
 			(at 110.49 204.47 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6601,7 +6601,7 @@
 		)
 	)
 	(symbol
-		(lib_id "INCLI-VA:+5V_ISO")
+		(lib_id "INCLI-VA:+5V_VEH")
 		(at 308.61 142.24 0)
 		(unit 1)
 		(body_style 1)
@@ -6622,7 +6622,7 @@
 				)
 			)
 		)
-		(property "Value" "+5V_ISO"
+		(property "Value" "+5V_VEH"
 			(at 308.61 138.43 0)
 			(show_name no)
 			(do_not_autoplace no)
