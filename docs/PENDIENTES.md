@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Codex (H5 retirado del esquemático; ERC 0 errores/1 aviso conocido; cierre para revisión del usuario y push solicitado).
+Última actualización: 2026-10-28, Claude Code (revisión del cierre de Codex: esquemático + propuesta 100 × 100; sin cambios de diseño).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -318,9 +318,24 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Hoja raíz exportada por KiCad y revisada visualmente: H1–H4 y nota correctos, sin solapes nuevos. **`sch_visual_qa` no está disponible** en el catálogo de herramientas ni como ejecutable; esta revisión manual no equivale a ejecutar esa herramienta.
 - El usuario solicita commit final y push para revisar en detalle esquemático y PCB. Comparar la raíz con **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, que ya tiene 185 huellas, cuatro fijaciones y TP en Bottom. La placa principal y la propuesta 120 × 80 siguen siendo referencias previas, con H5; no se cambiaron en este cierre del esquemático.
 
+## Revisión del cierre de Codex — Claude Code, 2026-10-28
+Solo verificación; no se editó esquemático ni PCB.
+- **Esquemático:** ERC 0 errores / 1 aviso conocido (`isolated_pin_label` U101_RTN). `sch_visual_qa` raíz: PASS (solo INFO: falta "company" en el cajetín). 0 etiquetas globales; KW45 fuera de la jerarquía. Footprint/MPN/Manufacturer/Datasheet completos en los 162 componentes de BOM. Todo pasivo que no es 0603 tiene justificación en Notes. El commit `53115ad` solo quita H5 y cambia la nota.
+- **Propuesta 100 × 100:** DRC 0 errores, 1 aviso U401, 396 sin rutear. **Paridad con el esquemático: 0** (probada en una copia con la propuesta como PCB del proyecto). Courtyards ≥ 1 mm en la misma cara. U101 pad 25 = U101_RTN; `.kicad_dru` y reglas de `.kicad_pro` iguales a las del principal.
+- **Observaciones de ubicación para la siguiente iteración** (distancia borde de pad a pin):
+  - U101: C108 (CAP) 12 mm, C102 (VS) 7 mm, C103 23 mm, C110 (TMR) 20 mm → acercarlos al QFN.
+  - U201 LMR38010: C202 a VIN 3.1 mm, C201 4.5 mm, L201 a SW 3.8 mm → cerrar el lazo caliente (C202 pegado a VIN/GND).
+  - U601 ADM3055E: C601–C610 entre 1.6 y 7 mm por lado → no cumple el ≤ 2 mm de ADI (ya listado).
+  - Sensores U501/U502/U503 en el centro de la luz de 90 mm entre H1–H4 (sin H5): es la zona de mayor flexión bajo vibración. Evaluar rigidez o un apoyo cercano que no choque con el eje ROT.
+  - SW402 (pulsador) junto a U502: los golpes al pulsar llegan a la IMU; conviene alejarlo.
+  - J401 queda ~1 mm dentro del borde; definir si el USB debe asomar fuera de la caja (pregunta 18).
+  - H4 (tornillo M3) junto al keep-out de antena; preferir separador plástico o alejarlo.
+  - TP: faltan los CS de SPI y el lado bus del CAN (medible en J1); TP201 y TP301 están ambos en +5V_VEH.
+- **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
+
 ## Falta
 - [x] Retirar H5 y actualizar la nota de fijaciones en la raíz; repetir ERC y revisión visual manual.
-- [ ] Ejecutar `sch_visual_qa` de la raíz cuando esté disponible.
+- [x] Ejecutar `sch_visual_qa` de la raíz: PASS (Claude Code, 2026-10-28).
 - [ ] Al adoptar la propuesta 100 × 100 como PCB principal, sustituir la base anterior y comprobar paridad completa; H5 ya no está en el esquemático ni en la propuesta vigente.
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
 - [ ] Afinar desacoples/lazos/retornos y mecánica de la propuesta 100 × 100; obtener visto bueno de ubicación **antes de rutear**.
