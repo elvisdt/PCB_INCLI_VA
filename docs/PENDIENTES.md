@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (criterio de producción, decisiones del usuario, 60_can, 70_output, 10_power_input, campo DNP).
+Última actualización: 2026-10-27, Claude Code (decisiones de la hoja 20; diseño del buck listo, bloqueado por el símbolo del LMR38010 y por KiCad abierto).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -18,15 +18,17 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 
 ## Decisiones del usuario (2026-10-27)
 1. **Load dump:** se diseña para load dump **suprimido** (ISO 16750-2 prueba B; 24 V: ≤ 58 V). Se mantiene el TVS de entrada D102 para ISO 7637 (pulso 1).
-   - El usuario pidió dejar huella DNP para un TVS de entrada más grande, por si hay vehículos sin supresión. **No se agregó; queda a confirmar.** La entrada ya bloquea 202 V sin TVS: Q101 es de 250 V, D101 de 400 V y C101 de 450 V. Un TVS que recorte un load dump sin suprimir necesita encapsulado DO-218 (SM8S) y unos 150 mm² de placa. Detalle en "Máximos de la entrada".
-2. **R109 = 1.82 k (corte por OV a 34.2 V): aprobado, pero no aplicado. Pendiente de confirmar** (ver "Abierto").
-3. **Opción B, no aislada: aprobada.** Se quitan PS201, U202 (ISO7763) y U201 (TPS7A1650), y entra un buck de 60–100 V de +VPROT a 5 V. El aislamiento queda solo en el CAN (ADM3055E).
-   - El LMR16010 se descarta (sin stock, 12 semanas).
-   - Candidatos en "Abierto"; falta confirmar el stock antes de rehacer la hoja 20.
+   - **Sin TVS de entrada grande** (decisión final del usuario): la entrada ya bloquea 202 V (Q101 250 V, D101 400 V, C101 450 V). Detalle en "Máximos de la entrada".
+2. **R109 queda en 1.62 k** (corte por OV a 38.4 V). Decisión final del usuario: con el buck de 80 V ya no hace falta bajarlo.
+3. **Opción B, no aislada: aprobada.** Se quitan PS201, U202 (ISO7763) y U201 (TPS7A1650), y entra un buck de +VPROT a 5 V. El aislamiento queda solo en el CAN (ADM3055E).
+   - **Buck: TI LMR38010SQDDARQ1** (80 V, 1 A, PFM + spread spectrum, AEC-Q100, HSOIC-8 PowerPAD DDA). El usuario confirma el stock.
+   - Si la producción termina en JLCPCB, se revisa la disponibilidad más adelante.
+   - Huella: pad expuesto con vías térmicas, soldable con aire caliente.
+8. **C105:** DNP en PROTO y montado en PROD (hold-up para load dump y arranque en frío). De acuerdo, con dos condiciones (ver "Hoja 20: diseño listo").
 4. **60_can: aprobado y aplicado** (ver "Hecho en este turno").
 5. **DO mínima: aprobada y aplicada.** El latch y el diagnóstico quedan como huellas DNP.
 6. **J1 y J2:** Phoenix MSTB 2,5 de 5.08 mm con brida roscada (GF). **Aplicado.**
-7. **C105:** se queda como huella DNP (función en "Hecho en este turno").
+7. **C105:** reemplazada por la decisión 8.
 
 ## Hecho en este turno (2026-10-27)
 - **`60_can`** (ADM3055E, datasheet ADI Rev. D, tablas 10 y 12):
@@ -80,25 +82,62 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
 - Con load dump **sin suprimir** (202 V), la entrada sigue dentro de valores (Q101 250 V, D101 400 V, C101 450 V, R108/R112 ~101 V).
 - La única duda abierta con 202 V es la sobrecarga de pulso de R102: 2 W durante 350 ms (REVISION_CODEX I2).
 
-## Abierto (necesito respuesta)
-- **A1. Buck de la opción B (hoja 20).** No pude leer el stock en vivo: las páginas de LCSC y DigiKey lo cargan con JavaScript. Las cifras de abajo son capturas de buscadores. Hay que confirmarlas en las páginas:
-  - **TI LM5164** (100 V, 1 A, HSOIC-8 PowerPAD, COT):
-    - LCSC C477928 (LM5164DDAR): el listado existe; una captura muestra 12 318 unidades.
-    - DigiKey LM5164DDAR: sin stock, con backorder. La versión Q1 (LM5164QDDARQ1) muestra datos contradictorios.
-  - **TI LMR38010** (80 V, 1 A, HSOIC-8 PowerPAD, compensación interna, spread spectrum, PG):
-    - DigiKey LMR38010SQDDARQ1 (Q1): captura con 4 307 unidades, US$ 4.73 la unidad.
-    - Mouser LMR38010FDDAR: ~2 300 unidades.
-    - LCSC: no encontré el listado.
-  - Los dos usan la misma huella (8-HSOIC PowerPAD, DDA), pero **no tienen el mismo pinout**: no se pueden intercambiar sin tocar el esquemático.
-  - Recomendación: LMR38010-Q1 como principal (automotriz, menos pasivos, spread spectrum para CISPR 25) y LM5164 como alternativa de LCSC.
-- **A2. R109.** El corte a 34.2 V se pidió por el máximo de 36 V del URB2405 (opción A). Con la opción B, el buck aguanta 80–100 V, así que conviene **dejar R109 = 1.62 k (38.4 V)**:
-  - La placa sigue funcionando en la prueba de sobretensión de 36 V (24 V) y en el load dump suprimido de 12 V (35 V).
-  - Solo corta en el load dump de 24 V (58 V).
-  - C106 (50 V) mantiene margen.
-- **A3. TVS de entrada grande DNP:** ¿se agrega igual (DO-218, ~150 mm²), sabiendo que la entrada ya bloquea 202 V? Ver la decisión 1.
+## Limitaciones conocidas
+- **Salidas DO1/DO2 con load dump sin suprimir (24 V, 202 V): no quedan protegidas.**
+  - La bobina del relé externo queda conectada a la batería. Con Q701 apagado, el drenador sigue a la batería.
+  - D701 (SMAJ58A) tendría que absorber ~8 J (≈ 0.34 A × 66 V × 350 ms) y fallaría en corto, lo que deja el relé activado.
+  - Para esos vehículos haría falta un MOSFET de ≥ 250 V (otra huella) o supresión en el propio relé.
+- El latch de sobrecorriente de las DO está como DNP: en el prototipo, un corto de la carga a +V no está limitado.
+
+## Hoja 20: diseño listo, falta aplicarlo
+**Bloqueos:**
+- **Símbolo del LMR38010:** no existe en las librerías oficiales de KiCad ni en `lib/`. Pedido al usuario: **MPN LMR38010SQDDARQ1, encapsulado HSOIC-8 PowerPAD (TI DDA0008B)**. Va en `lib/vendor/LMR38010SQDDARQ1/` o en `lib/easyeda2kicad/`.
+- **KiCad estaba abierto** durante el turno: el usuario guardó a las 21:24 cambios de layout en `70_output_ch`, que siguen sin commit.
+  - Mis ediciones de las hojas 20/30/40/50/60/80 y la raíz se deshicieron (`git checkout`). El disco quedó como HEAD más los cambios del usuario en la hoja 70.
+  - Se aplican de nuevo con KiCad cerrado. El script es reproducible.
+
+**Huella:** `Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.95x4.9mm_Mask2.71x3.4mm_ThermalVias` (oficial). Comparada con el DDA0008B del datasheet:
+- Cobre del EP: 2.95 × 4.9 mm. Máscara: 2.71 × 3.4 mm. Vías: 6 × 0.2 mm, igual que TI.
+- Pads: 1.775 × 0.6 mm centrados a ±2.5625 mm; TI pide 1.55 × 0.6 mm a ±2.7 mm. El borde exterior es igual (~3.45 mm); los pads de la huella llegan 0.25 mm más hacia el centro. Sirve para soldar a mano.
+- Con aire caliente: estañar el EP y calentar desde abajo; las vías dejan llegar el calor y el estaño.
+
+**Componentes** (TI SNVSC73B, tablas 8-1 y 9-1, sección 9.2): +VPROT (6.5–38.4 V) → 5.02 V / 1 A a 400 kHz.
+
+| Ref. | Valor | MPN | Notas |
+|---|---|---|---|
+| U201 | LMR38010SQDDARQ1 | TI | EN y VIN → +VPROT; PG sin uso. Pin a pin con el LMR38020 (2 A) |
+| C201 | 4.7 µF 100 V 1210 | CGA6M3X7S2A475K200AB (TDK) | C_IN (TI: ≥ 4.7 µF). A verificar |
+| C202 | 100 nF 100 V 0603 | GCM188R72A104KA64D | Bypass de VIN, pegado a los pines 3 y 1 |
+| C203 | 100 nF 0603 | GCM188R71H104KA57D | C_BOOT (pines 7 y 8) |
+| L201 | 33 µH | XAL6060-333MEC (Coilcraft) | Isat 3.7 A > 1.9 A (límite HS máx.); DCR 105 mΩ; AEC-Q200; huella oficial `L_Coilcraft_XAL6060-XXX` |
+| C204–C206 | 3 × 22 µF 10 V 1206 | GCM31CR71A226KE02L | C_OUT (TI: 3 × 22 µF a 5 V / 400 kHz). A verificar |
+| R201 / R202 | 100 k / 24.9 k | AC0603FR-07100KL / AC0603FR-0724K9L | VOUT = 1 V × (1 + 100k/24.9k) = 5.02 V |
+| R203 | 64.9 k | AC0603FR-0764K9L | RT → 400 kHz. Con D = 0.13 a 38.4 V, el tON es 325 ns > tON-min 131 ns |
+| TP201 | +5V_VEH | — | Más un PWR_FLAG en +5V_VEH |
+
+- Pico de carga en +5V_VEH: unos 0.7 A, sumando TPS62A02 (WiFi), ADM3055E (180–260 mA), LP5907 y los buffers.
+- Disipación de U201: ~0.4 W, que con θJA de 42.9 °C/W da unos +17 °C.
+
+**Cambios en las demás hojas al aplicar la opción B:**
+- **Hoja 20:** se renombra a `20_buck_5v` (archivo y nombre de hoja) y se quitan todos sus pines jerárquicos.
+- **Raíz:**
+  - Etiquetas `VEH_DO1_EN`, `VEH_DO2_EN`, `VEH_DO1_DIAG`, `VEH_DO2_DIAG` y `VEH_PWR_FLT_N` → `DO1_EN`, `DO2_EN`, `DO1_DIAG`, `DO2_DIAG` y `PWR_FLT_N` (directo entre las hojas 40, 70 y 10).
+  - Se quitan los cables y etiquetas de los pines de la hoja 20.
+- **Todas las hojas:** GND_ISO → GND_VEH y +5V_ISO → +5V_VEH (símbolos, caché y textos).
+- **Hoja 10:**
+  - R111 (pull-up de FLT) pasa de +5V_VEH a +3V3_D.
+  - **C109 (C_dVdT) pasa de 10 nF a 100 nF** (GCM188R72A104KA64D).
+  - C105 queda con `DNP = PROTO`.
+
+**C105 en producción: de acuerdo, con dos condiciones.**
+1. **Inrush (obligatorio).** Con C105 montado, la capacidad en VOUT es ~1.07 mF. Con C109 en 10 nF: Iinrush = 1.07 mF × 55 µA / 10 nF ≈ **5.9 A**. El breaker (1 A, TMR ~1 ms con C110 de 68 nF) dispararía en cada arranque y la placa no encendería nunca.
+   - Con C109 = 100 nF: 0.59 A con C105 y ~34 mA sin C105. Arranque de ~60 ms. Funciona igual con o sin C105.
+2. **Mecánica y MPN.** Un electrolítico radial de 16 mm en un chasis con vibración necesita adhesivo (o un encapsulado con base antivibración) y ser automotriz (105–125 °C, AEC-Q200). El MPN sigue pendiente.
+- Hold-up con 1000 µF (de 28 a 6 V): 0.37 J. Alcanza ~0.7 s a 0.5 W (solo BLE), suficiente para los 350 ms del load dump. Con WiFi a 1.5 W alcanza ~0.25 s.
+- Arranque en frío de 12 V (de 12 a 6 V): 54 mJ, que dan ~36 ms a 1.5 W o ~108 ms a 0.5 W.
 
 ## Falta
-- [ ] **Hoja 20 → opción B** (cuando se resuelvan A1 y A2):
+- [ ] **Hoja 20 → opción B:** diseño en "Hoja 20: diseño listo". Esperando el símbolo del LMR38010 y que KiCad esté cerrado. Pasos:
   - Quitar PS201, U202, U201 y sus pasivos.
   - Buck de +VPROT a 5 V.
   - Unificar masas y rieles en toda la jerarquía: GND_ISO → GND_VEH y +5V_ISO → +5V_VEH (el +5V_VEH del LDO desaparece).
@@ -106,6 +145,7 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
   - VEH_PWR_FLT_N directo al MCU. R111 (pull-up de FLT, hoja 10) pasa de +5V_VEH a +3V3_D.
   - Quitar R201–R204: ya los reemplazan R711 y R703 en la hoja 70.
   - Actualizar el texto de las hojas 10, 30 y 40 que mencionan el aislamiento y la barrera 1.
+- [ ] **`.kicad_dru` y red del pad 25 de U101:** próximo paso del usuario, antes de tocar el PCB.
 - [ ] **`80_supervision`:** pendiente.
   - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
   - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.
