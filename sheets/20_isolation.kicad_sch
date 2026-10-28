@@ -3473,6 +3473,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 160.02 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ed93a49c-73fd-4328-9d49-17425036eefe")
 		)
@@ -3577,6 +3588,17 @@
 			)
 		)
 		(property "Notes" "Desacople VCC2 de U202 (TI: 0.1 uF junto al pin)."
+			(at 246.38 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 246.38 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -3778,6 +3800,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 48.26 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c58895f3-fd46-4c83-bc3a-523dbe90abfa")
 		)
@@ -3882,6 +3915,17 @@
 			)
 		)
 		(property "Notes" "Aislador AEC-Q100, 6 canales 3/3, salida por defecto BAJA (F) si falta alimentación o señal del otro lado. Lado 1 (VEH, VCC1 = +5V_VEH): INA-C entradas, OUTD-F salidas. Lado 2 (ISO, VCC2 = +3V3_D). SOIC-16W: fuga y separación > 8 mm, 5 kVrms."
+			(at 205.74 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 205.74 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -4510,6 +4554,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 58.42 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "95d08edf-b4ec-4bdf-bc1b-f6ce1166d93b")
 		)
@@ -4689,6 +4744,17 @@
 			)
 		)
 		(property "Notes" "LDO AEC-Q100 G1, 60 V, 5.0 V fijo, 100 mA. Pad expuesto a GND_VEH (TI SBVS188E tabla 5-1: puede flotar, pero se recomienda al plano de GND). Pines sin uso según SBVS188E rev. E, tabla 5-1: DELAY (7) abierto (\"leave open if the reset function is not needed\"); PG (3) abierto (\"leave open or connect to GND if the power-good function is not needed\"); FB/NC (2) abierto (versión fija: \"can either be left floating or connected to GND\"); NC (6) sin conexión interna. EN (5) a IN (\"If not used, the EN pin can be connected to IN\"; cumple VEN <= VIN). Carga ~17 mA; RthJA 66.2 C/W: 0.39 W a 28 V (+26 C), 0.57 W a 38.4 V (+38 C). Huella oficial con vías en el pad expuesto. LCSC C2832237."
+			(at 86.36 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 86.36 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -4911,6 +4977,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 251.46 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "888d7d2c-6a0e-4df0-8397-ab6c4ed8d312")
 		)
@@ -5092,6 +5169,17 @@
 			)
 		)
 		(property "Notes" "Desacople de alta frecuencia en la entrada de PS201, 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 165.1 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 165.1 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -5370,6 +5458,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 129.54 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "559e7b13-f072-4c58-b346-bd38c9732e72")
 		)
@@ -5548,6 +5647,17 @@
 			)
 		)
 		(property "Notes" "C_OUT de U201 (TI: > 2.2 uF; recomienda 10 uF cerámico). 10 V X7R, 0805 por DC bias a 5 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 109.22 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 109.22 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -5903,6 +6013,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 154.94 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "88c44071-3bc1-476b-81fc-c9e49b400253")
 		)
@@ -6084,6 +6205,17 @@
 			)
 		)
 		(property "Notes" "Desacople VCC1 de U202 (TI: 0.1 uF junto al pin)."
+			(at 165.1 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 165.1 156.21 0)
 			(hide yes)
 			(show_name no)
@@ -6362,6 +6494,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 236.22 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b05c7a9c-3aba-4a87-bcf2-4e9cab6de950")
 		)
@@ -6629,6 +6772,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 207.01 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a1555584-bed6-43cd-892c-26390c1fc4c0")
 		)
@@ -6829,6 +6983,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 175.26 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "cb8a5777-9b39-4561-acdd-1a3ee312bdab")
 		)
@@ -6933,6 +7098,17 @@
 			)
 		)
 		(property "Notes" "C_OUT local de PS201 (+5V_ISO), 10 V X7R 0805 por DC bias. Carga capacitiva máx. del módulo: 1200 uF. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 238.76 85.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 238.76 85.09 0)
 			(hide yes)
 			(show_name no)

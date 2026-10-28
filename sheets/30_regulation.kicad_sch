@@ -2815,6 +2815,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 168.91 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "95c5b278-0a29-466f-9b3a-176667a02521")
 		)
@@ -3006,6 +3017,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 179.07 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0619a16f-f947-4806-94ac-aa5d013a99ca")
 		)
@@ -3120,6 +3142,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 168.91 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2600c2d2-806d-45a0-b0d8-c4a89e70c372")
 		)
@@ -3222,6 +3255,17 @@
 			)
 		)
 		(property "Notes" "LDO AEC-Q100 G1, 250 mA, < 6.5 uVrms, PSRR 82 dB a 1 kHz. Carga ~25 mA (sensores): disipa (5-3.3) x 25 mA = 43 mW. Símbolo oficial LP5907MFX-3.3 (mismo pinout SOT-23-5). MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 138.43 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 138.43 193.04 0)
 			(hide yes)
 			(show_name no)
@@ -3663,6 +3707,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 105.41 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "699235b3-1e9c-4f12-adce-00419a5be917")
 		)
@@ -3767,6 +3822,17 @@
 			)
 		)
 		(property "Notes" "C_IN del LDO (TI: 1 uF cerámico)."
+			(at 110.49 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 110.49 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -3968,6 +4034,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 204.47 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bfcaf81c-431f-4dd1-a06d-d7db57999bb2")
 		)
@@ -4072,6 +4149,17 @@
 			)
 		)
 		(property "Notes" "C_IN del buck, 10 V X7R. 0805 (no 0603) por pérdida de capacitancia por DC bias a 5 V. Pegado a VIN/GND de U301. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 95.25 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 95.25 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -4261,6 +4349,17 @@
 			)
 		)
 		(property "Notes" "1.0 uH +-20 %, Isat 8.7 A, DCR 14.6 mohm máx, AEC-Q200. Isat > límite de corriente de U301 (3.3 A máx) para soportar el corto. TI admite 0.3-1.2 uH efectivos. Huella INCLI-VA:L_Coilcraft_XAL4020_HandSolder: land pattern de Coilcraft Doc 806-4 (rev. 02/25/26, 0.98 x 3.4 mm, centros 2.37 mm) con pads extendidos 1 mm fuera del cuerpo para soldar a mano. En producción volver a Inductor_SMD:L_Coilcraft_XAL4020-XXX."
+			(at 156.21 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 156.21 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -4539,6 +4638,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 214.63 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b9d8130e-2452-4c3d-baf6-8ecd65359c33")
 		)
@@ -4804,6 +4914,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 229.87 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "52ed5cd5-794f-4de4-8b5d-44e1d2940709")
 		)
@@ -4905,6 +5026,17 @@
 			)
 		)
 		(property "Notes" "C_OUT del LDO (TI: >= 1 uF efectivo)."
+			(at 156.21 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 156.21 194.31 0)
 			(hide yes)
 			(show_name no)
@@ -5106,6 +5238,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 214.63 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ba46c7b6-336c-4a4e-8da9-819bade314d1")
 		)
@@ -5205,6 +5348,17 @@
 			)
 		)
 		(property "Notes" "Buck AEC-Q100 G1, 2 A, 2.2 MHz, PSM (bajo consumo con solo BLE). SOT-563 paso 0.5 mm, pines visibles: soldable a mano. Huella oficial KiCad SOT-563 (Texas DRL): filas 1.425 mm y pads 0.35 mm frente a 1.48 mm / 0.30 mm del land pattern TI DRL0006A. LCSC C49259289."
+			(at 138.43 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 138.43 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -5341,6 +5495,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 115.57 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "478e2c4a-7e5b-44e1-ab98-e7617afdae29")
 		)
@@ -5445,6 +5610,17 @@
 			)
 		)
 		(property "Notes" "Punto de prueba (pad, no va al BOM)."
+			(at 125.73 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 125.73 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -5566,6 +5742,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 189.23 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "05bdfbb9-8af5-4b09-a1df-a67090236ce0")
 		)
@@ -5670,6 +5857,17 @@
 			)
 		)
 		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_3V3."
+			(at 356.87 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 356.87 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -5871,6 +6069,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 171.45 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "40be0744-ecb3-44ba-8bbc-3fbbfc07328e")
 		)
@@ -6047,6 +6256,17 @@
 			)
 		)
 		(property "Notes" "Aísla la entrada del LDO del rizado que el buck inyecta en +5V_ISO. 1.4 A, ~25 mA de carga. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 99.06 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 99.06 190.5 0)
 			(hide yes)
 			(show_name no)
@@ -6556,6 +6776,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 308.61 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b5d747be-3e5d-4fed-a07f-be44fc1d2098")
 		)
@@ -6660,6 +6891,17 @@
 			)
 		)
 		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_5V."
+			(at 318.77 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 318.77 158.75 0)
 			(hide yes)
 			(show_name no)
@@ -6784,6 +7026,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 308.61 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "55b38740-6635-4087-86c7-8a922d601348")
 		)
@@ -6898,6 +7151,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 346.71 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "380dbb2e-737d-43c3-af50-e01a97220c33")
 		)
@@ -7002,6 +7266,17 @@
 			)
 		)
 		(property "Notes" "Divisor VMON_3V3: 3.3 V x 1/2 = 1.65 V."
+			(at 346.71 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 346.71 148.59 0)
 			(hide yes)
 			(show_name no)

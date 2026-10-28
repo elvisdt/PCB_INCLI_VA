@@ -5248,6 +5248,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 337.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b43fb060-b5a2-4e6a-8454-6244a1b9b1c5")
 		)
@@ -5364,6 +5375,17 @@
 			)
 		)
 		(property "Notes" "Punto de prueba de CAN_TX (TWAI)."
+			(at 322.58 182.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 322.58 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -5629,6 +5651,17 @@
 			)
 		)
 		(property "Notes" "Desacople bulk del módulo en 3V3 (Espressif). 0805 por DC bias. Parte del presupuesto de 47 uF de +3V3_D (22 uF en C304 + 22 uF aquí + desacoples); no agregar más bulk sin revisar la estabilidad del TPS62A02-Q1. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 190.5 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 190.5 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -5907,6 +5940,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 200.66 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "db1380ec-aa3b-4471-aa81-e6a52e0ad413")
 		)
@@ -6138,6 +6182,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 116.84 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "17913d50-a405-46b7-9215-b2902f383bc9")
 		)
@@ -6250,6 +6305,17 @@
 				)
 			)
 		)
+		(property "DNP" "PROTO,PROD"
+			(at 358.14 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "62e5ca20-a380-43a3-bc2b-805b45d59950")
 		)
@@ -6352,6 +6418,17 @@
 			)
 		)
 		(property "Notes" "Abierto de fábrica. Cerrar solo en el banco, junto con D401, para alimentar +5V_ISO desde USB. Abrir antes de instalar en el vehículo."
+			(at 342.9 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 342.9 109.22 0)
 			(hide yes)
 			(show_name no)
@@ -6553,6 +6630,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 180.34 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c8707aa4-f153-4d93-a2f4-b48144449bc6")
 		)
@@ -6657,6 +6745,17 @@
 			)
 		)
 		(property "Notes" "Punto de prueba de VBUS (no alimenta la placa salvo con D401 + JP401)."
+			(at 350.52 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 350.52 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -6778,6 +6877,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 322.58 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4b74a94b-de6d-4d9c-a11a-9657ad4cb164")
 		)
@@ -6879,6 +6989,17 @@
 			)
 		)
 		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_ISO. Adaptador USB-UART de 3.3 V."
+			(at 330.2 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 330.2 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -6996,6 +7117,17 @@
 			)
 		)
 		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3431 en 80_supervision."
+			(at 106.68 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 106.68 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7197,6 +7329,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 127 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5be4fed7-435b-440a-9db3-3a9e60e89763")
 		)
@@ -7311,6 +7454,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 106.68 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "42eedd39-e103-4272-a4a4-335155c212d8")
 		)
@@ -7415,6 +7569,17 @@
 			)
 		)
 		(property "Notes" "Rd de CC2 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+			(at 317.5 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 317.5 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7770,6 +7935,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 116.84 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b7d9e5ec-6dfd-4dc5-bd36-958df93a84d3")
 		)
@@ -7961,6 +8137,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 127 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0da03212-0902-4353-8c3a-97263a8af913")
 		)
@@ -8139,6 +8326,17 @@
 			)
 		)
 		(property "Notes" "Rd de CC1 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+			(at 302.26 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 302.26 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -8494,6 +8692,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 276.86 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "A1"
 			(uuid "3cbf40db-c98d-47a0-bdb4-1e87affbe78a")
 		)
@@ -8643,6 +8852,17 @@
 			)
 		)
 		(property "Notes" "Punto de prueba de EN (MCU_RST_N)."
+			(at 137.16 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 137.16 111.76 0)
 			(hide yes)
 			(show_name no)

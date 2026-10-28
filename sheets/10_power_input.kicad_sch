@@ -4428,6 +4428,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 133.35 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0a91d9c8-da36-48d4-b98a-ff7b98e9d528")
 		)
@@ -4541,6 +4552,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 189.23 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "56987cba-443c-46b4-9d20-ad430224879a")
 		)
@@ -4644,6 +4666,17 @@
 			)
 		)
 		(property "Notes" "Punto de prueba (pad, no va al BOM)."
+			(at 318.77 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 318.77 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -4840,6 +4873,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 189.23 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "795c7406-c8bb-4b3f-8e5e-751665cc198a")
 		)
@@ -4880,7 +4924,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1000uF DNP"
+		(property "Value" "1000uF"
 			(at 255.27 81.28 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4945,7 +4989,18 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up de la lógica durante el corte por OV (~0.9-2.6 mF). NO MONTADO en el demo; huella reservada. 50 V."
+		(property "Notes" "Hold-up OPCIONAL (huella reservada, DNP): mantiene viva la logica durante el corte por OV del LM74930 (load dump suprimido de 24 V, <= 350 ms) y los huecos de arranque en frio de 12 V (4.5-6 V, 15-40 ms). No hace falta para los pulsos ISO 7637 (rapidos). Sin C105 la placa se reinicia en esos eventos (estado funcional C). 1000-2200 uF / 50 V radial 16 mm."
+			(at 252.73 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" "PROTO,PROD"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5221,6 +5276,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 179.07 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ec733a5d-5ec4-4605-ba0d-14e23afaed56")
 		)
@@ -5484,6 +5550,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 265.43 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "90dab551-24ab-40b9-b9d5-12fed96ddaff")
 		)
@@ -5562,7 +5639,7 @@
 				)
 			)
 		)
-		(property "MPN" "PENDIENTE: Bourns SF-2410FPA-W, 2 A"
+		(property "MPN" "SF-2410FPA200W-2"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5584,7 +5661,18 @@
 				)
 			)
 		)
-		(property "Notes" "Fusible de falla grave (el limitador del LM74930 actúa antes, a 1 A). Necesita >=250 VDC. FALTA HUELLA 2410: no está en las librerías oficiales; pedida al usuario."
+		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella importada con easyeda2kicad (pads 2.0 x 2.8 mm a +-2.5 mm): PENDIENTE comparar con el land pattern del datasheet de Bourns."
+			(at 123.19 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5784,6 +5872,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 158.75 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b170f102-bacb-4d8d-a52e-e9b20d053ea5")
 		)
@@ -5973,6 +6072,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 143.51 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f320ad4b-efaf-48eb-9edb-ac2198572e66")
 		)
@@ -6096,7 +6206,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_5-GF-3.81_1x05_P3.81mm_Vertical_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_5-GF-5,08_1x05_P5.08mm_Horizontal_ThreadedFlange"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6150,7 +6260,18 @@
 				)
 			)
 		)
-		(property "Notes" "Enchufe: MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 250 V / 12 A."
+		(property "Notes" "Header MSTB 2,5/5-GF-5,08 (1776537) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A."
+			(at 100.33 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6511,6 +6632,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 153.67 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "9edfd7b4-6e51-4566-93ca-f4d749b5cf50")
 		)
@@ -6624,6 +6756,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 130.81 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a3742312-2ada-4007-ba29-96b2fd89aeef")
 		)
@@ -6727,6 +6870,17 @@
 			)
 		)
 		(property "Notes" "VQFN-24 aceptado para el demo. Pad expuesto = RTN: dejar FLOTANTE (TI), no conectar a GND. Huella INCLI-VA (corregida desde RGE0024T): paso exacto, pasta 4x0.94 mm, 5 vías a isla aislada en B.Cu (RTN), courtyard +-2.7 mm. LCSC C22428070."
+			(at 209.55 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 209.55 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -6909,6 +7063,17 @@
 			)
 		)
 		(property "Notes" "C_CS (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 219.71 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 219.71 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7239,82 +7404,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 125.73 101.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "80af97b2-3d35-40e4-9e6a-04e36ef0677f")
-		(property "Reference" "#FLG125"
-			(at 125.73 95.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 125.73 97.79 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 125.73 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 125.73 101.6 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "127575f7-9208-403f-a694-1c98e9cfdb82")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
-					(reference "#FLG125")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
 		(at 158.75 170.18 0)
 		(unit 1)
@@ -7498,7 +7587,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MCV_1,5_2-GF-3.81_1x02_P3.81mm_Vertical_ThreadedFlange"
+		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_2-GF-5,08_1x02_P5.08mm_Horizontal_ThreadedFlange"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7509,7 +7598,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.phoenixcontact.com/en-us/products/1776508"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7530,7 +7619,7 @@
 				)
 			)
 		)
-		(property "MPN" "PENDIENTE (header MSTB 2,5/2-GF-5,08)"
+		(property "MPN" "1776508"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7552,7 +7641,18 @@
 				)
 			)
 		)
-		(property "Notes" "Enchufe: MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side, hasta ~250 V). Colocar la protección de 70_output junto a J2."
+		(property "Notes" "Header MSTB 2,5/2-GF-5,08 (1776508) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2."
+			(at 100.33 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7676,6 +7776,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 130.81 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2327b688-d6f0-4795-b4c8-4d6f8fa5a993")
 		)
@@ -7779,6 +7890,17 @@
 			)
 		)
 		(property "Notes" "C_OUT (ex C3). 100 V 105 C AEC-Q200. LCSC C344077."
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 240.03 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7976,6 +8098,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 227.33 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ff9c9333-0045-42a0-9e27-814b216badd9")
 		)
@@ -8079,6 +8212,17 @@
 			)
 		)
 		(property "Notes" "C_CAP entre CAP y VS (bomba de carga)."
+			(at 168.91 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8202,6 +8346,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 189.23 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "af823c35-d7ec-4ed2-800e-e6afb81f216c")
 		)
@@ -8305,6 +8460,17 @@
 			)
 		)
 		(property "Notes" ""
+			(at 113.03 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -8428,6 +8594,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 209.55 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c54183aa-a1bd-4b04-8b14-fe1a5e76361f")
 		)
@@ -8528,6 +8705,17 @@
 			)
 		)
 		(property "Notes" "100 V en 0603. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -8651,6 +8839,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 199.39 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4c309bcb-c344-4230-bce2-0a3b93708869")
 		)
@@ -8764,6 +8963,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 229.87 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "006cb006-5b0f-4968-8868-16e2c01d9b06")
 		)
@@ -8864,6 +9074,17 @@
 			)
 		)
 		(property "Notes" "Corte por OV: 0.6 V x (1 + 102k/1.62k) = 38.4 V."
+			(at 130.81 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 130.81 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -8987,6 +9208,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 113.03 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ca38ff69-02e7-41ee-a0db-1c8845237597")
 		)
@@ -9090,6 +9322,17 @@
 			)
 		)
 		(property "Notes" "C_TMR: breaker ~1 ms, reintento ~1.5 s. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+			(at 148.59 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 148.59 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -9289,6 +9532,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 278.13 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "72a5cf40-b6c3-48b2-bd2d-443e2dffd8b7")
 		)
@@ -9478,6 +9732,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 209.55 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "be1096ca-d8a9-4d66-8fd1-ce2099687b84")
 		)
@@ -9594,6 +9859,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 219.71 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "667e2c53-1bef-448c-a6bb-617cd46c7b10")
 		)
@@ -9694,6 +9970,17 @@
 			)
 		)
 		(property "Notes" "Bloqueo de VS en polaridad inversa (D1 de la ref. TI)."
+			(at 160.02 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 160.02 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -10048,6 +10335,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 133.35 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fc3137df-3424-44eb-a3e9-badf9271d858")
 		)
@@ -10161,6 +10459,17 @@
 				)
 			)
 		)
+		(property "DNP" ""
+			(at 168.91 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8d778399-4117-4d02-a8b5-ae2a09d486b1")
 		)
@@ -10171,82 +10480,6 @@
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
 					(reference "C102")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "INCLI-VA:GND_CAN")
-		(at 125.73 101.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f7603456-21fc-4b1a-b234-916c3b8eee53")
-		(property "Reference" "#PWR126"
-			(at 125.73 108.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND_CAN"
-			(at 125.73 105.41 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 125.73 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 125.73 101.6 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f9922166-6afa-48ac-acfa-4efb6d6ca686")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
-					(reference "#PWR126")
 					(unit 1)
 				)
 			)
@@ -10340,6 +10573,17 @@
 			)
 		)
 		(property "Notes" "Clamp de VS (DZ de TI): ~57-63 V a ~15 mA, por debajo de 70 V (máx. absoluto de VS)."
+			(at 153.67 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
 			(at 153.67 92.71 0)
 			(hide yes)
 			(show_name no)
