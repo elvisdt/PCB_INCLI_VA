@@ -3349,7 +3349,7 @@
 						)
 					)
 				)
-				(pin no_connect line
+				(pin passive line
 					(at 15.24 -13.97 180)
 					(length 2.54)
 					(name "EP"
@@ -6922,7 +6922,7 @@
 				)
 			)
 		)
-		(property "Notes" "VQFN-24 aceptado para el demo. Pad expuesto = RTN: dejar FLOTANTE (TI), no conectar a GND. Huella INCLI-VA (corregida desde RGE0024T): paso exacto, pasta 4x0.94 mm, 5 vías a isla aislada en B.Cu (RTN), courtyard +-2.7 mm. LCSC C22428070."
+		(property "Notes" "VQFN-24 aceptado para el demo. Pad expuesto = RTN: dejar FLOTANTE (TI), no conectar a GND. Huella INCLI-VA (corregida desde RGE0024T): paso exacto, pasta 4x0.94 mm, 5 vías a isla aislada en B.Cu (RTN), courtyard +-2.7 mm. LCSC C22428070. Pin 25 (EP/RTN) -> red U101_RTN: un solo nombre para todos los pads 25 de la huella (EP + vias + isla en B.Cu). NUNCA a GND (TI SNOSDF6, tabla 5-1 y 8.3). Regla en INCLI-VA.kicad_dru."
 			(at 209.55 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -10661,5 +10661,25 @@
 				)
 			)
 		)
+	)
+	(wire
+		(pts
+			(xy 224.79 135.89) (xy 229.87 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0dd1c64f-4721-4a1d-953e-8d8624f9e9a4")
+	)
+	(label "U101_RTN"
+		(at 229.87 135.89 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a6e4456a-3d77-4ea1-a1b0-7aec18511e62")
 	)
 )

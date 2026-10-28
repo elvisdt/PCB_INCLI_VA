@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (opción B aplicada: hoja 20_buck_5v con LMR38010, masas unificadas).
+Última actualización: 2026-10-27, Claude Code (limpieza de librerías, red U101_RTN, INCLI-VA.kicad_dru para JLCPCB, propuesta de la hoja 80).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -174,16 +174,87 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Hold-up con 1000 µF (de 28 a 6 V): 0.37 J. Alcanza ~0.7 s a 0.5 W (solo BLE), suficiente para los 350 ms del load dump. Con WiFi a 1.5 W alcanza ~0.25 s.
 - Arranque en frío de 12 V (de 12 a 6 V): 54 mJ, que dan ~36 ms a 1.5 W o ~108 ms a 0.5 W.
 
+## Reglas de diseño (`INCLI-VA.kicad_dru`) y red del pad 25 (2026-10-27)
+- **Fabricante: JLCPCB**, 2 capas, 1.6 mm, 1 oz. Fuente: https://jlcpcb.com/capabilities/pcb-capabilities (consultado el 2026-10-27).
+
+  | Regla | Valor del proyecto | Mínimo de JLCPCB |
+  |---|---|---|
+  | Pista / espacio | 0.15 / 0.15 mm | 0.10 / 0.10 mm |
+  | Vía | hueco 0.3 mm / Ø 0.6 mm | 0.15 mm (preferido 0.2 mm) |
+  | Hueco de pad | ≥ 0.2 mm | — |
+  | Anillo PTH (hueco > 0.35 mm) | 0.18 mm | 0.18 mm absoluto (0.25 recomendado) |
+  | Hueco a hueco | 0.45 mm | 0.45 mm |
+  | Hueco a cobre | vías 0.2 mm, PTH 0.28 mm | — |
+  | Cobre a borde | 0.5 mm | 0.2 mm |
+  | Serigrafía | texto ≥ 1.0 mm, trazo ≥ 0.15 mm | — |
+
+  - El puente de máscara (0.10 mm) va en Board Setup; no se puede expresar en el `.kicad_dru`.
+- **Reglas especiales:**
+  - **HV de entrada:** VIN_VEH y VBAT_F → 1.25 mm al resto (IPC-2221B tabla 6-1, B2, 171–250 V; pad contra pad excluido).
+  - **Salidas DO** (VEH_DO1/2) → 0.6 mm (B2, 51–100 V).
+  - **+VPROT, VA, C_ID y VOUT** → 0.6 mm entre conductores (B2, 31–50 V); los pads quedan fuera porque U101 es QFN de 0.5 mm.
+  - **Barrera del ADM3055E:** dominio CAN (GND_CAN, BUS_CAN_H/L, V_SOIN, V_SOOUT, GNDISO_CAN, CAN_RS, centro de la terminación) → 2.5 mm al resto.
+    - El aislamiento es funcional, no de seguridad. Con J1 (MSTB de 5.08 mm) no se puede llegar a los 8.3 mm del encapsulado (CLR/CRP del datasheet Rev. D).
+    - Además, ningún relleno puede cruzar el courtyard de U601.
+  - **Anchos (IPC-2152, 1 oz, ΔT 10 °C;** 2 A → 30 mil y 1 A → 10 mil, según la tabla de ejemplo de Altium):
+    - Entrada (VIN_VEH … +VPROT): 1.0 mm.
+    - DO y SENSE: 0.5 mm.
+    - +5V_VEH y BUCK_SW: 0.5 mm.
+  - **Antena:** la huella oficial `RF_Module:ESP32-S3-WROOM-1` ya trae un rule area de keep-out de 48 × 21 mm en todas las capas de cobre (15 mm alrededor de la antena), que el DRC nativo hace cumplir.
+    - Espressif (Hardware Design Guidelines): antena fuera de la placa o en el borde; si no, recortar la placa debajo y a los costados.
+    - El documento oficial **no** da una cifra en mm para la placa base; los 15 mm que cita son para la carcasa.
+- **Red del pad 25 de U101: `/10_power_input/U101_RTN`.**
+  - En el símbolo (`easyeda2kicad:LM74930QRGERQ1`, librería y caché), el pin 25 (EP) pasó de `no_connect` a `passive`.
+  - Con `no_connect`, KiCad le daba a cada pad 25 de la huella su propia red `unconnected-…_N` (7 redes que se superponían).
+  - Se agregó la etiqueta `U101_RTN` en la hoja 10 (ERC sigue en 0).
+  - En el PCB se renombraron las 7 redes de los pads 25 a `/10_power_input/U101_RTN`. Es la única edición al `.kicad_pcb`; no hubo "Update PCB from Schematic".
+  - Reglas:
+    - `U101_RTN_aislado`: 0.3 mm a cualquier otra red y `zone_connection none`.
+    - `U101_pad25_nunca_GND`: si el pad 25 tiene otra red, es un error.
+  - **Probado** en una copia: con un pad 25 en GND_VEH, el DRC marca `items_not_allowed` con esa regla.
+- **DRC actual** (PCB viejo, sin actualizar):
+  - Las 6 violaciones de `ISO_CAN_barrera` son pads de "U1" sin conectar (RS, AUX_OUT); se resuelven con la actualización (U601, RS a GND2).
+  - De antes de este turno:
+    - Contorno inválido: dos rectángulos superpuestos en Edge.Cuts.
+    - J401 (USB-C): pad a NPTH a 0.194 mm (< 0.25 mm del proyecto; JLCPCB pide NPTH a pista 0.2 mm). Es de la huella.
+    - U401: serigrafía recortada por el borde.
+    - PS201: huella borrada (sale con la actualización).
+    - Los agujeros H2–H4 no coinciden con la librería.
+  - **Costo en JLCPCB:** las vías del EP de U101 (hueco 0.2 mm, Ø 0.4 mm) tienen recargo ("0.2mm or 0.25mm hole size with via diameter less than 0.45mm, will cost more"). Para evitarlo hay que subir el Ø a ≥ 0.45 mm en `TI_RGE0024T_..._IsolatedVias`. Pendiente de decisión.
+
+## Hoja 80: propuesta (pendiente de aprobación; no aplicada)
+- **U801 TPS3828-33QDBVRQ1** (TI SGLS143E): SOT-23-5, AEC-Q100. Reemplaza al TPS3431, que solo viene en VSON-8.
+  - Supervisa +3V3_D: reset por debajo de 2.84–3.0 V, que dura 120–300 ms.
+  - Watchdog con timeout de 0.9/1.6/2.5 s.
+  - Salida RESET de drenador abierto → MCU_RST_N (wire-OR con R401, C403 y SW401).
+  - Con WDI en alta impedancia, el watchdog se deshabilita solo (sección 7.3.4). El GPIO17 está en alta impedancia durante el boot y el flasheo, así que **WD_EN deja de hacer falta: se libera IO18** y se quitan el pin y las etiquetas.
+  - Símbolo oficial: `Power_Supervisor:TPS3823-xxDBV`, mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD).
+- **Componentes:**
+  - C801: 100 nF.
+  - R802: 0 Ω en serie con RESET, montado. Si se saca, la placa funciona sin supervisor (depuración).
+  - R801: 1 k de WDI a GND, DNP. Obliga a que el watchdog esté siempre activo, si en producción se quiere así.
+  - MR sin conexión (pull-up interno de 90 k).
+- **LED:** D801 verde y D802 rojo (0805), con R803 y R804 de 470 Ω desde IO6 e IO7 (~2.7 mA).
+- **VAR_ID:**
+  - R805 (IO4) y R806 (IO5): 0 Ω a GND, montados o no según el campo `Variant`. El firmware activa los pull-ups internos.
+  - R807: 0 Ω a GND en IO8 para un tercer bit (CABIN), DNP.
+  - Tabla propuesta, con 1 = sin montar: 11 base | 10 CAN | 01 CAN+OUT | 00 grúa (CAN+OUT+ROT).
+- **Firmware:**
+  - Patear WDI cada ≤ 0.5 s.
+  - Una vez inicializado, dejar GPIO17 siempre como salida.
+  - Antes de dormir más de 0.9 s, pasar WDI a alta impedancia.
+
 ## Falta
-- [ ] **`.kicad_dru` y red del pad 25 de U101:** próximo paso del usuario, antes de tocar el PCB.
+- [ ] **Hoja 80:** aplicar cuando el usuario apruebe. Después, "Update PCB from Schematic", también pendiente de aprobación.
+- [ ] **Librería INCLI-VA:** los símbolos `URB2405YMD-10WR3_C5369754` y `TPS7A1650QDGNRQ1` ya no se usan y apuntan a huellas borradas. ¿Se borran?
 - [ ] **`80_supervision`:** pendiente.
   - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
   - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.
   - VAR_ID0/1 → IO4/IO5; LED_G/LED_R ← IO6/IO7.
-- [ ] **Huellas importadas sin revisar** (regla de `AGENTS.md`): FUSE-SMD_L6.1-W2.5-1 (F101). Con la opción B, PWRM-TH_URBXXXXYMD_10WR3 y HVSSOP-8 ya no se usan: ¿se borran de `lib/INCLI-VA.pretty`?
+- [ ] **Huella importada sin revisar** (regla de `AGENTS.md`): FUSE-SMD_L6.1-W2.5-1 (F101). Comparar con el land pattern de Bourns y documentar la fuente en su descripción.
   - Las tres están en `lib/INCLI-VA.pretty` sin descripción de fuente.
   - F101: comparar con el land pattern de Bourns y documentar la fuente.
-- [ ] **Limpieza del repositorio:** `fp-lib-table.bak` y `lib/Connector_Phoenix_MSTB.pretty.bak/`.
+- [x] **Limpieza del repositorio:** se borraron `fp-lib-table.bak`, `lib/Connector_Phoenix_MSTB.pretty.bak/` y las huellas y modelos 3D de URB2405 y HVSSOP-8 (2026-10-27).
   - La librería local `Phoenix_MSTB_local` duplica la oficial y ya no se usa (J1 y J2 usan `Connector_Phoenix_MSTB`).
 - [ ] **Integración:** cuando estén todas las hojas:
   - ERC del proyecto completo en 0.
