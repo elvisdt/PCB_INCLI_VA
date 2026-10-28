@@ -146,16 +146,6 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 83.82) (xy 294.64 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17ca074d-6a24-4227-95f3-8eba62a0ddfa")
-	)
-	(wire
-		(pts
 			(xy 342.9 43.18) (xy 345.44 43.18)
 		)
 		(stroke
@@ -413,16 +403,6 @@
 			(type default)
 		)
 		(uuid "83ac01d2-bac4-4f0c-a586-c0286da36f1c")
-	)
-	(wire
-		(pts
-			(xy 297.18 48.26) (xy 294.64 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a2f5db8-5850-4691-b669-d226219cec37")
 	)
 	(wire
 		(pts
@@ -1074,16 +1054,6 @@
 		)
 		(uuid "7fe7d60c-0061-4d3e-9054-f68d9dd60886")
 	)
-	(label "PWR_FLT_N"
-		(at 294.64 48.26 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "886608db-7481-4b00-90dc-b717615ed266")
-	)
 	(label "SPI_MOSI"
 		(at 294.64 129.54 180)
 		(effects
@@ -1293,16 +1263,6 @@
 			(justify right bottom)
 		)
 		(uuid "ebc8c13b-520c-4cdd-9307-c921d07596ba")
-	)
-	(label "PWR_FLT_N"
-		(at 294.64 83.82 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ec3b42cc-1705-4f44-9c93-e02aa7beb7fb")
 	)
 	(label "MCU_RST_N"
 		(at 27.94 213.36 180)
@@ -2228,16 +2188,6 @@
 				(justify right)
 			)
 		)
-		(pin "PWR_FLT_N" input
-			(at 297.18 83.82 180)
-			(uuid "61792b62-098b-4dfb-876c-da300199edcc")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
@@ -2312,16 +2262,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-			)
-		)
-		(pin "PWR_FLT_N" input
-			(at 297.18 48.26 180)
-			(uuid "9c9ab7b3-a30f-4a75-87a4-a5264810e3e6")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 		(instances

@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 """Build the review-only 100 mm proposal from the saved 120 x 80 mm board.
 
+Historical: the 120 x 80 mm inputs were removed on 2026-10-28 (user decision).
+To rerun, restore them with `git checkout aa0a41b -- docs/layout/INCLI-VA-120x80.*
+docs/layout/posiciones-120x80.json`. The saved 100 x 100 board no longer needs it.
+
 Uses KiCad's pcbnew API; never writes the main board. Run from project root.
 Coordinates in the placement JSON are relative to (100, 50) mm in KiCad.
 """

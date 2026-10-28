@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Claude Code (revisión del cierre de Codex: esquemático + propuesta 100 × 100; sin cambios de diseño).
+Última actualización: 2026-10-28, Claude Code (latch de las DO retirado del esquemático; propuesta 120 × 80 borrada).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -88,7 +88,7 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
   - La bobina del relé externo queda conectada a la batería. Con Q701 apagado, el drenador sigue a la batería.
   - D701 (SMAJ58A) tendría que absorber ~8 J (≈ 0.34 A × 66 V × 350 ms) y fallaría en corto, lo que deja el relé activado.
   - Para esos vehículos haría falta un MOSFET de ≥ 250 V (otra huella) o supresión en el propio relé.
-- El latch de sobrecorriente de las DO está como DNP: en el prototipo, un corto de la carga a +V no está limitado.
+- Las DO no tienen latch de sobrecorriente (retirado el 2026-10-28): un corto de la carga a +V no está limitado por hardware.
 
 ## Equivalencia LMR38010 (prototipo y producción)
 Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table", y TI SNVSC72B (LMR38010-Q1), sección 4.
@@ -318,6 +318,19 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - Hoja raíz exportada por KiCad y revisada visualmente: H1–H4 y nota correctos, sin solapes nuevos. **`sch_visual_qa` no está disponible** en el catálogo de herramientas ni como ejecutable; esta revisión manual no equivale a ejecutar esa herramienta.
 - El usuario solicita commit final y push para revisar en detalle esquemático y PCB. Comparar la raíz con **`docs/layout/INCLI-VA-100x100.kicad_pcb`**, que ya tiene 185 huellas, cuatro fijaciones y TP en Bottom. La placa principal y la propuesta 120 × 80 siguen siendo referencias previas, con H5; no se cambiaron en este cierre del esquemático.
 
+## Latch de DO retirado y 120 × 80 borrada — Claude Code, 2026-10-28
+Decisiones del usuario en este turno:
+- **Aislamiento:** el usuario preguntó por la etapa aislada. Se recordó la decisión 3 (opción B, commit `5030862`); no cambia nada.
+- **Salidas DO: se quita el latch de sobrecorriente** (antes `DNP = PROTO,PROD`), en las dos instancias:
+  - Borrados: Q702/Q752, Q703/Q753, D702/D752, R704–R707/R754–R757, C701/C751 y sus 3 GND_VEH por canal. Etiquetas TRIG, LATCH y SENSE, y las dos EN_5V del latch.
+  - **R701/R751 (1 Ω) también salen:** la fuente de Q701/Q751 va directo a GND_VEH.
+  - `PWR_FLT_N` ya no entra en la hoja 70 (solo lo usaba D702): se quitaron el pin jerárquico y sus dos conexiones en la raíz. Sigue entre las hojas 10 y 40.
+  - **El diagnóstico se conserva** (R708–R710, D703: DNP en PROTO, montado en PROD).
+  - Textos de la hoja, Notes de R702 y README actualizados. **Limitación:** un corto de la carga a +V no queda limitado por hardware.
+- ERC: 0 errores / 1 aviso conocido (U101_RTN). `sch_visual_qa`: raíz PASS; hoja 70 con 10 avisos `symbol_overlap` de símbolos que ya estaban y se tocan en un pin compartido (no son solapes visibles).
+- **Paridad con `docs/layout/INCLI-VA-100x100.kicad_pcb`: 22 diferencias esperadas** (18 huellas que sobran, red SENSE → GND_VEH en el pad 2 de Q701/Q751 y la Note de R702/R752). Hace falta "Update PCB from Schematic" sobre la propuesta (Codex o el usuario). Se libera el espacio del latch en el bloque DO.
+- **Propuesta 120 × 80 borrada** de `docs/layout/` (pcb/pro/dru/prl, posiciones, vistas). Se recupera de `aa0a41b`. `scripts/layout_100x100.py` partía de ella; se anotó en su cabecera.
+
 ## Revisión del cierre de Codex — Claude Code, 2026-10-28
 Solo verificación; no se editó esquemático ni PCB.
 - **Esquemático:** ERC 0 errores / 1 aviso conocido (`isolated_pin_label` U101_RTN). `sch_visual_qa` raíz: PASS (solo INFO: falta "company" en el cajetín). 0 etiquetas globales; KW45 fuera de la jerarquía. Footprint/MPN/Manufacturer/Datasheet completos en los 162 componentes de BOM. Todo pasivo que no es 0603 tiene justificación en Notes. El commit `53115ad` solo quita H5 y cambia la nota.
@@ -334,6 +347,7 @@ Solo verificación; no se editó esquemático ni PCB.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
 
 ## Falta
+- [ ] Sincronizar la propuesta 100 × 100 con el esquemático (quitar las 18 huellas del latch, unir la fuente de Q701/Q751 a GND_VEH) y repetir DRC/paridad.
 - [x] Retirar H5 y actualizar la nota de fijaciones en la raíz; repetir ERC y revisión visual manual.
 - [x] Ejecutar `sch_visual_qa` de la raíz: PASS (Claude Code, 2026-10-28).
 - [ ] Al adoptar la propuesta 100 × 100 como PCB principal, sustituir la base anterior y comprobar paridad completa; H5 ya no está en el esquemático ni en la propuesta vigente.

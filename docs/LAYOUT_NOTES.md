@@ -4,7 +4,7 @@
 
 **Revisión posterior del usuario:** se mantiene la propuesta cuadrada, se dejan **cuatro fijaciones H1–H4** y los **19 puntos de prueba en Bottom (B.Cu)**. H5 está retirado de esta propuesta y, tras la confirmación del usuario, también del esquemático raíz. El PCB base anterior conserva H5 hasta que se adopte la propuesta vigente como principal.
 
-El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal y la propuesta de 120 × 80 mm se conservan sin cambios.
+El usuario autorizó preparar y reubicar los componentes en el formato cuadrado. La propuesta está en **`layout/INCLI-VA-100x100.kicad_pcb`**, con su `.kicad_pro`, reglas `.kicad_dru` y la tabla de librerías relativa del directorio. Abrir esa copia para revisar la ubicación. El PCB principal se conserva sin cambios. La propuesta de 120 × 80 mm se retiró del repositorio el 2026-10-28 (decisión del usuario); se recupera del commit `aa0a41b`.
 
 Vistas por cara: **`layout/ubicacion-100x100.png`** (superior) y **`layout/ubicacion-100x100-bottom.png`** (inferior, mirada desde abajo, espejada), también en SVG. Exportaciones nativas de KiCad: `layout/placa-100x100.svg` y `layout/placa-100x100-bottom.svg`. Son vistas de revisión, no archivos de fabricación. La ilustración anterior combinaba las caras: TP401–TP405 ya estaban en B.Cu; ahora cada imagen solo muestra los pads de su propia cara.
 
@@ -38,11 +38,9 @@ El usuario plantea **100 × 100 mm como máximo**. Es una alternativa favorable 
 
 Esta comparación inicial solo evaluaba área. La propuesta de 100 × 100 mm descrita arriba ya incorpora la redistribución y verificación geométrica; todavía no demuestra ruteabilidad ni comportamiento eléctrico.
 
-## Antecedente: propuesta de 120 × 80 mm (2026-10-27)
+## Antecedente: propuesta de 120 × 80 mm (2026-10-27, retirada)
 
-Usar **120 × 80 mm** como base de revisión para 186 huellas, dos capas y acceso de soldadura manual. La propuesta es `layout/INCLI-VA-120x80.kicad_pcb`; la vista a escala está en `layout/ubicacion-120x80.png` y `.svg`. El PCB principal conserva su contorno y ubicación previos hasta confirmar el tamaño. No se añadió ruteo.
-
-100 × 70 mm no queda demostrado imposible; con el margen requerido y todos los DNP resulta muy ajustado. El estudio de 120 × 80 mm sí contiene las 186 huellas dentro de la propuesta, salvo la porción del módulo que corresponde intencionalmente a la muesca de antena.
+Fue la primera ubicación verificada (186 huellas). Se descartó a favor de 100 × 100 mm y sus archivos (`INCLI-VA-120x80.*`, `posiciones-120x80.json`, `ubicacion-120x80.*`) se borraron el 2026-10-28; están en el commit `aa0a41b`. `scripts/layout_100x100.py` partía de ella.
 
 ## Estimación de ocupación
 
