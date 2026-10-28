@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-27, Claude Code (hoja 80 aplicada, J1/J2 verticales, contorno con muesca para la antena; falta Update PCB from Schematic).
+Última actualización: 2026-10-27, Claude Code (PCB actualizado por el usuario, J1/J2 confirmados en Phoenix, regla para J401, DRC).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -253,10 +253,22 @@ Fuentes: TI SNVSC73B (LMR38010, sept. 2023), sección 5 "Device Comparison Table
 - **J401 (USB-C):** huella oficial `USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal`. El pad GND (A1/B12) queda a **0.194 mm** del NPTH de la espiga.
   - Eso es menos que el mínimo de JLCPCB para NPTH a cobre (0.2 mm) y que el `hole_clearance` del proyecto (0.25 mm).
   - Pendiente de decisión del usuario.
-- **"Update PCB from Schematic":** no se puede hacer por línea de comandos (ni `kicad-cli` ni el MCP lo tienen). Lo hace el usuario en la interfaz (F8); después se corre el DRC y se corrige.
+- **Update PCB from Schematic:** lo hizo el usuario en KiCad (F8, por UUID, con reemplazo de huellas, sin actualizar desde la librería). Commit `1859b79`.
+  - Entraron 39 huellas y salieron PS201, U202, C207, C208, R204 y las referencias viejas U1 y R1.
+  - Huellas que cambiaron: J1/J2 → MSTBV, Q701/Q751 → SOT-23, D701/D751 → SMA, U201 → HSOIC-8 con vías, C203–C206.
+  - **Se borraron los agujeros de montaje H1–H4**: solo existían en el PCB. Conviene agregarlos al esquemático (`Mechanical:MountingHole`) para que no vuelva a pasar.
+- **J401:** se acepta la violación (decisión del usuario). Se implementó como regla `J401_land_pattern_oficial` en `INCLI-VA.kicad_dru`: hole_clearance ≥ 0.19 mm, solo dentro de J401, con la nota.
+  - Una exclusión del DRC (`drc_exclusions` en `.kicad_pro`) necesita la posición exacta del marcador, que solo da la interfaz; `kicad-cli` no la exporta y la API de Python no funciona sin la interfaz.
+  - Si se prefiere la exclusión nativa: en KiCad, clic derecho en el marcador → Exclude, con la misma nota.
+- **DRC después de la actualización** (`kicad-cli`, 2026-10-27):
+  - Paridad con el esquemático: 0.
+  - Sin rutear: 399 conexiones (todavía no hay pistas).
+  - **29 errores de `ISO_CAN_barrera`:** los pasivos nuevos de la hoja 60 quedaron apilados por la actualización, mezclando el lado CAN y el lado de la placa. Se resuelven al ubicar los componentes (pendiente; el usuario pidió no moverlos todavía).
+  - 1 aviso `lib_footprint_mismatch` en U401: intencional (serigrafía recortada en la muesca).
 
 ## Falta
-- [ ] **Update PCB from Schematic** (usuario, en la interfaz de KiCad) y DRC posterior.
+- [ ] **Ubicación de componentes y ruteo** (cuando el usuario lo pida). Corregir la barrera CAN al ubicar.
+- [ ] **Agujeros de montaje H1–H4:** agregarlos al esquemático (Mechanical:MountingHole + huella) y volver a ubicarlos. Hay que decidir el tipo (con o sin cobre; ver la pregunta 15 de PCB).
 - [ ] **`80_supervision`:** pendiente.
   - **Requisito:** pull-down en **WD_EN** (IO18), para que el watchdog no corra durante el boot ni el flasheo.
   - WDO del TPS3431 → MCU_RST_N: drenador abierto, sin pull-up propio. R401 (10 k, hoja 40) es el pull-up y C403 (1 µF) el retardo de EN.
@@ -324,20 +336,21 @@ Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` 
 - Variante estándar: U503 no está montado; no inicializarlo (leer VAR_ID antes de tocar CS_ROT).
 
 ## Conectores J1 y J2 (confirmado por el usuario, 2026-10-27)
-Phoenix Contact COMBICON **MSTB 2,5**, **horizontal**, paso **5.08 mm** y **brida roscada (GF)**. Cada header lleva su enchufe con brida atornillable **STF**: los tornillos del enchufe roscan en la brida del header, lo que sirve contra la vibración.
+Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida roscada (GF)**.
+- Se eligió vertical porque el cable externo entra por un conector circular de 8 hilos en la caja. J1 y J2 son conexiones internas; quedan 7 hilos de 8 en uso.
+- Confirmado en phoenixcontact.com (fichas "PCB header"; el sitio bloquea el acceso automático, así que se leyeron indexadas):
+  - **1777109** = MSTBV 2,5/ 5-GF-5,08: 5 polos, 12 A / 320 V (III/2), brida roscada, soldadura por ola, Sn.
+  - **1777073** = MSTBV 2,5/ 2-GF-5,08: 2 polos, 12 A / 320 V (III/2), brida roscada, agujero de 1.4 mm, Sn.
 
-| Ref. | Función | Header en placa (MPN) | Polos | Enchufe del arnés (no va en la placa) |
-|---|---|---|---|---|
-| J1 | 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND | MSTB 2,5/5-GF-5,08 (**1776537**) | 5 | MSTB 2,5/5-STF-5,08 (**1778014**) |
-| J2 | 1 DO1, 2 DO2 | MSTB 2,5/2-GF-5,08 (**1776508**) | 2 | MSTB 2,5/2-STF-5,08 (**1777989**) |
+| Ref. | Función | Header en placa (MPN) | Enchufe del arnés (no va en la placa) |
+|---|---|---|---|
+| J1 | 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND | MSTBV 2,5/5-GF-5,08 (**1777109**) | MSTB 2,5/5-STF-5,08 (**1778014**), tornillo |
+| J2 | 1 DO1, 2 DO2 | MSTBV 2,5/2-GF-5,08 (**1777073**) | MSTB 2,5/2-STF-5,08 (**1777989**), tornillo |
 
-- Huellas oficiales:
-  - `Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_5-GF-5,08_1x05_P5.08mm_Horizontal_ThreadedFlange`
-  - `Connector_Phoenix_MSTB:PhoenixContact_MSTB_2,5_2-GF-5,08_1x02_P5.08mm_Horizontal_ThreadedFlange`
-- Enchufes: 12 A, 320 V, cable de 0.2–2.5 mm² (24–12 AWG), tornillo con manguito de tensión.
-- **El PCB todavía tiene MCV 1,5 de 3.81 mm verticales** (commit `2cabf1d` del usuario). El esquemático ya está bien; se corrige con "Update PCB from Schematic" (pendiente de aprobación de la hoja 80).
-- **BOM del arnés:** los enchufes 1778014 y 1777989 no salen del BOM de la placa. Si se quiere, se pueden agregar como ítems mecánicos.
-- **Tensión nominal:** el extracto de catálogo de 2010 da 250 V para el header 1776537; los listados actuales dan 320 V. Sobra para 24 V con load dump de 202 V. Confirmar con la página de Phoenix al congelar el BOM.
+- Los enchufes STF se atornillan a la brida del header, lo que sirve contra la vibración. Son de 12 A / 320 V, para cable de 0.2–2.5 mm².
+- Phoenix también lista como compatibles con estos headers otras familias STF de 5.08 mm: FKC 2,5 (push-in), QC 1 (desplazamiento de aislante) y TMSTBP 2,5. Sirven si se prefiere otra forma de cablear el arnés.
+- Huellas oficiales: `Connector_Phoenix_MSTB:PhoenixContact_MSTBV_2,5_{5,2}-GF-5,08_..._Vertical_ThreadedFlange`. Ya están en el PCB.
+- **BOM del arnés:** los enchufes no salen del BOM de la placa. Si se quiere, se pueden agregar como ítems mecánicos.
 
 ## Pendientes de BOM
 - [ ] **C105 (PROD)** (pedido del usuario, 2026-10-27): electrolítico **SMD** automotriz **AEC-Q200**, **≥ 50 V**, 1000–2200 µF, 105–125 °C, en versión **resistente a vibración** (con terminales extra de anclaje), con MPN.
