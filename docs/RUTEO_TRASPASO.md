@@ -2,6 +2,8 @@
 
 Claude Code, 2026-10-29. Este documento se lee solo, sin otros archivos. Codex sigue con las **etapas 2 a 6** en la misma rama (`ruteo-agente`). La etapa 1 está cerrada.
 
+**Actualización de Codex, 2026-10-29:** etapa 2 terminada, pendiente del visto bueno del usuario. DRC 0 errores / paridad 0 / 254 conexiones pendientes de etapas posteriores. Se usa el puente CANH autorizado; C608 a 2.145 mm aceptado. Medidas y cierre en `docs/RUTEO_AGENTE.md`. **No iniciar etapa 3 sin aprobación.** La sección 1 conserva el estado histórico del traspaso de la etapa 1.
+
 Antes de empezar: leer `AGENTS.md`, `git log -5` y `docs/PENDIENTES.md`. Al terminar cada etapa: DRC, render de las dos caras, commit `[Codex] ruteo etapa N: ...`, `git push origin ruteo-agente`, y **esperar el visto bueno del usuario**.
 
 > **No tocar** la carpeta `../PCB_INCLI_VA_manual` (git worktree, rama `ruteo-manual`). Es la copia que el usuario rutea en paralelo. Tampoco ejecutar `git worktree remove` ni `git worktree prune`.
@@ -149,13 +151,13 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 ### Etapa 2 — CAN
 - **Bus (lado aislado, F.Cu):**
   - BUS_CAN_H/L: J1.3/J1.4 → D601 (DNP, huella reservada) → R602/R603 (terminación partida) y C609 → U601, pines 14 (H) y 13 (L).
-  - Par acoplado a mano, 0.3/0.3, sin vías y con largos iguales.
+  - Par acoplado a mano, 0.3/0.3, con aperturas en pads y ajuste local de longitud. Excepción autorizada al cerrar la etapa 2: dos vías en CANH y puente recto B.Cu de 3.844 mm; CANL queda en F.Cu. Diferencia de longitud principal J1→U601 ≤1 mm incluyendo altura de vías, conforme al ajuste existente del proyecto.
   - Hay 3 segmentos de CAN_H/L en F.Cu que dejó el usuario antes de la etapa 0: conservarlos o rehacerlos.
 - **Fuente aislada:**
   - V_SOOUT (pin 19) → C610 (220 nF) y C606 (10 µF) → FB601 → V_SOIN (pin 16) con C607 (10 nF) y C608 (100 nF).
   - GNDISO_CAN (pines 18/20) → FB602 → GND_CAN.
   - CAN_RS (pin 12) → R605 (0 Ω) → GND_CAN.
-  - **Criterio de ruteo aprobado por el usuario (2026-10-29):** ≤ 2 mm de pista entre el pin y los desacoples cercanos C601, C604, C607, C608 y C610. C602/C603 (ubicados a ~4.7 mm) y C606 (~2.9 mm) se aceptan en cadena detrás del capacitor pequeño: pin → pequeño → grande, sin camino independiente desde el pin al grande. No mover estas piezas. Cada capacitor tendrá retorno corto a su propia red de masa.
+  - **Criterio de ruteo aprobado por el usuario (2026-10-29):** ≤ 2 mm de pista entre el pin y C601, C604, C607 y C610; **C608 a 2.145 mm aceptado como excepción** (límite 2.15 mm). C602/C603 (ubicados a ~4.7 mm) y C606 (~2.9 mm) se aceptan en cadena detrás del capacitor pequeño: pin → pequeño → grande, sin camino independiente desde el pin al grande. No mover estas piezas. Cada capacitor tendrá retorno corto a su propia red de masa.
   - **Valores y masas que se conservan del diseño:** C602 es de 100 nF (no 10 µF); C603, C605 y C606 son de 10 µF. C601–C605 retornan a GND_VEH, C607/C608 a GND_CAN y C606/C610 a GNDISO_CAN, antes de FB602. No unir directamente GNDISO_CAN con GND_CAN puenteando la ferrita.
 - **Lado lógico:**
   - +5V (VCC, pin 3) → C604 (100 nF, a 1.1 mm) → C603 (10 µF). Sale del tronco de +5V en y 124.8: de (143.5, 124.8) hacia el oeste, a C603.1 / C604.1 por debajo.
@@ -168,7 +170,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **Aceptación:**
   - DRC 0 errores. Ningún cobre en `BARRERA_CAN`.
   - Par CAN acoplado de punta a punta, con diferencia de largo de ≤ 1 mm.
-  - C601/C604/C607/C608/C610 a ≤ 2 mm de pista al pin; C602/C603/C606 en cadena conforme al criterio aprobado, con retornos cortos. Entregar tabla de distancias reales y diferencia de longitud CANH/CANL.
+  - C601/C604/C607/C610 a ≤ 2 mm de pista al pin; C608 ≤2.15 mm por excepción aprobada; C602/C603/C606 en cadena conforme al criterio aprobado, con retornos cortos. Entregar tabla de distancias reales y diferencia de longitud CANH/CANL.
   - Las 4 señales completas hasta U401. Render de las dos caras.
 
 ### Etapa 3 — USB / MCU
@@ -226,6 +228,8 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **F.Cu:** relleno GND_VEH donde haya lugar.
 - **Isla GND_CAN** en las dos caras dentro del dominio CAN, cosida, sin relleno bajo U601 (`ISO_sin_relleno_bajo_U601`).
 - **Costura:** cada 5–10 mm, alrededor del ESP32 (fuera del keep-out de antena) y en el borde de la isla CAN, del lado CAN.
+- **C605 (VIO, bulk):** su camino al pin 4 es de 12.270 mm. Asegurar continuidad de GND_VEH entre su vía en (144.28,121.9), C602/C601 y los retornos de U601, y añadir costura local. Revisar que los saltos de las cuatro señales lógicas no dejen ese retorno en una isla o cuello estrecho.
+- **Puente CANH de la etapa 2:** B.Cu recto entre (114.45,115.75) y (118.2,116.595), 3.844 mm, con dos vías. Conservar GND_CAN conectado alrededor de ambos extremos y añadir costura sin invadir la barrera. El pad 3 de D601 tiene retorno corto a la vía GND_CAN (115.4375,117.25).
 - **Conexión a pads:** alivios térmicos en los pads (soldadura a mano). Conexión sólida en los pads expuestos (U201 EP y vías del EP).
 - **Las 19 vías GND sueltas de la etapa 1 tienen que quedar conectadas al plano:** C101, D102, D103, C103, C106, C107, R203, C204–C206, U301 pin 1, C302, C301, C304, R304, U302 pin 2, C306 y C307.
 - **Aceptación:**
@@ -247,7 +251,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **C201 (4.7 µF):** llega a VIN por la diagonal y el pad de C202 (8.6 mm), porque el retorno directo de C202 ocupa el paso por el oeste del pin 1.
   - Lazo de C202: 3.9 mm² (antes 6.1). Lazo de C201: 26.4 mm² (antes 31.3).
 - **U301:** el GND del pin 1 y el de C302 bajan al plano por vías propias. El lazo de entrada mide ~5 mm² (antes 6.1, con VIN cruzando por B.Cu).
-- **TP301** (+5V, B.Cu, originalmente en (140, 134)): traslado autorizado por el usuario (2026-10-29), fuera de la proyección del SW de U301 y sobre el tronco +5V, para permitir GND continuo bajo SW. Aplicarlo en la etapa 2 y registrar coordenadas antes/después en «Cambios de ubicación».
+- **TP301** (+5V, B.Cu): traslado autorizado y aplicado en la etapa 2 de (140,134) a (140,131.6), fuera de la proyección del SW de U301 y sobre el tronco +5V. Retirada la bajada anterior; registrar el plano continuo bajo SW en la etapa 5.
 - **Gates:** HGATE mide ~17 mm y DGATE ~25 mm por la ubicación de U101, pero cada uno va paralelo a su retorno (VA).
 
 ---
@@ -302,7 +306,8 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 8. Cualquier otro movimiento o giro de componentes, cambio de reglas o net classes, renombre de redes o edición del esquemático requiere consulta previa.
 9. Los MPN marcados "a verificar" en `docs/PENDIENTES.md` se revisan antes de generar la BOM final.
 
-### Hallazgos durante la etapa 2 — pendientes de decisión
-- **Estado parcial:** fuente aislada, desacoples y cuatro señales lógicas completos; TP301 trasladado. DRC 0 errores / paridad 0 / 262 conexiones pendientes. Detalle, medidas y renders en `docs/RUTEO_AGENTE.md`. La etapa 2 no está cerrada.
-- **C608:** el trazado mide 2.145 mm entre bordes reales del cobre. Es el mínimo geométrico con los pads redondeados actuales; los ~1.99 mm del traspaso ignoraban las esquinas redondeadas. Solicitada excepción ≤2.15 mm, todavía no aprobada. No mover el capacitor ni declarar cumplidos los 2 mm.
-- **CANH/CANL:** orden H/L invertido entre D601 y U601. Solicitado puente corto B.Cu con dos vías de una señal; todavía no aprobado ni aplicado. Si se exige conservar «sin vías», revisar propuesta de ubicación antes de mover cualquier componente. Longitudes del bus pendientes de ruteo completo.
+### Hallazgos de la etapa 2 — resueltos por el usuario
+- **C608:** excepción aceptada a 2.145 mm. Es el mínimo geométrico con los pads redondeados actuales; los ~1.99 mm del traspaso ignoraban esas esquinas. Ubicación conservada.
+- **D601:** evaluado el giro de 180° sin cambiar redes. H/L pasan a coincidir con U601, pero quedan invertidos respecto de J1 y el pad GND pasa al acceso desde J1. El giro no elimina la inversión del recorrido completo; se conserva r0 y se aplica la alternativa autorizada del puente CANH con dos vías.
+- **CAN:** 22.2139 mm H / 22.2120 mm L; diferencia nominal **0.0019 mm**, entre centros de J1.3/4 y U601.14/13, incluyendo 1.6 mm por vía. Las longitudes planares son 19.0139 / 22.2120 mm; el ajuste compensa los 3.2 mm verticales de H. Ramales a terminación separados de esta métrica.
+- **Cierre:** DRC 0 errores / 42 avisos (37 vías GND esperan planos + 5 conocidos), paridad 0, 254 conexiones pendientes. Renders de ambas caras y medidas finales en `docs/layout/ruteo/etapa2-*`. Esperar visto bueno antes de etapa 3.

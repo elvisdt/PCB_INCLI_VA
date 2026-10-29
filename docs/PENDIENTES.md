@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Codex (etapa 2 parcial; fuente y señales lógicas, bus pendiente de decisión).
+Última actualización: 2026-10-29, Codex (etapa 2 terminada; espera visto bueno antes de etapa 3).
 
 ## Retoma de ruteo — Codex, 2026-10-29
 - Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
@@ -11,12 +11,14 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 - TP301: traslado aplicado de (140,134) a (140,131.6), B.Cu, sobre el tronco +5V y fuera del SW; retirada la bajada anterior. Registrado en «Cambios de ubicación».
 - ROT: mantener libre Ø17.9 mm en ambas caras. C105 PROD: confirmar stock en BOM, sin bloquear el ruteo.
 - R602/R603/C609 montadas en PROTO; PROD según instalación.
-- Desacoples U601: ≤2 mm para C601/C604/C607/C608/C610; C602/C603/C606 en cadena detrás del pequeño, sin derivación independiente y con retorno corto a su masa. Conservar ubicación y valores (C602 es 100 nF). C606/C610 retornan a GNDISO_CAN antes de FB602.
+- Desacoples U601: ≤2 mm para C601/C604/C607/C610; excepción aceptada C608 = 2.145 mm (≤2.15 mm); C602/C603/C606 en cadena detrás del pequeño, sin derivación independiente y con retorno corto a su masa. Conservar ubicación y valores (C602 es 100 nF). C606/C610 retornan a GNDISO_CAN antes de FB602.
 - Usuario confirmó cierre completo de KiCad; comprobada ausencia de bloqueos antes de editar. Esquemáticos intactos. Solo TP301 cambia de ubicación; net classes y reglas conservadas.
 - Fuente aislada, desacoples en cadena, CAN_RS y CAN_TX/RX/STBY/SILENT completos hasta U401, con TP404/TP405 y resistencias. El riel +3V3_D desde U301 y los planos siguen en sus etapas previstas.
-- **Etapa 2 parcial:** DRC 0 errores / 42 avisos (37 vías de masas pendientes de planos + 5 conocidos), paridad 0, 262 conexiones pendientes. Renders, DRC y tabla de distancias en `docs/layout/ruteo/etapa2-parcial-*`; explicación en `docs/RUTEO_AGENTE.md`.
-- **Decisiones nuevas pendientes:** autorizar puente de una señal CAN con dos vías B.Cu para invertir H/L; aceptar C608 ≤2.15 mm (mínimo geométrico real 2.145 mm, frente a ~1.99 mm de envolventes). Ninguna excepción aplicada como aprobada. CANH/CANL y punto medio de terminación siguen sin completar.
-- Al cerrar etapa 2: DRC, paridad, renders de ambas caras, tabla de longitudes de desacople y CAN, revisión de `.kicad_pro`, commit y push. Esperar aprobación antes de etapa 3.
+- **Etapa 2 terminada:** DRC 0 errores / 42 avisos (37 vías de masas pendientes de planos + 5 conocidos), paridad 0, 254 conexiones pendientes para las etapas posteriores. Renders, DRC y medidas finales en `docs/layout/ruteo/etapa2-*`; detalle en `docs/RUTEO_AGENTE.md`.
+- **Decisiones resueltas:** C608 aceptado a 2.145 mm. Evaluado giro de D601 a 180°: traslada la inversión al acceso desde J1; se conserva r0 y se aplica el puente CANH autorizado, recto de 3.844 mm en B.Cu, con dos vías. CANL sin vías. Terminación completa.
+- **Longitudes principales J1→U601:** H 22.2139 / L 22.2120 mm, diferencia nominal 0.0019 mm incluyendo 1.6 mm por vía (ajuste de altura ya activo en el proyecto). Los ramales a terminación se miden aparte.
+- **Etapa 5, C605:** asegurar plano GND_VEH continuo y costura local entre su vía (144.28,121.9), C602/C601 y GND de U601; su camino VIO mide 12.270 mm. Revisar además continuidad GND_CAN alrededor del puente H y plano bajo SW de U301 tras mover TP301.
+- Cierre de etapa 2: DRC, paridad, renders de ambas caras, tabla final de desacoples y CAN completados; `.kicad_pro` revisado y conservado. Commit y push del cierre de este turno. **Esperar aprobación antes de etapa 3.**
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -497,7 +499,7 @@ No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se 
 - [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
 - [x] 1. Potencia: cerrada (Claude Code). Cambios de ubicación: C104 a B.Cu, U301 girado 180°, C302 junto a VIN y TP101 a (127.6, 61.5).
 - **Las etapas 2 a 6 las sigue Codex en `ruteo-agente`.** Plan, reglas y restricciones en `docs/RUTEO_TRASPASO.md`.
-- [ ] 2. CAN.
+- [x] 2. CAN: terminada por Codex; espera visto bueno. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
 - [ ] 3. USB/MCU.
 - [ ] 4. Sensores y señales.
 - [ ] 5. Planos.

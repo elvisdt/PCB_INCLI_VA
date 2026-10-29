@@ -19,7 +19,7 @@ Aplicados en `ruteo-agente`, con autorización del usuario. Repetirlos en la cop
 |---|---|---|
 | 0. Reglas | aprobada (2026-10-29) | 36bf77f |
 | 1. Potencia | cerrada (2026-10-29) | 4c8b1f8 + cierre |
-| 2. CAN | parcial: fuente, desacoples y señales lógicas; bus espera decisión | ver historial `[Codex]` |
+| 2. CAN | terminada; espera visto bueno del usuario | cierre `[Codex]` de 2026-10-29 |
 | 3. USB/MCU | | |
 | 4. Sensores y señales | | |
 | 5. Planos | | |
@@ -156,7 +156,7 @@ Script: `scripts/ruteo/etapa1_potencia.py`. Parte del PCB de la etapa 0 (36bf77f
 
 ## Etapa 2 — avance parcial de Codex (2026-10-29)
 
-**No cerrada; no iniciar etapa 3.** KiCad cerrado, sin archivos de bloqueo, antes de editar. Base de placa: `b46f185`; decisiones: `a6ba59d`.
+**Estado histórico del avance parcial `5613d67`; ver cierre abajo.** KiCad cerrado, sin archivos de bloqueo, antes de editar. Base de placa: `b46f185`; decisiones: `a6ba59d`.
 
 Hecho:
 - Fuente aislada: VISOOUT → C610 → C606 → FB601 → VISOIN; C607 y C608 al pin 16. GNDISO_CAN une pines 18/20, C610/C606 y FB602; su salida conserva GND_CAN. CAN_RS completo.
@@ -188,7 +188,7 @@ Longitud a lo largo del camino de cobre desde el borde del pad del pin hasta el 
 | C610 | 220 nF | 19, VISOOUT | 1.682 | GNDISO_CAN | ≤2 mm |
 | C606 | 10 µF | 19, VISOOUT | 4.292 | GNDISO_CAN | detrás de C610 |
 
-### Decisiones solicitadas; todavía no autorizadas
+### Decisiones solicitadas en el avance parcial (histórico; resueltas en el cierre)
 
 1. **Cruce CANH/CANL:** J1.3/H y D601.1/H están por encima de J1.4/L y D601.2/L; U601.13/L está por encima de U601.14/H. Se propone un salto corto de una señal por B.Cu con dos vías junto a D601 para invertir el orden y conservar un recorrido compacto. Cambia el criterio «sin vías»; no se ha aplicado. Alternativa solicitada: revisar ubicación si el usuario mantiene el criterio sin vías. No se movieron D601 ni las terminaciones.
 2. **C608:** el mínimo entre el cobre real de los dos pads redondeados es `hypot(1.975, 1.565) - 0.15 - 0.225 = 2.145 mm`. Los ~1.99 mm previos corresponden a las esquinas de los rectángulos envolventes, que no tienen cobre. El trazado alcanza el mínimo real; se solicita aceptar **≤2.15 mm** solo para C608. No se presenta como cumplimiento del límite de 2 mm.
@@ -196,3 +196,55 @@ Longitud a lo largo del camino de cobre desde el borde del pad del pin hasta el 
 **CANH/CANL:** sin trazado completo, por lo que sus longitudes y diferencia aún no se pueden informar como resultado de aceptación. Pendientes también la conexión del punto medio R602/R603/C609, revisión final de la etapa, nuevos renders, commit de cierre y visto bueno.
 
 Scripts: `etapa2_can.py` regenera solo las pistas de su grupo, conserva la etapa 1 y aplica TP301. La eliminación nativa de grupos mediante SWIG falló en KiCad 10.0.7; se sustituyó por eliminación de los bloques de pistas/vías por sus UUID antes de cargar el archivo del proyecto. No cargar una copia externa y guardarla sobre el proyecto.
+
+## Cierre de la etapa 2 — Codex, 2026-10-29
+
+**Etapa 2 terminada; esperar visto bueno antes de la etapa 3.** Base del turno: `5613d67`. KiCad cerrado y ausencia de bloqueos comprobada antes de editar.
+
+### CAN y decisiones aplicadas
+- Evaluado primero el giro de D601 a 180° en memoria, conservando sus redes. Pad 1/H pasa a (115.4375,117.65), pad 2/L a (115.4375,115.75), pad 3/GND_CAN a (113.5625,116.7). Aunque H/L coinciden entonces con U601, la inversión queda entre J1 y D601 y el pad de masa ocupa el acceso de J1. Se conserva la orientación **r0**, y se aplica la alternativa autorizada del puente; **D601 no tiene cambio de ubicación ni de orientación aplicado**.
+- CANH: puente B.Cu recto de **3.844 mm**, ancho 0.3 mm, de (114.45,115.75) a (118.2,116.595), con dos vías Ø0.6/taladro0.3. Es el único tramo B.Cu del par. CANL completo en F.Cu. Paso directo para limitar el corte del futuro plano GND_CAN.
+- Pistas CAN de 0.3 mm; segmentos acoplados con gap de 0.3 mm, aperturas en pads y ajuste local de L. J1→D601→U601 completo, sin renombrar redes ni intercambiar pines en el esquemático.
+- Terminación partida R602/R603/C609 completa. Punto medio por B.Cu con sus propias dos vías, sin mezclarse con GND_CAN. R602/R603/C609 se montan en PROTO; PROD según instalación.
+- Retorno de D601.3 a GND_CAN mediante vía en (115.4375,117.25), a 0.55 mm del centro del pad. Las vías GND de C607/C608 se colocan en (118.725,119.95) y (118.725,122.55), dejando paso a CANH. No se movieron capacitores.
+- **C608 = 2.145 mm: excepción aceptada**, límite 2.15 mm. Los otros cuatro desacoples cercanos siguen por debajo de 2 mm.
+- **Cambios de ubicación:** solo TP301, ya registrado arriba. El giro evaluado de D601 no se aplicó.
+
+### Longitudes del par
+
+Recorrido principal **J1.3/4 → D601 → U601.14/13**, entre centros de pads, excluyendo ramales de terminación. El proyecto ya tiene `use_height_for_length_calcs = true`; se conserva. La compensación incluye el espesor nominal de 1.6 mm por vía (3.2 mm en H). Esta inclusión de la altura corresponde al [criterio de longitud de KiCad 10](https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html#length-tuning).
+
+| Métrica | CANH | CANL | Diferencia |
+|---|---:|---:|---:|
+| Pista planar principal | 19.0139 mm | 22.2120 mm | 3.1981 mm |
+| Altura de vías | 3.2000 mm (2 vías) | 0 | — |
+| **Total nominal principal** | **22.2139 mm** | **22.2120 mm** | **0.0019 mm (≤1 mm)** |
+| Entre bordes de pads, incluyendo vías | 19.7612 mm | 19.7593 mm | 0.0019 mm |
+
+No confundir estas longitudes con la suma de todo el cobre de cada red: los ramales desde la bifurcación hasta R602/R603 miden 11.7498 / 2.7407 mm y no forman parte del camino J1→U601. Las cifras son geométricas nominales, no una medición de retardo sobre la placa fabricada.
+
+### Tabla final de desacoples
+
+Pista desde borde real del pad del pin hasta borde real del pad del capacitor. Los recorridos en cadena incluyen el paso por el capacitor anterior; no son distancias rectas de ubicación.
+
+| Ref. | Valor | Pin U601 | Longitud | Criterio / retorno |
+|---|---|---|---:|---|
+| C601 | 10 nF | 4, VIO | 1.101 mm | ≤2 mm; GND_VEH |
+| C602 | 100 nF | 4, VIO | 6.616 mm | cadena detrás de C601; GND_VEH |
+| C605 | 10 µF | 4, VIO | 12.270 mm | cadena detrás de C602; continuidad y costura GND en etapa 5 |
+| C604 | 100 nF | 3, VCC | 1.318 mm | ≤2 mm; GND_VEH |
+| C603 | 10 µF | 3, VCC | 6.889 mm | cadena detrás de C604; GND_VEH |
+| C607 | 10 nF | 16, VISOIN | 1.646 mm | ≤2 mm; GND_CAN |
+| C608 | 100 nF | 16, VISOIN | **2.145 mm** | **excepción aceptada ≤2.15 mm**; GND_CAN |
+| C610 | 220 nF | 19, VISOOUT | 1.682 mm | ≤2 mm; GNDISO_CAN |
+| C606 | 10 µF | 19, VISOOUT | 4.292 mm | cadena detrás de C610; GNDISO_CAN |
+
+### Verificación y pendientes para otras etapas
+- **DRC: 0 errores**, 42 avisos: 37 `via_dangling` de masas pendientes de los planos, 2 `silk_overlap`, 2 `silk_edge_clearance`, 1 `lib_footprint_mismatch` conocido. **Paridad: 0**. Quedan **254 conexiones** para las etapas posteriores (288 al cierre de la etapa 1, 262 en el avance parcial).
+- Ninguna conexión pendiente de BUS_CAN_H/L, CAN_TX/RX/STBY/SILENT, V_SOIN, V_SOOUT, GNDISO_CAN, CAN_RS o punto medio de C609. GND_CAN/GND_VEH y alimentación desde U301 al conjunto VIO esperan sus etapas previstas.
+- Barrera CAN, U101_RTN, reserva de antena y sensores conservadas; ningún componente nuevo movido. Esquemáticos y `.kicad_dru` intactos. `.kicad_pro` revisado: únicamente orden de clases, contenido original conservado.
+- Renders finales de ambas caras generados y revisados: `docs/layout/ruteo/etapa2-top.png`, `etapa2-bottom.png`. Reportes `etapa2-drc.json` y `etapa2-medidas.json`.
+- `verify_etapa2.py` reconstruye caminos desde el PCB y comprueba límites de desacople, cadenas, continuidad de las cuatro señales lógicas, diferencia total ≤1 mm y exactamente dos vías en H / ninguna en L.
+- **Etapa 5, C605:** conectar sin interrupciones su vía GND_VEH (144.28,121.9) con C602/C601 y GND de U601; añadir costura en esa zona y revisar cuellos/islas producidos por los saltos lógicos. No afirmar continuidad de plano antes de generarlo.
+- **Etapa 5, CAN:** conservar continuidad GND_CAN alrededor de ambos extremos del puente H y coser la isla. No unir GNDISO_CAN directamente con GND_CAN: conservar FB602. Mantener libre la barrera y sin rellenos bajo U601.
+- **Etapa 5, TP301:** plano continuo bajo el SW de U301, ya libre del antiguo pad/pista de prueba.
