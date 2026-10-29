@@ -112,7 +112,17 @@
 			(embedded_fonts no)
 		)
 	)
-	(lib_symbols)
+	(text "AGUJEROS DE FIJACION: H1-H4, 4 agujeros M3 sin cobre: H1-H4 en las esquinas, fuera del eje de ROT (en el esquematico para que 'Update PCB from Schematic' no los borre)."
+		(exclude_from_sim no)
+		(at 50.8 246.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "60a5566c-5e10-4cd7-8de7-89437b810468")
+	)
 	(text "00_TOP — INCLI-VA\nRieles y masas = símbolos de potencia globales (lib INCLI-VA): no se cablean entre hojas.\nSeñales = pines jerárquicos; aquí se unen por etiquetas con el mismo nombre.\nMasas: GND_VEH (toda la placa; opción B, sin aislamiento de alimentación) | GND_CAN (lado bus del ADM3055E, aislado) — nunca GND genérico.\nMCU: ESP32-S3-WROOM-1 (bloque 40_mcu → sheets/40_mcu_esp32s3). 40_mcu_kw45 queda solo como referencia, fuera de la jerarquía.\n70_output_ch.kicad_sch se instancia dos veces (DO1, DO2).\nVariant: CAN, OUT, ROT, CABIN.  Campos por componente: MPN, Manufacturer, Alt_MPN."
 		(exclude_from_sim no)
 		(at 30.48 15.24 0)
@@ -126,7 +136,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 43.18) (xy 27.94 43.18)
+			(xy 57.15 72.39) (xy 54.61 72.39)
 		)
 		(stroke
 			(width 0)
@@ -136,7 +146,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 149.86) (xy 205.74 149.86)
+			(xy 213.36 146.05) (xy 215.9 146.05)
 		)
 		(stroke
 			(width 0)
@@ -146,7 +156,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 43.18) (xy 345.44 43.18)
+			(xy 321.31 54.61) (xy 323.85 54.61)
 		)
 		(stroke
 			(width 0)
@@ -156,7 +166,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 144.78) (xy 205.74 144.78)
+			(xy 213.36 140.97) (xy 215.9 140.97)
 		)
 		(stroke
 			(width 0)
@@ -166,7 +176,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 43.18) (xy 78.74 43.18)
+			(xy 102.87 72.39) (xy 105.41 72.39)
 		)
 		(stroke
 			(width 0)
@@ -176,7 +186,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 142.24) (xy 205.74 142.24)
+			(xy 213.36 138.43) (xy 215.9 138.43)
 		)
 		(stroke
 			(width 0)
@@ -186,7 +196,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 154.94) (xy 154.94 154.94)
+			(xy 167.64 151.13) (xy 165.1 151.13)
 		)
 		(stroke
 			(width 0)
@@ -196,7 +206,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 129.54) (xy 294.64 129.54)
+			(xy 276.86 127) (xy 274.32 127)
 		)
 		(stroke
 			(width 0)
@@ -206,7 +216,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 132.08) (xy 294.64 132.08)
+			(xy 276.86 129.54) (xy 274.32 129.54)
 		)
 		(stroke
 			(width 0)
@@ -216,7 +226,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 45.72) (xy 78.74 45.72)
+			(xy 102.87 74.93) (xy 105.41 74.93)
 		)
 		(stroke
 			(width 0)
@@ -226,7 +236,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 134.62) (xy 154.94 134.62)
+			(xy 167.64 130.81) (xy 165.1 130.81)
 		)
 		(stroke
 			(width 0)
@@ -236,7 +246,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 167.64) (xy 205.74 167.64)
+			(xy 213.36 163.83) (xy 215.9 163.83)
 		)
 		(stroke
 			(width 0)
@@ -246,7 +256,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 45.72) (xy 294.64 45.72)
+			(xy 275.59 57.15) (xy 273.05 57.15)
 		)
 		(stroke
 			(width 0)
@@ -256,7 +266,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 127) (xy 205.74 127)
+			(xy 213.36 123.19) (xy 215.9 123.19)
 		)
 		(stroke
 			(width 0)
@@ -266,7 +276,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 127) (xy 154.94 127)
+			(xy 167.64 123.19) (xy 165.1 123.19)
 		)
 		(stroke
 			(width 0)
@@ -276,7 +286,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 152.4) (xy 154.94 152.4)
+			(xy 167.64 148.59) (xy 165.1 148.59)
 		)
 		(stroke
 			(width 0)
@@ -286,7 +296,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 137.16) (xy 294.64 137.16)
+			(xy 276.86 134.62) (xy 274.32 134.62)
 		)
 		(stroke
 			(width 0)
@@ -296,7 +306,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 213.36) (xy 27.94 213.36)
+			(xy 63.5 190.5) (xy 60.96 190.5)
 		)
 		(stroke
 			(width 0)
@@ -306,7 +316,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 160.02) (xy 154.94 160.02)
+			(xy 167.64 156.21) (xy 165.1 156.21)
 		)
 		(stroke
 			(width 0)
@@ -316,7 +326,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 129.54) (xy 78.74 129.54)
+			(xy 105.41 129.54) (xy 107.95 129.54)
 		)
 		(stroke
 			(width 0)
@@ -326,7 +336,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 165.1) (xy 205.74 165.1)
+			(xy 213.36 161.29) (xy 215.9 161.29)
 		)
 		(stroke
 			(width 0)
@@ -336,7 +346,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 210.82) (xy 27.94 210.82)
+			(xy 63.5 187.96) (xy 60.96 187.96)
 		)
 		(stroke
 			(width 0)
@@ -346,7 +356,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 81.28) (xy 294.64 81.28)
+			(xy 275.59 92.71) (xy 273.05 92.71)
 		)
 		(stroke
 			(width 0)
@@ -356,7 +366,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 139.7) (xy 205.74 139.7)
+			(xy 213.36 135.89) (xy 215.9 135.89)
 		)
 		(stroke
 			(width 0)
@@ -366,7 +376,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 132.08) (xy 205.74 132.08)
+			(xy 213.36 128.27) (xy 215.9 128.27)
 		)
 		(stroke
 			(width 0)
@@ -376,7 +386,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 139.7) (xy 154.94 139.7)
+			(xy 167.64 135.89) (xy 165.1 135.89)
 		)
 		(stroke
 			(width 0)
@@ -386,7 +396,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 210.82) (xy 294.64 210.82)
+			(xy 276.86 177.8) (xy 274.32 177.8)
 		)
 		(stroke
 			(width 0)
@@ -396,7 +406,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 78.74) (xy 345.44 78.74)
+			(xy 321.31 90.17) (xy 323.85 90.17)
 		)
 		(stroke
 			(width 0)
@@ -406,7 +416,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 210.82) (xy 345.44 210.82)
+			(xy 322.58 177.8) (xy 325.12 177.8)
 		)
 		(stroke
 			(width 0)
@@ -416,7 +426,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 132.08) (xy 154.94 132.08)
+			(xy 167.64 128.27) (xy 165.1 128.27)
 		)
 		(stroke
 			(width 0)
@@ -426,7 +436,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 129.54) (xy 205.74 129.54)
+			(xy 213.36 125.73) (xy 215.9 125.73)
 		)
 		(stroke
 			(width 0)
@@ -436,7 +446,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 129.54) (xy 154.94 129.54)
+			(xy 167.64 125.73) (xy 165.1 125.73)
 		)
 		(stroke
 			(width 0)
@@ -446,7 +456,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 137.16) (xy 154.94 137.16)
+			(xy 167.64 133.35) (xy 165.1 133.35)
 		)
 		(stroke
 			(width 0)
@@ -456,7 +466,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 142.24) (xy 154.94 142.24)
+			(xy 167.64 138.43) (xy 165.1 138.43)
 		)
 		(stroke
 			(width 0)
@@ -466,7 +476,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 139.7) (xy 294.64 139.7)
+			(xy 276.86 137.16) (xy 274.32 137.16)
 		)
 		(stroke
 			(width 0)
@@ -476,7 +486,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 137.16) (xy 205.74 137.16)
+			(xy 213.36 133.35) (xy 215.9 133.35)
 		)
 		(stroke
 			(width 0)
@@ -486,7 +496,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 228.6) (xy 294.64 228.6)
+			(xy 276.86 195.58) (xy 274.32 195.58)
 		)
 		(stroke
 			(width 0)
@@ -496,7 +506,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 220.98) (xy 27.94 220.98)
+			(xy 63.5 198.12) (xy 60.96 198.12)
 		)
 		(stroke
 			(width 0)
@@ -506,7 +516,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 142.24) (xy 294.64 142.24)
+			(xy 276.86 139.7) (xy 274.32 139.7)
 		)
 		(stroke
 			(width 0)
@@ -516,7 +526,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 213.36) (xy 294.64 213.36)
+			(xy 276.86 180.34) (xy 274.32 180.34)
 		)
 		(stroke
 			(width 0)
@@ -526,7 +536,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 208.28) (xy 27.94 208.28)
+			(xy 63.5 185.42) (xy 60.96 185.42)
 		)
 		(stroke
 			(width 0)
@@ -536,7 +546,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 134.62) (xy 294.64 134.62)
+			(xy 276.86 132.08) (xy 274.32 132.08)
 		)
 		(stroke
 			(width 0)
@@ -546,7 +556,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 45.72) (xy 27.94 45.72)
+			(xy 57.15 74.93) (xy 54.61 74.93)
 		)
 		(stroke
 			(width 0)
@@ -556,7 +566,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 127) (xy 78.74 127)
+			(xy 105.41 127) (xy 107.95 127)
 		)
 		(stroke
 			(width 0)
@@ -566,7 +576,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 208.28) (xy 294.64 208.28)
+			(xy 276.86 175.26) (xy 274.32 175.26)
 		)
 		(stroke
 			(width 0)
@@ -576,7 +586,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 223.52) (xy 27.94 223.52)
+			(xy 63.5 200.66) (xy 60.96 200.66)
 		)
 		(stroke
 			(width 0)
@@ -586,7 +596,7 @@
 	)
 	(wire
 		(pts
-			(xy 342.9 208.28) (xy 345.44 208.28)
+			(xy 322.58 175.26) (xy 325.12 175.26)
 		)
 		(stroke
 			(width 0)
@@ -596,7 +606,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 144.78) (xy 294.64 144.78)
+			(xy 276.86 142.24) (xy 274.32 142.24)
 		)
 		(stroke
 			(width 0)
@@ -606,7 +616,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 147.32) (xy 154.94 147.32)
+			(xy 167.64 143.51) (xy 165.1 143.51)
 		)
 		(stroke
 			(width 0)
@@ -616,7 +626,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 134.62) (xy 205.74 134.62)
+			(xy 213.36 130.81) (xy 215.9 130.81)
 		)
 		(stroke
 			(width 0)
@@ -626,7 +636,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 147.32) (xy 205.74 147.32)
+			(xy 213.36 143.51) (xy 215.9 143.51)
 		)
 		(stroke
 			(width 0)
@@ -636,7 +646,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 78.74) (xy 294.64 78.74)
+			(xy 275.59 90.17) (xy 273.05 90.17)
 		)
 		(stroke
 			(width 0)
@@ -646,7 +656,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 127) (xy 294.64 127)
+			(xy 276.86 124.46) (xy 274.32 124.46)
 		)
 		(stroke
 			(width 0)
@@ -656,7 +666,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 43.18) (xy 294.64 43.18)
+			(xy 275.59 54.61) (xy 273.05 54.61)
 		)
 		(stroke
 			(width 0)
@@ -666,7 +676,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 215.9) (xy 27.94 215.9)
+			(xy 63.5 193.04) (xy 60.96 193.04)
 		)
 		(stroke
 			(width 0)
@@ -676,7 +686,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 144.78) (xy 154.94 144.78)
+			(xy 167.64 140.97) (xy 165.1 140.97)
 		)
 		(stroke
 			(width 0)
@@ -686,7 +696,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 48.26) (xy 78.74 48.26)
+			(xy 102.87 77.47) (xy 105.41 77.47)
 		)
 		(stroke
 			(width 0)
@@ -696,7 +706,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 218.44) (xy 27.94 218.44)
+			(xy 63.5 195.58) (xy 60.96 195.58)
 		)
 		(stroke
 			(width 0)
@@ -706,7 +716,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 149.86) (xy 154.94 149.86)
+			(xy 167.64 146.05) (xy 165.1 146.05)
 		)
 		(stroke
 			(width 0)
@@ -716,7 +726,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 157.48) (xy 154.94 157.48)
+			(xy 167.64 153.67) (xy 165.1 153.67)
 		)
 		(stroke
 			(width 0)
@@ -725,7 +735,7 @@
 		(uuid "fed86a88-e6ae-4ce7-bddb-84b4fd0dafeb")
 	)
 	(label "WDI"
-		(at 154.94 142.24 180)
+		(at 165.1 138.43 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -735,7 +745,7 @@
 		(uuid "00efade9-e5cf-4337-b040-ce64be398aaf")
 	)
 	(label "DO1_EN"
-		(at 294.64 43.18 180)
+		(at 273.05 54.61 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -745,7 +755,7 @@
 		(uuid "02e9b754-32bd-478b-a389-3b3e25ddd7c0")
 	)
 	(label "PWR_FLT_N"
-		(at 154.94 160.02 180)
+		(at 165.1 156.21 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -755,7 +765,7 @@
 		(uuid "0739b799-68bb-4a00-beb3-379c2800949f")
 	)
 	(label "DO2_EN"
-		(at 154.94 129.54 180)
+		(at 165.1 125.73 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -765,7 +775,7 @@
 		(uuid "159f2bf1-4412-4d76-9d74-685dd586cdfc")
 	)
 	(label "VEH_DO1"
-		(at 345.44 43.18 0)
+		(at 323.85 54.61 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -775,7 +785,7 @@
 		(uuid "174d682d-3770-40d1-9b3b-220c669ed85f")
 	)
 	(label "SPI_MISO"
-		(at 205.74 132.08 0)
+		(at 215.9 128.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -785,7 +795,7 @@
 		(uuid "19277681-442b-4b1f-ac34-fc25f303dd2b")
 	)
 	(label "DO2_EN"
-		(at 294.64 78.74 180)
+		(at 273.05 90.17 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -795,7 +805,7 @@
 		(uuid "19e73f45-0340-44c2-9910-77b355fb2c55")
 	)
 	(label "VMON_5V"
-		(at 78.74 127 0)
+		(at 107.95 127 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -805,7 +815,7 @@
 		(uuid "2613500e-e232-4e61-8531-a7d3925c001f")
 	)
 	(label "DO1_EN"
-		(at 154.94 127 180)
+		(at 165.1 123.19 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -815,7 +825,7 @@
 		(uuid "2f2d7149-a390-4753-824a-06644a4aa5f1")
 	)
 	(label "CAN_SILENT"
-		(at 294.64 228.6 180)
+		(at 274.32 195.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -825,7 +835,7 @@
 		(uuid "35082530-784a-4364-aaae-31de8a841131")
 	)
 	(label "PWR_FLT_N"
-		(at 78.74 48.26 0)
+		(at 105.41 77.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -835,7 +845,7 @@
 		(uuid "36ef12ed-9999-4721-b689-51551b38ceb8")
 	)
 	(label "CS_INC"
-		(at 294.64 134.62 180)
+		(at 274.32 132.08 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -845,7 +855,7 @@
 		(uuid "3ce2d96b-1ebf-40a8-9690-e0a271b375d9")
 	)
 	(label "VAR_ID0"
-		(at 27.94 215.9 180)
+		(at 60.96 193.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -855,7 +865,7 @@
 		(uuid "4a23b0e9-0beb-4c51-a9f5-b110fbca2281")
 	)
 	(label "VEH_DO2"
-		(at 345.44 78.74 0)
+		(at 323.85 90.17 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -865,7 +875,7 @@
 		(uuid "50f33798-4c77-4cbc-8c55-0f5ee71e2666")
 	)
 	(label "CS_ROT"
-		(at 294.64 139.7 180)
+		(at 274.32 137.16 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -875,7 +885,7 @@
 		(uuid "53c6b1f7-f736-4212-96ee-373c53d6136a")
 	)
 	(label "VEH_DO2"
-		(at 27.94 45.72 180)
+		(at 54.61 74.93 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -885,7 +895,7 @@
 		(uuid "584e0b73-ea30-42b4-ade0-7e0d5850051e")
 	)
 	(label "IMU_INT2"
-		(at 205.74 167.64 0)
+		(at 215.9 163.83 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -895,7 +905,7 @@
 		(uuid "5a4aabf9-8736-4fe3-8ea1-562e3e37a6c4")
 	)
 	(label "IMU_INT2"
-		(at 294.64 144.78 180)
+		(at 274.32 142.24 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -905,7 +915,7 @@
 		(uuid "618c954f-e6e8-42e7-a95e-a6c1f9e2388a")
 	)
 	(label "BUS_CAN_L"
-		(at 78.74 45.72 0)
+		(at 105.41 74.93 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -915,7 +925,7 @@
 		(uuid "62d59f67-3347-4bb4-91cc-a5c65ab0bba5")
 	)
 	(label "VAR_ID2"
-		(at 154.94 144.78 180)
+		(at 165.1 140.97 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -925,7 +935,7 @@
 		(uuid "650f1f20-9b11-4b22-b182-25d28c369ce2")
 	)
 	(label "VMON_5V"
-		(at 154.94 137.16 180)
+		(at 165.1 133.35 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -935,7 +945,7 @@
 		(uuid "663c0361-d813-4a09-a1bb-175b3b665e0c")
 	)
 	(label "VMON_3V3"
-		(at 78.74 129.54 0)
+		(at 107.95 129.54 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -945,7 +955,7 @@
 		(uuid "67d8a67c-640f-44ce-b714-fb3d0a3c44f3")
 	)
 	(label "BUS_CAN_L"
-		(at 345.44 210.82 0)
+		(at 325.12 177.8 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -955,7 +965,7 @@
 		(uuid "68792511-cfb4-4d4a-a05e-94179aee1a57")
 	)
 	(label "LED_G"
-		(at 27.94 220.98 180)
+		(at 60.96 198.12 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -965,7 +975,7 @@
 		(uuid "68c7f405-7360-47d1-bda1-d72d19b56f96")
 	)
 	(label "CAN_TX"
-		(at 205.74 144.78 0)
+		(at 215.9 140.97 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -975,7 +985,7 @@
 		(uuid "6916dc46-4285-480e-aa39-50c0539fbe0b")
 	)
 	(label "SPI_SCK"
-		(at 294.64 127 180)
+		(at 274.32 124.46 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -985,7 +995,7 @@
 		(uuid "6cf24082-be2d-4f98-a588-87af0d3d7da2")
 	)
 	(label "DO2_DIAG"
-		(at 154.94 134.62 180)
+		(at 165.1 130.81 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -995,7 +1005,7 @@
 		(uuid "6f7cfe8f-3ae9-4b78-b371-51beba0d74a8")
 	)
 	(label "DO2_DIAG"
-		(at 294.64 81.28 180)
+		(at 273.05 92.71 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1005,7 +1015,7 @@
 		(uuid "702addd9-dbdd-4e6a-909a-b5c6ddef513e")
 	)
 	(label "CS_IMU"
-		(at 205.74 137.16 0)
+		(at 215.9 133.35 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1015,7 +1025,7 @@
 		(uuid "7586f8aa-c192-4771-b76c-64b9379ce4f9")
 	)
 	(label "WDI"
-		(at 27.94 208.28 180)
+		(at 60.96 185.42 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1025,7 +1035,7 @@
 		(uuid "7aacd32b-ae9e-4899-8876-ea89e4ada698")
 	)
 	(label "VEH_DO1"
-		(at 27.94 43.18 180)
+		(at 54.61 72.39 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1035,7 +1045,7 @@
 		(uuid "7b7e23d5-61b8-47be-8f5c-fa76b5a7ee1e")
 	)
 	(label "LED_R"
-		(at 154.94 157.48 180)
+		(at 165.1 153.67 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1045,7 +1055,7 @@
 		(uuid "7d53c247-e815-4bd7-a3d0-cc4f0ed6cce6")
 	)
 	(label "IMU_INT1"
-		(at 205.74 142.24 0)
+		(at 215.9 138.43 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1055,7 +1065,7 @@
 		(uuid "7fe7d60c-0061-4d3e-9054-f68d9dd60886")
 	)
 	(label "SPI_MOSI"
-		(at 294.64 129.54 180)
+		(at 274.32 127 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1065,7 +1075,7 @@
 		(uuid "934186a3-dff1-4cbe-8f00-72eed7485c54")
 	)
 	(label "CS_IMU"
-		(at 294.64 137.16 180)
+		(at 274.32 134.62 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1075,7 +1085,7 @@
 		(uuid "96b96154-1fb1-436d-8801-692ccaf0dfdb")
 	)
 	(label "BUS_CAN_H"
-		(at 78.74 43.18 0)
+		(at 105.41 72.39 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1085,7 +1095,7 @@
 		(uuid "99cfb48f-0ebe-4846-b0c1-841b1edbc95c")
 	)
 	(label "CS_INC"
-		(at 205.74 134.62 0)
+		(at 215.9 130.81 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1095,7 +1105,7 @@
 		(uuid "9be7ccfd-7125-494f-8369-e5c8b1c10600")
 	)
 	(label "BUS_CAN_H"
-		(at 345.44 208.28 0)
+		(at 325.12 175.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1105,7 +1115,7 @@
 		(uuid "9f4377e4-9b37-494c-9396-604ce59ae5fb")
 	)
 	(label "CAN_STBY"
-		(at 294.64 213.36 180)
+		(at 274.32 180.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1115,7 +1125,7 @@
 		(uuid "a055daba-a91a-4535-88ba-40759ea8b516")
 	)
 	(label "VAR_ID2"
-		(at 27.94 210.82 180)
+		(at 60.96 187.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1125,7 +1135,7 @@
 		(uuid "a1fab1f0-1b0b-4430-a667-54e7b5ba3a84")
 	)
 	(label "CAN_STBY"
-		(at 205.74 149.86 0)
+		(at 215.9 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1135,7 +1145,7 @@
 		(uuid "a3b0b9ec-9a79-415e-ac47-d7a7a71603a0")
 	)
 	(label "SPI_MISO"
-		(at 294.64 132.08 180)
+		(at 274.32 129.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1145,7 +1155,7 @@
 		(uuid "ad818d54-1dbf-4569-b3f4-f7fcb790903d")
 	)
 	(label "CS_ROT"
-		(at 205.74 139.7 0)
+		(at 215.9 135.89 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1155,7 +1165,7 @@
 		(uuid "ae434fc3-e52e-4937-86ac-7e05a7fbfcc5")
 	)
 	(label "LED_R"
-		(at 27.94 223.52 180)
+		(at 60.96 200.66 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1165,7 +1175,7 @@
 		(uuid "b8138c32-be4b-4c17-8507-ac2e87c667b3")
 	)
 	(label "SPI_MOSI"
-		(at 205.74 129.54 0)
+		(at 215.9 125.73 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1175,7 +1185,7 @@
 		(uuid "c1a4e134-4968-4a89-bc04-7b56fdb771bb")
 	)
 	(label "DO1_DIAG"
-		(at 154.94 132.08 180)
+		(at 165.1 128.27 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1185,7 +1195,7 @@
 		(uuid "cf0966be-d386-4160-8f99-26c0c09d28c3")
 	)
 	(label "CAN_RX"
-		(at 205.74 147.32 0)
+		(at 215.9 143.51 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1195,7 +1205,7 @@
 		(uuid "d2020529-2c75-48ba-a2d4-42e80ecceb8f")
 	)
 	(label "IMU_INT1"
-		(at 294.64 142.24 180)
+		(at 274.32 139.7 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1205,7 +1215,7 @@
 		(uuid "d3b20a2e-2b97-4fc3-ab01-800f6e763eea")
 	)
 	(label "VAR_ID1"
-		(at 154.94 152.4 180)
+		(at 165.1 148.59 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1215,7 +1225,7 @@
 		(uuid "d788c7fc-2a9f-4b77-8504-c6529fd80cb1")
 	)
 	(label "MCU_RST_N"
-		(at 154.94 147.32 180)
+		(at 165.1 143.51 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1225,7 +1235,7 @@
 		(uuid "de6af427-b228-4838-ad67-773d0b3f988d")
 	)
 	(label "VAR_ID0"
-		(at 154.94 149.86 180)
+		(at 165.1 146.05 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1235,7 +1245,7 @@
 		(uuid "dff119b8-e400-438e-a063-ee779a234a71")
 	)
 	(label "CAN_SILENT"
-		(at 205.74 165.1 0)
+		(at 215.9 161.29 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1245,7 +1255,7 @@
 		(uuid "e5526644-3dfa-415c-82bc-1a424a51be48")
 	)
 	(label "LED_G"
-		(at 154.94 154.94 180)
+		(at 165.1 151.13 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1255,7 +1265,7 @@
 		(uuid "e5b0b790-ba68-48fb-aee4-6cf47d1f85e9")
 	)
 	(label "DO1_DIAG"
-		(at 294.64 45.72 180)
+		(at 273.05 57.15 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1265,7 +1275,7 @@
 		(uuid "ebc8c13b-520c-4cdd-9307-c921d07596ba")
 	)
 	(label "MCU_RST_N"
-		(at 27.94 213.36 180)
+		(at 60.96 190.5 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1275,7 +1285,7 @@
 		(uuid "ee88d4cc-1975-449b-a701-7c5eb3711b47")
 	)
 	(label "CAN_TX"
-		(at 294.64 208.28 180)
+		(at 274.32 175.26 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1285,7 +1295,7 @@
 		(uuid "efb431b5-dcac-4c8a-8576-6f6b6fd87264")
 	)
 	(label "CAN_RX"
-		(at 294.64 210.82 180)
+		(at 274.32 177.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1295,7 +1305,7 @@
 		(uuid "f28a8964-2544-475f-a80a-6b7470c2b49a")
 	)
 	(label "SPI_SCK"
-		(at 205.74 127 0)
+		(at 215.9 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1305,7 +1315,7 @@
 		(uuid "f3aae612-723d-4d95-a47b-b437065356df")
 	)
 	(label "VMON_3V3"
-		(at 154.94 139.7 180)
+		(at 165.1 135.89 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1315,7 +1325,7 @@
 		(uuid "f5044e58-a9d1-4e2a-8adf-962d69e5c958")
 	)
 	(label "VAR_ID1"
-		(at 27.94 218.44 180)
+		(at 60.96 195.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1323,1260 +1333,6 @@
 			(justify right bottom)
 		)
 		(uuid "f7cf337e-43ab-4c6b-ae26-393e5685b8a6")
-	)
-	(sheet
-		(at 297.18 205.74)
-		(size 45.72 25.4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "3036af0c-b072-4a36-8ec1-d374aba21569")
-		(property "Sheetname" "60_can"
-			(at 297.18 205.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/60_can.kicad_sch"
-			(at 297.18 231.73 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "CAN_TX" input
-			(at 297.18 208.28 180)
-			(uuid "18582365-97a1-4ec0-b4ae-16c57abcad18")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "CAN_RX" output
-			(at 297.18 210.82 180)
-			(uuid "6578afde-107d-4c57-af73-0940e7a19c8e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "CAN_STBY" input
-			(at 297.18 213.36 180)
-			(uuid "0afa57d3-681a-42ef-a1ae-82f42ec6b70b")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "BUS_CAN_H" bidirectional
-			(at 342.9 208.28 0)
-			(uuid "6139ee44-98c9-43e4-b69d-b12382250eab")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "BUS_CAN_L" bidirectional
-			(at 342.9 210.82 0)
-			(uuid "25db7459-ed07-4f1a-8875-f968e0ab73e5")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CAN_SILENT" input
-			(at 297.18 228.6 180)
-			(uuid "62ca1eda-bcf9-4319-9400-ad3d4c164e4b")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "7")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 30.48 205.74)
-		(size 45.72 22.86)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "36e48972-b26d-42f8-9a56-9151ebeed19a")
-		(property "Sheetname" "80_supervision"
-			(at 30.48 205.03 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/80_supervision.kicad_sch"
-			(at 30.48 229.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "WDI" input
-			(at 30.48 208.28 180)
-			(uuid "26cfe630-a061-4465-bde4-288d26f78b6e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID2" output
-			(at 30.48 210.82 180)
-			(uuid "29040d90-e8bc-43f7-8fad-b8dcbe3fe355")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "MCU_RST_N" output
-			(at 30.48 213.36 180)
-			(uuid "e79d9f4e-bb53-44c1-998e-e841c322111f")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID0" output
-			(at 30.48 215.9 180)
-			(uuid "f66a143b-a102-4893-88bf-317b47bd3f11")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID1" output
-			(at 30.48 218.44 180)
-			(uuid "4e65c4ec-34c4-4022-be0c-faf00a4783ae")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "LED_G" input
-			(at 30.48 220.98 180)
-			(uuid "f87614af-3e5e-406d-b709-cd671f272348")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "LED_R" input
-			(at 30.48 223.52 180)
-			(uuid "7f77cc6f-d32c-4fc7-81ed-1103127f3862")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "10")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 297.18 124.46)
-		(size 45.72 22.86)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "3985e6d4-83de-4a87-a0f1-257500c83de4")
-		(property "Sheetname" "50_sensors"
-			(at 297.18 123.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/50_sensors.kicad_sch"
-			(at 297.18 147.91 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "SPI_SCK" input
-			(at 297.18 127 180)
-			(uuid "ec882e75-3e8e-45fa-bf45-c3798346078e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "SPI_MOSI" input
-			(at 297.18 129.54 180)
-			(uuid "877fd375-b3a2-4935-af08-7f7fc8548984")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "SPI_MISO" output
-			(at 297.18 132.08 180)
-			(uuid "27b10f5f-074a-4e49-be46-0c291baefa82")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "CS_INC" input
-			(at 297.18 134.62 180)
-			(uuid "156afda7-bf4a-4e96-af17-c796034c844f")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "CS_IMU" input
-			(at 297.18 137.16 180)
-			(uuid "8b348ae3-06eb-4f7c-8c04-51f02af70f99")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "CS_ROT" input
-			(at 297.18 139.7 180)
-			(uuid "94040e78-a0df-4285-8e90-e218da3b13f8")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "IMU_INT1" output
-			(at 297.18 142.24 180)
-			(uuid "fc0bd8b3-e650-4efc-a772-01ef8e8b3760")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "IMU_INT2" output
-			(at 297.18 144.78 180)
-			(uuid "e2d1117e-9731-42be-8af4-e1cc8cc13bf7")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "6")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 30.48 40.64)
-		(size 45.72 10.16)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30")
-		(property "Sheetname" "10_power_input"
-			(at 30.48 39.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/10_power_input.kicad_sch"
-			(at 30.48 51.39 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "VEH_DO1" passive
-			(at 30.48 43.18 180)
-			(uuid "87c86a24-d0e1-4222-8ca0-96dfcf810c5b")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VEH_DO2" passive
-			(at 30.48 45.72 180)
-			(uuid "cf4d99cb-687d-414b-b0fb-1309b10404d8")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "BUS_CAN_H" bidirectional
-			(at 76.2 43.18 0)
-			(uuid "52e58a37-d59c-4a58-98f9-45ea746ebad7")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "BUS_CAN_L" bidirectional
-			(at 76.2 45.72 0)
-			(uuid "686812c0-9bbb-4d1a-a20d-1bd5a7f1108c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VEH_PWR_FLT_N" output
-			(at 76.2 48.26 0)
-			(uuid "fede3817-198d-44cf-9cad-f3b16dc343b9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "2")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 157.48 40.64)
-		(size 45.72 15.24)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a")
-		(property "Sheetname" "20_buck_5v"
-			(at 157.48 39.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/20_buck_5v.kicad_sch"
-			(at 157.48 56.47 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "3")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 157.48 124.46)
-		(size 45.72 48.26)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "712b3cf0-3806-4b78-89c5-204f7bed5fb6")
-		(property "Sheetname" "40_mcu"
-			(at 157.48 123.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/40_mcu_esp32s3.kicad_sch"
-			(at 157.48 173.31 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "DO1_EN" output
-			(at 157.48 127 180)
-			(uuid "17cca453-c3e7-45c3-a010-1cbe50a81338")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO2_EN" output
-			(at 157.48 129.54 180)
-			(uuid "3a0eb939-2bde-4044-aaf3-f074fbf712a9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO1_DIAG" input
-			(at 157.48 132.08 180)
-			(uuid "45add34c-326b-4320-ac7d-01182663575b")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DO2_DIAG" input
-			(at 157.48 134.62 180)
-			(uuid "58130030-c552-4262-bd31-34227fea7dcc")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VMON_5V" input
-			(at 157.48 137.16 180)
-			(uuid "88f6f30b-6252-454b-87e4-f66fbf2616f3")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VMON_3V3" input
-			(at 157.48 139.7 180)
-			(uuid "7fcd3f63-7b8c-4e97-becc-4d8b7ef304bf")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "WDI" output
-			(at 157.48 142.24 180)
-			(uuid "ec2718f6-bf9c-43bc-98da-f5c7a310fe66")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID2" input
-			(at 157.48 144.78 180)
-			(uuid "e3fb43cc-bbab-43f9-a67b-4177c3d7e0ef")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "MCU_RST_N" input
-			(at 157.48 147.32 180)
-			(uuid "a5f45e45-1e23-4568-9981-db22ee532121")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID0" input
-			(at 157.48 149.86 180)
-			(uuid "d18d81d0-ee83-4e3d-83c2-68bb06b8c522")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "VAR_ID1" input
-			(at 157.48 152.4 180)
-			(uuid "a7e69916-4577-4188-bbea-a3592e08df52")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "LED_G" output
-			(at 157.48 154.94 180)
-			(uuid "dc25c87d-2ac3-4b9c-81dd-2b8e18bbb540")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "LED_R" output
-			(at 157.48 157.48 180)
-			(uuid "3a519b04-1450-467e-abca-e7e98fd829aa")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "SPI_SCK" output
-			(at 203.2 127 0)
-			(uuid "c3ed7a73-bc1b-4ef8-b2b1-25757cac2d13")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "SPI_MOSI" output
-			(at 203.2 129.54 0)
-			(uuid "30075b05-571c-4482-a227-d72a60f13a18")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "SPI_MISO" input
-			(at 203.2 132.08 0)
-			(uuid "e7c34e4b-369e-4132-ac39-d03240a43514")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CS_INC" output
-			(at 203.2 134.62 0)
-			(uuid "12695f55-4ec8-4bcf-9bae-9a17067cd33c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CS_IMU" output
-			(at 203.2 137.16 0)
-			(uuid "e64abad1-c017-4cf1-b0aa-8c9d14992b9c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CS_ROT" output
-			(at 203.2 139.7 0)
-			(uuid "10a91cda-1346-4bf4-8543-14a4cd498ec4")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "IMU_INT1" input
-			(at 203.2 142.24 0)
-			(uuid "c27fcce5-355b-490d-b74a-cd3f9475b261")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CAN_TX" output
-			(at 203.2 144.78 0)
-			(uuid "2dc48a35-075e-4ab7-b6b4-7dd684bf39e0")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CAN_RX" input
-			(at 203.2 147.32 0)
-			(uuid "6afe8fa2-a6d5-45f9-9da5-dec7ee5b1ca0")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CAN_STBY" output
-			(at 203.2 149.86 0)
-			(uuid "70f615ac-96df-4285-bba5-96d4f19ee380")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "CAN_SILENT" output
-			(at 203.2 165.1 0)
-			(uuid "7fd53bf0-27ee-40b6-b576-0d014cc639c6")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "IMU_INT2" input
-			(at 203.2 167.64 0)
-			(uuid "388d708e-e5bc-4047-87c8-8007ae8a53dd")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "PWR_FLT_N" input
-			(at 157.48 160.02 180)
-			(uuid "5e40c7ec-1cd9-4acf-8bba-ba58e755addb")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "5")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 297.18 76.2)
-		(size 45.72 10.16)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "b202007f-7fb6-45c9-bd77-aa87a79a96e1")
-		(property "Sheetname" "70_output_DO2"
-			(at 297.18 75.49 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/70_output_ch.kicad_sch"
-			(at 297.18 86.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "EN" input
-			(at 297.18 78.74 180)
-			(uuid "86d556ea-e7d6-40c5-80c7-acb4e43e4c5d")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DIAG" output
-			(at 297.18 81.28 180)
-			(uuid "d4cadcc3-2a88-474c-924d-4a4826e01769")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "OUT" passive
-			(at 342.9 78.74 0)
-			(uuid "5580f31b-472b-47a1-9fd9-06d7a6d619c4")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "9")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 297.18 40.64)
-		(size 45.72 10.16)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "c6606065-5ef9-41e4-af17-886440d0e060")
-		(property "Sheetname" "70_output_DO1"
-			(at 297.18 39.93 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/70_output_ch.kicad_sch"
-			(at 297.18 51.39 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "EN" input
-			(at 297.18 43.18 180)
-			(uuid "62ec1e8d-0f35-4bbe-8b5c-f8c708520eed")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "DIAG" output
-			(at 297.18 45.72 180)
-			(uuid "0c9370be-e835-40ef-b552-93fc47e7df8a")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "OUT" passive
-			(at 342.9 43.18 0)
-			(uuid "e6ab1eb7-3e05-41d4-af61-ca6ae44933f1")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "8")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 30.48 124.46)
-		(size 45.72 10.16)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "e820859b-353c-4670-907b-04aca6cb5816")
-		(property "Sheetname" "30_regulation"
-			(at 30.48 123.75 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sheets/30_regulation.kicad_sch"
-			(at 30.48 135.21 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "VMON_5V" output
-			(at 76.2 127 0)
-			(uuid "7d03c321-aad0-4063-b317-6ffb2ed5220c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "VMON_3V3" output
-			(at 76.2 129.54 0)
-			(uuid "df59642f-aa18-4241-9f5d-1b4e03cb05fd")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(page "4")
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 60.96 256.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b82457be-6fa9-4bc1-8f7f-a4a292999c54")
-		(property "Reference" "H1"
-			(at 63.5 255.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole_M3"
-			(at 63.5 257.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(hide yes)
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "N/A (agujero NPTH)"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "N/A"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 81.28 256.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "67efa0b6-4801-457a-bb98-9eae8e2a5715")
-		(property "Reference" "H2"
-			(at 83.82 255.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole_M3"
-			(at 83.82 257.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(hide yes)
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "N/A (agujero NPTH)"
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "N/A"
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
-			(at 81.28 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H2")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
@@ -2602,10 +1358,10 @@
 		)
 		(property "Value" "MountingHole_M3"
 			(at 104.14 257.81 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
-				(hide yes)
 				(font
 					(size 1.27 1.27)
 				)
@@ -2722,10 +1478,10 @@
 		)
 		(property "Value" "MountingHole_M3"
 			(at 124.46 257.81 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
-				(hide yes)
 				(font
 					(size 1.27 1.27)
 				)
@@ -2820,7 +1576,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 142.24 256.54 0)
+		(at 81.28 256.54 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2828,9 +1584,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "a7c615b1-b313-4104-9459-b501cbfcf4a3")
-		(property "Reference" "H5"
-			(at 144.78 255.27 0)
+		(uuid "67efa0b6-4801-457a-bb98-9eae8e2a5715")
+		(property "Reference" "H2"
+			(at 83.82 255.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2841,11 +1597,11 @@
 			)
 		)
 		(property "Value" "MountingHole_M3"
-			(at 144.78 257.81 0)
+			(at 83.82 257.81 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
-				(hide yes)
 				(font
 					(size 1.27 1.27)
 				)
@@ -2853,7 +1609,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2864,7 +1620,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2875,7 +1631,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2886,7 +1642,7 @@
 			)
 		)
 		(property "MPN" "N/A (agujero NPTH)"
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2897,7 +1653,7 @@
 			)
 		)
 		(property "Manufacturer" "N/A"
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2908,7 +1664,7 @@
 			)
 		)
 		(property "DNP" ""
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2919,7 +1675,7 @@
 			)
 		)
 		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
-			(at 142.24 256.54 0)
+			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2932,22 +1688,1145 @@
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H5")
+					(reference "H2")
 					(unit 1)
 				)
 			)
 		)
 	)
-	(text "AGUJEROS DE FIJACION: H1-H5, cinco agujeros M3 sin cobre: H1-H4 en las esquinas y H5 intermedio junto a los sensores, fuera del eje de ROT (en el esquematico para que 'Update PCB from Schematic' no los borre)."
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 60.96 256.54 0)
+		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
-		(at 50.8 246.38 0)
-		(effects
-			(font
-				(size 1.27 1.27)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b82457be-6fa9-4bc1-8f7f-a4a292999c54")
+		(property "Reference" "H1"
+			(at 63.5 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
-			(justify left top)
 		)
-		(uuid "60a5566c-5e10-4cd7-8de7-89437b810468")
+		(property "Value" "MountingHole_M3"
+			(at 63.5 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.kicad.org/libraries/"
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (agujero NPTH)"
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A"
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+			(at 60.96 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 276.86 172.72)
+		(size 45.72 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3036af0c-b072-4a36-8ec1-d374aba21569")
+		(property "Sheetname" "60_can"
+			(at 276.86 172.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/60_can.kicad_sch"
+			(at 276.86 198.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "CAN_TX" input
+			(at 276.86 175.26 180)
+			(uuid "18582365-97a1-4ec0-b4ae-16c57abcad18")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CAN_RX" output
+			(at 276.86 177.8 180)
+			(uuid "6578afde-107d-4c57-af73-0940e7a19c8e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CAN_STBY" input
+			(at 276.86 180.34 180)
+			(uuid "0afa57d3-681a-42ef-a1ae-82f42ec6b70b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BUS_CAN_H" bidirectional
+			(at 322.58 175.26 0)
+			(uuid "6139ee44-98c9-43e4-b69d-b12382250eab")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "BUS_CAN_L" bidirectional
+			(at 322.58 177.8 0)
+			(uuid "25db7459-ed07-4f1a-8875-f968e0ab73e5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CAN_SILENT" input
+			(at 276.86 195.58 180)
+			(uuid "62ca1eda-bcf9-4319-9400-ad3d4c164e4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 63.5 182.88)
+		(size 45.72 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "36e48972-b26d-42f8-9a56-9151ebeed19a")
+		(property "Sheetname" "80_supervision"
+			(at 63.5 182.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/80_supervision.kicad_sch"
+			(at 63.5 206.33 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "WDI" input
+			(at 63.5 185.42 180)
+			(uuid "26cfe630-a061-4465-bde4-288d26f78b6e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID2" output
+			(at 63.5 187.96 180)
+			(uuid "29040d90-e8bc-43f7-8fad-b8dcbe3fe355")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MCU_RST_N" output
+			(at 63.5 190.5 180)
+			(uuid "e79d9f4e-bb53-44c1-998e-e841c322111f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID0" output
+			(at 63.5 193.04 180)
+			(uuid "f66a143b-a102-4893-88bf-317b47bd3f11")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID1" output
+			(at 63.5 195.58 180)
+			(uuid "4e65c4ec-34c4-4022-be0c-faf00a4783ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LED_G" input
+			(at 63.5 198.12 180)
+			(uuid "f87614af-3e5e-406d-b709-cd671f272348")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LED_R" input
+			(at 63.5 200.66 180)
+			(uuid "7f77cc6f-d32c-4fc7-81ed-1103127f3862")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "10")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 276.86 121.92)
+		(size 45.72 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3985e6d4-83de-4a87-a0f1-257500c83de4")
+		(property "Sheetname" "50_sensors"
+			(at 276.86 121.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/50_sensors.kicad_sch"
+			(at 276.86 145.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "SPI_SCK" input
+			(at 276.86 124.46 180)
+			(uuid "ec882e75-3e8e-45fa-bf45-c3798346078e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SPI_MOSI" input
+			(at 276.86 127 180)
+			(uuid "877fd375-b3a2-4935-af08-7f7fc8548984")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SPI_MISO" output
+			(at 276.86 129.54 180)
+			(uuid "27b10f5f-074a-4e49-be46-0c291baefa82")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CS_INC" input
+			(at 276.86 132.08 180)
+			(uuid "156afda7-bf4a-4e96-af17-c796034c844f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CS_IMU" input
+			(at 276.86 134.62 180)
+			(uuid "8b348ae3-06eb-4f7c-8c04-51f02af70f99")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CS_ROT" input
+			(at 276.86 137.16 180)
+			(uuid "94040e78-a0df-4285-8e90-e218da3b13f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_INT1" output
+			(at 276.86 139.7 180)
+			(uuid "fc0bd8b3-e650-4efc-a772-01ef8e8b3760")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "IMU_INT2" output
+			(at 276.86 142.24 180)
+			(uuid "e2d1117e-9731-42be-8af4-e1cc8cc13bf7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 57.15 69.85)
+		(size 45.72 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30")
+		(property "Sheetname" "10_power_input"
+			(at 57.15 69.14 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/10_power_input.kicad_sch"
+			(at 57.15 80.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "VEH_DO1" passive
+			(at 57.15 72.39 180)
+			(uuid "87c86a24-d0e1-4222-8ca0-96dfcf810c5b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VEH_DO2" passive
+			(at 57.15 74.93 180)
+			(uuid "cf4d99cb-687d-414b-b0fb-1309b10404d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BUS_CAN_H" bidirectional
+			(at 102.87 72.39 0)
+			(uuid "52e58a37-d59c-4a58-98f9-45ea746ebad7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "BUS_CAN_L" bidirectional
+			(at 102.87 74.93 0)
+			(uuid "686812c0-9bbb-4d1a-a20d-1bd5a7f1108c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VEH_PWR_FLT_N" output
+			(at 102.87 77.47 0)
+			(uuid "fede3817-198d-44cf-9cad-f3b16dc343b9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 166.37 85.09)
+		(size 45.72 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a")
+		(property "Sheetname" "20_buck_5v"
+			(at 166.37 84.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/20_buck_5v.kicad_sch"
+			(at 166.37 100.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 167.64 120.65)
+		(size 45.72 48.26)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "712b3cf0-3806-4b78-89c5-204f7bed5fb6")
+		(property "Sheetname" "40_mcu"
+			(at 167.64 119.94 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/40_mcu_esp32s3.kicad_sch"
+			(at 167.64 169.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DO1_EN" output
+			(at 167.64 123.19 180)
+			(uuid "17cca453-c3e7-45c3-a010-1cbe50a81338")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DO2_EN" output
+			(at 167.64 125.73 180)
+			(uuid "3a0eb939-2bde-4044-aaf3-f074fbf712a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DO1_DIAG" input
+			(at 167.64 128.27 180)
+			(uuid "45add34c-326b-4320-ac7d-01182663575b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DO2_DIAG" input
+			(at 167.64 130.81 180)
+			(uuid "58130030-c552-4262-bd31-34227fea7dcc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VMON_5V" input
+			(at 167.64 133.35 180)
+			(uuid "88f6f30b-6252-454b-87e4-f66fbf2616f3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VMON_3V3" input
+			(at 167.64 135.89 180)
+			(uuid "7fcd3f63-7b8c-4e97-becc-4d8b7ef304bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "WDI" output
+			(at 167.64 138.43 180)
+			(uuid "ec2718f6-bf9c-43bc-98da-f5c7a310fe66")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID2" input
+			(at 167.64 140.97 180)
+			(uuid "e3fb43cc-bbab-43f9-a67b-4177c3d7e0ef")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MCU_RST_N" input
+			(at 167.64 143.51 180)
+			(uuid "a5f45e45-1e23-4568-9981-db22ee532121")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID0" input
+			(at 167.64 146.05 180)
+			(uuid "d18d81d0-ee83-4e3d-83c2-68bb06b8c522")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VAR_ID1" input
+			(at 167.64 148.59 180)
+			(uuid "a7e69916-4577-4188-bbea-a3592e08df52")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LED_G" output
+			(at 167.64 151.13 180)
+			(uuid "dc25c87d-2ac3-4b9c-81dd-2b8e18bbb540")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LED_R" output
+			(at 167.64 153.67 180)
+			(uuid "3a519b04-1450-467e-abca-e7e98fd829aa")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SPI_SCK" output
+			(at 213.36 123.19 0)
+			(uuid "c3ed7a73-bc1b-4ef8-b2b1-25757cac2d13")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SPI_MOSI" output
+			(at 213.36 125.73 0)
+			(uuid "30075b05-571c-4482-a227-d72a60f13a18")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SPI_MISO" input
+			(at 213.36 128.27 0)
+			(uuid "e7c34e4b-369e-4132-ac39-d03240a43514")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CS_INC" output
+			(at 213.36 130.81 0)
+			(uuid "12695f55-4ec8-4bcf-9bae-9a17067cd33c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CS_IMU" output
+			(at 213.36 133.35 0)
+			(uuid "e64abad1-c017-4cf1-b0aa-8c9d14992b9c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CS_ROT" output
+			(at 213.36 135.89 0)
+			(uuid "10a91cda-1346-4bf4-8543-14a4cd498ec4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IMU_INT1" input
+			(at 213.36 138.43 0)
+			(uuid "c27fcce5-355b-490d-b74a-cd3f9475b261")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CAN_TX" output
+			(at 213.36 140.97 0)
+			(uuid "2dc48a35-075e-4ab7-b6b4-7dd684bf39e0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CAN_RX" input
+			(at 213.36 143.51 0)
+			(uuid "6afe8fa2-a6d5-45f9-9da5-dec7ee5b1ca0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CAN_STBY" output
+			(at 213.36 146.05 0)
+			(uuid "70f615ac-96df-4285-bba5-96d4f19ee380")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "CAN_SILENT" output
+			(at 213.36 161.29 0)
+			(uuid "7fd53bf0-27ee-40b6-b576-0d014cc639c6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IMU_INT2" input
+			(at 213.36 163.83 0)
+			(uuid "388d708e-e5bc-4047-87c8-8007ae8a53dd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWR_FLT_N" input
+			(at 167.64 156.21 180)
+			(uuid "5e40c7ec-1cd9-4acf-8bba-ba58e755addb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 275.59 87.63)
+		(size 45.72 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "b202007f-7fb6-45c9-bd77-aa87a79a96e1")
+		(property "Sheetname" "70_output_DO2"
+			(at 275.59 86.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/70_output_ch.kicad_sch"
+			(at 275.59 98.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "EN" input
+			(at 275.59 90.17 180)
+			(uuid "86d556ea-e7d6-40c5-80c7-acb4e43e4c5d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIAG" output
+			(at 275.59 92.71 180)
+			(uuid "d4cadcc3-2a88-474c-924d-4a4826e01769")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OUT" passive
+			(at 321.31 90.17 0)
+			(uuid "5580f31b-472b-47a1-9fd9-06d7a6d619c4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 275.59 52.07)
+		(size 45.72 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c6606065-5ef9-41e4-af17-886440d0e060")
+		(property "Sheetname" "70_output_DO1"
+			(at 275.59 51.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/70_output_ch.kicad_sch"
+			(at 275.59 62.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "EN" input
+			(at 275.59 54.61 180)
+			(uuid "62ec1e8d-0f35-4bbe-8b5c-f8c708520eed")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "DIAG" output
+			(at 275.59 57.15 180)
+			(uuid "0c9370be-e835-40ef-b552-93fc47e7df8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OUT" passive
+			(at 321.31 54.61 0)
+			(uuid "e6ab1eb7-3e05-41d4-af61-ca6ae44933f1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 59.69 124.46)
+		(size 45.72 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "e820859b-353c-4670-907b-04aca6cb5816")
+		(property "Sheetname" "30_regulation"
+			(at 59.69 123.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sheets/30_regulation.kicad_sch"
+			(at 59.69 135.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "VMON_5V" output
+			(at 105.41 127 0)
+			(uuid "7d03c321-aad0-4063-b317-6ffb2ed5220c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VMON_3V3" output
+			(at 105.41 129.54 0)
+			(uuid "df59642f-aa18-4241-9f5d-1b4e03cb05fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(page "4")
+				)
+			)
+		)
 	)
 	(sheet_instances
 		(path "/"

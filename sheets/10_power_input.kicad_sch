@@ -2020,6 +2020,135 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "INCLI-VA:+3V3_D"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+3V3_D"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Símbolo de potencia: 3.3 V digital (dominio ISO)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+3V3_D_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3V3_D_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(hide yes)
+					(name "+3V3_D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "INCLI-VA:+5V_VEH"
 			(power global)
 			(pin_numbers
@@ -3485,135 +3614,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "INCLI-VA:+3V3_D"
-			(power global)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "+3V3_D"
-				(at 0 3.556 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Símbolo de potencia: 3.3 V digital (dominio ISO)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "+3V3_D_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3V3_D_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "+3V3_D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(text "BLOQUE 10 — ENTRADA DE ALIMENTACIÓN, CONECTORES  [dominio VEH]\n\nJ1 (MSTB 5 pines): V+, GND_VEH, CAN_H, CAN_L, CAN_GND.   J2 (MSTB 2 pines): DO1, DO2 (low-side de 70_output; su protección va junto a J2).\nF101  fusible 2 A / 250 VDC, solo para fallas graves (el breaker del LM74930 actúa antes, a 1 A).\nD101 ES2G + D102 SMCJ33A: TVS- para ISO 7637-2 pulso 1 (-600 V) y bloqueo en polaridad inversa.\nU101 LM74930-Q1 (ref. TI 8.2, load dump de 202 V sin suprimir): Q101 STD18NF25 (corte, 250 V) + Q102 IPD30N10S3L-34 (diodo ideal).\n  Corte por OV a 38.4 V (R108/R112/R109)   UVLO ~6.5 V (R106/R107)   breaker 1 A (R110, R103 10 mohm)   corto 2 A   C110 68 nF.\n  VS: R102 10k + D103 (clamp ~57-63 V) + D104 BAS21 + C102 1 uF.   FLT -> VEH_PWR_FLT_N: apaga DO1/DO2 por hardware y va al MCU.\n  Pad expuesto (RTN) FLOTANTE: no conectar a GND (TI).   C105 = hold-up DNP en PROTO, montado en PROD.\nFiltro LC (L101 + C106/C107) -> +VPROT (<= ~40 V).   Puntos de prueba: TP101 +VPROT, TP102 VBAT_F, TP103 GND_VEH, TP104 FLT."
 		(exclude_from_sim no)
@@ -3741,6 +3741,16 @@
 			(type default)
 		)
 		(uuid "064ab39a-d145-404e-a0ae-d88f68ef3e4e")
+	)
+	(wire
+		(pts
+			(xy 224.79 135.89) (xy 229.87 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0dd1c64f-4721-4a1d-953e-8d8624f9e9a4")
 	)
 	(wire
 		(pts
@@ -4291,6 +4301,16 @@
 			(justify left bottom)
 		)
 		(uuid "a22970f4-d618-4edc-afcc-fb6a6bf9f0ee")
+	)
+	(label "U101_RTN"
+		(at 229.87 135.89 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a6e4456a-3d77-4ea1-a1b0-7aec18511e62")
 	)
 	(label "VBAT_F"
 		(at 209.55 166.37 270)
@@ -10683,25 +10703,5 @@
 				)
 			)
 		)
-	)
-	(wire
-		(pts
-			(xy 224.79 135.89) (xy 229.87 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0dd1c64f-4721-4a1d-953e-8d8624f9e9a4")
-	)
-	(label "U101_RTN"
-		(at 229.87 135.89 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a6e4456a-3d77-4ea1-a1b0-7aec18511e62")
 	)
 )
