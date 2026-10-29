@@ -1,4 +1,37 @@
-# Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28 (últimas secciones: Claude Code, 2026-10-29)
+# Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28 (últimas secciones: Claude Code, 2026-10-29, placement-v1)
+
+## placement-v1 — Claude Code, 2026-10-29
+Ubicación congelada en el tag `placement-v1`. Script: `scripts/layout_bloques/placement_v1.py`. Renders: `docs/layout/placement-v1-top.png` y `placement-v1-bottom.png`. Coordenadas absolutas de KiCad.
+
+| Pieza | Antes | Ahora | Distancia de pad a pin |
+|---|---|---|---|
+| C601 (10 nF, VIO) | (136.50, 126.10) | (136.00, 120.91) | 4.7 → **1.10 mm** (pin 4) |
+| C602 (100 nF, VIO) | (136.50, 120.91) | (139.56, 120.91) | 1.6 → 4.66 mm (segundo en la fila) |
+| C605 (10 µF, VIO) | (140.90, 120.58) | (143.33, 120.70) | reserva local |
+| C604 (100 nF, VCC) | (136.50, 123.50) | (136.00, 122.97) | ~2.0 → **1.10 mm** (pin 3) |
+| C603 (10 µF, VCC) | (140.90, 123.65) | (139.78, 123.30) | 4.66 mm |
+| C607 (10 nF, VISOIN) | (119.50, 121.60) | (119.50, 119.00) | **1.60 mm** (pin 16) |
+| C608 (100 nF, VISOIN) | (119.50, 119.00) | (119.50, 121.60) | 1.99 mm |
+| L201 | (139.40, 55.50) | (139.40, 56.10) | SW: 3.4 → **2.80 mm** (pin 8) |
+| C203 | (139.60, 62.42) | (139.30, 62.42) | BOOT: 1.45 → **1.12 mm** (pin 7) |
+
+- **ADI, ADM3055E Rev. D, "PCB Layout":** la pista entre los capacitores de bajo ESR y VCC, VIO, VISOIN y VISOOUT no debe superar 2 mm.
+  - En cada fila de pines entra un solo capacitor a esa distancia. Ahí van los de menor valor.
+  - Los segundos no pueden ir más arriba: taparían la salida de los pines 5–8 (CAN_RX/SILENT/TX/STBY) hacia el ESP32.
+  - Para el ruteo: pin → capacitor chico → capacitor grande, en cadena y sin vías. El GND de cada capacitor lleva su vía a B.Cu junto al pad.
+- **C105:** de `Capacitor_SMD:CP_Elec_16x17.5` (Vishay 1616) a `INCLI-VA:CP_Elec_Panasonic_J16_VibProof`, en la misma posición y con el mismo giro.
+
+  | | Pads | Separación | Extremo |
+  |---|---|---|---|
+  | KiCad (Vishay) | 7.8 × 9.6 mm | 4.7 mm | ±10.15 mm |
+  | Panasonic J16 estándar | 2.5 × 6.9 mm | 6.0 mm | ±9.9 mm |
+  | Panasonic J16 antivibración | cruz: columna de 2.8 × 7.0 mm y brazos de 6.2 × 3.6 mm | 5.8 mm | ±9.9 mm |
+
+  - La huella nueva usa el land antivibración. La columna central contiene el land estándar, así que EEE-FK1H102AV (PROD) y EEE-FK1H102AM entran en la misma huella.
+  - Fuente: Panasonic FK series, "Land / Pad pattern", 01-Sep-25.
+- **Coating:**
+  - Zonas a enmascarar en `User.Comments`: J1 (100.25, 95.53)–(112.73, 132.79), J2 (164.45, 50.25)–(186.48, 62.41), J401 (192.22, 74.86)–(199.75, 86.19) y J402 (178.01, 143.79)–(187.31, 148.02).
+  - En F.Silkscreen va solo el rótulo "SIN BARNIZ": la caja completa pisaba D102, Q701, Q751 y sus pads.
 
 ## Fijaciones H1–H5, apoyo opcional y serigrafía — Claude Code, 2026-10-29
 

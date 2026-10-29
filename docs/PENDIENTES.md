@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (H1–H5 metalizados sin red, apoyo B reservado, serigrafía de barrera CAN, pinout y nombre de placa).
+Última actualización: 2026-10-29, Claude Code (decisiones cerradas, correcciones previas al ruteo, tag `placement-v1` y rama `ruteo-agente`).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -30,6 +30,25 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 5. **DO mínima: aprobada y aplicada.** El latch y el diagnóstico quedan como huellas DNP.
 6. **J1 y J2:** Phoenix MSTB 2,5 de 5.08 mm con brida roscada (GF). **Aplicado.**
 7. **C105:** reemplazada por la decisión 8.
+
+## Decisiones del usuario (2026-10-29)
+Cerradas; antes figuraban como abiertas.
+- **Serigrafía:** aprobados los rótulos de zona, el pinout de J1/J2 y la línea de barrera CAN. El usuario reubicó parte de la serigrafía en `b2d4f4a` (sin cambios de componentes).
+- **Rigidez de los sensores:** se quedan las dos, H5 (opción A, M3 en 156.0, 88.5) y el área B reservada (Ø8 mm en B.Cu).
+- **CAN:**
+  - R605 = 0 Ω (pendiente completa).
+  - La velocidad del bus (250/500 kbit/s) se define en el firmware.
+  - Se monta en las variantes con CAN según la tabla VAR_ID; en las demás es DNP (campo `Variant = CAN`).
+- **VAR_ID:** 2 bits, (ID1 ID0) = 11 base / 10 CAN / 01 solo DO / 00 CAN + DO, con resistencias de 0 Ω (R805/R806). R807 queda DNP, reservada para CABIN, que **no entra en esta revisión**. El esquemático ya coincide (verificado).
+- **LED:** D801 y D802 montados en PROTO y DNP en PROD. La caja es opaca, sin light pipe. El esquemático ya coincide.
+- **Fabricación:** 2 capas, JLCPCB. El prototipo se arma en la variante CAN + DO + ROT.
+- **ASM330 (LGA):** lo suelda el usuario con aire caliente y stencil. Pedir el stencil a JLCPCB.
+- **Conformal coating: sí.** Zonas a enmascarar (J1, J2, J401 y J402) dibujadas en `User.Comments`, con el rótulo "SIN BARNIZ" en F.Silkscreen. Se asume PD1 bajo el barniz; las distancias de la `.kicad_dru` (PD2) quedan con margen.
+- **Imán de ROT:** lado aún no definido, así que se mantienen libres las dos caras.
+  - Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
+  - Portaimán no ferromagnético de hasta Ø16 mm.
+  - Tornillo o inserto de H5 de inoxidable A2 o de latón (no magnético).
+- **Mecánica:** la caja todavía no está diseñada. Sus requisitos quedan en "Requisitos para la caja".
 
 ## Hecho en este turno (2026-10-27)
 - **`60_can`** (ADM3055E, datasheet ADI Rev. D, tablas 10 y 12):
@@ -360,6 +379,24 @@ Solo verificación; no se editó esquemático ni PCB.
   - TP: faltan los CS de SPI y el lado bus del CAN (medible en J1); TP201 y TP301 están ambos en +5V_VEH.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
 
+## placement-v1 — Claude Code, 2026-10-29
+Pedido explícito del usuario. Script: `scripts/layout_bloques/placement_v1.py`. Detalle en `LAYOUT_NOTES.md`, sección "placement-v1".
+- **U601 (ADM3055E):** ADI Rev. D, "PCB Layout": la pista entre el capacitor y VCC/VIO/VISOIN/VISOOUT no debe pasar de 2 mm.
+  - C601 (10 nF VIO) pasa a la fila del pin 4: 1.10 mm de pad a pin (antes ~4.7 mm).
+  - C604 (100 nF VCC): 1.10 mm del pin 3.
+  - C607 (10 nF VISOIN) y C608 intercambiados: 1.60 / 1.99 mm del pin 16. C610 (VISOOUT): 1.60 mm del pin 19.
+  - **Límite físico:** en cada fila entra un solo capacitor a ≤ 2 mm sin tapar la salida de los pines 5–8 hacia el ESP32. Los segundos, C602 (100 nF VIO) y C603 (10 µF VCC), quedan a 4.7 mm, en cadena con el primero. C606 (10 µF VISOOUT) queda a 2.9 mm.
+- **Buck:** L201 se movió 0.6 mm hacia U201, así que el nodo SW mide ~2.8 mm de pad a pad (antes 3.4). C203 queda a 1.12 mm del pin BOOT (antes 1.45).
+- **C105:** la huella anterior (`CP_Elec_16x17.5`, Vishay 1616) **no coincidía** con el J16 de Panasonic:
+  - Pads de 7.8 × 9.6 mm con separación de 4.7 mm, contra el land J16 estándar de 2.5 × 6.9 mm con separación de 6.0 mm.
+  - La huella nueva es `INCLI-VA:CP_Elec_Panasonic_J16_VibProof`: land **antivibración** J16 (A 5.8, B 7.0, C 6.2, H 2.8 mm; FK, 01-Sep-25). Su columna central contiene el land estándar.
+  - MPN de PROD: **EEE-FK1H102AV** (FK antivibración, AEC-Q200, 50 V, 1000 µF, J16). Alt_MPN: EEE-FK1H102AM. Altura máxima 17.3 mm.
+- **Coating:** zonas a enmascarar en `User.Comments` y rótulo "SIN BARNIZ" en F.Silkscreen. La caja completa no entra en serigrafía sin pisar D102, Q701, Q751 y sus pads.
+- **Verificación:**
+  - DRC: 0 errores; 5 avisos ya conocidos (3 de U401, y las referencias de Q101 y U801 tras `b2d4f4a`). Paridad 0; 358 sin rutear.
+  - ERC: 0 errores y 5 avisos, los mismos que en HEAD (4 `pin_to_pin` de SW401/SW402 y la etiqueta U101_RTN de un solo pin).
+- Courtyards: los pasivos de U601 quedan a ≥ 0.5 mm entre sí (criterio para pasivos del IC). C105 queda a 0.93 mm de R105–R107 y C109; sus pads están en los extremos, lejos de esos pasivos.
+
 ## Fijaciones H1–H5 y serigrafía — Claude Code, 2026-10-29
 Pedido explícito del usuario (esquemático raíz, PCB y `.kicad_dru`). Detalle en `LAYOUT_NOTES.md`, sección "Fijaciones H1–H5, apoyo opcional y serigrafía". **Sin ruteo.** No hizo falta F8: H5 se agregó al PCB con la ruta de su símbolo, y la paridad da 0.
 - Se conservaron los 5 segmentos de CAN_H/CAN_L en F.Cu que el usuario había borrado sin commit.
@@ -404,12 +441,11 @@ Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). 
 - [x] Ejecutar `sch_visual_qa` de la raíz: PASS (Claude Code, 2026-10-28).
 - [x] Propuesta 100 × 100 adoptada como PCB principal (2026-10-28). Falta la paridad completa (ver el ítem siguiente).
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
-- [~] Desacoples/lazos afinados en el reacomodo por bloques (tablas en LAYOUT_NOTES). Faltan C601 (10 nF VIO, 4.8 mm), L201/C203 y el visto bueno del usuario a la ubicación **antes de rutear**.
-- [ ] Ruteo: plano GND_VEH continuo en B.Cu (sin cortes bajo el buck ni los sensores), GND_CAN propio en la isla, costura de vías.
-- [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
-- [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
+- [x] Desacoples y lazos: C601 a 1.1 mm del pin 4, L201/C203 acercados (placement-v1). Ubicación aprobada por el usuario: tag `placement-v1`.
+- [ ] Ruteo por etapas en la rama `ruteo-agente` (ver "Ruteo por etapas"). El usuario rutea aparte una copia en `PCB_INCLI_VA_manual` (rama `ruteo-manual`): **no tocarla**.
+- [x] C105: huella J16 verificada contra Panasonic y reemplazada por el land antivibración, que acepta EEE-FK1H102AV y EEE-FK1H102AM.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
-- [ ] Validar H5 (56.0, 38.5), el apoyo B (63.5, 49.0) y H1–H4 contra la caja y el portaimán de ROT (Ø ≤ 17.9 mm libre); ensayo de vibración.
+- [ ] Validar H1–H5 y el apoyo B contra la caja cuando se diseñe (ver "Requisitos para la caja"), y hacer el ensayo de vibración.
 - [ ] Ruteo del buck: vía a GND junto al pad de C204, C205 y C206, y plano continuo hasta las vías del EP de U201.
 - [x] Supervisión con TPS3828 aplicada. WD_EN/TPS3431 quedaron obsoletos.
 - [x] F101: nueva huella documentada en librería e incorporada al PCB; sustituye la importación antigua.
@@ -417,29 +453,39 @@ Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). 
 - [x] Opción de banco D401/JP401 eliminada del esquemático y del PCB.
 
 ## Decisiones del usuario aún abiertas
-Preguntas anteriores que siguen sin respuesta (las de 60_can y BOM ya están resueltas arriba).
+- Lado del imán de ROT. Mientras no se defina, quedan libres las dos caras alrededor del eje de U503.
+- Disponibilidad de EEE-FK1H102AV (C105 PROD) y del resto de los MPN marcados "a verificar".
 
-### 60_can
-1. **Variantes:** ¿el CAN se monta en todas las variantes, o es DNP en la base (`Variant=CAN`)? ¿Qué variantes existen en total y cuáles se combinan?
-7. **Velocidad del bus:** ¿250 kbit/s (J1939) o 500 kbit/s? Define si R605 queda en 0 Ω o en 47 k (control de pendiente).
+## Requisitos para la caja (la caja aún no está diseñada)
+Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm, 1.6 mm.
+- **Fijaciones:**
+  - H1 (105, 55), H2 (195, 55), H3 (105, 145), H4 (195, 145) y H5 (156, 88.5).
+  - M3, PTH de 3.2 mm, anillo de 6.4 mm sin red. Arandela de Ø ≤ 8 mm.
+  - Tornillo o inserto de H5 de inoxidable A2 o de latón.
+- **Apoyo B:** columna de la caja contra B.Cu en (163.5, 99.0), Ø8 mm. Esa zona no tiene cobre expuesto.
+- **Aberturas:**
+  - J1: MSTBV de 5 pines, borde izquierdo, y ~96–132.
+  - J2: MSTBV de 2 pines, borde superior, x ~165–186.
+  - J401: USB-C, borde derecho, y ~75–86.
+  - J402 (UART0) es interno: no necesita abertura.
+- **Altura:**
+  - Cara superior: C105 hasta 17.3 mm (solo en PROD) y J1/J2 con la brida.
+  - Cara inferior: solo TP y chips planos.
+- **Antena del ESP32-S3:** keep-out de la huella oficial (48 × 21 mm alrededor de la antena, borde derecho). Sin metal de la caja ni tornillería sobre la antena ni a menos de 15 mm.
+- **ROT:**
+  - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
+  - Portaimán no ferromagnético de Ø ≤ 16 mm. Hay libre un círculo de Ø17.9 mm en las dos caras.
+- **Coating:** enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`).
 
-### 80_supervision — preguntas históricas, resueltas por TPS3828 y tabla VAR_ID vigente
-9. **Timeout del watchdog TPS3431:** ¿el valor de fábrica (pin CWD sin conectar) o uno programado con un capacitor en CWD? Si es programado, ¿qué tiempo quieres (el firmware patea por WDI)?
-10. **Tabla de ID de variante (VAR_ID1, VAR_ID0):** la hoja propone 00 base | 01 CAN | 10 CAN+OUT | 11 grúa (CAN+OUT+ROT). ¿La confirmas? ¿Alcanzan 2 bits si se suma CABIN, o hace falta un tercer bit (o un divisor leído por ADC1)?
-11. **Implementación del ID:** ¿resistencias de 0 Ω / DNP **(rec.)** o solder jumpers?
-12. **LED de estado:** ¿bicolor verde/rojo en un solo encapsulado (0805 o 1206) **(rec.)** o dos LED separados? ¿Se ve a través de la caja ABS, o hace falta un light pipe o una ventana?
-13. **Variante CABIN (buzzer + LEDs):** ¿entra en esta revisión o queda para más adelante?
-
-### PCB — decisiones mecánicas pendientes; ubicación autorizada, ruteo requiere visto bueno
-14. **Caja y contorno:** ¿modelo o MPN de la caja ABS? ¿Dimensiones máximas de la placa, forma y altura máxima de componentes (lo limitan PS201, de 10.2 mm, y C105)?
-15. **Fijaciones:** ¿cuántos agujeros, qué diámetro y en qué posición? ¿Separadores metálicos o plásticos? Con separadores metálicos, ¿a qué masa se conectan los agujeros (ninguna, GND_VEH o chasis)? Recomiendo **agujeros sin cobre y separadores plásticos**, para no puentear las barreras.
-16. **Cara de montaje y orientación:** ¿qué cara de la caja va contra el chasis de acero? ¿Cómo queda la placa respecto del vehículo (qué eje de la placa es el eje longitudinal o lateral del vehículo)? Lo necesito para la antena y para la serigrafía de los ejes de los sensores.
-17. **Variante ROT:** la placa va centrada sobre el eje del pivote. ¿El imán queda del lado de los componentes o del lado opuesto? ¿A qué distancia? ¿Hace falta un agujero o una zona libre para el eje?
-18. **Conectores:** ¿J1 (MSTB de 5 pines) y J2 (MSTB de 2 pines) en el mismo borde? ¿El USB-C tiene que ser accesible desde afuera de la caja, o es solo para el banco con la caja abierta? ¿Dónde va el header UART0?
-19. **Capas y espesor:** 4 capas (señal / GND / alimentación / señal), 1.6 mm, cobre de 1 oz **(rec.)**: da plano de masa para RF, sensores y barreras. ¿O tiene que ser de 2 capas por costo?
-20. **Fabricante:** ¿JLCPCB, PCBWay u otro? Define las reglas mínimas (pista, separación, vías) y si se pide stencil.
-21. **Montaje:** ¿todo de un solo lado **(rec.)**, para soldar a mano? ¿El ASM330LHH (LGA) lo sueldas tú con aire caliente o lo monta el fabricante?
-22. **Barniz o conformal coating:** ¿sí o no? Cambia el grado de contaminación supuesto (PD2) para la fuga de las barreras.
+## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
+No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
+- [ ] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops.
+- [ ] 1. Potencia.
+- [ ] 2. CAN.
+- [ ] 3. USB/MCU.
+- [ ] 4. Sensores y señales.
+- [ ] 5. Planos.
+- [ ] 6. Cierre: DRC y paridad en 0, retornos, fabricación de prueba para JLCPCB en `fab/`.
 
 ## Requisitos para el firmware (SPI de 50_sensors)
 Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` por sensor, cada uno con su modo y su frecuencia:
@@ -471,10 +517,9 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
 - **BOM del arnés:** los enchufes no salen del BOM de la placa. Si se quiere, se pueden agregar como ítems mecánicos.
 
 ## Pendientes de BOM
-- [ ] **C105 (PROD)** (pedido del usuario, 2026-10-27): electrolítico **SMD** automotriz **AEC-Q200**, **≥ 50 V**, 1000–2200 µF, 105–125 °C, en versión **resistente a vibración** (con terminales extra de anclaje), con MPN.
-  - Hoy: huella `Capacitor_SMD:CP_Elec_16x17.5` y MPN pendiente.
-  - Al elegirlo, revisar que la huella coincida con su land pattern y que las terminales de anclaje tengan pads.
-  - Revisar el inrush con C109 = 100 nF y la ESR/ripple.
+- [~] **C105 (PROD):** elegido **EEE-FK1H102AV**: Panasonic FK antivibración, AEC-Q200, 50 V, 1000 µF, 105 °C, J16. Huella `INCLI-VA:CP_Elec_Panasonic_J16_VibProof` con los pads de las terminales de soporte.
+  - Falta confirmar la disponibilidad.
+  - El inrush con C109 = 100 nF ya está calculado (0.59 A).
 - [ ] **R102** (pedido del usuario, 2026-10-27): resistencia **anti-pulso en el mismo encapsulado 2512**, si aguanta el pulso del load dump sin suprimir.
   - Pulso: ~2 W durante 350 ms (0.68–0.74 J rectangular) con 85 °C de temperatura inicial (REVISION_CODEX I2).
   - Comparar con la curva de pulso único del fabricante, por ejemplo series anti-surge 2512.

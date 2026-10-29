@@ -5084,7 +5084,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_16x17.5"
+		(property "Footprint" "INCLI-VA:CP_Elec_Panasonic_J16_VibProof"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5095,7 +5095,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.com/ProductDetail/Panasonic/EEE-FK1H102AM"
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDE0000/ABA0000C1181.pdf"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5116,7 +5116,7 @@
 				)
 			)
 		)
-		(property "MPN" "EEE-FK1H102AM"
+		(property "MPN" "EEE-FK1H102AV"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5138,7 +5138,7 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). Panasonic serie FK, AEC-Q200, 1000 uF / 50 V, 105 C, cuerpo 16 x 16.5 mm, 2 terminales: FIJAR CON ADHESIVO (vibracion). Alt_MPN EEE-FK1H102AV (FK antivibracion, 30 G) requiere su land pattern con terminales de anclaje: no se pudo verificar (datasheet Panasonic no accesible). Verificar el land pattern J16 contra CP_Elec_16x17.5 antes de produccion. Requiere C109 = 100 nF (inrush)."
+		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). PROD: EEE-FK1H102AV, Panasonic FK antivibracion (terminales de soporte), AEC-Q200, 1000 uF / 50 V, 105 C, J16 (16 x 16.8 mm, altura max. 17.3 mm). Huella INCLI-VA:CP_Elec_Panasonic_J16_VibProof = land antivibracion J16 de Panasonic (FK, 01-Sep-25); su columna central contiene el land estandar J16, asi que EEE-FK1H102AM (Alt_MPN, sin soporte: fijar con adhesivo) entra en la misma huella. Disponibilidad del AV a verificar. Requiere C109 = 100 nF (inrush)."
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5160,7 +5160,7 @@
 				)
 			)
 		)
-		(property "Alt_MPN" "EEE-FK1H102AV"
+		(property "Alt_MPN" "EEE-FK1H102AM"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
