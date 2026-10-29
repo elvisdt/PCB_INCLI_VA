@@ -3669,6 +3669,12 @@
 		(uuid "190d1b6c-b235-4e62-a07d-b30016c1765c")
 	)
 	(junction
+		(at 245.11 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3b01271c-bf5c-4a1f-861c-b2697b733f24")
+	)
+	(junction
 		(at 252.73 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3679,12 +3685,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3d1de077-5cd3-43e3-8325-40bbaa48af07")
-	)
-	(junction
-		(at 237.49 128.27)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3d24271d-d287-4a9d-ae60-b4f82c395394")
 	)
 	(junction
 		(at 143.51 76.2)
@@ -3784,7 +3784,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 128.27) (xy 237.49 132.08)
+			(xy 245.11 128.27) (xy 245.11 132.08)
 		)
 		(stroke
 			(width 0)
@@ -3904,7 +3904,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 120.65) (xy 237.49 128.27)
+			(xy 245.11 120.65) (xy 245.11 128.27)
 		)
 		(stroke
 			(width 0)
@@ -3994,7 +3994,7 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 120.65) (xy 237.49 120.65)
+			(xy 224.79 120.65) (xy 245.11 120.65)
 		)
 		(stroke
 			(width 0)
@@ -4004,7 +4004,7 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 128.27) (xy 237.49 128.27)
+			(xy 224.79 128.27) (xy 245.11 128.27)
 		)
 		(stroke
 			(width 0)
@@ -7413,7 +7413,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 237.49 132.08 0)
+		(at 245.11 132.08 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -7423,7 +7423,7 @@
 		(dnp no)
 		(uuid "7f988b17-331e-4f73-bcdf-4dd50fb86d02")
 		(property "Reference" "#PWR122"
-			(at 237.49 138.56 0)
+			(at 245.11 138.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7434,7 +7434,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 237.49 135.89 0)
+			(at 245.11 135.89 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7444,7 +7444,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 237.49 132.08 0)
+			(at 245.11 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7455,7 +7455,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 237.49 132.08 0)
+			(at 245.11 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7466,7 +7466,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 237.49 132.08 0)
+			(at 245.11 132.08 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
