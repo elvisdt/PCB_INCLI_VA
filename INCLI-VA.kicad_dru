@@ -15,7 +15,12 @@
 # ============================================================================
 
 # ---------------------------- Capacidades del fabricante --------------------
-(rule "JLC_espacio_cobre"
+# El piso de 0.15 mm cobre-cobre esta en Board Setup (min_clearance), no aca: una regla de clearance sin
+# condicion anula las clearances de las net classes (HV 1.25, DO 0.6, Default 0.2). Comprobado con DRC, 2026-10-29.
+# Pads de un mismo encapsulado: la separacion la fija el fabricante del componente (QFN de 0.5 mm, SOIC, LGA).
+# Las reglas posteriores (U101_RTN, barrera CAN) siguen mandando sobre esta.
+(rule "Pads_mismo_encapsulado"
+	(condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent")
 	(constraint clearance (min 0.15mm)))
 
 (rule "JLC_ancho_pista"
@@ -103,11 +108,14 @@
 	(condition "(A.NetName == '/VEH_DO1' || A.NetName == '/VEH_DO2') && B.NetName != A.NetName && !(A.Type == 'Pad' && B.Type == 'Pad')")
 	(constraint clearance (min 0.6mm)))
 
-# Rieles de la entrada protegida (<= 38.4 V, corte por OV): IPC-2221B B2, 31-50 V -> 0.6 mm
-# entre conductores (pistas, vias y zonas). Los pines de U101 (QFN de 0.5 mm) quedan fuera de esta regla.
-(rule "MV_entrada_protegida_40V"
-	(condition "(A.NetName == '+VPROT' || A.NetName == '/10_power_input/VA' || A.NetName == '/10_power_input/C_ID' || A.NetName == '/10_power_input/VOUT') && B.NetName != A.NetName && A.Type != 'Pad' && B.Type != 'Pad'")
+# Rieles de la entrada protegida (<= 38.4 V, corte por OV): VA, C_ID, VOUT y +VPROT.
+# Entre conductores (pistas, vias, zonas) manda la net class HV: 1.25 mm (pedido del usuario, 2026-10-29).
+# Cuando interviene un pad (llegada a U201, desacoples, R103) se aplica IPC-2221B B2, 31-50 V -> 0.6 mm:
+# con 1.25 mm no se puede conectar ningun 0603 ni el pin VIN de U201 (pin GND a 0.67 mm).
+(rule "MV_entrada_protegida_40V_pads"
+	(condition "(A.NetName == '+VPROT' || A.NetName == '/10_power_input/VA' || A.NetName == '/10_power_input/C_ID' || A.NetName == '/10_power_input/VOUT') && B.NetName != A.NetName && (A.Type == 'Pad' || B.Type == 'Pad') && !(A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent)")
 	(constraint clearance (min 0.6mm)))
+
 
 # ---------------------------- Barrera del ADM3055E (U601) -------------------
 # El ADM3055E garantiza CLR = CRP = 8.3 mm en el encapsulado (datasheet ADI Rev. D, especificaciones
@@ -142,6 +150,20 @@
 (rule "IPC2152_buck_5V"
 	(condition "A.Type == 'Track' && (A.NetName == '+5V_VEH' || A.NetName == '/20_buck_5v/BUCK_SW')")
 	(constraint track_width (min 0.5mm)))
+
+# ---------------------------- Llegadas a pines finos (despues de los anchos: la ultima regla manda) ----
+# Llegada a los pines de U101 (VQFN-24 de 0.5 mm): VA (2, 15), C_ID (18, 24) y VOUT (19) son entradas de
+# sensado de uA. Dentro del courtyard de U101 la pista se angosta a 0.25 mm con 0.2 mm de separacion.
+(rule "HV_llegada_U101"
+	(condition "A.NetClass == 'HV' && A.Type != 'Pad' && A.intersectsCourtyard('U101') && B.NetName != '/10_power_input/U101_RTN'")
+	(constraint clearance (min 0.2mm))
+	(constraint track_width (min 0.25mm)))
+
+# Llegada a VIN de U201 (HSOIC-8 de 1.27 mm): pista de 0.6 mm (ancho del pad) dentro del courtyard,
+# a 0.67 mm del pin 1 (GND) y del pin 4 (RT).
+(rule "HV_llegada_U201"
+	(condition "A.NetName == '+VPROT' && A.Type != 'Pad' && A.intersectsCourtyard('U201')")
+	(constraint track_width (min 0.6mm)))
 
 # ---------------------------- Antena del ESP32-S3-WROOM-1 -------------------
 # La huella oficial RF_Module:ESP32-S3-WROOM-1 ya trae un rule area de keep-out (48 x 21 mm,

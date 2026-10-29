@@ -479,7 +479,7 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 
 ## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
 No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
-- [ ] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops.
+- [~] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops. Aplicadas; esperan visto bueno (tres puntos a decidir en `docs/RUTEO_AGENTE.md`).
 - [ ] 1. Potencia.
 - [ ] 2. CAN.
 - [ ] 3. USB/MCU.
