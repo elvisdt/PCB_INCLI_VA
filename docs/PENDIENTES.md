@@ -2,7 +2,18 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (cierre de la etapa 1 y traspaso a Codex: `docs/RUTEO_TRASPASO.md`).
+Última actualización: 2026-10-29, Codex (preparación de la etapa 2; decisiones registradas en `docs/RUTEO_TRASPASO.md`).
+
+## Retoma de ruteo — Codex, 2026-10-29
+- Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
+- Registrada la línea de continuidad en `AGENTS.md` y las decisiones del usuario en `docs/RUTEO_TRASPASO.md`.
+- U503: medir 10 mm desde el borde del cuerpo; excepción del tronco +5V existente a 9.8 mm.
+- TP301: traslado autorizado al tronco +5V fuera de la proyección del SW de U301; pendiente aplicar y anotar coordenadas en «Cambios de ubicación».
+- ROT: mantener libre Ø17.9 mm en ambas caras. C105 PROD: confirmar stock en BOM, sin bloquear el ruteo.
+- R602/R603/C609 montadas en PROTO; PROD según instalación.
+- Desacoples U601: ≤2 mm para C601/C604/C607/C608/C610; C602/C603/C606 en cadena detrás del pequeño, sin derivación independiente y con retorno corto a su masa. Conservar ubicación y valores (C602 es 100 nF). C606/C610 retornan a GNDISO_CAN antes de FB602.
+- Edición del PCB pendiente de verificar cierre completo de KiCad: desapareció el bloqueo del PCB, pero permanece el del proyecto. No se ha cambiado la placa ni el esquemático.
+- Al cerrar etapa 2: DRC, paridad, renders de ambas caras, tabla de longitudes de desacople y CAN, revisión de `.kicad_pro`, commit y push. Esperar aprobación antes de etapa 3.
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.

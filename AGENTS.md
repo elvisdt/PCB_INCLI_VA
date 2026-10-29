@@ -1,3 +1,5 @@
+El ruteo del PCB lo continúa Codex en la rama ruteo-agente. Leer docs/RUTEO_TRASPASO.md antes de empezar.
+
 # INCLI-VA — reglas para los agentes (Claude Code y Codex)
 
 Proyecto KiCad 10 jerárquico. Estructura y convenciones de redes/rieles: ver `README.md`.

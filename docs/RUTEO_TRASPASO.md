@@ -137,7 +137,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **Fijaciones H1 (105,55), H2 (195,55), H3 (105,145), H4 (195,145), H5 (156,88.5):** M3, anillo de 6.4 mm sin red. Pistas y vías a ≥ 4 mm del centro (`H_zona_arandela`); otro cobre a ≥ 0.5 mm del anillo.
 - **Área B (`APOYO_CAJA_B`):** Ø8 mm en (163.5, 99.0), en B.Cu. Sin pistas, vías ni pads; el relleno de GND sí puede pasar.
 - **Potencia y DO lejos de U503:** nada de potencia (+5V, VBAT/VIN, buck) ni DO a menos de 10 mm de U503.
-  - Hoy el tronco de +5V (x 137.6) queda a 12.4 mm del centro y a 9.8 mm del cuerpo de U503. La métrica está pendiente de definir (sección 9).
+  - Decisión del usuario (2026-10-29): medir los 10 mm desde el borde del cuerpo. Se acepta como única excepción el tronco existente de +5V (x 137.6), a 9.8 mm del cuerpo.
 - **Conformal coating:** sí. Enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`). Hay rótulos "SIN BARNIZ" en la serigrafía.
 - **Fabricación:** JLCPCB, 2 capas, 1.6 mm, 1 oz. El prototipo se arma en la variante CAN + DO + ROT. El usuario suelda el ASM330 (LGA) con aire caliente y stencil, así que hay que pedir el stencil.
 
@@ -154,7 +154,8 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
   - V_SOOUT (pin 19) → C610 (220 nF) y C606 (10 µF) → FB601 → V_SOIN (pin 16) con C607 (10 nF) y C608 (100 nF).
   - GNDISO_CAN (pines 18/20) → FB602 → GND_CAN.
   - CAN_RS (pin 12) → R605 (0 Ω) → GND_CAN.
-  - **ADI Rev. D:** pista de ≤ 2 mm entre cada capacitor y VCC, VIO, VISOIN y VISOOUT. Ya están ubicados para eso: C607 a 1.6 mm, C608 a 2.0, C610 a 1.6.
+  - **Criterio de ruteo aprobado por el usuario (2026-10-29):** ≤ 2 mm de pista entre el pin y los desacoples cercanos C601, C604, C607, C608 y C610. C602/C603 (ubicados a ~4.7 mm) y C606 (~2.9 mm) se aceptan en cadena detrás del capacitor pequeño: pin → pequeño → grande, sin camino independiente desde el pin al grande. No mover estas piezas. Cada capacitor tendrá retorno corto a su propia red de masa.
+  - **Valores y masas que se conservan del diseño:** C602 es de 100 nF (no 10 µF); C603, C605 y C606 son de 10 µF. C601–C605 retornan a GND_VEH, C607/C608 a GND_CAN y C606/C610 a GNDISO_CAN, antes de FB602. No unir directamente GNDISO_CAN con GND_CAN puenteando la ferrita.
 - **Lado lógico:**
   - +5V (VCC, pin 3) → C604 (100 nF, a 1.1 mm) → C603 (10 µF). Sale del tronco de +5V en y 124.8: de (143.5, 124.8) hacia el oeste, a C603.1 / C604.1 por debajo.
   - +3V3_D (VIO, pin 4) → C601 (10 nF, a 1.1 mm) → C602 → C605. Llega desde la salida de U301 o desde el riel de 3V3 que se tienda en la etapa 3.
@@ -166,7 +167,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **Aceptación:**
   - DRC 0 errores. Ningún cobre en `BARRERA_CAN`.
   - Par CAN acoplado de punta a punta, con diferencia de largo de ≤ 1 mm.
-  - Capacitores de U601 a ≤ 2 mm de pista.
+  - C601/C604/C607/C608/C610 a ≤ 2 mm de pista al pin; C602/C603/C606 en cadena conforme al criterio aprobado, con retornos cortos. Entregar tabla de distancias reales y diferencia de longitud CANH/CANL.
   - Las 4 señales completas hasta U401. Render de las dos caras.
 
 ### Etapa 3 — USB / MCU
@@ -245,7 +246,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 - **C201 (4.7 µF):** llega a VIN por la diagonal y el pad de C202 (8.6 mm), porque el retorno directo de C202 ocupa el paso por el oeste del pin 1.
   - Lazo de C202: 3.9 mm² (antes 6.1). Lazo de C201: 26.4 mm² (antes 31.3).
 - **U301:** el GND del pin 1 y el de C302 bajan al plano por vías propias. El lazo de entrada mide ~5 mm² (antes 6.1, con VIN cruzando por B.Cu).
-- **TP301** (+5V, B.Cu, en (140, 134)) queda debajo del arranque del nodo SW de U301. Es el pad de prueba, sin pistas. Moverlo necesita autorización.
+- **TP301** (+5V, B.Cu, originalmente en (140, 134)): traslado autorizado por el usuario (2026-10-29), fuera de la proyección del SW de U301 y sobre el tronco +5V, para permitir GND continuo bajo SW. Aplicarlo en la etapa 2 y registrar coordenadas antes/después en «Cambios de ubicación».
 - **Gates:** HGATE mide ~17 mm y DGATE ~25 mm por la ubicación de U101, pero cada uno va paralelo a su retorno (VA).
 
 ---
@@ -289,11 +290,13 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 
 ---
 
-## 9. Decisiones pendientes del usuario (no tomarlas solo)
-1. **Distancia a U503:** ¿los 10 mm de "nada de potencia ni DO cerca de U503" se miden desde el centro o desde el cuerpo? El tronco de +5V está a 12.4 mm del centro y a 9.8 mm del cuerpo.
-2. **Lado del imán de ROT:** no definido. Hoy se mantienen libres las dos caras.
-3. **C105 PROD (EEE-FK1H102AV):** falta confirmar stock. La huella J16 antivibración ya acepta EEE-FK1H102AM.
-4. **TP301** bajo el arranque del nodo SW de U301: ¿se acepta o se mueve?
-5. **Terminación CAN:** R602/R603/C609 montadas solo si el nodo es extremo del bus. Confirmar para el prototipo.
-6. Cualquier movimiento o giro de componentes, cambio de reglas o de net classes, o renombre de redes.
-7. Los MPN marcados "a verificar" en `docs/PENDIENTES.md`, antes de generar la BOM final.
+## 9. Decisiones registradas y pendientes (2026-10-29)
+1. **U503:** 10 mm desde el borde del cuerpo; excepción aceptada del tronco +5V existente a 9.8 mm.
+2. **Imán ROT:** lado sin definir; mantener libre el círculo de Ø17.9 mm en ambas caras, salvo U503 y sus pasivos previstos.
+3. **C105 PROD (EEE-FK1H102AV):** confirmar stock en la revisión del BOM; no bloquea el ruteo. La huella J16 antivibración ya acepta EEE-FK1H102AM.
+4. **TP301:** traslado autorizado fuera de la proyección del SW y sobre el tronco +5V; anotar el cambio de ubicación al aplicarlo.
+5. **Terminación CAN:** R602/R603/C609 montadas en PROTO; en PROD se definen según instalación.
+6. **Desacoples de U601:** criterio y conexiones en cadena aprobados en la sección 5, etapa 2. No cambiar ubicación, valores ni redes.
+7. **Alcance autorizado:** solo etapa 2. Al cerrarla: DRC, paridad, renders de ambas caras, tabla de distancias de desacoples y diferencia CANH/CANL, commit `[Codex]`, `git push origin ruteo-agente` y esperar visto bueno antes de la etapa 3.
+8. Cualquier otro movimiento o giro de componentes, cambio de reglas o net classes, renombre de redes o edición del esquemático requiere consulta previa.
+9. Los MPN marcados "a verificar" en `docs/PENDIENTES.md` se revisan antes de generar la BOM final.
