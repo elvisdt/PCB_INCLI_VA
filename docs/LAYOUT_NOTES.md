@@ -1,5 +1,54 @@
 # Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28
 
+## Revisión de la ubicación del usuario (commit `1ff3419`) y reglas para el ruteo — Claude Code, 2026-10-28
+
+Cambios del usuario: SW401/SW402 a `SW-SMD_L3.9-W3.0-P4.45`, H5 retirado (quedan H1–H4 en las esquinas), reubicación de entrada, buck, 3,3 V, CAN, MCU y supervisión, y referencias pasadas a F.Silkscreen. Sin revisar todavía: USB, salidas DO y sensores.
+
+**Verificación** (`kicad-cli` 10.0.7, solo lectura; KiCad estaba abierto):
+- Paridad con el esquemático: 0. Sin rutear: 356.
+- Errores: 2 `copper_edge_clearance` en J401 (ver USB).
+- Avisos: 92 + 92 `text_height`/`text_thickness`; las referencias en F.Silkscreen miden 0.7 / 0.12 mm y la regla `JLC_serigrafia` pide 1.0 / 0.15 mm. Además, 2 avisos de serigrafía de U401 en el borde y 1 `lib_footprint_mismatch` de U401, todos conocidos.
+- Courtyards: ninguno se superpone, pero 37 pares quedan a menos de 1 mm (regla de soldadura a mano de AGENTS.md). Los peores: R202–C203 0.30, C401–U401 0.35, R109–C110, C110–R110 y R110–R111 0.38, R304–R303 y R805–R806 0.45 mm.
+
+**Lo que mejoró** (distancia del borde del pad al pin, antes → ahora):
+- U101: R106 4.7 → 2.4, R110 3.3 → 1.9, C110 3.2 → 1.9, C103 2.4 → 1.8 mm. El flujo J1 → F101 → D102/D101 → Q101/Q102 → U101 → L101 queda corto y en orden.
+- C203 (BOOT) 3.1 → 1.4 mm, L201 → SW 5.3 → 3.4 mm.
+- C402 → U401 1.3 mm; C801 → U801 1.2 mm.
+- SW402 (BOOT) ya no está junto a la IMU. RESET y BOOT quedan juntos en el borde inferior y rotulados.
+
+**Lo que empeoró y hay que corregir antes de rutear:**
+1. **C403 (1 µF del EN)** se fue con el pulsador: está a 44 mm del pin 3 de U401, y MCU_RST_N pasa de 18 a 52 mm de árbol. El RC de EN tiene que quedar en el pin (Espressif: R 10 k + C 1 µF junto a CHIP_PU). SW401 y R401 pueden quedar abajo; **C403 vuelve junto al pin 3**.
+2. **Lazos del buck U201:**
+   - C202 (100 nF de VIN) 1.6 → 4.7 mm y C201 4.2 → 7.6 mm. El lazo caliente es C202 → VIN (3) → GND/EP: tiene que quedar pegado a los pines 3 y 1.
+   - C204–C206 (salida) quedan a 12–14 mm del GND de U201 (antes 4.4). Su GND tiene que volver al EP por cobre corto y no por el plano bajo L201.
+   - Propuesta: C202 junto a los pines 3/1, C201 detrás, y C204–C206 en fila al lado de L201 con su GND hacia U201.
+3. **C104** (VOUT del LM74930) 6 → 10.5 mm del pin 19. Es bulk, así que es aceptable; acercarlo si queda espacio.
+
+**USB (J401), sin revisar por el usuario:**
+- Las ranuras traseras del blindaje (SH, x = 98.8 mm) llegan a 99.7 mm, a 0.3 mm del borde. Por eso salen los errores de `JLC_borde` (0.5 mm). **Correr J401 0.3–0.5 mm hacia −x**: el frente del receptáculo sigue asomando ~1.5 mm, que es lo que conviene para que entre el cable a ras de la caja.
+- Reglas: conector en el borde con la boca hacia afuera; U402 (ESD) entre el conector y el MCU, a ≤ 5 mm de J401 y antes que cualquier derivación; D+/D- en par diferencial (90 Ω), sin vías, por encima de un plano GND continuo, y sin cruzar SPI ni el buck; resistencias de CC junto a J401; J401 fuera del keep-out de antena (hoy a 13 mm, bien).
+
+**Sensores: por qué están en el centro y qué reglas seguir:**
+- **Por qué esa zona:**
+  1. La variante ROT exige U503 (AS5147U) sobre el eje del pivote, con la placa centrada en él (decisión de esquemático). Por eso U503 está en (50, 50).
+  2. U501 (SCL3300) y U502 (ASM330) van junto a U503 para que los tres midan el mismo cuerpo rígido.
+  3. Lejos de las fuentes de calor y de campo (L101, L201, L301, U101, U201, C105) y de los conectores, donde el cable tira y flexiona la placa.
+- **Contra:** sin H5, el centro es el punto de máxima flexión entre H1–H4 (90 mm de luz). En un chasis con vibración, la IMU y el inclinómetro ven el modo propio de la placa. Opciones: (a) volver a poner un apoyo intermedio cerca de los sensores que no choque con el eje ROT; (b) fijar la placa por más puntos en la caja; (c) aceptarlo y validarlo en el ensayo de vibración. **Decisión del usuario.**
+- **Reglas:**
+  - Los ejes de U501 y U502 alineados con los bordes de la placa (rotación 0/90/180/270), con la misma orientación entre ellos, y con flechas X/Y en la serigrafía.
+  - Sin vías ni pistas bajo el LGA del ASM330 ni bajo el DFL del SCL3300; plano GND continuo debajo, en B.Cu.
+  - A más de 10 mm de los pulsadores, de los TP con punta y de cualquier pieza que se golpee.
+  - El retorno de +3V3_A (U302) llega por su propia pista, sin compartir camino con el buck.
+  - Para ROT: zona libre de cobre y de piezas altas en la cara del imán (pendiente, pregunta 17).
+
+**Serigrafía propuesta** (F.Silkscreen, 1.0 mm / 0.15 mm como mínimo):
+- **Rótulos de zona:** "ENTRADA 12/24 V", "BUCK 5 V", "3V3", "CAN AISLADO", "DO1 / DO2", "ESP32-S3", "SENSORES", "USB", cada uno en un lugar libre de su bloque.
+- **Pinout en los conectores:** J1 "V+ GND CANH CANL CGND" y J2 "DO1 DO2", junto a cada pin.
+- **Barrera CAN:** línea discontinua sobre el borde de la rule area `BARRERA_CAN` en F.Silkscreen y en B.Silkscreen, con "AISLADO — NO PUENTEAR" del lado del bus y el símbolo de aislamiento. Hoy la barrera no se ve en la placa.
+- **Sensores:** flechas X/Y (y Z con un punto) junto a U501 y U502, y la marca del eje del pivote en U503.
+- **Placa:** nombre, revisión y fecha ("INCLI-VA rev A 2026-10").
+- **Referencias:** hoy miden 0.7 / 0.12 mm, por debajo de la regla del proyecto. Opciones: (a) subirlas a 1.0 / 0.15 donde quepan y mover a F.Fab las que no; (b) bajar la regla a 0.8 / 0.15 si JLCPCB lo acepta. Faltan pasar a F.Silkscreen las de USB, DO y sensores (56 todavía en F.Fab).
+
 ## Reacomodo por bloques (referencia UG-230 / INCLIMAX) — Claude Code, 2026-10-28
 
 Pedido del usuario: cada conector en el borde con su circuito pegado, en el orden en que fluye la potencia o la señal (fotos en `docs/reference/`). Aplicado sobre **`INCLI-VA.kicad_pcb`**. Sin ruteo. Vista: **`layout/reacomodo-antes-despues.png`** (coloreada por hoja; los TP de la cara inferior en línea punteada). Las vistas `ubicacion-100x100*` y `placa-100x100*` quedan como históricas.

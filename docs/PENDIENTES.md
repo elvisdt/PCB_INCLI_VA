@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Claude Code (reacomodo por bloques del PCB principal, H5 intermedio, franja de barrera CAN).
+Última actualización: 2026-10-28, Claude Code (revisión de la ubicación del usuario, commit 1ff3419, y reglas para el ruteo).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -359,6 +359,13 @@ Solo verificación; no se editó esquemático ni PCB.
   - H4 (tornillo M3) junto al keep-out de antena; preferir separador plástico o alejarlo.
   - TP: faltan los CS de SPI y el lado bus del CAN (medible en J1); TP201 y TP301 están ambos en +5V_VEH.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
+
+## Revisión de la ubicación del usuario (`1ff3419`) — Claude Code, 2026-10-28
+Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). Detalle en `LAYOUT_NOTES.md`, sección "Revisión de la ubicación del usuario".
+- DRC: paridad 0; 2 errores de borde en J401 (ranuras SH a 0.3 mm); 92 referencias en 0.7 / 0.12 mm (regla de 1.0 / 0.15); 37 pares de courtyards a menos de 1 mm.
+- A corregir antes de rutear: C403 vuelve al pin EN de U401; C202/C201 pegados a VIN/GND de U201; GND de C204–C206 cerca del EP; J401 0.3–0.5 mm hacia adentro.
+- Propuestos: rótulos de zona, pinout de J1/J2, línea de barrera CAN en serigrafía y flechas de ejes en los sensores. Se colocan cuando el usuario lo apruebe, con KiCad cerrado.
+- Decisión abierta: apoyo de los sensores sin H5 (zona de máxima flexión).
 
 ## Falta
 - [x] Sincronizar `INCLI-VA.kicad_pcb` con el esquemático (F8 del usuario, `30380cc`); paridad 0 también tras agregar H5.
