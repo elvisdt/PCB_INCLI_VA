@@ -2,17 +2,20 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Codex (preparación de la etapa 2; decisiones registradas en `docs/RUTEO_TRASPASO.md`).
+Última actualización: 2026-10-29, Codex (etapa 2 parcial; fuente y señales lógicas, bus pendiente de decisión).
 
 ## Retoma de ruteo — Codex, 2026-10-29
 - Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
 - Registrada la línea de continuidad en `AGENTS.md` y las decisiones del usuario en `docs/RUTEO_TRASPASO.md`.
 - U503: medir 10 mm desde el borde del cuerpo; excepción del tronco +5V existente a 9.8 mm.
-- TP301: traslado autorizado al tronco +5V fuera de la proyección del SW de U301; pendiente aplicar y anotar coordenadas en «Cambios de ubicación».
+- TP301: traslado aplicado de (140,134) a (140,131.6), B.Cu, sobre el tronco +5V y fuera del SW; retirada la bajada anterior. Registrado en «Cambios de ubicación».
 - ROT: mantener libre Ø17.9 mm en ambas caras. C105 PROD: confirmar stock en BOM, sin bloquear el ruteo.
 - R602/R603/C609 montadas en PROTO; PROD según instalación.
 - Desacoples U601: ≤2 mm para C601/C604/C607/C608/C610; C602/C603/C606 en cadena detrás del pequeño, sin derivación independiente y con retorno corto a su masa. Conservar ubicación y valores (C602 es 100 nF). C606/C610 retornan a GNDISO_CAN antes de FB602.
-- Edición del PCB pendiente de verificar cierre completo de KiCad: desapareció el bloqueo del PCB, pero permanece el del proyecto. No se ha cambiado la placa ni el esquemático.
+- Usuario confirmó cierre completo de KiCad; comprobada ausencia de bloqueos antes de editar. Esquemáticos intactos. Solo TP301 cambia de ubicación; net classes y reglas conservadas.
+- Fuente aislada, desacoples en cadena, CAN_RS y CAN_TX/RX/STBY/SILENT completos hasta U401, con TP404/TP405 y resistencias. El riel +3V3_D desde U301 y los planos siguen en sus etapas previstas.
+- **Etapa 2 parcial:** DRC 0 errores / 42 avisos (37 vías de masas pendientes de planos + 5 conocidos), paridad 0, 262 conexiones pendientes. Renders, DRC y tabla de distancias en `docs/layout/ruteo/etapa2-parcial-*`; explicación en `docs/RUTEO_AGENTE.md`.
+- **Decisiones nuevas pendientes:** autorizar puente de una señal CAN con dos vías B.Cu para invertir H/L; aceptar C608 ≤2.15 mm (mínimo geométrico real 2.145 mm, frente a ~1.99 mm de envolventes). Ninguna excepción aplicada como aprobada. CANH/CANL y punto medio de terminación siguen sin completar.
 - Al cerrar etapa 2: DRC, paridad, renders de ambas caras, tabla de longitudes de desacople y CAN, revisión de `.kicad_pro`, commit y push. Esperar aprobación antes de etapa 3.
 
 ## Criterio general (decisión del usuario, 2026-10-27)

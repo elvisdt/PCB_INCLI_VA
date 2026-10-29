@@ -12,13 +12,14 @@ Aplicados en `ruteo-agente`, con autorización del usuario. Repetirlos en la cop
 
 - **U301 girado 180° (r90 → r270) y C302 a (138.1, 135.875) r270**, junto al pin 3 (VIN). Hicieron falta las dos cosas: con el giro solo, C302 quedaba a 4 mm; moviendo solo C302, EN y FB seguían cruzando el nodo SW. Referencia de U301 en (142.2, 132.8).
 - **TP101 a (127.6, 61.5)**, B.Cu, conectado por vía al ramal de +VPROT (C201 → C202).
+- **TP301 de (140.0, 134.0) a (140.0, 131.6)**, B.Cu, r180 conservada (Codex, 2026-10-29; autorizado por el usuario). Queda directamente sobre la vía existente del tronco +5V. Retirada la pista B.Cu de (140,131.6) a (140,134), fuera de la proyección del SW de U301. El plano continuo se hará en la etapa 5.
 
 ## Etapas
 | Etapa | Estado | Commit |
 |---|---|---|
 | 0. Reglas | aprobada (2026-10-29) | 36bf77f |
 | 1. Potencia | cerrada (2026-10-29) | 4c8b1f8 + cierre |
-| 2. CAN | | |
+| 2. CAN | parcial: fuente, desacoples y señales lógicas; bus espera decisión | ver historial `[Codex]` |
 | 3. USB/MCU | | |
 | 4. Sensores y señales | | |
 | 5. Planos | | |
@@ -152,3 +153,46 @@ Script: `scripts/ruteo/etapa1_potencia.py`. Parte del PCB de la etapa 0 (36bf77f
 - **C104** queda en B.Cu: no hay lugar en F.Cu sin alargar el lazo. Requisitos de la caja: separadores de ≥ 12 mm y adhesivo en C104.
 - **Verificación:** DRC 0 errores (19 `via_dangling` GND, que esperan el plano), paridad 0, 288 sin rutear.
 - **Traspaso a Codex:** `docs/RUTEO_TRASPASO.md`.
+
+## Etapa 2 — avance parcial de Codex (2026-10-29)
+
+**No cerrada; no iniciar etapa 3.** KiCad cerrado, sin archivos de bloqueo, antes de editar. Base de placa: `b46f185`; decisiones: `a6ba59d`.
+
+Hecho:
+- Fuente aislada: VISOOUT → C610 → C606 → FB601 → VISOIN; C607 y C608 al pin 16. GNDISO_CAN une pines 18/20, C610/C606 y FB602; su salida conserva GND_CAN. CAN_RS completo.
+- Alimentación VCC desde el tronco +5V y cadena pin 3 → C604 → C603. VIO: pin 4 → C601 → C602 → C605; alimentación desde U301 pendiente de la etapa 3, como permite el traspaso.
+- Retornos locales a sus masas mediante vías. GND_VEH/GND_CAN esperan los planos de la etapa 5.
+- CAN_TX/RX/STBY/SILENT completos hasta U401, con pull-up/pull-down y TP404/TP405. Saltos por B.Cu sobre +5V; tronco conservado.
+- TP301 trasladado según «Cambios de ubicación». Ningún otro componente movido; esquemáticos intactos.
+
+Verificación del avance:
+- DRC: **0 errores**, **42 avisos** (37 `via_dangling` de masas pendientes de plano, 2 `silk_overlap`, 2 `silk_edge_clearance`, 1 `lib_footprint_mismatch` conocido).
+- Paridad: **0 diferencias**. Conexiones pendientes: **262** (incluyen el bus CAN, la terminación, los planos y las etapas siguientes).
+- Revisados renders `docs/layout/ruteo/etapa2-parcial-{top,bottom}.png`; reporte DRC y medidas JSON en la misma carpeta.
+- `.kicad_pro`: solo había reordenamiento de clases; se comprobó equivalencia JSON y se conservó el contenido original. `.kicad_dru` intacto.
+- Comprobadas las posiciones/rotaciones/capas/redes de todas las huellas contra la base: solo cambia TP301. Solo se retira una pista previa (su bajada); se agregan 135 pistas/vías en el grupo `CODEX_ETAPA2`.
+
+### Medidas reales de desacoples
+
+Longitud a lo largo del camino de cobre desde el borde del pad del pin hasta el borde del pad del capacitor (incluye el recorrido por el capacitor previo en las cadenas). Se consideran las esquinas redondeadas de los pads; muestreo de 0.001 mm. No son distancias rectas de ubicación. `scripts/ruteo/verify_etapa2.py` reconstruye el camino desde el PCB y comprueba que las cadenas pasen por el capacitor anterior.
+
+| Capacitor | Valor | Pin U601 | Pista entre bordes (mm) | Retorno | Estado |
+|---|---|---|---:|---|---|
+| C601 | 10 nF | 4, VIO | 1.101 | GND_VEH | ≤2 mm |
+| C602 | 100 nF | 4, VIO | 6.616 | GND_VEH | detrás de C601 |
+| C605 | 10 µF | 4, VIO | 12.270 | GND_VEH | detrás de C602 |
+| C604 | 100 nF | 3, VCC | 1.318 | GND_VEH | ≤2 mm |
+| C603 | 10 µF | 3, VCC | 6.889 | GND_VEH | detrás de C604 |
+| C607 | 10 nF | 16, VISOIN | 1.646 | GND_CAN | ≤2 mm |
+| C608 | 100 nF | 16, VISOIN | **2.145** | GND_CAN | **excepción pendiente** |
+| C610 | 220 nF | 19, VISOOUT | 1.682 | GNDISO_CAN | ≤2 mm |
+| C606 | 10 µF | 19, VISOOUT | 4.292 | GNDISO_CAN | detrás de C610 |
+
+### Decisiones solicitadas; todavía no autorizadas
+
+1. **Cruce CANH/CANL:** J1.3/H y D601.1/H están por encima de J1.4/L y D601.2/L; U601.13/L está por encima de U601.14/H. Se propone un salto corto de una señal por B.Cu con dos vías junto a D601 para invertir el orden y conservar un recorrido compacto. Cambia el criterio «sin vías»; no se ha aplicado. Alternativa solicitada: revisar ubicación si el usuario mantiene el criterio sin vías. No se movieron D601 ni las terminaciones.
+2. **C608:** el mínimo entre el cobre real de los dos pads redondeados es `hypot(1.975, 1.565) - 0.15 - 0.225 = 2.145 mm`. Los ~1.99 mm previos corresponden a las esquinas de los rectángulos envolventes, que no tienen cobre. El trazado alcanza el mínimo real; se solicita aceptar **≤2.15 mm** solo para C608. No se presenta como cumplimiento del límite de 2 mm.
+
+**CANH/CANL:** sin trazado completo, por lo que sus longitudes y diferencia aún no se pueden informar como resultado de aceptación. Pendientes también la conexión del punto medio R602/R603/C609, revisión final de la etapa, nuevos renders, commit de cierre y visto bueno.
+
+Scripts: `etapa2_can.py` regenera solo las pistas de su grupo, conserva la etapa 1 y aplica TP301. La eliminación nativa de grupos mediante SWIG falló en KiCad 10.0.7; se sustituyó por eliminación de los bloques de pistas/vías por sus UUID antes de cargar el archivo del proyecto. No cargar una copia externa y guardarla sobre el proyecto.

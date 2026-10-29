@@ -124,6 +124,7 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 | C302 | (139.2, 139.5) r90 | (138.1, 135.875) r270 | Pegado al pin 3 (VIN) de U301 |
 | TP101 (+VPROT, B.Cu) | (138.5, 65.5) | (127.6, 61.5) | Sobre el ramal de +VPROT hacia C202 |
 | Referencia de U301 | — | serigrafía en (142.2, 132.8) | Al girar la pieza quedaba sobre R301 |
+| TP301 (Codex, etapa 2 parcial) | B.Cu (140.0, 134.0) | B.Cu **(140.0, 131.6)**, r180 | Traslado autorizado al tronco +5V; retirada su bajada B.Cu bajo SW. Aplicado por `scripts/ruteo/etapa2_can.py` |
 
 **Regla:** no mover ni rotar ningún otro componente sin preguntar al usuario. Si un ruteo lo necesita, anotar la propuesta en `docs/RUTEO_AGENTE.md` y esperar la decisión. El usuario replica los cambios en su copia manual.
 
@@ -300,3 +301,8 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 7. **Alcance autorizado:** solo etapa 2. Al cerrarla: DRC, paridad, renders de ambas caras, tabla de distancias de desacoples y diferencia CANH/CANL, commit `[Codex]`, `git push origin ruteo-agente` y esperar visto bueno antes de la etapa 3.
 8. Cualquier otro movimiento o giro de componentes, cambio de reglas o net classes, renombre de redes o edición del esquemático requiere consulta previa.
 9. Los MPN marcados "a verificar" en `docs/PENDIENTES.md` se revisan antes de generar la BOM final.
+
+### Hallazgos durante la etapa 2 — pendientes de decisión
+- **Estado parcial:** fuente aislada, desacoples y cuatro señales lógicas completos; TP301 trasladado. DRC 0 errores / paridad 0 / 262 conexiones pendientes. Detalle, medidas y renders en `docs/RUTEO_AGENTE.md`. La etapa 2 no está cerrada.
+- **C608:** el trazado mide 2.145 mm entre bordes reales del cobre. Es el mínimo geométrico con los pads redondeados actuales; los ~1.99 mm del traspaso ignoraban las esquinas redondeadas. Solicitada excepción ≤2.15 mm, todavía no aprobada. No mover el capacitor ni declarar cumplidos los 2 mm.
+- **CANH/CANL:** orden H/L invertido entre D601 y U601. Solicitado puente corto B.Cu con dos vías de una señal; todavía no aprobado ni aplicado. Si se exige conservar «sin vías», revisar propuesta de ubicación antes de mover cualquier componente. Longitudes del bus pendientes de ruteo completo.
