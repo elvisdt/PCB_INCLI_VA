@@ -1036,7 +1036,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 67.31) (xy 165.1 69.85)
+			(xy 181.61 77.47) (xy 181.61 80.01)
 		)
 		(stroke
 			(width 0)
@@ -1126,7 +1126,7 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 59.69) (xy 165.1 57.15)
+			(xy 181.61 69.85) (xy 181.61 67.31)
 		)
 		(stroke
 			(width 0)
@@ -1273,7 +1273,7 @@
 		(dnp no)
 		(uuid "0ac23757-fc73-4b5a-ba1c-5290a2e8d8bb")
 		(property "Reference" "R804"
-			(at 109.22 110.49 90)
+			(at 111.506 112.268 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1284,7 +1284,7 @@
 			)
 		)
 		(property "Value" "470"
-			(at 109.22 113.03 90)
+			(at 110.998 114.3 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1552,7 +1552,7 @@
 		(dnp no)
 		(uuid "3c67d111-b7f0-46ce-a5dd-ec01c9d340f6")
 		(property "Reference" "R803"
-			(at 109.22 97.79 90)
+			(at 111.506 99.568 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1563,7 +1563,7 @@
 			)
 		)
 		(property "Value" "470"
-			(at 109.22 100.33 90)
+			(at 111.252 101.6 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2141,7 +2141,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:+3V3_D")
-		(at 165.1 57.15 0)
+		(at 181.61 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2151,7 +2151,7 @@
 		(dnp no)
 		(uuid "7638ecc5-33ed-42f6-a608-c70460d5c3f8")
 		(property "Reference" "#PWR0578"
-			(at 167.64 55.88 0)
+			(at 184.15 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2162,7 +2162,7 @@
 			)
 		)
 		(property "Value" "+3V3_D"
-			(at 165.1 52.07 0)
+			(at 181.61 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2172,7 +2172,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 165.1 57.15 0)
+			(at 181.61 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2183,7 +2183,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.1 57.15 0)
+			(at 181.61 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2194,7 +2194,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 165.1 57.15 0)
+			(at 181.61 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2218,7 +2218,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 165.1 63.5 0)
+		(at 181.61 73.66 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2228,7 +2228,7 @@
 		(dnp no)
 		(uuid "77834d42-8e2a-409a-8044-ccf9e003f0a6")
 		(property "Reference" "C801"
-			(at 167.64 62.23 0)
+			(at 184.15 72.39 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2239,7 +2239,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 167.64 64.77 0)
+			(at 184.15 74.93 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2250,7 +2250,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2261,7 +2261,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.murata.com/en-global/products/productdetail?partno=GCM188R71H104KA57D"
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2272,7 +2272,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2283,7 +2283,7 @@
 			)
 		)
 		(property "MPN" "GCM188R71H104KA57D"
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2294,7 +2294,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2305,7 +2305,7 @@
 			)
 		)
 		(property "DNP" ""
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2316,7 +2316,7 @@
 			)
 		)
 		(property "Notes" "Desacople de U801."
-			(at 165.1 63.5 0)
+			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3270,7 +3270,7 @@
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
-		(at 165.1 69.85 0)
+		(at 181.61 80.01 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3280,7 +3280,7 @@
 		(dnp no)
 		(uuid "ed7be181-087f-4dca-9c79-b6e84bf2c415")
 		(property "Reference" "#PWR0579"
-			(at 167.64 68.58 0)
+			(at 184.15 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3291,7 +3291,7 @@
 			)
 		)
 		(property "Value" "GND_VEH"
-			(at 165.1 73.66 0)
+			(at 181.61 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3301,7 +3301,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 165.1 69.85 0)
+			(at 181.61 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3312,7 +3312,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.1 69.85 0)
+			(at 181.61 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3323,7 +3323,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 165.1 69.85 0)
+			(at 181.61 80.01 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
