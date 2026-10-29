@@ -1,0 +1,98 @@
+{
+ "barrera_tramos": {
+  "F.Silkscreen": {
+   "trazos": 48,
+   "omitidos": 9
+  },
+  "B.Silkscreen": {
+   "trazos": 57,
+   "omitidos": 0
+  }
+ },
+ "textos": {
+  "J1.1 VIN F.Silkscreen": [
+   11.7,
+   55.5
+  ],
+  "J1.2 GND F.Silkscreen": [
+   11.7,
+   59.08
+  ],
+  "J1.3 CANH F.Silkscreen": [
+   11.7,
+   64.16
+  ],
+  "J1.4 CANL F.Silkscreen": [
+   11.7,
+   69.24
+  ],
+  "J1.5 GND_CAN F.Silkscreen": [
+   11.7,
+   74.32
+  ],
+  "J2.1 DO1 F.Silkscreen": [
+   80.0,
+   11.38
+  ],
+  "J2.2 DO2 F.Silkscreen": [
+   72.92,
+   11.38
+  ],
+  "J1.1 VIN B.Silkscreen": [
+   11.7,
+   54.0
+  ],
+  "J1.2 GND B.Silkscreen": [
+   11.7,
+   59.08
+  ],
+  "J1.3 CANH B.Silkscreen": [
+   11.7,
+   64.16
+  ],
+  "J1.4 CANL B.Silkscreen": [
+   11.7,
+   69.24
+  ],
+  "J1.5 GND_CAN B.Silkscreen": [
+   11.7,
+   74.32
+  ],
+  "J2.1 DO1 B.Silkscreen": [
+   78.0,
+   11.38
+  ],
+  "J2.2 DO2 B.Silkscreen": [
+   72.92,
+   11.38
+  ],
+  "CAN AISLADO F.Silkscreen": [
+   19.0,
+   86.5
+  ],
+  "CAN AISLADO B.Silkscreen": [
+   19.0,
+   86.5
+  ],
+  "placa B.Silkscreen": [
+   45.0,
+   76.0
+  ],
+  "zona ENTRADA": [
+   10.0,
+   32.75
+  ],
+  "zona BUCK 5V": [
+   46.25,
+   20.5
+  ],
+  "zona SALIDAS DO": [
+   75.25,
+   30.0
+  ],
+  "zona SENSORES": [
+   52.0,
+   62.5
+  ]
+ }
+}

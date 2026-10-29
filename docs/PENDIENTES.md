@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (correcciones sobre 1ff3419: EN, buck, J401, courtyards y serigrafía 0.8 mm).
+Última actualización: 2026-10-29, Claude Code (H1–H5 metalizados sin red, apoyo B reservado, serigrafía de barrera CAN, pinout y nombre de placa).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -360,6 +360,21 @@ Solo verificación; no se editó esquemático ni PCB.
   - TP: faltan los CS de SPI y el lado bus del CAN (medible en J1); TP201 y TP301 están ambos en +5V_VEH.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
 
+## Fijaciones H1–H5 y serigrafía — Claude Code, 2026-10-29
+Pedido explícito del usuario (esquemático raíz, PCB y `.kicad_dru`). Detalle en `LAYOUT_NOTES.md`, sección "Fijaciones H1–H5, apoyo opcional y serigrafía". **Sin ruteo.** No hizo falta F8: H5 se agregó al PCB con la ruta de su símbolo, y la paridad da 0.
+- Se conservaron los 5 segmentos de CAN_H/CAN_L en F.Cu que el usuario había borrado sin commit.
+- Hecho:
+  - H1–H4 cambiados a `MountingHole_3.2mm_M3_Pad`, y H5 nuevo en (56.0, 38.5). Metalizados, con anillo de 6.4 mm (huella oficial) y **sin red**.
+  - Reglas `H_anillo_cobre` (≥ 0.5 mm) y `H_zona_arandela` (pistas/vías a ≥ 4 mm del centro).
+  - Rule area `APOYO_CAJA_B`: Ø8 mm en B.Cu en (63.5, 49.0); sin pistas, vías, pads ni huellas; relleno permitido.
+  - Serigrafía: línea de la barrera CAN y "CAN AISLADO" en las dos caras, pinout de J1/J2 en las dos caras, nombre/Rev/fecha abajo, rótulos ENTRADA, BUCK 5V, SALIDAS DO y SENSORES. Las marcas de polaridad y pin 1 ya estaban todas.
+  - C206 a 12.8 mm aceptado: cada C204–C206 con su vía a GND y plano continuo hasta el EP de U201 (anotado para el ruteo).
+- Verificación: DRC 0 errores (3 avisos conocidos de U401), paridad 0, 358 sin rutear. ERC 0 errores. `sch_visual_qa` de la raíz: PASS.
+- ERC: 4 avisos `pin_to_pin` nuevos en `40_mcu`. Vienen del símbolo de SW401/SW402 que cambió el usuario (pines "Unspecified"). Son inofensivos y quedan para cuando se revise ese símbolo.
+- **Decisiones abiertas:**
+  - Lado del imán de ROT: sigue sin definir. Se dejan libres las dos caras; H5 y B dejan libre un círculo de Ø17.9 mm alrededor del eje.
+  - Visto bueno a la ubicación para empezar el ruteo.
+
 ## Correcciones sobre `1ff3419` — Claude Code, 2026-10-29
 Pedido explícito del usuario (editar el PCB). Detalle y tablas en `LAYOUT_NOTES.md`, sección "Correcciones aplicadas sobre `1ff3419`". **Sin ruteo.**
 - Al empezar seguía abierto el gestor de proyectos de KiCad (`~INCLI-VA.kicad_pro.lck`); el editor de PCB estaba cerrado. No se tocó `.kicad_pro`.
@@ -394,7 +409,8 @@ Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). 
 - [ ] Ruteo y planos, únicamente después del visto bueno a la ubicación; luego DRC completo.
 - [ ] Confirmar land pattern de C105 EEE-FK1H102AM contra J16 de Panasonic; la alternativa antivibración requiere otra huella. Reservar espacio y adhesivo.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
-- [ ] Validar la posición de H5 (68.2, 53) y H1–H4 contra la caja y la mecánica del imán ROT; ensayo de vibración.
+- [ ] Validar H5 (56.0, 38.5), el apoyo B (63.5, 49.0) y H1–H4 contra la caja y el portaimán de ROT (Ø ≤ 17.9 mm libre); ensayo de vibración.
+- [ ] Ruteo del buck: vía a GND junto al pad de C204, C205 y C206, y plano continuo hasta las vías del EP de U201.
 - [x] Supervisión con TPS3828 aplicada. WD_EN/TPS3431 quedaron obsoletos.
 - [x] F101: nueva huella documentada en librería e incorporada al PCB; sustituye la importación antigua.
 - [x] Regla e isla lógica U101_RTN implementadas; las vías del EP comparten una sola red.

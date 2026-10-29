@@ -1,4 +1,61 @@
-# Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28
+# Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28 (últimas secciones: Claude Code, 2026-10-29)
+
+## Fijaciones H1–H5, apoyo opcional y serigrafía — Claude Code, 2026-10-29
+
+Pedido del usuario (KiCad cerrado del todo, sin `.lck`). **Sin ruteo.** Script: `scripts/layout_bloques/h5_serigrafia.py` (se aplica sobre el PCB de `358ac73` más los 5 segmentos de CAN_H/CAN_L que el usuario borró sin commit). Reporte: `layout/reports/h5-serigrafia.json`. Vistas: `layout/h5-serigrafia-top.png` y `-bottom.png`.
+
+**Verificación:**
+- DRC (`layout/reports/drc-h5-serigrafia.json`): 0 errores; solo los 3 avisos conocidos de U401. Paridad 0; 358 conexiones sin rutear (356 + las 2 de CAN que borró el usuario).
+- ERC (`layout/reports/erc-h5.json`): 0 errores. Avisos: el conocido `isolated_pin_label` U101_RTN y 4 `pin_to_pin` en `40_mcu`. Estos 4 vienen del símbolo de SW401/SW402 que cambió el usuario (pines "Unspecified" contra GND_VEH y TP401/TP402). Son inofensivos y no se tocaron.
+- `sch_visual_qa` de la raíz: PASS (solo INFO, cajetín sin "company").
+
+**1. Agujeros de fijación.**
+- H1–H4 (sin mover) y H5 nuevo en (56.0, 38.5), todos con `MountingHole:MountingHole_3.2mm_M3_Pad`.
+- Agujero metalizado de 3.2 mm. La huella oficial trae un anillo de **6.4 mm** (no 6.0) en ambas caras. Se usa tal cual, sin modificar la librería.
+- Símbolo `Mechanical:MountingHole` sin pin: el pad queda **sin red** (flotante), así que no une GND_VEH ni GND_CAN. Se actualizaron MPN, Notes y la nota de la raíz.
+- H5 es opcional: sirve si la caja lleva un poste con inserto M3 en ese punto.
+- Reglas nuevas en `INCLI-VA.kicad_dru`:
+  - `H_anillo_cobre`: pads y rellenos a ≥ 0.5 mm del anillo.
+  - `H_zona_arandela`: pistas y vías a ≥ 0.8 mm del anillo, es decir, a ≥ 4 mm del centro, en ambas caras.
+- Margen actual al courtyard más cercano:
+
+| Agujero | Cara superior | Cara inferior |
+|---|---|---|
+| H1 | C105, 2.6 mm | — |
+| H2 | R708, 4.6 mm | — |
+| H3 | J1, 9.1 mm | — |
+| H4 | U401, 2.1 mm | — |
+| H5 | C507, 3.1 mm | TP504, 3.0 mm |
+
+**2. Apoyo opcional (opción B).**
+- Rule area `APOYO_CAJA_B`: círculo de Ø8 mm en B.Cu, en (63.5, 49.0).
+- Prohíbe pistas, vías, pads y huellas. El relleno (plano de masa) sí puede pasar.
+- Sirve si la caja lleva un apoyo con buje y pad de goma.
+
+**3. Eje de ROT (U503 en 50, 50).**
+- El lado del imán **sigue sin definir** (el pedido traía la plantilla sin elegir), así que se dejan libres las dos caras.
+- Distancias desde el eje: H5 a 12.97 mm (borde de la zona de arandela a 8.97 mm) y área B a 13.54 mm (borde a 9.54 mm).
+- Entonces queda libre de H5 y de B un círculo de **Ø17.9 mm** alrededor del eje, en las dos caras.
+- En la cara inferior no hay ningún pad a menos de 12 mm del eje (los TP más cercanos son TP504 y TP503, a 16.8 y 18 mm).
+- En la cara superior el imán va sobre U503: lo limita la altura de las piezas vecinas (C507, R503, U501, U502), no H5 ni el área B.
+- Un portaimán de más de Ø17.9 mm chocaría con la arandela de H5. En ese caso, H5 queda sin montar.
+
+**4. C206 (aceptado por el usuario: 12.8 mm al EP).** En el ruteo:
+- C204, C205 y C206 llevan cada uno su vía a GND junto al pad de GND.
+- Plano GND_VEH continuo en B.Cu desde esas vías hasta las vías térmicas del pad expuesto de U201, sin cortes.
+
+**5. Serigrafía** (toda en 0.8 × 0.8 mm con trazo de 0.15 mm, a ≥ 0.2 mm de pads, vías y otra serigrafía):
+- **Barrera CAN, en las dos caras.** Línea de trazos (1.0 / 0.5 mm) por el centro de la banda `BARRERA_CAN`: y = 61.62 (del borde a U601), x = 28.0 (bajo el cuerpo de U601) e y = 88.75. Rótulo "CAN AISLADO" dentro del dominio CAN, en (19.0, 86.5).
+  - Cara superior: 48 trazos; se omiten 9 donde pisarían la carcasa de J1 o la referencia de U601.
+  - Cara inferior: 57 trazos, sin omisiones.
+- **Pinout de J1**, en vertical en x = 11.7 junto a cada pin y en las dos caras: VIN, GND, CANH, CANL y GND_CAN.
+  - Arriba, VIN se corre a y = 55.5 para no pisar el triángulo del pin 1.
+  - La referencia J1 pasa debajo de la carcasa, a (6.0, 83.4).
+- **Pinout de J2**, en las dos caras, en la franja libre bajo la carcasa (y = 11.38): DO1 y DO2.
+  - Arriba, DO1 queda en x = 80.0, a la derecha del triángulo del pin 1.
+- **Polaridad y pin 1:** se revisaron todas las huellas polarizadas (diodos, LEDs, Q, U, C104/C105 con "+", J1, J2 y J402). Todas traen la marca en su serigrafía; no hizo falta agregar nada.
+- **Nombre de la placa**, cara inferior: "INCLI-VA  Rev A  2026-10-29" en (45.0, 76.0).
+- **Rótulos de zona** (cara superior, solo donde había lugar libre): ENTRADA (10.0, 32.75), BUCK 5V (46.25, 20.5), SALIDAS DO (75.25, 30.0) y SENSORES (52.0, 62.5). Se omitió "MCU": el módulo ya se identifica solo y no había hueco junto a él.
 
 ## Correcciones aplicadas sobre `1ff3419` — Claude Code, 2026-10-29
 

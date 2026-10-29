@@ -1,0 +1,191 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-29T07:41:00",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3",
+            "violations": [
+                {
+                    "description": "Label connected to only one pin",
+                    "items": [
+                        {
+                            "description": "Label 'U101_RTN'",
+                            "pos": {
+                                "x": 229.87,
+                                "y": 135.89
+                            },
+                            "uuid": "a6e4456a-3d77-4ea1-a1b0-7aec18511e62"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "isolated_pin_label"
+                }
+            ]
+        },
+        {
+            "path": "/10_power_input/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30",
+            "violations": []
+        },
+        {
+            "path": "/20_buck_5v/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a",
+            "violations": []
+        },
+        {
+            "path": "/30_regulation/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/e820859b-353c-4670-907b-04aca6cb5816",
+            "violations": []
+        },
+        {
+            "path": "/40_mcu/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/712b3cf0-3806-4b78-89c5-204f7bed5fb6",
+            "violations": [
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW402 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 118.11,
+                                "y": 152.4
+                            },
+                            "uuid": "e01fed66-edf5-41fe-9d74-de4ea487759f"
+                        },
+                        {
+                            "description": "Symbol TP402 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 127.0,
+                                "y": 149.86
+                            },
+                            "uuid": "0da03212-0902-4353-8c3a-97263a8af913"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW402 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 118.11,
+                                "y": 167.64
+                            },
+                            "uuid": "58b33fb9-7aa7-4ab6-b2e4-9085db7e41a9"
+                        },
+                        {
+                            "description": "Symbol #PWR0414 Hidden pin 1 [GND_VEH, Power input, Line]",
+                            "pos": {
+                                "x": 118.11,
+                                "y": 167.64
+                            },
+                            "uuid": "f1e9d7bc-ddeb-4463-b79e-db1ca1ec9209"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW401 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 134.62,
+                                "y": 111.76
+                            },
+                            "uuid": "b037a534-33a6-48dc-8d22-546d10107a43"
+                        },
+                        {
+                            "description": "Symbol TP401 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 144.78,
+                                "y": 111.76
+                            },
+                            "uuid": "38a513af-81b1-4b19-b2ec-4c3352c249bd"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW401 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 134.62,
+                                "y": 127.0
+                            },
+                            "uuid": "6741fd49-6393-47a2-97f0-7a1650125e49"
+                        },
+                        {
+                            "description": "Symbol #PWR407 Hidden pin 1 [GND_VEH, Power input, Line]",
+                            "pos": {
+                                "x": 134.62,
+                                "y": 127.0
+                            },
+                            "uuid": "7d9e3917-2f29-4553-a9df-1ca3f16e6773"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/50_sensors/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4",
+            "violations": []
+        },
+        {
+            "path": "/60_can/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3036af0c-b072-4a36-8ec1-d374aba21569",
+            "violations": []
+        },
+        {
+            "path": "/70_output_DO1/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/c6606065-5ef9-41e4-af17-886440d0e060",
+            "violations": []
+        },
+        {
+            "path": "/70_output_DO2/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/b202007f-7fb6-45c9-bd77-aa87a79a96e1",
+            "violations": []
+        },
+        {
+            "path": "/80_supervision/",
+            "uuid_path": "/7fd92c2b-4254-4d73-93ba-bfde861bede3/36e48972-b26d-42f8-9a56-9151ebeed19a",
+            "violations": []
+        }
+    ],
+    "source": "INCLI-VA.kicad_sch"
+}

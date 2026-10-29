@@ -112,7 +112,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "AGUJEROS DE FIJACION: H1-H4, 4 agujeros M3 sin cobre: H1-H4 en las esquinas, fuera del eje de ROT (en el esquematico para que 'Update PCB from Schematic' no los borre)."
+	(text "AGUJEROS DE FIJACION: H1-H5, M3 metalizados SIN red (anillo flotante, no une GND_VEH ni GND_CAN). H1-H4 en las esquinas; H5 (opcional) junto a los sensores, fuera del eje de ROT. En el esquematico para que 'Update PCB from Schematic' no los borre."
 		(exclude_from_sim no)
 		(at 50.8 246.38 0)
 		(effects
@@ -1368,7 +1368,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
 			(at 101.6 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1401,7 +1401,7 @@
 				)
 			)
 		)
-		(property "MPN" "N/A (agujero NPTH)"
+		(property "MPN" "N/A (agujero PTH sin red)"
 			(at 101.6 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1434,7 +1434,7 @@
 				)
 			)
 		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
 			(at 101.6 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1488,7 +1488,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
 			(at 121.92 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1521,7 +1521,7 @@
 				)
 			)
 		)
-		(property "MPN" "N/A (agujero NPTH)"
+		(property "MPN" "N/A (agujero PTH sin red)"
 			(at 121.92 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1554,7 +1554,7 @@
 				)
 			)
 		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
 			(at 121.92 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1608,7 +1608,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
 			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1641,7 +1641,7 @@
 				)
 			)
 		)
-		(property "MPN" "N/A (agujero NPTH)"
+		(property "MPN" "N/A (agujero PTH sin red)"
 			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1674,7 +1674,7 @@
 				)
 			)
 		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
 			(at 81.28 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1728,7 +1728,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
 			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1761,7 +1761,7 @@
 				)
 			)
 		)
-		(property "MPN" "N/A (agujero NPTH)"
+		(property "MPN" "N/A (agujero PTH sin red)"
 			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1794,7 +1794,7 @@
 				)
 			)
 		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm), SIN cobre (NPTH): separador plastico, no puentea dominios. Courtyard de 6.9 mm para arandela/cabeza. Posicion: la define el layout (ver docs/LAYOUT_NOTES.md)."
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
 			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
@@ -1814,6 +1814,127 @@
 			)
 		)
 	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 142.24 256.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0a0c11dd-824c-4e9c-83c1-d221ce11d604")
+		(property "Reference" "H5"
+			(at 144.78 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_M3"
+			(at 144.78 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.kicad.org/libraries/"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (agujero PTH sin red)"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+
 	(sheet
 		(at 276.86 172.72)
 		(size 45.72 25.4)

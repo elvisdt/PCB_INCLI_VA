@@ -74,6 +74,20 @@
 	(condition "A.memberOfFootprint('U101') && A.Pad_Number == '25' && A.NetName != '/10_power_input/U101_RTN'")
 	(constraint disallow pad))
 
+# ---------------------------- Agujeros de fijacion H1-H5 --------------------
+# MountingHole_3.2mm_M3_Pad: PTH de 3.2 mm con anillo de 6.4 mm en ambas caras, SIN red (simbolo sin pin).
+# El anillo queda flotante: no une GND_VEH con GND_CAN aunque el tornillo toque el chasis.
+# 1) Plano y cualquier cobre (pads, rellenos) a >= 0.5 mm del anillo.
+# 2) Zona de la arandela: sin pistas ni vias a menos de 4 mm del centro, en ambas caras
+#    (4.0 - 3.2 de radio del anillo = 0.8 mm desde el borde del anillo).
+(rule "H_anillo_cobre"
+	(condition "A.Type == 'Pad' && A.memberOfFootprint('H*') && B.Type != 'Track' && B.Type != 'Via'")
+	(constraint clearance (min 0.5mm)))
+
+(rule "H_zona_arandela"
+	(condition "A.Type == 'Pad' && A.memberOfFootprint('H*') && (B.Type == 'Track' || B.Type == 'Via')")
+	(constraint clearance (min 0.8mm)))
+
 # ---------------------------- Alta tension en la entrada --------------------
 # VIN_VEH y VBAT_F (antes del corte del LM74930) ven hasta 202 V (load dump sin suprimir de 24 V,
 # ISO 16750-2 prueba A) y ~140 V en el pulso 2a de ISO 7637-2.
