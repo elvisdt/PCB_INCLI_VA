@@ -151,6 +151,33 @@
 	(condition "A.Type == 'Track' && (A.NetName == '+5V_VEH' || A.NetName == '/20_buck_5v/BUCK_SW')")
 	(constraint track_width (min 0.5mm)))
 
+# ---------------------------- Sensado del controlador U101 (etapa 1, 2026-10-29) ----
+# Pistas HV de <= 0.3 mm = sensado (uA): Kelvin de R103 (CS+/CS-, ISCP), pines A/OUT y C de U101.
+# Las de potencia son de >= 1.0 mm (IPC2152_entrada_2A). VA, C_ID, VOUT y +VPROT quedan despues del corte
+# de Q101 (<= 38.4 V): IPC-2221B B2, 31-50 V -> 0.6 mm contra otras redes; 0.3 mm entre ellas (la Kelvin
+# VOUT/C_ID solo ve la caida del shunt, mV).
+(rule "HV_sensado"
+	(condition "A.NetClass == 'HV' && A.Type == 'Track' && A.Width <= 0.3mm")
+	(constraint track_width (min 0.25mm))
+	(constraint clearance (min 0.6mm)))
+
+(rule "HV_sensado_entre_protegidas"
+	(condition "A.NetClass == 'HV' && A.Type == 'Track' && A.Width <= 0.3mm && B.NetClass == 'HV' && B.NetName != '/10_power_input/VIN_VEH' && B.NetName != '/10_power_input/VBAT_F'")
+	(constraint clearance (min 0.3mm)))
+
+# ZONA_U101 (rule area sin restricciones, x 113.8-134.4, y 64.2-84.4): controlador y llegada del sensado.
+# Mismas tensiones que entre los pines del VQFN de 0.5 mm, placa con conformal coating (IPC-2221B B4,
+# 31-50 V: 0.13 mm) -> 0.2 mm. No aplica a VIN_VEH/VBAT_F ni a la red aislada de U101 (RTN).
+(rule "HV_zona_U101"
+	(condition "A.NetClass == 'HV' && A.insideArea('ZONA_U101') && B.NetName != '/10_power_input/VIN_VEH' && B.NetName != '/10_power_input/VBAT_F' && B.NetName != '/10_power_input/U101_RTN'")
+	(constraint clearance (min 0.2mm))
+	(constraint track_width (min 0.25mm)))
+
+# VA es la fuente comun de Q101/Q102: frente a sus gates la tension es Vgs (<= 15 V, clamp del LM74930).
+(rule "VA_compuertas_Vgs"
+	(condition "A.NetName == '/10_power_input/VA' && (B.NetName == '/10_power_input/HGATE' || B.NetName == '/10_power_input/DGATE')")
+	(constraint clearance (min 0.2mm)))
+
 # ---------------------------- Llegadas a pines finos (despues de los anchos: la ultima regla manda) ----
 # Llegada a los pines de U101 (VQFN-24 de 0.5 mm): VA (2, 15), C_ID (18, 24) y VOUT (19) son entradas de
 # sensado de uA. Dentro del courtyard de U101 la pista se angosta a 0.25 mm con 0.2 mm de separacion.
@@ -160,9 +187,9 @@
 	(constraint track_width (min 0.25mm)))
 
 # Llegada a VIN de U201 (HSOIC-8 de 1.27 mm): pista de 0.6 mm (ancho del pad) dentro del courtyard,
-# a 0.67 mm del pin 1 (GND) y del pin 4 (RT).
+# a 0.67 mm del pin 1 (GND) y del pin 4 (RT). Incluye el paso por el pad de C202 (0603, desacople de VIN).
 (rule "HV_llegada_U201"
-	(condition "A.NetName == '+VPROT' && A.Type != 'Pad' && A.intersectsCourtyard('U201')")
+	(condition "A.NetName == '+VPROT' && A.Type != 'Pad' && (A.intersectsCourtyard('U201') || A.intersectsCourtyard('C202'))")
 	(constraint track_width (min 0.6mm)))
 
 # ---------------------------- Antena del ESP32-S3-WROOM-1 -------------------

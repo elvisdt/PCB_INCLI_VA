@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (decisiones cerradas, correcciones previas al ruteo, tag `placement-v1` y rama `ruteo-agente`).
+Última actualización: 2026-10-29, Claude Code (ruteo etapa 1 en `ruteo-agente`; C104 a B.Cu).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -479,8 +479,8 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 
 ## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
 No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
-- [~] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops. Aplicadas; esperan visto bueno (tres puntos a decidir en `docs/RUTEO_AGENTE.md`).
-- [ ] 1. Potencia.
+- [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
+- [~] 1. Potencia: ruteada; espera visto bueno. C104 pasó a B.Cu (autorizado). TP101 sin conectar (propuesta en `docs/RUTEO_AGENTE.md`).
 - [ ] 2. CAN.
 - [ ] 3. USB/MCU.
 - [ ] 4. Sensores y señales.
@@ -551,6 +551,8 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
     - C508 GCM21BR71A106KE22L
 
 ## Notas para el próximo turno
+- **pcbnew en scripts:** `LoadBoard()` de un PCB fuera de la carpeta del proyecto, seguido de `Save()` dentro del proyecto, sobrescribe `INCLI-VA.kicad_pro` con valores por defecto (se pierden las net classes). Cargar siempre el archivo del proyecto. Verificar `git diff INCLI-VA.kicad_pro` antes de cada commit.
+- **Reglas DRC:** una regla de clearance sin condición anula las net classes. La propiedad para la net class es `A.NetClass`.
 - Variante ROT: U503, C507 y R503 tienen `dnp yes` y el campo `Variant = ROT`. En la variante ROT la placa va centrada sobre el eje del pivote.
 - Huella del SCL3300 (easyeda2kicad DFL-12): pads 0.32 mm más largos que el land pattern de Murata, para soldar a mano; en producción volver al de Murata.
 - Pines del ESP32-S3: la tabla aprobada y sus criterios están en un texto de la hoja 40. No mover señales críticas a GPIO1–14/17/18 (glitch de encendido) ni a strapping.

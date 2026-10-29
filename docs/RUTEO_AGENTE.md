@@ -6,14 +6,19 @@ Parte del tag `placement-v1`. El usuario rutea en paralelo una copia en `PCB_INC
 - No mover ni rotar componentes respecto de `placement-v1`. Si alguno lo necesita, se anota abajo y se espera la decisión del usuario.
 - Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente`, y esperar el visto bueno del usuario.
 
-## Cambios de ubicación pedidos (no aplicados)
-_(ninguno por ahora)_
+## Cambios de ubicación
+Aplicados en `ruteo-agente`, con autorización del usuario. Repetirlos en la copia manual para comparar.
+- **C104 (47 µF, VOUT) → B.Cu, en (106.85, 71.0), eje horizontal y pad 1 al oeste** (2026-10-29). En F.Cu no tenía camino a VOUT: al norte el nodo SW de U201, al oeste la zona de U101 y al sur el lazo de HGATE. Ahora queda debajo de C105/L101.1 y se une al tronco VOUT con 2 vías y a C105.1 con 3 vías y un tramo en B.Cu. Agrega 10.5 mm de altura en la cara inferior.
+
+Propuestos (no aplicados):
+- **TP101 (+VPROT, B.Cu, 138.5, 65.5):** quedó sin conectar. Está debajo del buck, junto a R202, y no hay +VPROT cerca. Propuesta: moverlo a (127.6, 61.5), sobre el ramal de +VPROT hacia C202, o borrarlo y medir +VPROT en C201.
+- **U301 (SOT-563):** con L301 al este y C301/C302 al sudoeste, el nodo SW (pin 2, entre GND y VIN) separa VIN de su capacitor. VIN, EN y FB cruzan por B.Cu. Con C302 junto a los pines 1 y 3, o con U301 girado 180°, el lazo quedaría todo en F.Cu.
 
 ## Etapas
 | Etapa | Estado | Commit |
 |---|---|---|
-| 0. Reglas | lista, espera visto bueno | (este commit) |
-| 1. Potencia | | |
+| 0. Reglas | aprobada (2026-10-29) | 36bf77f |
+| 1. Potencia | lista, espera visto bueno | (este commit) |
 | 2. CAN | | |
 | 3. USB/MCU | | |
 | 4. Sensores y señales | | |
@@ -55,10 +60,70 @@ Sin cobre nuevo: los renders son idénticos a `docs/layout/placement-v1-*.png`.
 | USB_D+ / USB_D- a 0.2 mm | pasa | pasa ✓ |
 | Señal a 0.18 mm de otra señal | error (0.2) | error ✓ |
 
-### Para decidir (usuario)
+### Decisiones del usuario (2026-10-29)
+1. **Aprobado:** VIN_VEH y VBAT_F con 1.25 mm en todo. VOUT y +VPROT con 1.25 mm entre pistas, vías y rellenos, y 0.6 mm junto a pads: están después del corte de Q101 (≤ 38.4 V).
+2. **Par CAN:** no se renombran las redes; se rutea acoplado a mano.
+3. **USB 0.3/0.2 mm:** aprobado.
+
+### Planteo original
 1. **HV en VOUT/+VPROT:** se usa 1.25 mm entre pistas, vías y rellenos, y 0.6 mm cuando hay un pad de por medio. Con 1.25 mm literal no se pueden conectar el pin VIN de U201 (GND a 0.67 mm), C202/C107 (0603) ni la ubicación aprobada (C202.2 a 1.15 mm de U201.2). VIN_VEH/VBAT_F (202 V) mantienen 1.25 mm en todo, salvo entre pads de un mismo encapsulado.
 2. **Par CAN:** KiCad reconoce pares solo por el sufijo (`+`/`-` o `P`/`N`), así que `BUS_CAN_H/L` no se detecta. La clase CAN fija ancho y gap, y el agente las rutea acopladas por script. Si quieres el router interactivo de pares en tu copia manual, habría que renombrar las redes en el esquemático (por ejemplo `BUS_CAN_P/N`). No se hizo.
 3. **USB:** 0.3/0.2 mm cabe en el paso de 0.5 mm de J401. En 2 capas de 1.6 mm la impedancia no queda en 90 Ω, pero para Full-Speed (12 Mbit/s) con menos de 30 mm de pista alcanza.
 
 ### Verificación
 - DRC: 0 errores; 5 avisos conocidos (3 de U401, y las referencias de Q101 y U801). Paridad 0; 358 sin rutear.
+
+## Etapa 1 — potencia (2026-10-29)
+Script: `scripts/ruteo/etapa1_potencia.py`. Parte del PCB de la etapa 0 (36bf77f) y se aplica sobre el archivo del proyecto. Renders: `docs/layout/ruteo/etapa1-top.png` y `etapa1-bottom.png`.
+
+### Ruteado
+- **Entrada (F.Cu, 1.5 mm):** J1.1 → F101 → VBAT_F → tab de Q101, R102, C101, R108 y D101; TP102 por vía. D101 ↔ TVS D102, y el GND del TVS va directo al pin 2 de J1.
+- **FETs:**
+  - VA, la fuente común de Q101/Q102, tiene 1.0 mm y pasa entre C105.1 (0.7 mm) y los gates (0.5 mm).
+  - C_ID: tab de Q102 → R103.1.
+- **VOUT:** R103.2 → tronco de 1.5 mm por el borde oeste → L101.1. C104 (B.Cu) se une por vías y C105.1 por vías y B.Cu.
+- **Kelvin de R103:** dos pistas de 0.25 mm salen de los pads del shunt y corren paralelas, separadas 0.55 mm, por debajo de C105 hasta la zona de U101.
+  - C_ID va a R104 (CS+, pin 20).
+  - VOUT va a CS- (pin 19) con un arco por B.Cu.
+  - ISCP (pin 18) y C103 se unen a la Kelvin C_ID con otro arco por B.Cu, por fuera del anterior.
+- **Gates:**
+  - Q101.1 ↔ R105, pegados.
+  - HGATE va hasta el pin 14 en F.Cu (~17 mm). DGATE va hasta el pin 1 en B.Cu (~25 mm).
+  - El largo lo impone la ubicación: U101 está a ~12 mm de los FETs.
+  - Los pines A y OUT de U101 (VA) llegan con pistas de sensado y saltos por B.Cu.
+- **+VPROT:** L101.2 → C106, C107 → C201 → ramal por el pad de C202 → pines 2 y 3 de U201.
+- **Buck U201:**
+  - Nodo SW: pin 8 → L201.1, vertical de 3.7 × 1.2 mm.
+  - BOOT con C203 junto al pin.
+  - FB: pin 5 → R202 → R201, y la parte alta de R201 toma +5V en el pad de C204 (FB desde el capacitor de salida).
+  - RT corto. Vía a GND en cada pad de C204, C205 y C206. El pad expuesto ya trae 8 vías térmicas.
+- **+5V:**
+  - C204 → C206.
+  - Tronco de 1.0 mm por x 137.6. Queda a 12.4 mm del centro de U503 y a 9.8 mm de su cuerpo; lo vemos en la etapa 4.
+  - Llega a FB301/U302 y a U301. TP201 y TP301 por vía.
+- **U301:** SW en F.Cu hasta L301. VIN, EN y FB cruzan por B.Cu. 3V3_D: L301.2 → R302 → C304, y el FB alto se toma en C304.1. TP302 por vía.
+- **U302:** IN y EN filtrados por FB301/C306, OUT a C307. GND del pin 2 por vía.
+
+### Reglas agregadas (`INCLI-VA.kicad_dru`)
+- **En KiCad 10 hay que escribir `A.NetClass`.** El nombre de propiedad se probó en este turno.
+- `HV_sensado`: una pista HV de ≤ 0.3 mm se trata como sensado. Mínimo 0.25 mm, 0.6 mm contra otras redes y 0.3 mm entre redes protegidas (`HV_sensado_entre_protegidas`).
+- `HV_zona_U101`: 0.2 mm dentro de `ZONA_U101`. Es un rule area sin restricciones (x 113.8–134.4, y 64.2–84.4), con las mismas tensiones que entre los pines del VQFN, y la placa lleva coating. No aplica a VIN_VEH/VBAT_F ni a la red RTN.
+- `VA_compuertas_Vgs`: VA contra HGATE/DGATE a 0.2 mm (Vgs ≤ 15 V).
+- `HV_llegada_U201`: ahora incluye el paso por el pad de C202.
+
+### Compromisos (para revisar)
+- **Retorno del lazo de entrada de U201:** con 1.25 mm entre pistas +VPROT y GND (decisión aprobada), C202.2 y el pin 1 no pueden unirse por pista. Cada uno baja al plano con su vía, a ~4.5 mm de las vías del pad expuesto. Si se aceptara 0.6 mm dentro del área del buck, igual que en la zona de U101, el retorno iría por F.Cu directo.
+- **C201 (4.7 µF):** llega a VIN dando la vuelta por el ramal de C202, unos 13 mm. C202 (100 nF) sí está pegado a los pines.
+- **Zona U101:** 11 vías y tramos cortos en B.Cu (aceptado por el usuario). El plano GND de la etapa 5 va a quedar en islas cosidas bajo el controlador.
+
+### Queda para otras etapas
+- **Etapa 2 (CAN) y etapa 3 (MCU):**
+  - CAN_RX/TX/SILENT/STBY cruzan el tronco de +5V (x 147.3, y 110.6–124.8) y saltan por B.Cu.
+  - +5V hacia C603/C604 de U601 sale del tronco en y 124.8.
+- **Etapa 4:** periféricos de U101 (SW, UVLO, OV, TMR, ILIM, FLT, EN/MODE, CAP, VS y VS → D104), con el plan de saltos ya reservado. También PG de U301, +3V3_A hacia los sensores, R111/+3V3_D, TP104, TP303 y TP305.
+- **Etapa 5:** las 20 vías GND que quedan sueltas hasta el plano.
+
+### Verificación
+- DRC: 0 errores. Avisos: 20 `via_dangling` (vías GND esperando el plano) y los 5 conocidos.
+- Paridad: 0. Sin rutear: 291 (antes 358).
+- **Incidente corregido:** guardar el PCB con `pcbnew` después de cargarlo desde el scratchpad sobrescribió `INCLI-VA.kicad_pro` con valores por defecto, y se perdieron las net classes. Se restauró desde git. Desde entonces el script se corre sobre el archivo del proyecto.
