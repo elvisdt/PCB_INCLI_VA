@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-28, Claude Code (revisión de la ubicación del usuario, commit 1ff3419, y reglas para el ruteo).
+Última actualización: 2026-10-29, Claude Code (correcciones sobre 1ff3419: EN, buck, J401, courtyards y serigrafía 0.8 mm).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -359,6 +359,22 @@ Solo verificación; no se editó esquemático ni PCB.
   - H4 (tornillo M3) junto al keep-out de antena; preferir separador plástico o alejarlo.
   - TP: faltan los CS de SPI y el lado bus del CAN (medible en J1); TP201 y TP301 están ambos en +5V_VEH.
 - **Notas desactualizadas:** R708/R709/R758/R759 dicen "el drenador llega a ~250 V" (hoy Q701 de 100 V y recorte ≤ 93.6 V). En "Pendientes de BOM" sigue la línea de 20_isolation y la pregunta 14 menciona PS201.
+
+## Correcciones sobre `1ff3419` — Claude Code, 2026-10-29
+Pedido explícito del usuario (editar el PCB). Detalle y tablas en `LAYOUT_NOTES.md`, sección "Correcciones aplicadas sobre `1ff3419`". **Sin ruteo.**
+- Al empezar seguía abierto el gestor de proyectos de KiCad (`~INCLI-VA.kicad_pro.lck`); el editor de PCB estaba cerrado. No se tocó `.kicad_pro`.
+- Hecho:
+  - C403 sobre el pin EN (1.3 mm).
+  - C202 a 1.06 mm de VIN y de GND de U201; C201 detrás.
+  - C204–C206 en columna junto a C203: 6.0 / 9.4 / 12.8 mm al EP (antes 11.6–13.9).
+  - J401 −0.4 mm: sin errores de borde.
+- Referencias: todas en 0.8 / 0.8 / 0.15 mm, a 0°/90°. Regla `JLC_serigrafia` → 0.8 / 0.15 mm. Ocho quedan solo en F.Fab: U101, R106, R202, C607, C610, R602, R303 y Q701.
+- Courtyards: un solo par por debajo de su criterio, C403–C402 (0.7 mm). El resto queda en ≥ 0.5 mm por ser pasivos del IC.
+- DRC: 0 errores y los 3 avisos conocidos de U401. Paridad 0; 356 sin rutear.
+- **Decisiones abiertas:**
+  - Rigidez de los sensores: opción A, agujero M3 en (56.0, 38.5); u opción B, apoyo inferior de Ø8 mm en (63.5, 49.0).
+  - Aprobar los rótulos de zona, el pinout de J1/J2 y la línea de barrera CAN en serigrafía.
+  - Visto bueno a la ubicación para empezar el ruteo.
 
 ## Revisión de la ubicación del usuario (`1ff3419`) — Claude Code, 2026-10-28
 Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). Detalle en `LAYOUT_NOTES.md`, sección "Revisión de la ubicación del usuario".

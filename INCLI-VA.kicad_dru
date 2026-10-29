@@ -54,7 +54,7 @@
 
 (rule "JLC_serigrafia"
 	(layer "?.Silkscreen")
-	(constraint text_height (min 1.0mm))
+	(constraint text_height (min 0.8mm))
 	(constraint text_thickness (min 0.15mm)))
 
 # ---------------------------- U101 pad 25 (EP = RTN) ------------------------

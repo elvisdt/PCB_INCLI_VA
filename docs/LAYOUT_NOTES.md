@@ -1,5 +1,68 @@
 # Estudio de tamaño y ubicación — Codex, actualizado 2026-10-28
 
+## Correcciones aplicadas sobre `1ff3419` — Claude Code, 2026-10-29
+
+Pedido del usuario: puntos 1–3 de la revisión (C104 se deja como está), referencias de 0.8 / 0.8 / 0.15 mm, courtyards a 1 mm (0.5 mm para pasivos pegados a su IC) y propuesta de rigidez para los sensores. **Sin ruteo.** Script: `scripts/layout_bloques/fix_1ff3419.py` (se aplica sobre el PCB de `1ff3419`). Vistas: `layout/correcciones-1ff3419-top.png` y `-bottom.png`.
+
+**Verificación** (`layout/reports/drc-correcciones-1ff3419.json`): 0 errores; avisos solo los 3 conocidos de U401 (2 de serigrafía en el borde y `lib_footprint_mismatch`). Paridad 0 y 356 conexiones sin rutear. Ninguna pieza en el keep-out de antena ni en la barrera CAN.
+
+**1–3. Movimientos** (distancia borde de pad a pin, antes → ahora):
+
+| Pieza | Cambio | Antes → ahora |
+|---|---|---|
+| C403 (1 µF, EN) | (87.0, 53.5) vertical, sobre el pin 3 de U401. R805/R806 (VAR_ID) se corren a x 84.5 / 81.9 | 43.9 → **1.3 mm** |
+| C202 (100 nF, VIN) | (29.27, 13.2) vertical, a la izquierda de U201: +VPROT junto a los pines 2/3 y GND junto al pin 1. C102 se corre 1.4 mm a la izquierda | VIN 4.7 → **1.06**, GND 3.2 → **1.06 mm** |
+| C201 (4.7 µF) | (32.34, 7.9), detrás de C202 | VIN 7.6 → 3.7, GND 6.1 → 2.2 mm |
+| C204/C205/C206 | Columna vertical a la derecha de C203 (x 42.6 / 46.0 / 49.4, y 13.2), +5V arriba hacia el pad 2 de L201. R201 a (42.9, 17.45) | GND al EP: 13.9 / 12.3 / 11.6 → **6.0 / 9.4 / 12.8 mm** |
+| J401 | −0.4 mm en x (97.32, 30.52). Las ranuras SH quedan a 0.7 mm del borde y la boca asoma ~1.5 mm | 2 errores `copper_edge_clearance` → 0 |
+
+- **C206 no mejora:** L201 está entre U201 y la salida, y C104 (que se deja quieto) cierra la zona de abajo. Para acercar las tres habría que rotar U201/L201 y rehacer el bloque. Para el ruteo: vías a B.Cu en el GND de cada C20x y en el EP, y el plano GND_VEH continuo entre ellos, sin cortes.
+- MCU_RST_N sigue largo (54 mm de árbol), porque SW401 y R401 quedan abajo por decisión del usuario. El RC ya está en el pin.
+
+**4. Courtyards.** Se corrigieron los 37 pares salvo los de abajo.
+- A mano: columna R107/R106/C109/R105 subida a paso de 4.05 mm (había lugar libre sobre R107) y fila R109/C110/R110/R111 a paso de 2.55 mm.
+- Empuje automático (≤ 1.45 mm): R202 0.7, C401 1.45, R304 0.55, C801 0.45, FB301 0.4, R301/R108 0.35, C108 0.3, R302 0.25, R803/R804 0.2, D104 0.15, y D101/R401/C303 0.05 mm.
+- Efectos: R107 queda a 5.0 mm de UVLO (antes 3.0; divisor, no crítico) y C401 (bulk de +3V3_D) a 5.3 mm (antes 4.1).
+
+| Par | Separación (mm) | Por qué queda así |
+|---|---:|---|
+| C403–C402 | 0.70 | Desacoples de U401 (EN y 3V3) entre R805 y el keep-out de antena; no hay más lugar sin alejar uno de los dos del pin. **Único par fuera del criterio** |
+| C202–U201 | 0.56 | Desacople del IC (≥ 0.5) |
+| C402–U401 | 0.57 | Desacople del IC (≥ 0.5) |
+| C306–U302 | 0.62 | Pasivo del IC (≥ 0.5) |
+| C801, R801, R802–U801 | 0.68 / 0.68 / 0.73 | Pasivos del IC (≥ 0.5) |
+| R805, R806, R807–U401 | 0.75 / 0.75 / 0.81 | Puentes de VAR_ID conectados al IC (≥ 0.5) |
+| C403–U401 | 0.78 | Desacople del IC (≥ 0.5) |
+| R202, C203–U201 | 0.93 / 0.93 | Pasivos del IC (≥ 0.5) |
+| C401–U401 | 0.99 | Desacople del IC (≥ 0.5) |
+
+**5. Serigrafía.** Todas las referencias en 0.8 × 0.8 mm con trazo de 0.15 mm, a 0° o 90°.
+- Arriba van en F.Silkscreen; los TP en B.Silkscreen, espejadas.
+- Nunca sobre pads ni sobre la serigrafía de otra pieza (ni de la propia), ni sobre el cuerpo de otra pieza. No hay vías todavía.
+- `INCLI-VA.kicad_dru` → `JLC_serigrafia`: alto mínimo 0.8 mm y trazo 0.15 mm.
+- El `${REFERENCE}` propio de R103 (0.8 / 0.12 en F.Silkscreen) pasó a F.Fab, porque duplicaba la referencia.
+- Los valores RESET/BOOT de SW401/SW402 quedan como estaban (1.0 / 0.15).
+- **Solo en F.Fab (no entran junto a su pieza sin pisar pads ni cuerpos vecinos):**
+  - U101: rodeado por sus pasivos a ≤ 1.3 mm.
+  - R106: columna del UVLO.
+  - R202: entre U201, C203 y R201.
+  - C607, C610 y R602: columna de la isla CAN.
+  - R303: junto a L301.
+  - Q701: entre J2, D701 y D704.
+- Los rótulos de zona, el pinout de J1/J2 y la línea de barrera CAN **no** se agregaron (propuesta sin aprobar).
+
+**Rigidez de los sensores sin H5 (propuesta, no aplicada).** Distancias desde el centro de cada pieza; eje de ROT en U503 (50, 50).
+- **Opción A, agujero M3 en (56.0, 38.5):** `MountingHole_3.2mm_M3`, NPTH, sin cobre.
+  - Distancias: 14.9 mm de U501, 13.0 mm de U502 y 13.0 mm del eje de ROT.
+  - Margen libre: 2.8 mm al courtyard más cercano en las dos caras (pasan el courtyard de Ø6.9 mm y la arandela).
+  - Requiere agregar el símbolo en el esquemático (H5) y un separador plástico.
+  - Queda entre los sensores y el bloque DO, sin cortar el camino del SPI hacia el ESP32.
+- **Opción B, apoyo de la caja en B.Cu en (63.5, 49.0), Ø8 mm:** prácticamente en el centroide de U501/U502, a 13.5 mm del eje de ROT y con 3.7 mm de margen a los TP inferiores (TP503/TP504).
+  - Se reserva con una rule area en B.Cu (sin vías, pistas de señal ni piezas). El plano GND puede pasar.
+  - La caja apoya un buje con pad de goma.
+  - No necesita cambios en el esquemático, pero depende del diseño de la caja.
+- En las dos opciones, confirmar de qué lado queda el imán de ROT (pregunta 17), para no invadir su zona.
+
 ## Revisión de la ubicación del usuario (commit `1ff3419`) y reglas para el ruteo — Claude Code, 2026-10-28
 
 Cambios del usuario: SW401/SW402 a `SW-SMD_L3.9-W3.0-P4.45`, H5 retirado (quedan H1–H4 en las esquinas), reubicación de entrada, buck, 3,3 V, CAN, MCU y supervisión, y referencias pasadas a F.Silkscreen. Sin revisar todavía: USB, salidas DO y sensores.
