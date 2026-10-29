@@ -1,7 +1,8 @@
 """Ruteo etapa 1 (potencia) - rama ruteo-agente. Parte de la etapa 0 (36bf77f) y agrega cobre de potencia.
 Pedido del usuario (2026-10-29): lazos de U201 y U301, nodo SW minimo, FB desde el capacitor de salida,
 gates de Q101/Q102 cortos, Kelvin en R103, vias termicas, via a GND en cada pad de C204-C206.
-Cambio de ubicacion autorizado: C104 pasa a B.Cu debajo de C105 (VOUT por vias directas).
+Cambios de ubicacion autorizados respecto de placement-v1: C104 pasa a B.Cu debajo de C105 (VOUT por vias
+directas); U301 girado 180 grados y C302 junto a sus pines 3/1 (lazo de entrada sin cruzar SW); TP101 a (127.6, 61.5).
 Uso: /usr/bin/python3 etapa1_potencia.py <pcb_entrada> <pcb_salida>
 Coordenadas absolutas de KiCad (mm)."""
 import sys
@@ -18,7 +19,7 @@ NETS = {
     'VP': '+VPROT', 'G': 'GND_VEH', 'SW': '/20_buck_5v/BUCK_SW', 'BOOT': '/20_buck_5v/BUCK_BOOT',
     'FB': '/20_buck_5v/BUCK_FB', 'RT': '/20_buck_5v/BUCK_RT', 'P5': '+5V_VEH', 'A1': 'Net-(D103-A1)',
     'SW3': 'Net-(U301-SW)', 'FB3': 'Net-(U301-FB)', 'EN3': 'Net-(U301-EN)', 'UEN': 'Net-(U302-EN)',
-    'P3D': '+3V3_D', 'P3A': '+3V3_A',
+    'P3D': '+3V3_D', 'P3A': '+3V3_A', 'PG3': '/30_regulation/PG_3V3D',
 }
 
 
@@ -62,24 +63,40 @@ for ang in (0, 90, 180, 270):
         break
 assert pcbnew.ToMM(p1.x) < 104, 'C104: no se pudo orientar el pad 1 al oeste'
 
-# ------------------------------------------------------------------ zona del controlador U101
-# Rule area sin restricciones: solo da nombre a la zona para la regla HV_zona_U101 (.kicad_dru).
-za = pcbnew.ZONE(b)
-za.SetIsRuleArea(True)
-za.SetZoneName('ZONA_U101')
-for s in ('SetDoNotAllowTracks', 'SetDoNotAllowVias', 'SetDoNotAllowPads', 'SetDoNotAllowFootprints',
-          'SetDoNotAllowZoneFills', 'SetDoNotAllowCopperPour'):
-    if hasattr(za, s):
-        getattr(za, s)(False)
-ls = pcbnew.LSET()
-ls.AddLayer(F)
-ls.AddLayer(B)
-za.SetLayerSet(ls)
-ol = za.Outline()
-ol.NewOutline()
-for x, y in ((113.8, 64.2), (134.4, 64.2), (134.4, 84.4), (113.8, 84.4)):
-    ol.Append(FMM(x), FMM(y))
-b.Add(za)
+# ------------------------------------------------------------------ U301, C302, TP101
+put = lambda ref, x, y, a: (b.FindFootprintByReference(ref).SetOrientationDegrees(a),
+                            b.FindFootprintByReference(ref).SetPosition(pcbnew.VECTOR2I(FMM(x), FMM(y))))
+b.FindFootprintByReference('U301').SetOrientationDegrees(270)   # 180 grados respecto de placement-v1 (90)
+u301 = b.FindFootprintByReference('U301')
+u301.Reference().SetPosition(pcbnew.VECTOR2I(FMM(142.2), FMM(132.8)))
+u301.Reference().SetTextAngleDegrees(0)
+put('C302', 138.1, 135.875, 270)                                # pad 1 (+5V) frente al pin 3 (VIN)
+put('TP101', 127.6, 61.5, 180)                                  # B.Cu, sobre el ramal +VPROT de C202
+
+
+# ------------------------------------------------------------------ rule areas sin restricciones
+# Solo dan nombre a una zona para las reglas de la .kicad_dru (insideArea).
+def rule_area(name, pts):
+    za = pcbnew.ZONE(b)
+    za.SetIsRuleArea(True)
+    za.SetZoneName(name)
+    for m in ('SetDoNotAllowTracks', 'SetDoNotAllowVias', 'SetDoNotAllowPads', 'SetDoNotAllowFootprints',
+              'SetDoNotAllowZoneFills', 'SetDoNotAllowCopperPour'):
+        if hasattr(za, m):
+            getattr(za, m)(False)
+    ls = pcbnew.LSET()
+    ls.AddLayer(F)
+    ls.AddLayer(B)
+    za.SetLayerSet(ls)
+    ol = za.Outline()
+    ol.NewOutline()
+    for x, y in pts:
+        ol.Append(FMM(x), FMM(y))
+    b.Add(za)
+
+
+rule_area('ZONA_U101', ((113.8, 64.2), (134.4, 64.2), (134.4, 84.4), (113.8, 84.4)))
+rule_area('ZONA_BUCK_U201', ((124.0, 52.0), (151.0, 52.0), (151.0, 69.0), (124.0, 69.0)))
 
 # ------------------------------------------------------------------ entrada: VIN, VBAT_F, TVS
 T('VIN', 1.5, [(106.0, 104.0), (110.0, 100.0), (114.4, 100.0)])
@@ -130,10 +147,10 @@ T('CID', 0.25, [(130.53, 71.2), (130.53, 65.6), (116.6, 65.6), (116.6, 70.95)], 
 T('G', 0.4, [(130.9, 76.0), (131.3, 77.1)])
 V('G', 131.3, 77.1)                                        # C103.2
 
-# DGATE: gate de Q102 -> via -> B.Cu -> via junto al pin 1 de U101.
+# DGATE: gate de Q102 -> via -> B.Cu por debajo del retorno VA (pin A -> tronco VA): lazo minimo.
 T('DG', 0.3, [(111.76, 84.6), (111.76, 86.55)])
 V('DG', 111.76, 86.55)
-T('DG', 0.3, [(111.76, 86.55), (113.5, 86.3), (115.5, 84.3), (115.5, 77.5), (122.6, 77.5),
+T('DG', 0.3, [(111.76, 86.55), (111.76, 82.5), (117.3, 82.5), (117.3, 77.0), (122.6, 77.0),
               (122.6, 72.1), (122.25, 71.75)], B)
 V('DG', 122.25, 71.75)
 T('DG', 0.25, [(122.25, 71.75), (122.7, 72.75), (123.2, 72.75)])
@@ -143,14 +160,15 @@ V('VA', 121.85, 72.85)
 T('VA', 0.25, [(121.85, 72.85), (121.6, 73.1), (121.6, 76.0), (117.3, 76.0)], B)
 V('VA', 117.3, 76.0)
 T('VA', 0.25, [(117.3, 76.0), (117.3, 82.5)])
-# OUT (pin 15): bajo C103 hacia el este, baja y vuelve por y 83.0; salto por B.Cu sobre HGATE.
-T('VA', 0.25, [(127.6, 74.25), (132.1, 74.25), (132.1, 83.0), (120.9, 83.0)])
+# OUT (pin 15) y HGATE (pin 14) en paralelo (0.5 mm entre ejes) por el pasillo entre U101 y C103 y por el
+# sur de la fila R109-R111; OUT salta por B.Cu sobre el enlace R105-Q101 hasta el tronco VA.
+T('VA', 0.25, [(127.6, 74.25), (129.28, 74.25), (129.28, 82.85), (121.2, 82.85), (120.9, 83.0)])
 V('VA', 120.9, 83.0)
 T('VA', 0.25, [(120.9, 83.0), (118.3, 82.6)], B)
 V('VA', 118.3, 82.6)
 # HGATE: gate de Q101 <-> R105 <-> pin 14 por el sur de la fila R109-R111.
 T('HG', 0.3, [(119.9, 84.0), (120.4, 81.5)])
-T('HG', 0.3, [(120.4, 81.5), (121.2, 82.3), (129.25, 82.3), (129.25, 75.6), (128.4, 74.75), (127.6, 74.75)])
+T('HG', 0.25, [(120.4, 81.5), (121.2, 82.3), (128.78, 82.3), (128.78, 74.75), (127.6, 74.75)])
 
 # Cadena de VS: R102.2 -> D103.1 / D104.1
 T('A1', 0.4, [(127.4, 89.54), (129.0, 89.54), (129.9, 90.4)])
@@ -162,14 +180,14 @@ V('G', 130.7, 97.0)                                        # D103.2
 T('VP', 1.0, [(122.0, 54.0), (124.8, 54.0)])              # L101.2 -> C106.1
 T('VP', 1.0, [(122.0, 57.3), (125.6, 57.3)])              # L101.2 -> C107.1
 T('VP', 1.0, [(125.55, 57.7), (125.55, 59.3), (130.87, 59.3)])   # -> C201.1
-T('VP', 1.0, [(127.6, 59.3), (127.6, 63.6), (127.9, 63.6)])
-T('VP', 0.6, [(127.9, 63.6), (129.27, 63.98), (131.3, 63.85)])   # por el pad de C202 a VIN
+# C201.1 -> diagonal -> pad de C202.1 -> VIN (pines 2 y 3): camino mas corto que no cruza el retorno.
+T('VP', 0.6, [(130.4, 59.4), (128.2, 61.6), (128.2, 63.98), (129.27, 63.98), (131.3, 63.85)])
 T('VP', 0.6, [(131.3, 63.22), (131.3, 64.48)])            # pines 2 y 3
-# Retornos a GND por vias propias: entre pistas +VPROT y GND rige 1.25 mm (decision del usuario).
-T('G', 0.4, [(129.7, 62.1), (129.7, 61.45)])
-V('G', 129.7, 61.45)                                        # C202.2
-T('G', 0.4, [(132.4, 61.65), (132.4, 60.9)])
-V('G', 132.4, 60.9)                                        # U201 pin 1
+T('VP', 0.6, [(128.2, 61.6), (127.6, 61.5)])
+V('VP', 127.6, 61.5)                                       # TP101 (B.Cu)
+# Retorno: C202.2 directo al pin 1 y al pad expuesto por F.Cu (ZONA_BUCK_U201, 0.25 mm).
+T('G', 0.5, [(129.27, 62.42), (130.9, 61.98)])
+T('G', 0.6, [(132.3, 61.95), (133.2, 62.1)])
 T('G', 1.0, [(133.81, 58.5), (133.81, 61.6)])             # C201.2 -> EP
 T('G', 1.0, [(127.97, 54.0), (129.3, 54.0)])
 V('G', 129.3, 53.4)
@@ -204,26 +222,21 @@ V('P5', 140.0, 131.6)
 T('P5', 0.6, [(140.0, 131.6), (140.0, 134.0)], B)         # TP301 (B.Cu)
 
 # ------------------------------------------------------------------ U301 (TPS62A02, 5V -> 3V3_D)
-# SW en F.Cu hasta L301; VIN, EN y FB cruzan bajo SW por B.Cu (orden de pines del SOT-563).
-T('SW3', 0.25, [(140.4, 136.53), (140.4, 137.35)])
-T('SW3', 0.6, [(140.4, 137.35), (140.4, 137.4), (144.0, 137.4), (144.4, 136.9)])
-T('G', 0.3, [(139.8, 136.53), (139.3, 136.53), (139.2, 138.28)])   # pin 1 -> C302.2
-T('P5', 0.5, [(141.05, 136.53), (141.4, 136.45)])
-V('P5', 141.4, 136.45)
-T('P5', 0.5, [(141.4, 136.45), (140.5, 140.0)], B)
-V('P5', 140.5, 140.0)
-T('EN3', 0.25, [(140.9, 135.1), (141.75, 134.6)])
-V('EN3', 141.75, 134.6)
-T('EN3', 0.25, [(141.75, 134.6), (142.3, 135.15), (142.3, 138.1), (142.6, 138.4)], B)
-V('EN3', 142.6, 138.4)
-T('EN3', 0.25, [(142.6, 138.4), (142.0, 138.68)])
-T('FB3', 0.25, [(140.4, 134.9), (140.4, 133.8), (143.4, 133.8)])
-V('FB3', 143.4, 133.8)
-T('FB3', 0.25, [(143.4, 133.8), (143.4, 143.9)], B)
-V('FB3', 143.4, 143.9)
-T('FB3', 0.25, [(143.4, 143.9), (144.6, 144.32)])
+# Girado 180 grados: SW (pin 2) sale al norte hacia L301; VIN (pin 3) al oeste con C302 pegado; GND (pin 1)
+# por via. EN, FB y PG salen al sur por F.Cu, sin nada bajo el nodo SW.
+T('SW3', 0.25, [(140.4, 135.1), (140.4, 134.4), (141.6, 134.4)])
+T('SW3', 0.6, [(141.6, 134.4), (144.3, 134.4), (144.6, 134.7)])
+T('P5', 0.5, [(139.75, 135.1), (138.1, 135.1)])           # VIN -> C302.1
+T('P5', 0.5, [(138.1, 131.6), (138.1, 134.65)])           # +5V -> C302.1
+T('G', 0.3, [(141.0, 135.1), (141.6, 135.65)])
+V('G', 141.6, 135.65)                                      # pin 1
+T('G', 0.4, [(138.1, 136.65), (138.1, 137.6)])
+V('G', 138.1, 137.6)                                       # C302.2
+T('EN3', 0.2, [(139.9, 136.525), (139.9, 138.68), (141.4, 138.68)])
+T('FB3', 0.2, [(140.4, 136.525), (140.4, 137.8), (143.0, 137.8), (143.0, 143.9), (144.6, 144.32)])
 T('FB3', 0.25, [(145.0, 144.32), (145.0, 146.62)])
 T('FB3', 0.25, [(145.0, 144.4), (147.94, 144.29)])
+T('PG3', 0.2, [(140.9, 136.525), (140.9, 137.35), (148.6, 137.35), (150.8, 138.45)])
 # 3V3_D: L301.2 -> R302.1 -> C304.1; FB alto desde C304.1 (pasa por C303.1 hasta R303.1).
 T('P3D', 0.6, [(147.0, 140.2), (150.6, 140.2), (151.0, 142.2)])
 T('P3D', 0.4, [(150.4, 142.6), (145.0, 142.6)])
@@ -232,8 +245,6 @@ V('P3D', 153.0, 142.5)
 T('P3D', 0.4, [(153.0, 142.5), (156.0, 144.5)], B)        # TP302 (B.Cu)
 T('G', 0.5, [(136.0, 138.35), (136.0, 137.2)])
 V('G', 136.0, 137.2)                                       # C301.2
-T('G', 0.4, [(138.72, 138.72), (138.1, 138.72)])
-V('G', 138.1, 138.72)                                      # C302.2
 T('G', 0.5, [(151.0, 144.4), (152.4, 144.4)])
 V('G', 152.4, 144.4)                                       # C304.2
 T('G', 0.4, [(145.0, 148.28), (146.2, 148.28)])

@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (ruteo etapa 1 en `ruteo-agente`; C104 a B.Cu).
+Última actualización: 2026-10-29, Claude Code (cierre de la etapa 1 y traspaso a Codex: `docs/RUTEO_TRASPASO.md`).
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -470,7 +470,8 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
   - J402 (UART0) es interno: no necesita abertura.
 - **Altura:**
   - Cara superior: C105 hasta 17.3 mm (solo en PROD) y J1/J2 con la brida.
-  - Cara inferior: solo TP y chips planos.
+  - Cara inferior: **C104 (47 µF, CP 10 × 10 mm) de 10.5 mm** en (106.85, 71.0); el resto son TP. **Separadores de ≥ 12 mm** entre la placa y el fondo de la caja.
+- **Adhesivo:** C104 (cara inferior, vibración) y C105 si se monta la versión sin terminales de soporte.
 - **Antena del ESP32-S3:** keep-out de la huella oficial (48 × 21 mm alrededor de la antena, borde derecho). Sin metal de la caja ni tornillería sobre la antena ni a menos de 15 mm.
 - **ROT:**
   - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
@@ -480,7 +481,8 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 ## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
 No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
 - [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
-- [~] 1. Potencia: ruteada; espera visto bueno. C104 pasó a B.Cu (autorizado). TP101 sin conectar (propuesta en `docs/RUTEO_AGENTE.md`).
+- [x] 1. Potencia: cerrada (Claude Code). Cambios de ubicación: C104 a B.Cu, U301 girado 180°, C302 junto a VIN y TP101 a (127.6, 61.5).
+- **Las etapas 2 a 6 las sigue Codex en `ruteo-agente`.** Plan, reglas y restricciones en `docs/RUTEO_TRASPASO.md`.
 - [ ] 2. CAN.
 - [ ] 3. USB/MCU.
 - [ ] 4. Sensores y señales.

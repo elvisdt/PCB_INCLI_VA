@@ -10,15 +10,14 @@ Parte del tag `placement-v1`. El usuario rutea en paralelo una copia en `PCB_INC
 Aplicados en `ruteo-agente`, con autorización del usuario. Repetirlos en la copia manual para comparar.
 - **C104 (47 µF, VOUT) → B.Cu, en (106.85, 71.0), eje horizontal y pad 1 al oeste** (2026-10-29). En F.Cu no tenía camino a VOUT: al norte el nodo SW de U201, al oeste la zona de U101 y al sur el lazo de HGATE. Ahora queda debajo de C105/L101.1 y se une al tronco VOUT con 2 vías y a C105.1 con 3 vías y un tramo en B.Cu. Agrega 10.5 mm de altura en la cara inferior.
 
-Propuestos (no aplicados):
-- **TP101 (+VPROT, B.Cu, 138.5, 65.5):** quedó sin conectar. Está debajo del buck, junto a R202, y no hay +VPROT cerca. Propuesta: moverlo a (127.6, 61.5), sobre el ramal de +VPROT hacia C202, o borrarlo y medir +VPROT en C201.
-- **U301 (SOT-563):** con L301 al este y C301/C302 al sudoeste, el nodo SW (pin 2, entre GND y VIN) separa VIN de su capacitor. VIN, EN y FB cruzan por B.Cu. Con C302 junto a los pines 1 y 3, o con U301 girado 180°, el lazo quedaría todo en F.Cu.
+- **U301 girado 180° (r90 → r270) y C302 a (138.1, 135.875) r270**, junto al pin 3 (VIN). Hicieron falta las dos cosas: con el giro solo, C302 quedaba a 4 mm; moviendo solo C302, EN y FB seguían cruzando el nodo SW. Referencia de U301 en (142.2, 132.8).
+- **TP101 a (127.6, 61.5)**, B.Cu, conectado por vía al ramal de +VPROT (C201 → C202).
 
 ## Etapas
 | Etapa | Estado | Commit |
 |---|---|---|
 | 0. Reglas | aprobada (2026-10-29) | 36bf77f |
-| 1. Potencia | lista, espera visto bueno | (este commit) |
+| 1. Potencia | cerrada (2026-10-29) | 4c8b1f8 + cierre |
 | 2. CAN | | |
 | 3. USB/MCU | | |
 | 4. Sensores y señales | | |
@@ -127,3 +126,29 @@ Script: `scripts/ruteo/etapa1_potencia.py`. Parte del PCB de la etapa 0 (36bf77f
 - DRC: 0 errores. Avisos: 20 `via_dangling` (vías GND esperando el plano) y los 5 conocidos.
 - Paridad: 0. Sin rutear: 291 (antes 358).
 - **Incidente corregido:** guardar el PCB con `pcbnew` después de cargarlo desde el scratchpad sobrescribió `INCLI-VA.kicad_pro` con valores por defecto, y se perdieron las net classes. Se restauró desde git. Desde entonces el script se corre sobre el archivo del proyecto.
+
+## Cierre de la etapa 1 (2026-10-29, pedido del usuario)
+- **Net classes:** HV queda solo para VIN_VEH/VBAT_F (1.25 mm). Clase nueva **PROT** para VA, C_ID, VOUT y +VPROT, con 0.6 mm (≤ 38.4 V; IPC-2221B B2, placa con coating).
+  - Se quitó `MV_entrada_protegida_40V_pads`, porque la cubre la net class.
+  - Las reglas `HV_sensado*` y `HV_zona_U101` pasan a llamarse `PROT_*`.
+- **`ZONA_BUCK_U201`** (x 124.0–151.0, y 52.0–69.0): 0.25 mm para PROT (`PROT_zona_buck_U201`) y +VPROT de 0.6 mm (`PROT_llegada_U201`). Las dos reglas de zona excluyen los pares de pads de un mismo componente.
+- **Lazo de entrada de U201:**
+
+  | | Antes | Después |
+  |---|---|---|
+  | Retorno de C202 | 2 vías + plano (~2.8 mm) | F.Cu directo al pin 1 y al pad expuesto (1.7 mm) |
+  | Área del lazo de C202 | 6.1 mm² | **3.9 mm²** |
+  | C201 → VIN | 11.3 mm | **8.6 mm** (diagonal → pad de C202) |
+  | Área del lazo de C201 | 31.3 mm² | **26.4 mm²** |
+- **U301:**
+  - SW (pin 2) va al norte hasta L301 por F.Cu. VIN (pin 3) → C302.1 (1.8 mm).
+  - GND (pin 1) y C302.2 bajan por vías al plano. EN, FB y PG salen al sur por F.Cu, sin nada bajo el nodo SW.
+  - Área del lazo de entrada: ~5.1 mm² (antes 6.1 mm², con VIN cruzando por B.Cu y 2 vías).
+  - PG_3V3D ruteado hasta R302.2.
+- **Gates:**
+  - HGATE y OUT/VA (pin 15) van paralelas, a 0.5 mm entre ejes: por el pasillo U101–C103 (x 128.78 / 129.28), por el sur de la fila R109–R111 (y 82.3 / 82.85) y hasta Q101/R105.
+  - DGATE va por B.Cu justo debajo del retorno de A/VA (pin 2 → tronco VA, x 117.3 e y 82.5) hasta Q102.1.
+  - Las dos quedan lejos de los nodos SW.
+- **C104** queda en B.Cu: no hay lugar en F.Cu sin alargar el lazo. Requisitos de la caja: separadores de ≥ 12 mm y adhesivo en C104.
+- **Verificación:** DRC 0 errores (19 `via_dangling` GND, que esperan el plano), paridad 0, 288 sin rutear.
+- **Traspaso a Codex:** `docs/RUTEO_TRASPASO.md`.
