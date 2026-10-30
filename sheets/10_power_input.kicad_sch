@@ -4588,6 +4588,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C438109"
+			(at 133.35 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0a91d9c8-da36-48d4-b98a-ff7b98e9d528")
 		)
@@ -4690,7 +4701,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_G en serie con C_dVdT."
+		(property "Notes" "R_G en serie con C_dVdT. PROTO (2026-10-30): UNI-ROYAL 0603WAF1000T5E (LCSC C22775, JLC basic), misma especificación, sin AEC-Q200."
 			(at 189.23 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -4702,6 +4713,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 189.23 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C125923"
+			(at 189.23 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1000T5E"
+			(at 189.23 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 189.23 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C22775"
 			(at 189.23 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -5011,7 +5066,7 @@
 				)
 			)
 		)
-		(property "Notes" "FET de corte (HGATE), 250 V: bloquea el load dump de 202 V. VGS +-20 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "FET de corte (HGATE), 250 V: bloquea el load dump de 202 V. VGS +-20 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 189.23 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -5023,6 +5078,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 189.23 78.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C183634"
 			(at 189.23 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -5138,7 +5204,7 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). PROD: EEE-FK1H102AV, Panasonic FK antivibracion (terminales de soporte), AEC-Q200, 1000 uF / 50 V, 105 C, J16 (16 x 16.8 mm, altura max. 17.3 mm). Huella INCLI-VA:CP_Elec_Panasonic_J16_VibProof = land antivibracion J16 de Panasonic (FK, 01-Sep-25); su columna central contiene el land estandar J16, asi que EEE-FK1H102AM (Alt_MPN, sin soporte: fijar con adhesivo) entra en la misma huella. Disponibilidad del AV a verificar. Requiere C109 = 100 nF (inrush)."
+		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). PROD: EEE-FK1H102AV, Panasonic FK antivibracion (terminales de soporte), AEC-Q200, 1000 uF / 50 V, 105 C, J16 (16 x 16.8 mm, altura max. 17.3 mm). Huella INCLI-VA:CP_Elec_Panasonic_J16_VibProof = land antivibracion J16 de Panasonic (FK, 01-Sep-25); su columna central contiene el land estandar J16, asi que EEE-FK1H102AM (Alt_MPN, sin soporte: fijar con adhesivo) entra en la misma huella. Disponibilidad del AV a verificar. Requiere C109 = 100 nF (inrush). PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5161,6 +5227,17 @@
 			)
 		)
 		(property "Alt_MPN" "EEE-FK1H102AM"
+			(at 252.73 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2164039"
 			(at 252.73 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -5425,7 +5502,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_SET entre CS+ y R_SENSE (TI: 50 ohm)."
+		(property "Notes" "R_SET entre CS+ y R_SENSE (TI: 50 ohm). PROTO (2026-10-30): UNI-ROYAL 0603WAF499JT5E (LCSC C23185, JLC basic), misma especificación, sin AEC-Q200."
 			(at 179.07 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -5437,6 +5514,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 179.07 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144653"
+			(at 179.07 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF499JT5E"
+			(at 179.07 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 179.07 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23185"
 			(at 179.07 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -5645,6 +5766,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C2046332"
+			(at 265.43 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "90dab551-24ab-40b9-b9d5-12fed96ddaff")
 		)
@@ -5745,7 +5877,7 @@
 				)
 			)
 		)
-		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella INCLI-VA:Fuse_Bourns_SF-2410 segun el 'Recommended Pad Layout' de Bourns (pads 2.8 x 3.15 mm, separacion 3.0 mm)."
+		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella INCLI-VA:Fuse_Bourns_SF-2410 segun el 'Recommended Pad Layout' de Bourns (pads 2.8 x 3.15 mm, separacion 3.0 mm). Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5757,6 +5889,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 123.19 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C3159902"
 			(at 123.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -5945,7 +6088,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_ILIM: 12 x 50 / (1 A x 10 mohm) = 60 k -> breaker a 1 A."
+		(property "Notes" "R_ILIM: 12 x 50 / (1 A x 10 mohm) = 60 k -> breaker a 1 A. PROTO (2026-10-30): Yageo RC0603FR-0760K4L (LCSC C165742, JLC extended), misma especificación, sin AEC-Q200."
 			(at 158.75 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -5957,6 +6100,39 @@
 			)
 		)
 		(property "DNP" ""
+			(at 158.75 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C227994"
+			(at 158.75 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC0603FR-0760K4L"
+			(at 158.75 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C165742"
 			(at 158.75 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -6145,7 +6321,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 / 450 V: C_IN en VBAT_F, ve hasta 202 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "1206 / 450 V: C_IN en VBAT_F, ve hasta 202 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): IHHEC C1206X104K451T (LCSC C106025), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 143.51 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -6157,6 +6333,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 143.51 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C3887150"
+			(at 143.51 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "C1206X104K451T"
+			(at 143.51 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "IHHEC"
+			(at 143.51 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C106025"
 			(at 143.51 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -6344,7 +6564,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header vertical MSTBV 2,5/5-GF-5,08 (1777109) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A. Cableado interno hasta el conector circular de 8 hilos de la caja."
+		(property "Notes" "Header vertical MSTBV 2,5/5-GF-5,08 (1777109) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A. Cableado interno hasta el conector circular de 8 hilos de la caja. Montaje: soldar a mano; comprar en LCSC (C7164734)."
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6356,6 +6576,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 100.33 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C7164734"
 			(at 100.33 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -6727,6 +6958,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C469651"
+			(at 153.67 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "9edfd7b4-6e51-4566-93ca-f4d749b5cf50")
 		)
@@ -6829,7 +7071,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V."
+		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
 			(at 130.81 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -6841,6 +7083,39 @@
 			)
 		)
 		(property "DNP" ""
+			(at 130.81 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144484"
+			(at 130.81 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC1206FR-0751KL"
+			(at 130.81 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C114947"
 			(at 130.81 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -6965,6 +7240,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 209.55 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C22428070"
 			(at 209.55 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -7146,7 +7432,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_CS (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_CS (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL31B105KCHNNNE (LCSC C13832, JLC extended), misma especificación, sin AEC-Q200."
 			(at 219.71 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7158,6 +7444,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 219.71 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2168321"
+			(at 219.71 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL31B105KCHNNNE"
+			(at 219.71 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 219.71 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C13832"
 			(at 219.71 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7725,7 +8055,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2."
+		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2. Montaje: soldar a mano; comprar en LCSC (C480552)."
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7748,6 +8078,17 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 100.33 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C480552"
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -7860,7 +8201,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V."
+		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
 			(at 130.81 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -7872,6 +8213,39 @@
 			)
 		)
 		(property "DNP" ""
+			(at 130.81 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144484"
+			(at 130.81 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC1206FR-0751KL"
+			(at 130.81 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C114947"
 			(at 130.81 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -7984,7 +8358,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_OUT (ex C3). 100 V 105 C AEC-Q200. LCSC C344077."
+		(property "Notes" "C_OUT (ex C3). 100 V 105 C AEC-Q200. LCSC C344077. PROTO (2026-10-30): Lelon VZH470M2ATR-1010 (LCSC C164068), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 240.03 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7996,6 +8370,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C344077"
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "VZH470M2ATR-1010"
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Lelon"
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C164068"
 			(at 240.03 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -8204,6 +8622,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C2076185"
+			(at 227.33 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ff9c9333-0045-42a0-9e27-814b216badd9")
 		)
@@ -8306,7 +8735,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_CAP entre CAP y VS (bomba de carga)."
+		(property "Notes" "C_CAP entre CAP y VS (bomba de carga). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8318,6 +8747,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 168.91 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 168.91 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 168.91 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 168.91 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8452,6 +8925,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 189.23 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "af823c35-d7ec-4ed2-800e-e6afb81f216c")
 		)
@@ -8554,7 +9038,7 @@
 				)
 			)
 		)
-		(property "Notes" ""
+		(property "Notes" "PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -8566,6 +9050,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 113.03 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 113.03 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 113.03 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 113.03 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -8821,6 +9349,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4cc679c5-bf3d-41f4-ade1-8f7062f0eccb")
 		)
@@ -8923,7 +9462,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de FLT (drenador abierto) a +3V3_D: PWR_FLT_N va directo a un GPIO del ESP32 (opcion B)."
+		(property "Notes" "Pull-up de FLT (drenador abierto) a +3V3_D: PWR_FLT_N va directo a un GPIO del ESP32 (opcion B). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 199.39 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8935,6 +9474,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 199.39 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 199.39 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 199.39 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 199.39 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 199.39 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -9168,7 +9751,7 @@
 				)
 			)
 		)
-		(property "Notes" "Corte por OV: 0.6 V x (1 + 102k/1.62k) = 38.4 V."
+		(property "Notes" "Corte por OV: 0.6 V x (1 + 102k/1.62k) = 38.4 V. PROTO (2026-10-30): LIZ CR0603FA1621G (LCSC C100797, JLC extended), misma especificación, sin AEC-Q200."
 			(at 130.81 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -9180,6 +9763,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 130.81 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C227657"
+			(at 130.81 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CR0603FA1621G"
+			(at 130.81 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "LIZ"
+			(at 130.81 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C100797"
 			(at 130.81 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -9314,6 +9941,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C144630"
+			(at 113.03 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ca38ff69-02e7-41ee-a0db-1c8845237597")
 		)
@@ -9416,7 +10054,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_TMR: breaker ~1 ms, reintento ~1.5 s. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_TMR: breaker ~1 ms, reintento ~1.5 s. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL10B683KB8NNNC (LCSC C31658, JLC preferred), misma especificación, sin AEC-Q200."
 			(at 148.59 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -9428,6 +10066,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 148.59 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C380380"
+			(at 148.59 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL10B683KB8NNNC"
+			(at 148.59 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 148.59 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C31658"
 			(at 148.59 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -9616,7 +10298,7 @@
 				)
 			)
 		)
-		(property "Notes" "1210: 10 uF / 50 V en +VPROT (<= 40 V). MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "1210: 10 uF / 50 V en +VPROT (<= 40 V). MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL32B106KBJNNNE (LCSC C138687, JLC extended), misma especificación, sin AEC-Q200."
 			(at 278.13 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -9628,6 +10310,39 @@
 			)
 		)
 		(property "DNP" ""
+			(at 278.13 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL32B106KBJNNNE"
+			(at 278.13 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 278.13 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C138687"
 			(at 278.13 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -9816,7 +10531,7 @@
 				)
 			)
 		)
-		(property "Notes" "FET de diodo ideal (DGATE), 100 V: ve ~79 V en el pulso 1 (32 V + recorte de D102)."
+		(property "Notes" "FET de diodo ideal (DGATE), 100 V: ve ~79 V en el pulso 1 (32 V + recorte de D102). Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 209.55 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -9828,6 +10543,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 209.55 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C148263"
 			(at 209.55 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -10076,6 +10802,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 160.02 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C8661"
 			(at 160.02 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -10441,6 +11178,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C2927419"
+			(at 133.35 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fc3137df-3424-44eb-a3e9-badf9271d858")
 		)
@@ -10543,7 +11291,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_VS >= 1 uF (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_VS >= 1 uF (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL31B105KCHNNNE (LCSC C13832, JLC extended), misma especificación, sin AEC-Q200."
 			(at 168.91 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -10555,6 +11303,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 168.91 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2168321"
+			(at 168.91 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL31B105KCHNNNE"
+			(at 168.91 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 168.91 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C13832"
 			(at 168.91 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -10679,6 +11471,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 153.67 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C366557"
 			(at 153.67 92.71 0)
 			(hide yes)
 			(show_name no)

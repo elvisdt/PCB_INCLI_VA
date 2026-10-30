@@ -5245,6 +5245,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C2687116"
+			(at 337.82 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b43fb060-b5a2-4e6a-8454-6244a1b9b1c5")
 		)
@@ -5658,6 +5669,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C907991"
+			(at 190.5 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2394d0cf-c555-44a2-afb6-157aecb503ca")
 		)
@@ -5762,8 +5784,8 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
-			(at 135.89 160.02 0)
+		(property "LCSC" "C720477"
+			(at 133.35 160.02 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6030,7 +6052,7 @@
 				)
 			)
 		)
-		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8)."
+		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8). Montaje: soldar a mano; comprar en LCSC (C2913204)."
 			(at 200.66 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6042,6 +6064,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 200.66 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2913204"
 			(at 200.66 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6426,7 +6459,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo."
+		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6438,6 +6471,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 180.34 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 180.34 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 180.34 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 180.34 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6795,7 +6872,7 @@
 				)
 			)
 		)
-		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_VEH. Adaptador USB-UART de 3.3 V."
+		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_VEH. Adaptador USB-UART de 3.3 V. PROTO (2026-10-30): tira 1x3 de 2.54 mm genérica BOOMELE 2.54-1*3PPin (LCSC C49257), misma huella; la Würth no está en lcsc.com. Soldar a mano (THT)."
 			(at 330.2 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -6807,6 +6884,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 330.2 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2915006"
+			(at 330.2 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "2.54-1*3PPin"
+			(at 330.2 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "BOOMELE"
+			(at 330.2 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C49257"
 			(at 330.2 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -6923,7 +7044,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3828 en 80_supervision."
+		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3828 en 80_supervision. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 106.68 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -6935,6 +7056,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 106.68 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 106.68 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 106.68 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 106.68 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 106.68 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7125,7 +7290,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up externo de GPIO0 (strapping: 1 = arranque desde flash). No depende del pull-up interno."
+		(property "Notes" "Pull-up externo de GPIO0 (strapping: 1 = arranque desde flash). No depende del pull-up interno. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 106.68 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -7137,6 +7302,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 106.68 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 106.68 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 106.68 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 106.68 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 106.68 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -7250,7 +7459,7 @@
 				)
 			)
 		)
-		(property "Notes" "Rd de CC2 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+		(property "Notes" "Rd de CC2 (5.1k a GND): identifica a la placa como dispositivo USB-C. PROTO (2026-10-30): UNI-ROYAL 0603WAF5101T5E (LCSC C23186, JLC basic), misma especificación, sin AEC-Q200."
 			(at 317.5 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7262,6 +7471,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 317.5 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C125891"
+			(at 317.5 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF5101T5E"
+			(at 317.5 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 317.5 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23186"
 			(at 317.5 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7628,6 +7881,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C161212"
+			(at 116.84 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b7d9e5ec-6dfd-4dc5-bd36-958df93a84d3")
 		)
@@ -7930,7 +8194,7 @@
 				)
 			)
 		)
-		(property "Notes" "Rd de CC1 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+		(property "Notes" "Rd de CC1 (5.1k a GND): identifica a la placa como dispositivo USB-C. PROTO (2026-10-30): UNI-ROYAL 0603WAF5101T5E (LCSC C23186, JLC basic), misma especificación, sin AEC-Q200."
 			(at 302.26 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -7942,6 +8206,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 302.26 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C125891"
+			(at 302.26 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF5101T5E"
+			(at 302.26 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 302.26 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23186"
 			(at 302.26 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -8210,8 +8518,8 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
-			(at 152.4 119.38 0)
+		(property "LCSC" "C720477"
+			(at 149.86 119.38 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8324,7 +8632,7 @@
 				)
 			)
 		)
-		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_VEH: SIN aislamiento (opción B), la PC comparte masa con el vehículo; en el vehículo usar aislador USB/UART o laptop a batería. Blindaje a GND_VEH."
+		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_VEH: SIN aislamiento (opción B), la PC comparte masa con el vehículo; en el vehículo usar aislador USB/UART o laptop a batería. Blindaje a GND_VEH. Montaje: soldar a mano; comprar en LCSC (C3020560)."
 			(at 276.86 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -8336,6 +8644,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 276.86 63.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C3020560"
 			(at 276.86 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -8617,7 +8936,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3."
+		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8629,6 +8948,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 365.7600 63.5000 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 365.7600 63.5000 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 365.7600 63.5000 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 365.7600 63.5000 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)

@@ -203,6 +203,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C80165"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "58358aaa-dcf2-456f-bcd6-5351881a96f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Inductor_* L_* *Ferrite*")
 		(path "/e820859b-353c-4670-907b-04aca6cb5816/c763a3a4-8afc-4251-b73b-ea108744105e")
 		(sheetname "/30_regulation/")
@@ -430,6 +443,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f336282e-8be9-4bbf-b1cd-76713792370d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C161212"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ae50ffb1-1f82-403f-963c-4111a17edc8b")
 			(effects
 				(font
 					(size 1 1)
@@ -671,6 +697,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C123816"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3827eae-aab8-437a-aa14-8cf899c0fcf7")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -1051,6 +1090,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144645"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8e16160-afb1-41c1-b65a-6766f0ac9979")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/d6aa1ae7-a6fe-4301-93d6-2c5b43bd1a82")
 		(sheetname "/60_can/")
@@ -1218,18 +1270,6 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b79509be-9f74-4b8f-bcd5-d20417ed8264")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property "Manufacturer" "XUNPU(讯普)"
 			(at 0 0 0)
 			(unlocked yes)
@@ -1249,6 +1289,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "10551b57-76a4-4d69-a877-1d2c81886aff")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C720477"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3b28e230-6c73-4450-9933-54e1c85400b6")
 			(effects
 				(font
 					(size 1 1)
@@ -1732,6 +1785,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3bacf842-8104-4ae9-8d14-aeadd82a4852")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C459826"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9c27b6a0-536a-47fb-8530-ae66519f8a05")
 			(effects
 				(font
 					(size 1 1)
@@ -2263,7 +2329,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH."
+		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2297,6 +2363,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a7661a2-8ef2-4a28-91f2-86604bdf14c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9a7fb06e-f47e-423b-a923-0de81422a07b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "299dec25-b25f-4572-a7e2-bde04b1632f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a069e08e-d780-43d1-abd5-d02b39812320")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -2509,7 +2627,7 @@
 				)
 			)
 		)
-		(property "Notes" "Corte por OV: 0.6 V x (1 + 102k/1.62k) = 38.4 V."
+		(property "Notes" "Corte por OV: 0.6 V x (1 + 102k/1.62k) = 38.4 V. PROTO (2026-10-30): LIZ CR0603FA1621G (LCSC C100797, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2528,6 +2646,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3eb78b25-d721-43fe-bdf4-32fc603645d9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C227657"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3a8c14f9-5508-4804-93fc-980d898655fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CR0603FA1621G"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9b793e2d-0c43-4ed8-8a99-88dd458172d2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "LIZ"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e662e68e-baa9-446f-b4fd-f528f87449da")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C100797"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c9be8d6-ec01-48cd-8564-bb50c028e679")
 			(effects
 				(font
 					(size 1 1)
@@ -2743,7 +2913,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor VMON_5V: 5 V x 49.9k/149.9k = 1.66 V (5.5 V -> 1.83 V)."
+		(property "Notes" "Divisor VMON_5V: 5 V x 49.9k/149.9k = 1.66 V (5.5 V -> 1.83 V). PROTO (2026-10-30): UNI-ROYAL 0603WAF4992T5E (LCSC C23184, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2762,6 +2932,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dddd4217-a808-4bf3-8fec-da9e6688eed3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144654"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "010e9b01-acb1-4fcf-bb8a-93779d6bc907")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4992T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "92214027-37c6-4906-aa58-fa39f281a1e6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5dd6bc91-a819-4760-be12-dc402c42ba1f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23184"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "490214a3-dd7e-492c-a50a-31723cf1133a")
 			(effects
 				(font
 					(size 1 1)
@@ -2977,7 +3199,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota."
+		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3011,6 +3233,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3ef42301-d380-44c3-8e08-bcba3711786b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6e4f173a-1b46-4c76-9438-559d55c9b19f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2f852621-6471-4434-84d9-9a634942f846")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2cc9507f-fea0-4712-b36c-f40da5d3b48a")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -3223,7 +3497,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor VMON_5V: 5 V x 49.9k/149.9k = 1.66 V (5.5 V -> 1.83 V)."
+		(property "Notes" "Divisor VMON_5V: 5 V x 49.9k/149.9k = 1.66 V (5.5 V -> 1.83 V). PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3242,6 +3516,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dd64378b-1cc4-4c50-941e-110e03385843")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "52de3e4f-efdb-4594-beac-c3aadc017620")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "527c5e62-e754-48bf-b5ad-de744eb268c2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef9ef8d1-3d87-487f-b8dc-d246b8d520f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1baacc6c-dca3-45bc-b3ec-0c4ae23f8a3d")
 			(effects
 				(font
 					(size 1 1)
@@ -3483,6 +3809,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C228007"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "df45d4ec-7fa2-481a-bcb1-33010307d561")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/e2c09063-fc06-4e88-b844-9ec5ab85a6e9")
 		(sheetname "/20_buck_5v/")
@@ -3698,6 +4037,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "bdf9f35f-d329-4837-8088-2757961fd8c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C4555951"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5654f57a-1804-4b05-9c14-ce777e3ba879")
 			(effects
 				(font
 					(size 1 1)
@@ -3981,6 +4333,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126598"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0060694e-96c2-4627-9fbd-a939ff28b6c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/ecdc716c-c948-4c87-aa78-43366555ccda")
 		(sheetname "/20_buck_5v/")
@@ -4215,6 +4580,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "17a69f5e-49b6-48f3-aa6c-fbd26e02f388")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/239546f2-9687-431b-9469-5d6736f0dd7c")
 		(sheetname "/20_buck_5v/")
@@ -4423,7 +4801,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_IMU a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia)."
+		(property "Notes" "Pull-up de CS_IMU a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4442,6 +4820,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cd12278b-8035-462f-b1a2-41bb21ea0db3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "121022f4-cc1c-42d6-94cb-ee9707ba7849")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c8ef3f3e-ce3d-4ed4-80ce-82cf9a2301f0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f6a40143-ade5-4713-ac82-e20ec2d8366d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "26c2c3a9-f6fd-4abd-bb68-94071ee398f9")
 			(effects
 				(font
 					(size 1 1)
@@ -4657,7 +5087,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4676,6 +5106,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a81743c7-1d9a-467c-b7b2-4b6b6d056623")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f575473e-b7d4-4af0-ac92-0ea83885c9c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f1d03c4d-0dfa-4818-8c78-be592cd42987")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6c876bee-fc4e-4fe0-a8ba-cf0b5f97c74c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2cdf8a28-7539-4354-9222-58c989a3c1fb")
 			(effects
 				(font
 					(size 1 1)
@@ -4929,6 +5411,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ab83ae4e-2b07-4e6d-94e7-bca9d8f2266b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/648e6ff4-2655-47e5-88f9-92b9fed3b494")
 		(sheetname "/60_can/")
@@ -5175,6 +5670,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144522"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1360c945-5e0d-4fce-933b-dd694f9a4d3b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/b202007f-7fb6-45c9-bd77-aa87a79a96e1/bd1f8794-7c4a-49fb-84ae-293e79769581")
 		(sheetname "/70_output_DO2/")
@@ -5383,7 +5891,7 @@
 				)
 			)
 		)
-		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5402,6 +5910,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7cceae99-239f-4f37-a055-c29dc1e72257")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "95199b9a-3d8d-417b-a234-8e51ea130426")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7bed354d-88bf-4636-a738-2abf54aef442")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2754ffb4-2c58-4be2-9ad5-6ddb04682137")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6b6396bd-095c-43c0-afd2-3c13548a0734")
 			(effects
 				(font
 					(size 1 1)
@@ -5617,7 +6177,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_G en serie con C_dVdT."
+		(property "Notes" "R_G en serie con C_dVdT. PROTO (2026-10-30): UNI-ROYAL 0603WAF1000T5E (LCSC C22775, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5636,6 +6196,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8ff9c21a-84aa-4c56-b7af-7540cc615946")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C125923"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0656821e-8f6f-4ce7-895a-a6002902aab5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1000T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0dfac86c-50af-443f-8432-5e9bc021eb6e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2b572494-656e-4508-93c9-8fa43240bb7e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C22775"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "517d7fc3-6779-4e0b-8cec-2fa7305384cc")
 			(effects
 				(font
 					(size 1 1)
@@ -5851,7 +6463,7 @@
 				)
 			)
 		)
-		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5870,6 +6482,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9da342f7-6e7e-4dcc-b5a8-44faf79cf785")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "04d02191-ca58-474b-bc92-919a0efc70ef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "929a58c7-f255-4519-9035-ab8bc0b62acc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e41bd1cd-6db5-40b3-8145-51fce0eed23f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "001f782b-6de3-4590-8193-33cf4111211a")
 			(effects
 				(font
 					(size 1 1)
@@ -6085,7 +6749,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U701."
+		(property "Notes" "Desacople de U701. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6119,6 +6783,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8bf95fbb-fa0b-4ca2-9975-a67651421ac6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "472a1bc4-c4c0-4eb7-81d6-dc9a6f25b9ab")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9d5d11ac-ef06-40fe-8f39-2eb345c52e45")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e97e5b84-975b-4395-8292-80efd50b96ca")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -6369,6 +7085,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144522"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5401800e-56e8-4526-b7f7-0ea4cfc3823e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/c6606065-5ef9-41e4-af17-886440d0e060/bd1f8794-7c4a-49fb-84ae-293e79769581")
 		(sheetname "/70_output_DO1/")
@@ -6615,6 +7344,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "886072a7-9c50-468e-a69d-45c65cd0687d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/ec89cf1d-14cc-497b-871b-1400a855c7b1")
 		(sheetname "/60_can/")
@@ -6823,7 +7565,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3."
+		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6842,6 +7584,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1d8cabb0-043a-4981-bfe2-ce0540a0d6bd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "106d2863-924c-4590-a798-e10c9bb57a0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "10420e03-98f3-439e-b90b-ea256908a651")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8044a57d-e39e-481c-9a11-6dc78a09a793")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2c2bb288-c463-419e-a003-a577bd835f4d")
 			(effects
 				(font
 					(size 1 1)
@@ -7083,6 +7877,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144630"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad96c244-2c9f-40b7-aa85-5035f4bb343f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/bd379a7b-2193-4ac8-add7-03bca58c3d62")
 		(sheetname "/10_power_input/")
@@ -7291,7 +8098,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10)."
+		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10). PROTO (2026-10-30): FH 0603B103K500NT (LCSC C57112, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7325,6 +8132,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85863"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d54f3f50-13ee-468a-aa93-fb564909c1fd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B103K500NT"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "aac332ba-c079-49ea-85fa-0f11e671adae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3a7e2ab5-45b8-4bd1-b6ad-14b42fb9440c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C57112"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e7c97308-cd2d-452b-9fa5-e09493f61312")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -7537,7 +8396,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_TMR: breaker ~1 ms, reintento ~1.5 s. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_TMR: breaker ~1 ms, reintento ~1.5 s. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL10B683KB8NNNC (LCSC C31658, JLC preferred), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7556,6 +8415,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "848ff740-409a-4613-8294-fb7a96a51b9e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C380380"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "898a4b3b-939b-436b-bc8a-e4735a3137eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL10B683KB8NNNC"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8b36a7e6-0cad-48e4-a8b1-3f322af39b05")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cd253980-b9bb-4dd4-8fc3-895c135e3bc5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C31658"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d71b0d9a-4790-46b2-8dd4-0fdb89727e53")
 			(effects
 				(font
 					(size 1 1)
@@ -7797,6 +8708,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C2076185"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "34334533-3e9b-4cb6-8953-040a5d8445da")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/9169e259-b7a5-456e-898f-f614b22c671b")
 		(sheetname "/10_power_input/")
@@ -8024,6 +8948,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fd858b41-7cd7-4a69-87ec-6ffb0bfcec0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C130005"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6d52245-0079-40b9-beba-fcf3fbc591f6")
 			(effects
 				(font
 					(size 1 1)
@@ -8542,6 +9479,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef840034-9c8e-4b32-b2d5-3224581b1f5c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/a48239c7-5a71-423c-8d04-e9d0bf28b158")
 		(sheetname "/10_power_input/")
@@ -8776,6 +9726,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C500776"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "608b0655-84c8-4deb-b6a7-0df2012bc846")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -9162,6 +10125,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5736151"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e20f6cb-4edb-4bd5-bf62-a502d35a4d8c")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -9634,6 +10610,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C8661"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d115061c-c03d-4fec-a29a-86e3b21ca50d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "SOT?23*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/df913ce4-5895-4333-85da-92a372ebd913")
 		(sheetname "/10_power_input/")
@@ -10077,7 +11066,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V."
+		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10096,6 +11085,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "58781b33-39bb-4537-ba7f-8e0c56e67a95")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144484"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fe941edc-c9a1-4f84-9e74-2891b0e615ca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC1206FR-0751KL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c3f3a30a-f07b-4a15-a27e-5ef3fd518ba3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C114947"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5c01998e-e03d-4d40-9e9a-d0ab64c6e1dc")
 			(effects
 				(font
 					(size 1 1)
@@ -10324,12 +11352,64 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U801."
+		(property "Notes" "Desacople de U801. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fea6edbf-c568-47a6-a35c-229c386659ed")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "60483dec-29e0-4f97-a7bd-5a6edd60e352")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b787337b-4104-4b11-9d70-8a7fdcaf9bd9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "77c907d2-62c5-410a-abdf-9abd6957ab30")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5c79c9bc-9c24-4c16-b258-f6cb63462af1")
 			(effects
 				(font
 					(size 1 1)
@@ -10571,6 +11651,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C907991"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "57512e01-55a3-4cb8-8d39-2bc141a5d4fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/e820859b-353c-4670-907b-04aca6cb5816/b205dec3-7d75-4068-963f-399c93b45736")
 		(sheetname "/30_regulation/")
@@ -10805,6 +11898,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C123816"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8db80d4f-6e73-402f-a18b-08d54cd3c8ec")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -11317,7 +12423,7 @@
 				)
 			)
 		)
-		(property "Notes" "Rd de CC1 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+		(property "Notes" "Rd de CC1 (5.1k a GND): identifica a la placa como dispositivo USB-C. PROTO (2026-10-30): UNI-ROYAL 0603WAF5101T5E (LCSC C23186, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11336,6 +12442,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b822063e-08a8-4365-a191-e7c3b59e0678")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C125891"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9675b76c-ffcd-4c13-a70a-e3b375b87569")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF5101T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8eb7e5ed-4867-4252-8926-68fece049606")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "48824e00-a7e8-4776-b3df-7fc86d706432")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23186"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "297c69b1-1bb1-4c37-9bfd-f8f2738328ab")
 			(effects
 				(font
 					(size 1 1)
@@ -11577,6 +12735,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C500776"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ed8845c-ebf9-47d0-adeb-9c17816c89f4")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -11936,6 +13107,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "c45346b9-93c4-4fee-b4de-91b063d1469b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C22428070"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "64e6fb64-e503-46cf-805d-4c462b110a55")
 			(effects
 				(font
 					(size 1 1)
@@ -12908,7 +14092,7 @@
 				)
 			)
 		)
-		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer."
+		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer. PROTO (2026-10-30): UNI-ROYAL 0603WAF4701T5E (LCSC C23162, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12942,6 +14126,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116697"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6e7a7ca-2625-4934-8c55-346404f6df8e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4701T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6da28341-e7ea-4cf0-afde-f105cfa7b3ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "34642716-0465-42ec-bca2-246d3b095b06")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23162"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d10fcd3a-d300-4572-9120-0a5ff239b8e1")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -13213,6 +14449,32 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5260572"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "891a3e38-2b4a-416b-9b09-7b58baa0ba45")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C102615"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "625d5918-3f39-48ed-9789-4c363e833c8c")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -13699,6 +14961,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C141796"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6d431325-bb3d-4d93-b425-b637a3db7a1e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/36e48972-b26d-42f8-9a56-9151ebeed19a/500001ae-1bbd-4852-9f86-ae4037719a11")
 		(sheetname "/80_supervision/")
@@ -13907,7 +15182,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOOUT: 0.22 uF + 10 uF a GNDISO (tabla 10)."
+		(property "Notes" "VISOOUT: 0.22 uF + 10 uF a GNDISO (tabla 10). PROTO (2026-10-30): Samsung CL10B224KA8NNNC (LCSC C21120, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13941,6 +15216,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C161217"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1b4e0034-497d-4bf9-8863-5040abf8971f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL10B224KA8NNNC"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "faee213b-8485-4230-a9b2-895c3a3687cf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "43c32c44-d1e5-484c-9906-880e98ab361d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21120"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bc337223-1bf4-403d-aba4-a059e90223de")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -14179,12 +15506,64 @@
 				)
 			)
 		)
-		(property "Notes" "VAR_ID0 (IO4) = 0 si la variante lleva CAN. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U)."
+		(property "Notes" "VAR_ID0 (IO4) = 0 si la variante lleva CAN. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1c4f4987-224c-4326-ae11-ac39b93d5717")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fab20dc0-ae31-4ee6-8105-02c46ce6972e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4c82af94-f5dd-4d30-b139-793fa00d648f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2a21735e-89b8-4118-bb79-cacb36436a45")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cc8c60bb-2b80-4a60-9886-d3d9fe131222")
 			(effects
 				(font
 					(size 1 1)
@@ -14438,6 +15817,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C113020"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "38607169-5e71-4899-8d2b-12b3d9d7c236")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Inductor_* L_* *Ferrite*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/39967c2c-d5d4-4076-a77e-390f3375baa8")
 		(sheetname "/60_can/")
@@ -14646,7 +16038,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_ILIM: 12 x 50 / (1 A x 10 mohm) = 60 k -> breaker a 1 A."
+		(property "Notes" "R_ILIM: 12 x 50 / (1 A x 10 mohm) = 60 k -> breaker a 1 A. PROTO (2026-10-30): Yageo RC0603FR-0760K4L (LCSC C165742, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14665,6 +16057,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4f997cca-accc-4dab-973b-712db2acdbc3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C227994"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "59d2039d-b721-43c3-87b5-0f1a747cb5a6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC0603FR-0760K4L"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e3b46e58-7f87-4177-9432-17a1e82c4f4e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C165742"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c1e1535-9c2b-480c-a6b2-0dae1953b652")
 			(effects
 				(font
 					(size 1 1)
@@ -14880,7 +16311,7 @@
 				)
 			)
 		)
-		(property "Notes" "Sensor de ángulo magnético 14 bit, AEC-Q100 (ángulo de pluma con imán diametral externo). Solo variante ROT: DNP en la variante estándar. SPI modo 1 (CPOL=0, CPHA=1), hasta 10 MHz (DS000639 v1-04). Modo 3.3 V: VDD y VDD3V3 unidos (fig. 13). Salidas ABI/UVW/PWM sin uso. Compra: sin stock en LCSC, comprar en DigiKey o Mouser."
+		(property "Notes" "Sensor de ángulo magnético 14 bit, AEC-Q100 (ángulo de pluma con imán diametral externo). Solo variante ROT: DNP en la variante estándar. SPI modo 1 (CPOL=0, CPHA=1), hasta 10 MHz (DS000639 v1-04). Modo 3.3 V: VDD y VDD3V3 unidos (fig. 13). Salidas ABI/UVW/PWM sin uso. Compra: sin stock en LCSC, comprar en DigiKey o Mouser. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14912,6 +16343,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fdb2b290-b1ef-4f58-9341-04a6c0c78a54")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C38675951"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "659a4587-ea9d-4689-bca9-cb99577a873c")
 			(effects
 				(font
 					(size 1 1)
@@ -15542,7 +16986,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_CAP entre CAP y VS (bomba de carga)."
+		(property "Notes" "C_CAP entre CAP y VS (bomba de carga). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15561,6 +17005,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "098215a4-0aea-41bf-bf1a-b1af20a629eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ab1c0760-5b25-4487-9655-1237b0faf4d1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "304802b6-171a-43f7-b666-ca80f80d2d50")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2bcf4684-b905-4198-814f-c12a84c2cf57")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "33d0036c-d3ef-4b4f-8c54-4d4fa8056c17")
 			(effects
 				(font
 					(size 1 1)
@@ -15776,7 +17272,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up externo de GPIO0 (strapping: 1 = arranque desde flash). No depende del pull-up interno."
+		(property "Notes" "Pull-up externo de GPIO0 (strapping: 1 = arranque desde flash). No depende del pull-up interno. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15795,6 +17291,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3a9c6ca3-b746-446a-8239-eccb699911c0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21fff6f1-88e3-4c78-8e16-345a03ba8830")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3384beb0-ae54-428b-9328-ef0f49f4940e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fa55c7ca-e7c0-448e-ad6c-47aaded58372")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "915fbfad-f7ca-46b0-bac7-a7b1d676e75f")
 			(effects
 				(font
 					(size 1 1)
@@ -16010,7 +17558,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH."
+		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16044,6 +17592,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3dbaf1da-c980-4c69-8eb5-193dcf9a0770")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e27cb32c-16dd-4413-82ca-2b338096a11c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ce297987-c3a0-4471-835b-2a0c79d747c7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2fea79f5-b702-4672-90e4-8d899fd1a6ac")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -16256,7 +17856,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10)."
+		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16290,6 +17890,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3170a718-2267-43a8-97a6-724b61622bb5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e1c89a5-2488-4692-b4bb-1b4a31c90741")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ba0ec14b-6752-465f-9a36-82b724411d7e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "11be2a93-bdb7-49a0-bd95-88df393c9c26")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -16502,7 +18154,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_FBT (TI recomienda 100k). VOUT = 1 V x (1 + 100k/24.9k) = 5.02 V."
+		(property "Notes" "R_FBT (TI recomienda 100k). VOUT = 1 V x (1 + 100k/24.9k) = 5.02 V. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16521,6 +18173,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "867b46d0-2b74-4245-9117-dbcedfcbe2df")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8664cf73-ac0a-4b13-86e1-99afb3cffd92")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "143012ab-d8e8-49c5-b275-9c912e6827ca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e73d983c-4ad4-4360-b6ed-79aa81dc9856")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8840c170-489c-4e3e-a712-261a1c67adb5")
 			(effects
 				(font
 					(size 1 1)
@@ -16736,7 +18440,7 @@
 				)
 			)
 		)
-		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). En cadena detrás de C601 (pin VIO → C601 10 nF → C602 100 nF), a ~6 mm del pin; ubicación aceptada por el usuario (2026-10-29)."
+		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). En cadena detrás de C601 (pin VIO → C601 10 nF → C602 100 nF), a ~6 mm del pin; ubicación aceptada por el usuario (2026-10-29). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16770,6 +18474,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "56ade51a-0862-4243-9a32-5e280ec702b9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0da52f88-b905-4718-b9ab-bc17a47984da")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2797b6e0-17f1-4ad0-8d28-f3a3108dce56")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bee5c982-2bf8-419b-8325-b41e7ef830c4")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -17008,6 +18764,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126598"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4a306db2-e56b-4970-8720-f2ccac5b54d3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/30c81356-9a49-46d7-bf60-80e4e083c977")
 		(sheetname "/20_buck_5v/")
@@ -17216,7 +18985,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de FLT (drenador abierto) a +3V3_D: PWR_FLT_N va directo a un GPIO del ESP32 (opcion B)."
+		(property "Notes" "Pull-up de FLT (drenador abierto) a +3V3_D: PWR_FLT_N va directo a un GPIO del ESP32 (opcion B). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17235,6 +19004,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7134b008-ec29-4164-9fbe-43edf40961e5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3aa71680-d9b0-440d-8368-45c41fe4aacf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "837d3438-ba70-4888-92a1-981d77c937b1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2a8c9c1d-d138-49f3-ba2b-48f9fab17c21")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d471d8dc-58b0-49ce-b15e-fc8f98352f84")
 			(effects
 				(font
 					(size 1 1)
@@ -17450,7 +19271,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V."
+		(property "Notes" "1206 por tensión/potencia: ~101 V y 0.2 W con load dump de 202 V. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17469,6 +19290,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b00179f0-1615-4cca-8d0b-aa538d361e97")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144484"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "947dcd35-e22b-4afe-9f5c-f3e59d01ef2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC1206FR-0751KL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "344a19b3-cf27-4f7d-a3e1-fbfeb10252ea")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C114947"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a35d01a4-7210-4713-99ce-a5569d52d9b1")
 			(effects
 				(font
 					(size 1 1)
@@ -17684,7 +19544,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor de FB inferior (TI: R2 <= 400k; 100k para usar C_FF = 10 pF)."
+		(property "Notes" "Divisor de FB inferior (TI: R2 <= 400k; 100k para usar C_FF = 10 pF). PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17703,6 +19563,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e3bfa948-0f60-4b84-8d69-a569f1bade2f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8a92eaac-3a25-4afe-aaf1-2c1c8eec9fa7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1edc3f10-8b8b-4eae-ab96-c29d30be085a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "335ea9ba-d20c-4428-8feb-902fa4475eb9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d87fffc9-eb69-4643-84cb-25d3bc785bf5")
 			(effects
 				(font
 					(size 1 1)
@@ -17918,7 +19830,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar."
+		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17950,6 +19862,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "53f90546-2ec5-49b8-8a09-6d7749d555bb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bf5faef9-7d82-4498-a4bf-dac44b90d534")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b80e7354-97e4-4710-b36a-f215d0eaee88")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d831ef50-a14d-41cf-89e8-d50efbd14f55")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "546b92cf-27eb-4258-8dd5-edb082d55c39")
 			(effects
 				(font
 					(size 1 1)
@@ -18176,6 +20140,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "413403ad-f8e0-4f4b-9cb9-470e54b7eefa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C366557"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1ed83b8d-a776-4342-83cb-4efdac5f9d9f")
 			(effects
 				(font
 					(size 1 1)
@@ -18521,7 +20498,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de STBY a VIO: el transceiver arranca en standby (bus en silencio) hasta que el firmware baje CAN_STBY. Decision 60_can #5."
+		(property "Notes" "Pull-up de STBY a VIO: el transceiver arranca en standby (bus en silencio) hasta que el firmware baje CAN_STBY. Decision 60_can #5. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18555,6 +20532,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef77df5b-76e0-4d93-b887-92d15af072b0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "648ac13a-d1bf-4323-8b7d-63d5d9ba3a0e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0eca8ac-ed39-4f4b-8fb2-1d026005d2d1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21b55b8d-f0df-4cb1-bf1d-c336597c75c6")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -18767,7 +20796,7 @@
 				)
 			)
 		)
-		(property "Notes" "VCC: 10 uF + 0.1 uF (tabla 10). < 2 mm del pin."
+		(property "Notes" "VCC: 10 uF + 0.1 uF (tabla 10). < 2 mm del pin. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18801,6 +20830,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "13deed61-a34f-4822-96bc-7135adb272b1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5e9e04ad-acb0-4a2a-b1ec-3bacb45dea5b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4344b2fa-f764-4730-9766-ed0ab109bbc5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "55b0343a-b6a5-4cf0-bfa0-053164598aee")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -19032,6 +21113,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "588e156a-3fe9-447e-b3da-8800c0a737e4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C284871"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "beba5470-1f03-4fef-9b43-0968d61e5f92")
 			(effects
 				(font
 					(size 1 1)
@@ -19309,6 +21403,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "eb672ba6-85ec-4de4-bff8-c17f457c55f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C438109"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c38f7a40-f3da-4483-8ed1-bb9c74be6ede")
 			(effects
 				(font
 					(size 1 1)
@@ -19654,7 +21761,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_VS >= 1 uF (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_VS >= 1 uF (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL31B105KCHNNNE (LCSC C13832, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19673,6 +21780,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "eddd8bd0-57be-4e95-9d0e-0babb4216f44")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2168321"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b639dbd3-6692-40fa-9318-8335e58fdc7b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL31B105KCHNNNE"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9a871f56-f4f0-4abd-958c-538a2d9ee322")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d0224d2-db0d-4320-92f3-3d2e008eed6d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C13832"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "63283b28-4e61-47f1-aa43-a5af247d897e")
 			(effects
 				(font
 					(size 1 1)
@@ -19914,7 +22073,7 @@
 				)
 			)
 		)
-		(property "Notes" "ADM3055E Rev. D: RS a GND2 por R605, AUXIN a GND1 (sin uso), AUXOUT sin conexion. GNDISO por FB602 a GND2. Verificar el land pattern SOIC-20W contra el plano RI-20-1."
+		(property "Notes" "ADM3055E Rev. D: RS a GND2 por R605, AUXIN a GND1 (sin uso), AUXOUT sin conexion. GNDISO por FB602 a GND2. Verificar el land pattern SOIC-20W contra el plano RI-20-1. PROTO (2026-10-30): ADM3055EBRIZ-RL (LCSC C658105), mismo CI en carrete; JLC tenía 55 u. PROD (100 u): comprar ADM3055EBRIZ en DigiKey/Mouser."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19946,6 +22105,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "028c247b-eb9d-4297-bc3d-6a27efd3634b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C658104"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ed98cdaa-7184-4e2a-9896-25d6feed9ac6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "ADM3055EBRIZ-RL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b3f80c57-a00e-4f78-8a9d-1f914f8aae6c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C658105"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c593a1b3-68a5-407a-a012-093798840cb1")
 			(effects
 				(font
 					(size 1 1)
@@ -20717,7 +22915,7 @@
 				)
 			)
 		)
-		(property "Notes" "Supervisor de +3V3_D + watchdog, AEC-Q100 (TI SGLS143E). VIT- 2.84/2.93/3.0 V, reset 120/200/300 ms, ttout 0.9/1.6/2.5 s. RESET drenador abierto (TPS3828) -> MCU_RST_N (wire-OR con R401 10k + C403 1 uF + SW401). WDI en alta impedancia = watchdog deshabilitado (7.3.4): GPIO17 queda en alta Z en boot/flasheo. Simbolo oficial TPS3823-xxDBV: mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD)."
+		(property "Notes" "Supervisor de +3V3_D + watchdog, AEC-Q100 (TI SGLS143E). VIT- 2.84/2.93/3.0 V, reset 120/200/300 ms, ttout 0.9/1.6/2.5 s. RESET drenador abierto (TPS3828) -> MCU_RST_N (wire-OR con R401 10k + C403 1 uF + SW401). WDI en alta impedancia = watchdog deshabilitado (7.3.4): GPIO17 queda en alta Z en boot/flasheo. Simbolo oficial TPS3823-xxDBV: mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD). PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20750,6 +22948,32 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2872895"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "50337266-99f8-461d-93f1-e7a6403e0c6d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C20032"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f9d339b3-f2d7-40e5-a504-531d8ce4b551")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -21198,18 +23422,6 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C720477"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6215d3a3-d47c-4a08-9976-d10d67e9e8d4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property "Manufacturer" "XUNPU(讯普)"
 			(at 0 0 0)
 			(unlocked yes)
@@ -21229,6 +23441,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2b55dc28-6472-487c-95a7-28e5bab8015f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C720477"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "051f92cf-b4bb-432b-a031-6c50502dd47d")
 			(effects
 				(font
 					(size 1 1)
@@ -21523,7 +23748,7 @@
 				)
 			)
 		)
-		(property "Notes" "1210: 10 uF / 50 V en +VPROT (<= 40 V). MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "1210: 10 uF / 50 V en +VPROT (<= 40 V). MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL32B106KBJNNNE (LCSC C138687, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21542,6 +23767,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7a93094f-d1d2-40e0-9e30-e77b5c5aad4d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL32B106KBJNNNE"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "63dd7a1e-3d20-4593-b804-4c6f3f366b33")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cb60b8c1-e26f-439e-b1f8-4a105f3382af")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C138687"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "886af5c4-84af-42e1-a995-6777d66cdc7b")
 			(effects
 				(font
 					(size 1 1)
@@ -21757,7 +24021,7 @@
 				)
 			)
 		)
-		(property "Notes" "33 uH (TI tabla 9-1, 400 kHz, 5 V). Isat 3.7 A > limite high-side max del LMR38010 (1.9 A); DCR 105 mohm max. AEC-Q200."
+		(property "Notes" "33 uH (TI tabla 9-1, 400 kHz, 5 V). Isat 3.7 A > limite high-side max del LMR38010 (1.9 A); DCR 105 mohm max. AEC-Q200. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21776,6 +24040,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "51a9640b-6b15-4cb6-89f4-58d22a3fd4ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5119929"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3b26565-8781-4330-a70f-9e3404582e6a")
 			(effects
 				(font
 					(size 1 1)
@@ -22051,6 +24328,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144681"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "940e68c8-0a3b-45dc-9c8c-636b01b48fa9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/b202007f-7fb6-45c9-bd77-aa87a79a96e1/331e59c9-e5d5-4e3c-ad20-f3aeba313056")
 		(sheetname "/70_output_DO2/")
@@ -22285,6 +24575,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b733acec-2dc3-47df-87c7-531fbe4c2974")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/ae4257ca-7c76-4809-910b-bfde3033ba24")
 		(sheetname "/10_power_input/")
@@ -22493,7 +24796,7 @@
 				)
 			)
 		)
-		(property "Notes" "EN de U301 a +5V_VEH: el buck arranca con el riel (EN no puede quedar flotante, TI)."
+		(property "Notes" "EN de U301 a +5V_VEH: el buck arranca con el riel (EN no puede quedar flotante, TI). PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22512,6 +24815,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "47890dbf-bf83-49b6-bb42-1e83c376e025")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1967bbdf-5a7e-4571-b84c-ce4f1396db86")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87a5d15d-bbfd-40d9-8022-645c12f2b596")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5656137a-115d-4c52-92fc-bbfc7803e4c2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d85ea264-6a3f-437e-b14d-6830d1afff8b")
 			(effects
 				(font
 					(size 1 1)
@@ -22753,6 +25108,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C116692"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6ee61243-503b-4583-a623-b28e7bf03cce")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/36e48972-b26d-42f8-9a56-9151ebeed19a/bed962e0-b608-40e4-8760-4c569c4b4a39")
 		(sheetname "/80_supervision/")
@@ -22961,7 +25329,7 @@
 				)
 			)
 		)
-		(property "Notes" "Rd de CC2 (5.1k a GND): identifica a la placa como dispositivo USB-C."
+		(property "Notes" "Rd de CC2 (5.1k a GND): identifica a la placa como dispositivo USB-C. PROTO (2026-10-30): UNI-ROYAL 0603WAF5101T5E (LCSC C23186, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22980,6 +25348,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "47883000-f82f-4b37-b64f-cf1e572b732e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C125891"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e2f1e87-96cf-45c1-b79f-097950da83be")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF5101T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "80347d0d-034b-4b6c-a420-e49bd7844019")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "88e85c8b-39ec-463a-ba66-c5ac3817a46b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23186"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "fd925941-da7b-4bb4-87be-c87660e39cb8")
 			(effects
 				(font
 					(size 1 1)
@@ -23195,7 +25615,7 @@
 				)
 			)
 		)
-		(property "Notes" "FET de diodo ideal (DGATE), 100 V: ve ~79 V en el pulso 1 (32 V + recorte de D102)."
+		(property "Notes" "FET de diodo ideal (DGATE), 100 V: ve ~79 V en el pulso 1 (32 V + recorte de D102). Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23214,6 +25634,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cd1b7bd0-904b-4f30-8ce8-b85e7e199fcd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C148263"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6374c1e4-4c42-4905-be94-e232e561bde1")
 			(effects
 				(font
 					(size 1 1)
@@ -23673,6 +26106,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C469651"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e6a1cb24-183d-479b-9435-cb8b5c32f523")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/5c556c37-c33b-4b88-94c9-f9da37742915")
 		(sheetname "/10_power_input/")
@@ -23900,6 +26346,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "63e48ad3-94b0-4a89-a8a0-fe33d74741bf")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C49259289"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5d8621f0-bc20-406c-8b4f-d8b113bdb99a")
 			(effects
 				(font
 					(size 1 1)
@@ -24322,7 +26781,7 @@
 				)
 			)
 		)
-		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). < 2 mm del pin."
+		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). < 2 mm del pin. PROTO (2026-10-30): FH 0603B103K500NT (LCSC C57112, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24356,6 +26815,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85863"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "99943c24-3c54-457d-991f-7a58386ad71b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B103K500NT"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "257b075f-e209-47c1-a4cd-d19ce28a443f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "244bf544-bc32-4bf4-85fc-d0c8b44d2e7a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C57112"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "df6a16d6-e513-46fd-95d7-4c0862369efc")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -24627,6 +27138,32 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C5260572"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "771f889f-e809-402c-b74c-cb47eec70df5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C102615"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3294c98-572e-4517-b8cc-ec395ea524a4")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -25060,7 +27597,7 @@
 				)
 			)
 		)
-		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella INCLI-VA:Fuse_Bourns_SF-2410 segun el 'Recommended Pad Layout' de Bourns (pads 2.8 x 3.15 mm, separacion 3.0 mm)."
+		(property "Notes" "Bourns SF-2410FPA200W-2: 2 A rapido, 250 VDC, AEC-Q200 (LCSC C3159902). Fusible de falla grave: el breaker del LM74930 actua antes (1 A). Huella INCLI-VA:Fuse_Bourns_SF-2410 segun el 'Recommended Pad Layout' de Bourns (pads 2.8 x 3.15 mm, separacion 3.0 mm). Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 0 0 180)
 			(layer "F.SilkS")
 			(hide yes)
@@ -25077,6 +27614,18 @@
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "f04a45ab-26b7-4cdf-b3ab-1ac2bca04eb0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C3159902"
+			(at 0 0 180)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6e75f304-bd14-4751-b3aa-2b87d780ea42")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25330,6 +27879,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C113020"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3780afcb-844b-4e1a-a974-11ca060de7a9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "Inductor_* L_* *Ferrite*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/2bbe343b-9521-421d-8711-0ab58b022479")
 		(sheetname "/60_can/")
@@ -25538,7 +28100,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U701."
+		(property "Notes" "Desacople de U701. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25572,6 +28134,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c249625-c9cd-4ee2-8e48-038d38dccb90")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e85a971-ca48-49b6-ba45-32ce0906ad39")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "76faa361-5c03-4a0f-a93e-c5d91b286f7f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e107815f-fed1-4395-9ef0-4edd86269ebf")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -25784,7 +28398,7 @@
 				)
 			)
 		)
-		(property "Notes" ""
+		(property "Notes" "PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25803,6 +28417,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7d92ce08-6fa5-4e60-a346-10dedf121202")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "feada129-6dc9-4659-b3da-a482d600d8db")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "16ea1ed3-7b2b-4d79-b86b-d56037db23ff")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ff0fc746-0aea-4367-84dd-f169f56603b6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5e6510ec-f201-4693-847a-f58edce41687")
 			(effects
 				(font
 					(size 1 1)
@@ -26018,7 +28684,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_IN del LMR38010 (TI: >= 4.7 uF ceramico, X7R, idealmente 2 x VIN max). 100 V X7S AEC-Q200. 1210 por tension y DC bias. Pegado a VIN/GND de U201. MPN a verificar."
+		(property "Notes" "C_IN del LMR38010 (TI: >= 4.7 uF ceramico, X7R, idealmente 2 x VIN max). 100 V X7S AEC-Q200. 1210 por tension y DC bias. Pegado a VIN/GND de U201. MPN a verificar. PROTO (2026-10-30): Samsung CL32B475KCVZNWE (LCSC C17288249), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -26037,6 +28703,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b6ec1db5-f42f-4fe7-bd15-b37c82091c81")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2168848"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d084b745-f3d2-4d4d-87d1-85f4615c185d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL32B475KCVZNWE"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b195ae60-ba92-4a2b-b577-44b77e421a65")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4965130b-f6bd-4e20-bc8d-41a926ddbc7b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C17288249"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8d229e7-1cae-4273-aa29-fe278e9f7f52")
 			(effects
 				(font
 					(size 1 1)
@@ -26422,7 +29140,7 @@
 				)
 			)
 		)
-		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -26441,6 +29159,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a67804c6-0749-412a-9962-9103cdc9fd38")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "42117829-726c-4f87-a18f-992e56ff8bbd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "771d0d3e-3a3a-4862-bc19-922ab5fe7068")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "47564824-782c-407c-a14b-2d816288a5c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7bce51ed-6063-4f03-8715-0f5fb162fce1")
 			(effects
 				(font
 					(size 1 1)
@@ -26694,6 +29464,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144681"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8d9f57c-1722-42fd-9a90-75dda0d7a189")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/c6606065-5ef9-41e4-af17-886440d0e060/331e59c9-e5d5-4e3c-ad20-f3aeba313056")
 		(sheetname "/70_output_DO1/")
@@ -26928,6 +29711,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C161212"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "65bd4c22-f3b5-4bdb-85af-e5cece172670")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/e820859b-353c-4670-907b-04aca6cb5816/90425a68-0e6b-48ec-bced-5b2d1f89284e")
 		(sheetname "/30_regulation/")
@@ -27136,7 +29932,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_SET entre CS+ y R_SENSE (TI: 50 ohm)."
+		(property "Notes" "R_SET entre CS+ y R_SENSE (TI: 50 ohm). PROTO (2026-10-30): UNI-ROYAL 0603WAF499JT5E (LCSC C23185, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27155,6 +29951,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "62a75ad1-1431-42aa-9795-19405adb3b5a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144653"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e365cf72-168f-4bea-ba2c-600dbc1c2eb3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF499JT5E"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0dc980c5-36ab-4724-8e86-1508a6a1c5a8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "726a91b8-c1bf-4ce5-86d9-2db0c827c292")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23185"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b4bed145-8459-4ec5-a0a7-7c2640d4c103")
 			(effects
 				(font
 					(size 1 1)
@@ -27370,7 +30218,7 @@
 				)
 			)
 		)
-		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_5V."
+		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_5V. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27389,6 +30237,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "517f6a99-ad22-435d-9349-eb58185de1e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "61e42888-ad2f-4586-8bc3-a6a866410ec6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8a2e45a-6317-49ba-aeed-a27182aaac0b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "598b367b-bc33-4620-89a1-78000bc405a2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1680c58d-79fc-44b4-83ea-cdd965cef27f")
 			(effects
 				(font
 					(size 1 1)
@@ -27604,7 +30504,7 @@
 				)
 			)
 		)
-		(property "Notes" "FET de corte (HGATE), 250 V: bloquea el load dump de 202 V. VGS +-20 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "FET de corte (HGATE), 250 V: bloquea el load dump de 202 V. VGS +-20 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano (PROTO y PROD). Sustituto rechazado: protección de entrada, el prototipo valida el diseño de producción."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27623,6 +30523,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e9f3a199-4b7b-4d18-b9b9-45f808d52ab4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C183634"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8182f6b-59c1-47b0-9fd7-102af846367e")
 			(effects
 				(font
 					(size 1 1)
@@ -28090,6 +31003,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85087"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "997b9303-fc15-4020-acda-197631557c0f")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -28563,6 +31489,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126598"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7993ecf7-bfcc-4240-902a-f1341cfa8971")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/9eca00d1-8087-4c37-967e-fa9f8e02338a")
 		(sheetname "/20_buck_5v/")
@@ -28784,7 +31723,7 @@
 				)
 			)
 		)
-		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja."
+		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja. PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -28830,6 +31769,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C163712"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "354b571b-baaf-413b-ad67-4bdc308fc8aa")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -29674,6 +32626,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C2927419"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7a9c9435-560b-425a-aa95-e3914b42f41f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "TO-???* *_Diode_* *SingleDiode* D_*")
 		(path "/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30/e6799168-fc58-4ebd-92ed-97126ddf3243")
 		(sheetname "/10_power_input/")
@@ -30025,7 +32990,7 @@
 				)
 			)
 		)
-		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja."
+		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja. PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -30071,6 +33036,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C163712"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c102d355-70ff-4490-acba-74ca1b6e07f7")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -30557,7 +33535,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2."
+		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2. Montaje: soldar a mano; comprar en LCSC (C480552)."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -30591,6 +33569,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C480552"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "67bd93e2-548b-4d11-b389-fe7960aaf576")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -31072,7 +34063,7 @@
 				)
 			)
 		)
-		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_VEH: SIN aislamiento (opción B), la PC comparte masa con el vehículo; en el vehículo usar aislador USB/UART o laptop a batería. Blindaje a GND_VEH."
+		(property "Notes" "USB-C solo USB 2.0 para el USB-Serial-JTAG del ESP32-S3 (GPIO19/20). Programación, consola y JTAG. Masa = GND_VEH: SIN aislamiento (opción B), la PC comparte masa con el vehículo; en el vehículo usar aislador USB/UART o laptop a batería. Blindaje a GND_VEH. Montaje: soldar a mano; comprar en LCSC (C3020560)."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31091,6 +34082,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a96e5ec1-8ba0-4075-a021-0a2490b5269d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C3020560"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "183c5a53-6b02-4a2c-96f4-bcef8ba2ddfc")
 			(effects
 				(font
 					(size 1 1)
@@ -31755,7 +34759,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota."
+		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31789,6 +34793,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ef015300-0662-4409-9e15-1b8976c1adf1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2e195dfd-eae4-42eb-a93c-2ef7297fb504")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b24ecbe-b4bc-45cb-9c96-223ef88b282e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e38b06d2-5021-4a82-a86e-631d9f91ba37")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -32001,7 +35057,7 @@
 				)
 			)
 		)
-		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_VEH. Adaptador USB-UART de 3.3 V."
+		(property "Notes" "UART0 para logs: 1 = TXD0 (IO43, sale del MCU), 2 = RXD0 (IO44), 3 = GND_VEH. Adaptador USB-UART de 3.3 V. PROTO (2026-10-30): tira 1x3 de 2.54 mm genérica BOOMELE 2.54-1*3PPin (LCSC C49257), misma huella; la Würth no está en lcsc.com. Soldar a mano (THT)."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -32020,6 +35076,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e0569a2b-a05d-46df-a2f4-1a1b17786b17")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2915006"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dcb88d4d-0470-4367-a050-75a28f2d8873")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "2.54-1*3PPin"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "04f10e56-d0e5-4407-b885-32a946f3f332")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "BOOMELE"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b55e51ce-2be8-46c2-a3ad-850fecce71ee")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C49257"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b0877c29-d0a9-447c-9582-8fc10bc72610")
 			(effects
 				(font
 					(size 1 1)
@@ -32366,6 +35474,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2eb4705a-7a2f-452a-8981-d2cba12f958c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/e820859b-353c-4670-907b-04aca6cb5816/618bcc48-3bc1-4dbd-91da-1f832f2adbc0")
 		(sheetname "/30_regulation/")
@@ -32593,6 +35714,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7cb79fee-357f-42f1-9fa1-a75e33b2e037")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C161212"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3670ec64-3a01-485b-ac56-b3097bf471cc")
 			(effects
 				(font
 					(size 1 1)
@@ -32846,6 +35980,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3994a9dd-ff1d-47cf-9ecb-2b0a5322e593")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/1f226854-15b2-4627-bc5e-bc8dcd5eeb09")
 		(sheetname "/60_can/")
@@ -33073,6 +36220,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "75ebba64-6def-4236-9c87-0811b0eba57c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C907991"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "11165266-e59e-49ed-9179-6bba814c1829")
 			(effects
 				(font
 					(size 1 1)
@@ -33314,12 +36474,64 @@
 				)
 			)
 		)
-		(property "Notes" "VAR_ID1 (IO5) = 0 si la variante lleva salidas DO. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U)."
+		(property "Notes" "VAR_ID1 (IO5) = 0 si la variante lleva salidas DO. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3a5a872b-6145-4227-ada5-18ea7ced6d76")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5cd00d9f-da75-44c0-94f3-3e932f8946d7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e4e3aa7f-9299-42f0-b251-c517c3b2c2eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1f55eb39-4560-435e-801f-864de4d60b3b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "99fdf0aa-0fd4-4d0e-ba8c-71d32b5a45c8")
 			(effects
 				(font
 					(size 1 1)
@@ -33573,6 +36785,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C426631"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f2e590ad-b9b6-42c0-8454-21718f2514f3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/6ff29545-367e-467f-95ad-568be052e900")
 		(sheetname "/60_can/")
@@ -33781,7 +37006,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_ROT a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). Solo variante ROT: DNP en la variante estándar."
+		(property "Notes" "Pull-up de CS_ROT a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33813,6 +37038,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "64d29144-4187-489b-a35c-b227a2228d13")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d40952db-ed38-4316-bd98-29ec8bb63191")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a827d777-25bd-4280-8e0b-19937c379035")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ccddc4e2-656a-418f-9e69-e25295d4af79")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "19249362-6fc2-47b3-b230-f2d2c947e660")
 			(effects
 				(font
 					(size 1 1)
@@ -34028,7 +37305,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo."
+		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34047,6 +37324,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b58cf928-85c4-4aba-a79e-9ae55752c2de")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd241d2a-0e9d-4eeb-b234-044ad7148055")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "206a2294-545a-4507-b1cf-c8b9ad217f92")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1d06e827-7cf5-4fba-b9d5-14cbfba8119b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cff26c06-6cb1-445a-9459-e63e24334489")
 			(effects
 				(font
 					(size 1 1)
@@ -34288,6 +37617,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C227732"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4bcee1ee-e0bc-4fe0-9e68-da18b88863f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/6e5e2ecf-3dfe-4f8b-acb7-14a549b5c91a/c7b05ecd-bbba-4434-92d6-8a34f622553f")
 		(sheetname "/20_buck_5v/")
@@ -34456,18 +37798,6 @@
 				)
 			)
 		)
-		(property "LCSC Part" "C22416657"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bf80b732-cf50-481e-9af0-f9a2e47f7d49")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property "MPN" "SCL3300-D01"
 			(at 0 0 0)
 			(unlocked yes)
@@ -34494,7 +37824,7 @@
 				)
 			)
 		)
-		(property "Notes" "Inclinómetro principal, 3 ejes. SPI modo 0 (CPOL=0, CPHA=0), fSCK 0.1-8 MHz, recomendado 2-4 MHz (Doc. 4921 Rev. 4). Huella easyeda2kicad (LCSC C22416657): pads 0.65 x 1.30 mm, 0.32 mm más largos hacia afuera que el land pattern de Murata (0.61 x 0.98, fig. 11): mejor para soldar a mano; en producción volver al de Murata. Compra: sin stock en LCSC, comprar en DigiKey o Mouser."
+		(property "Notes" "Inclinómetro principal, 3 ejes. SPI modo 0 (CPOL=0, CPHA=0), fSCK 0.1-8 MHz, recomendado 2-4 MHz (Doc. 4921 Rev. 4). Huella easyeda2kicad (LCSC C22416657): pads 0.65 x 1.30 mm, 0.32 mm más largos hacia afuera que el land pattern de Murata (0.61 x 0.98, fig. 11): mejor para soldar a mano; en producción volver al de Murata. PROTO (2026-10-30): Murata SCL3300-D01-10 (LCSC C3825395), mismo sensor en carrete de 1000 u (Murata Doc. 4921 Rev. 2, sec. 9); lo monta JLC."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34513,6 +37843,45 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9fb2cd70-0206-48cf-9179-71eb97d56d71")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C22416657"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6e61a76-5639-4546-9959-2b27c521393a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "SCL3300-D01-10"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0c0e93e2-eee9-4598-8453-9a775f6c2b45")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C3825395"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "710f1164-4f3b-43e8-973d-2be48af2c05a")
 			(effects
 				(font
 					(size 1 1)
@@ -35020,7 +38389,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_FF en paralelo con R303: valor de TI para 3.3 V con R2 = 100k (SLUSFG7 9.2.2.2). C0G."
+		(property "Notes" "C_FF en paralelo con R303: valor de TI para 3.3 V con R2 = 100k (SLUSFG7 9.2.2.2). C0G. PROTO (2026-10-30): Samsung CL10C100JB8NNNC (LCSC C1634, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -35039,6 +38408,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ea242185-ac5c-4e1a-9bb3-0010f7593832")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C126542"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "788bc0a1-bfda-40f8-b62d-16d08e1e614f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL10C100JB8NNNC"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9dd1a16a-b9a0-45c2-9630-68d47e9fa99f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cf5d6f97-c13a-4b9f-86cb-85e52bbb1d2d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C1634"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f3efea0b-8986-44d8-95e0-e35406d9984d")
 			(effects
 				(font
 					(size 1 1)
@@ -35254,7 +38675,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de alta frecuencia en VIN de U301, pegado a los pines."
+		(property "Notes" "Desacople de alta frecuencia en VIN de U301, pegado a los pines. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -35273,6 +38694,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "e5a2a22d-f479-4ba9-a65a-0337c67e29eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c4174930-c607-4e1f-8077-5003165de2e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a367a77a-5223-462b-ab8a-530be7ae133f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c36a4919-1bc1-46f1-908f-9950c537b45e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dd09a269-866b-4698-812c-a75c288418bc")
 			(effects
 				(font
 					(size 1 1)
@@ -35499,6 +38972,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2e38e5e8-ba62-4933-a8b1-965134726246")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2046332"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2ac90d4c-1aa9-44aa-8264-1b239efdcf6f")
 			(effects
 				(font
 					(size 1 1)
@@ -35812,7 +39298,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 / 450 V: C_IN en VBAT_F, ve hasta 202 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "1206 / 450 V: C_IN en VBAT_F, ve hasta 202 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): IHHEC C1206X104K451T (LCSC C106025), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -35831,6 +39317,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "12af094a-e831-4e09-9da0-e932c4c8a31e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C3887150"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3452c88d-7dc9-4399-9743-ac4ebdd8ea4b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "C1206X104K451T"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d20e181f-dd33-4d97-9cd1-3cb9d1dc120f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "IHHEC"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "74f0236a-958a-48e0-a1f6-09af4ad6bbb2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C106025"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "014fd7a7-1148-4f8d-98f6-9801f6d07b0d")
 			(effects
 				(font
 					(size 1 1)
@@ -36065,6 +39603,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f8d65025-0f33-420a-bebd-d0eb1ddc6292")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C98224"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "76932c66-aaf0-4c32-9b0f-abc2a8accfcb")
 			(effects
 				(font
 					(size 1 1)
@@ -36357,7 +39908,7 @@
 				)
 			)
 		)
-		(property "Notes" "Buck 80 V / 1 A, PFM + spread spectrum. PROD: LMR38010SQDDARQ1 (AEC-Q100, SNVSC72B). PROTO: LMR38010SDDAR (LCSC C5219310), equivalente comercial: mismo modo, pinout y DDA0008B (ver PENDIENTES 'Equivalencia LMR38010'). EP con 6 vias de 0.2 mm a GND_VEH (soldable con aire caliente). Pin a pin con LMR38020 (2 A). Simbolo de easyeda2kicad con tipos de pin ajustados."
+		(property "Notes" "Buck 80 V / 1 A, PFM + spread spectrum. PROD: LMR38010SQDDARQ1 (AEC-Q100, SNVSC72B). PROTO: LMR38010SDDAR (LCSC C5219310), equivalente comercial: mismo modo, pinout y DDA0008B (ver PENDIENTES 'Equivalencia LMR38010'). EP con 6 vias de 0.2 mm a GND_VEH (soldable con aire caliente). Pin a pin con LMR38020 (2 A). Simbolo de easyeda2kicad con tipos de pin ajustados. PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -36376,6 +39927,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2754049a-23ff-4b54-af11-e12b091592f9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C18198885"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ddba1554-7cdd-488d-9947-13536dc14042")
 			(effects
 				(font
 					(size 1 1)
@@ -37217,7 +40781,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7)."
+		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37236,6 +40800,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1209dfcf-35a6-4b32-86e6-e0ef1b036759")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c7c570c4-26cf-4678-bc1a-cdd9fe60cb0d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "59e73f52-01e4-4ee6-8e29-5c1999cb6b69")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9731c0c3-93f2-4d5c-86a0-b63385d7a86b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "29866c58-6e9b-4e6c-a550-bea03776b6d8")
 			(effects
 				(font
 					(size 1 1)
@@ -37489,6 +41105,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144522"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e3bddcb-8816-4be3-8590-1c06ce27c3ae")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/b202007f-7fb6-45c9-bd77-aa87a79a96e1/6473dfe3-8836-4c1a-93a2-6b1bc387aaa3")
 		(sheetname "/70_output_DO2/")
@@ -37697,7 +41326,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor VMON_3V3: 3.3 V x 1/2 = 1.65 V."
+		(property "Notes" "Divisor VMON_3V3: 3.3 V x 1/2 = 1.65 V. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37716,6 +41345,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "37800dad-f775-4dbe-98bc-c4f488494b79")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ee35472e-c84a-49a7-aa37-e5a0fd5e9879")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f2f5f66e-f984-440a-8069-ba82ad2d2f37")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "defd0fc3-8da7-4c8a-a71c-39336a69f9e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "398b9344-cf6d-4f66-9cf6-e3cf6f07d4d8")
 			(effects
 				(font
 					(size 1 1)
@@ -37969,6 +41650,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144522"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6989a778-7f3c-46d6-9ebe-c948696159fa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/c6606065-5ef9-41e4-af17-886440d0e060/6473dfe3-8836-4c1a-93a2-6b1bc387aaa3")
 		(sheetname "/70_output_DO1/")
@@ -38177,7 +41871,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_INC a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia)."
+		(property "Notes" "Pull-up de CS_INC a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38196,6 +41890,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a7bbc5cb-3b12-4034-a6e3-a3771b12d383")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "70642665-60ac-42b3-93f8-96d230fc40a1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "30ba0133-4d4f-414a-ad67-522c36423e34")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "376b93b6-eea6-4ac5-bfeb-5b0ec1ebbde1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "cc9c7826-ee00-430f-a496-e8e48394c51a")
 			(effects
 				(font
 					(size 1 1)
@@ -38430,6 +42176,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0b99b5fb-833d-4226-a62b-8d7e3c3ad9bc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2687116"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2349e666-ca2a-4047-b7e6-2caa438be63a")
 			(effects
 				(font
 					(size 1 1)
@@ -38906,12 +42665,64 @@
 				)
 			)
 		)
-		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca)."
+		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca). PROTO (2026-10-30): UNI-ROYAL 0603WAF4700T5E (LCSC C23179, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2e644e7d-7650-4e91-b5a7-28f7c14f6667")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144657"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9597eae9-06b4-4dcc-9411-35acba7af845")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4700T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "db92d044-a2e2-4cba-b295-c7d23846c815")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "726ef587-093e-4168-8c0f-d12580611fbc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23179"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b736f511-0387-4aa3-8cda-419a241ea12e")
 			(effects
 				(font
 					(size 1 1)
@@ -39120,7 +42931,7 @@
 				)
 			)
 		)
-		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8)."
+		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8). Montaje: soldar a mano; comprar en LCSC (C2913204)."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -39139,6 +42950,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7c617370-9d01-4b15-bcde-b14cbe10d4f5")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2913204"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7c17cecb-bc55-4da8-858d-4f3d9ef003cd")
 			(effects
 				(font
 					(size 1 1)
@@ -40793,7 +44617,7 @@
 				)
 			)
 		)
-		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_3V3."
+		(property "Notes" "Filtro/reserva de carga del muestreo del ADC1 en VMON_3V3. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40812,6 +44636,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "09ea946e-b772-4e14-954f-04adf809a1f4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e03d45bf-7ce1-4dab-9a29-1c09b14675e8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c7971a3e-47ed-4a25-a6f6-56f0e1b56534")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "01fa49c2-29eb-4e07-aaee-f4a696cf6b05")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c1e56859-379b-4fe9-83f4-5e5c5f325740")
 			(effects
 				(font
 					(size 1 1)
@@ -41024,7 +44900,7 @@
 				)
 			)
 		)
-		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). PROD: EEE-FK1H102AV, Panasonic FK antivibracion (terminales de soporte), AEC-Q200, 1000 uF / 50 V, 105 C, J16 (16 x 16.8 mm, altura max. 17.3 mm). Huella INCLI-VA:CP_Elec_Panasonic_J16_VibProof = land antivibracion J16 de Panasonic (FK, 01-Sep-25); su columna central contiene el land estandar J16, asi que EEE-FK1H102AM (Alt_MPN, sin soporte: fijar con adhesivo) entra en la misma huella. Disponibilidad del AV a verificar. Requiere C109 = 100 nF (inrush)."
+		(property "Notes" "Hold-up: DNP en PROTO, montado en PROD (load dump suprimido de 24 V <= 350 ms y arranque en frio de 12 V). PROD: EEE-FK1H102AV, Panasonic FK antivibracion (terminales de soporte), AEC-Q200, 1000 uF / 50 V, 105 C, J16 (16 x 16.8 mm, altura max. 17.3 mm). Huella INCLI-VA:CP_Elec_Panasonic_J16_VibProof = land antivibracion J16 de Panasonic (FK, 01-Sep-25); su columna central contiene el land estandar J16, asi que EEE-FK1H102AM (Alt_MPN, sin soporte: fijar con adhesivo) entra en la misma huella. Disponibilidad del AV a verificar. Requiere C109 = 100 nF (inrush). PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -41053,6 +44929,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "8437a41d-e58c-483d-b06f-3b019d16a9b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2164039"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "bd026df9-fabb-42b5-b087-cc6af55fe68e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41400,7 +45288,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor de FB superior: VOUT = 0.6 V x (1 + 453k/100k) = 3.318 V."
+		(property "Notes" "Divisor de FB superior: VOUT = 0.6 V x (1 + 453k/100k) = 3.318 V. PROTO (2026-10-30): LIZ CR0603FA4533G (LCSC C101055, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -41419,6 +45307,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "83d33c32-aef5-48ab-b702-d78ccf09f8a0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C227908"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "24c3c3bf-e9f8-49d5-bed7-b346aff5b950")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CR0603FA4533G"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "756ba018-dada-4f24-9244-12495dfc5b66")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "LIZ"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d8ddfcde-d916-4d52-b788-bfbb60e35214")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C101055"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a3bf6008-9c68-4af5-b230-d504ac4ef46c")
 			(effects
 				(font
 					(size 1 1)
@@ -41672,6 +45612,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C144645"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8e4286ec-7aef-414e-aa45-cbb3458b9775")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "R_*")
 		(path "/3036af0c-b072-4a36-8ec1-d374aba21569/df88be98-79bb-48c5-a0ae-508cf180fb13")
 		(sheetname "/60_can/")
@@ -41880,7 +45833,7 @@
 				)
 			)
 		)
-		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer."
+		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer. PROTO (2026-10-30): UNI-ROYAL 0603WAF4701T5E (LCSC C23162, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -41914,6 +45867,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116697"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3fed3527-4a54-4484-919b-f5b7209037a8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4701T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2abceb72-3c8c-47f6-8258-047d26ca6eba")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "987a7222-b704-4c57-b518-560cfb7894c6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23162"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "90dafb23-8984-4141-b599-3ac9fe881b50")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -42126,7 +46131,7 @@
 				)
 			)
 		)
-		(property "Notes" "Divisor VMON_3V3: 3.3 V x 1/2 = 1.65 V."
+		(property "Notes" "Divisor VMON_3V3: 3.3 V x 1/2 = 1.65 V. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42145,6 +46150,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0a0c5c23-e25f-4da1-ae74-a36491231f2c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "27c3ee32-75bb-4881-a509-6d8f6fe851e2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "369d6287-646a-4d53-9b56-0b9f9083c437")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "446d77ec-4098-49e0-bda8-9154f00e1b81")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "faf6cfdb-1dd3-4063-a6fc-4ac4321838c4")
 			(effects
 				(font
 					(size 1 1)
@@ -42360,7 +46417,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_CS (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_CS (ref. TI). 1206 por 100 V. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30): Samsung CL31B105KCHNNNE (LCSC C13832, JLC extended), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42379,6 +46436,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4379c699-8a28-43a8-b7d5-40070f29743c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C2168321"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b10fc70c-dfb7-47d8-b91f-a36b7f0da6a7")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL31B105KCHNNNE"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a7b0bc33-dc50-4a2c-aee5-dc47873295b6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "28de8f6f-55ca-4b33-bcb6-05a2c60c35af")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C13832"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "49a36a0b-eb0d-41ad-a671-d0070e1d9482")
 			(effects
 				(font
 					(size 1 1)
@@ -42607,12 +46716,64 @@
 				)
 			)
 		)
-		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca)."
+		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca). PROTO (2026-10-30): UNI-ROYAL 0603WAF4700T5E (LCSC C23179, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6e5cad3f-6570-4cf6-bcc7-ef4a3a49bb49")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C144657"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "98a5d564-34af-439b-8374-ebe8802237cd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4700T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "166a92d1-458a-42e1-ad56-97bac9931b1c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "60234a1b-fd33-450f-a18b-d668dc8bda14")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23179"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "06da61b3-e912-460a-8c6b-9687a4a10313")
 			(effects
 				(font
 					(size 1 1)
@@ -42862,6 +47023,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85087"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "437e4016-c7d1-49e1-ab54-c3c05c0d3a9e")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -43335,6 +47509,19 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a6766949-8d83-4fc6-a58c-5a8e830a1317")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/3985e6d4-83de-4a87-a0f1-257500c83de4/70110d80-65a0-404a-8a2c-4d2b25a285e8")
 		(sheetname "/50_sensors/")
@@ -43543,7 +47730,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3828 en 80_supervision."
+		(property "Notes" "Pull-up de EN (RC de Espressif: 10k + 1 uF). También es el pull-up del WDO (drenador abierto) del TPS3828 en 80_supervision. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43562,6 +47749,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dda3a288-c734-453b-a42a-5072a0e1b568")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2a3ec769-2945-4bda-85e4-0e5dc0c9807c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f4735b26-c551-4b98-80cb-41926500618f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a78c1137-b716-42f8-b121-565415cd3119")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "675526a0-998c-4e6f-9464-546c3ef086a1")
 			(effects
 				(font
 					(size 1 1)
@@ -43777,7 +48016,7 @@
 				)
 			)
 		)
-		(property "Notes" "RS a GND2: 0 ohm = velocidad completa (tabla 10). Para control de pendiente (EMI) montar 47k."
+		(property "Notes" "RS a GND2: 0 ohm = velocidad completa (tabla 10). Para control de pendiente (EMI) montar 47k. PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43811,6 +48050,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9cff1f3f-cfc2-49b4-b806-f2a822979c96")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "21ac92c3-2364-46ee-9ee9-fd676827f37d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7767c4f4-5755-4686-98fe-c858483709c0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "11230331-0431-4e50-81b0-f770b7e2d849")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -44023,7 +48314,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de PG (drenador abierto, máx 5.5 V) a +3V3_D."
+		(property "Notes" "Pull-up de PG (drenador abierto, máx 5.5 V) a +3V3_D. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -44042,6 +48333,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2aacd2b9-e08f-4fce-9f28-1bc2669cf40b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "18a318f2-44b6-46d0-a1a3-35fea6c94f05")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6bce836f-7fe8-4886-aed3-c7e9e43192fc")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "1a0d34d8-6836-4fa6-b3df-21ec48133bf1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ad9c242a-b5ae-49c3-ab88-6dcebdb293bd")
 			(effects
 				(font
 					(size 1 1)
@@ -44257,7 +48600,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8)."
+		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -44276,6 +48619,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4f5c3ae9-adaf-4f5e-b2db-ecc2e32d907f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ca24cc7e-458f-4444-a9e5-af37eb4488ca")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "851a3085-3c1a-4492-880b-20e2dd2beefa")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00c9be94-af75-4b7e-a3e0-ed35c90bfc8d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "587be8ef-a994-4ca8-a6df-0995f5e10d61")
 			(effects
 				(font
 					(size 1 1)
@@ -44491,7 +48886,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header vertical MSTBV 2,5/5-GF-5,08 (1777109) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A. Cableado interno hasta el conector circular de 8 hilos de la caja."
+		(property "Notes" "Header vertical MSTBV 2,5/5-GF-5,08 (1777109) con brida roscada; enchufe MSTB 2,5/5-STF-5,08 (1778014). Pines: 1 V+, 2 GND_VEH, 3 CAN_H, 4 CAN_L, 5 CAN_GND. 320 V / 12 A. Cableado interno hasta el conector circular de 8 hilos de la caja. Montaje: soldar a mano; comprar en LCSC (C7164734)."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -44510,6 +48905,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9553c227-56b8-466a-952d-5e703c23b495")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C7164734"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "87812d78-8820-4d14-8323-8eacfd503e25")
 			(effects
 				(font
 					(size 1 1)
@@ -45193,7 +49601,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de SILENT (el ADM3055E ya tiene pull-down interno; refuerza el modo normal)."
+		(property "Notes" "Pull-down de SILENT (el ADM3055E ya tiene pull-down interno; refuerza el modo normal). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45227,6 +49635,58 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8c074985-648f-431d-ae92-15eb6c8eb247")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c353cfa4-d4a6-4944-99db-afb8dcd98532")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "00508725-d104-43bb-ad90-0a23bbcb54c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "18a2af33-6fca-46e8-91aa-95c010b74455")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -45439,7 +49899,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5)."
+		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45458,6 +49918,58 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b59faab0-f576-472a-8049-d39fa8cae087")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0777d617-bcf8-4e45-b78c-b84ac2a02ff1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "dc153235-208d-464e-a0c9-a3c27e2ae8c2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6daa69f4-6976-4cda-8b2e-6b3550e66732")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0e3fde9f-691d-47dc-93b2-ce5e153bb13a")
 			(effects
 				(font
 					(size 1 1)
@@ -45686,12 +50198,64 @@
 				)
 			)
 		)
-		(property "Notes" "0 ohm en serie con RESET. Sin montar, la placa funciona sin supervisor (depuracion)."
+		(property "Notes" "0 ohm en serie con RESET. Sin montar, la placa funciona sin supervisor (depuracion). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fb66a0e0-a6b5-45e9-9014-752e98399e70")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "12514643-6a4d-430c-bd2b-849de158bdd6")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "e9580f15-24f4-4ee1-81c0-df0d3e5690e4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "88a7b4e8-37fc-412b-b103-b485d49568fd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
+			(at 0 0 90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9c26b9b9-e5ca-461e-b869-2ab2d4dd7a69")
 			(effects
 				(font
 					(size 1 1)
@@ -47570,7 +52134,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Notes" "C_OUT (ex C3). 100 V 105 C AEC-Q200. LCSC C344077."
+		(property "Notes" "C_OUT (ex C3). 100 V 105 C AEC-Q200. LCSC C344077. PROTO (2026-10-30): Lelon VZH470M2ATR-1010 (LCSC C164068), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -47590,6 +52154,62 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "30643f59-ad93-4dac-9c83-b0479187d5f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "C344077"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2dd88143-c5e9-45c4-9f74-dd28b34346d4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN_PROTO" "VZH470M2ATR-1010"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "1c3cbfb5-cbad-4003-9d29-0cf699ac956b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer_PROTO" "Lelon"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "550f81d5-e209-4887-87ac-3b0c70c083af")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC_PROTO" "C164068"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3e24982a-5f0c-49ef-a02f-f09100016fe0")
 			(effects
 				(font
 					(size 1 1)

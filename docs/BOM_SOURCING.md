@@ -2,6 +2,13 @@
 
 Consulta: **2026-10-30**. Decisiones del usuario sobre los sustitutos: **2026-10-30**. Claude Code, rama `bom-sourcing`, PCB `pcb-v1-rc1`. No se hizo ningún pedido. El esquema no se modificó: el paso de los sustitutos aceptados a `MPN_PROTO`/LCSC queda para otra sesión.
 
+## Estado en el esquema y el PCB (`pcb-v1-rc2`, 2026-10-30)
+- Todos los componentes llevan `LCSC` = código del `MPN` (producción; vacío en C106 y U701/U751, que LCSC no lista). `MPN` no cambió: sigue siendo el original (AEC-Q200 / -Q1).
+- PROTO: `MPN_PROTO`, `LCSC_PROTO` y, si cambia el fabricante, `Manufacturer_PROTO`, con los sustitutos aceptados (pasivos Basic/preferred, igual especificación, C101/C201/C104 sin AEC-Q200, SCL3300-D01-10, ADM3055EBRIZ-RL y tira genérica de J402). `Notes` indica PROTO/PROD, compra y montaje a mano donde corresponde.
+- Q101, Q102 y F101 no tienen campos PROTO: el prototipo usa el original (DigiKey/Mouser, a mano).
+- `scripts/ruteo/etapa6_fab.py` genera `fab/proto/bom_jlc_lcsc.csv` desde esos campos; sale idéntico al que se armó a mano.
+- **PROD:** el esquema conserva en `MPN`/`LCSC` los originales de todas las piezas. `bom/BOM_PROD.csv` propone además los pasivos Basic y los sustitutos de igual especificación para PROD; pasarlos a `MPN` queda para cuando se cierre la BOM de producción.
+
 ## Cómo se armó
 - Partida: `fab/proto/bom_proto.csv` y `fab/proto/bom_jlc.csv`, más el esquema (solo lectura, `kicad-cli sch export bom`) para los campos `MPN_PROTO` y `DNP`, que definen PROTO y PROD (ver `README.md`).
 - Consultas: `jlc_lookup.py` de la skill agentic-sourcing (buscador de piezas de JLCPCB y ficha de lcsc.com), un MPN a la vez. No se creó `sourcing.py`. Cada código LCSC sale de la búsqueda del MPN exacto (o del sustituto) ese día; ninguno es de memoria.

@@ -1360,7 +1360,51 @@
 				)
 			)
 		)
-		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca)."
+		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca). PROTO (2026-10-30): UNI-ROYAL 0603WAF4700T5E (LCSC C23179, JLC basic), misma especificación, sin AEC-Q200."
+			(at 109.22 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144657"
+			(at 109.22 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4700T5E"
+			(at 109.22 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 109.22 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23179"
 			(at 109.22 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -1639,7 +1683,51 @@
 				)
 			)
 		)
-		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca)."
+		(property "Notes" "470 ohm: ~3 mA desde 3.3 V. DNP en PROD (caja ABS opaca). PROTO (2026-10-30): UNI-ROYAL 0603WAF4700T5E (LCSC C23179, JLC basic), misma especificación, sin AEC-Q200."
+			(at 109.22 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144657"
+			(at 109.22 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4700T5E"
+			(at 109.22 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 109.22 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23179"
 			(at 109.22 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -1765,6 +1853,17 @@
 			)
 		)
 		(property "Notes" "LED 0805 de estado. Montado en PROTO (banco), DNP en PROD: la caja ABS es opaca. MPN a verificar."
+			(at 120.65 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C284871"
 			(at 120.65 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -1911,6 +2010,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C141796"
+			(at 134.62 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a97dc02f-6f74-4999-8276-737d76d25e8a")
 		)
@@ -2036,7 +2146,51 @@
 				)
 			)
 		)
-		(property "Notes" "VAR_ID0 (IO4) = 0 si la variante lleva CAN. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U)."
+		(property "Notes" "VAR_ID0 (IO4) = 0 si la variante lleva CAN. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
+			(at 104.14 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 104.14 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 104.14 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 104.14 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
 			(at 104.14 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -2315,7 +2469,51 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U801."
+		(property "Notes" "Desacople de U801. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 181.61 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2594,7 +2792,7 @@
 				)
 			)
 		)
-		(property "Notes" "Supervisor de +3V3_D + watchdog, AEC-Q100 (TI SGLS143E). VIT- 2.84/2.93/3.0 V, reset 120/200/300 ms, ttout 0.9/1.6/2.5 s. RESET drenador abierto (TPS3828) -> MCU_RST_N (wire-OR con R401 10k + C403 1 uF + SW401). WDI en alta impedancia = watchdog deshabilitado (7.3.4): GPIO17 queda en alta Z en boot/flasheo. Simbolo oficial TPS3823-xxDBV: mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD)."
+		(property "Notes" "Supervisor de +3V3_D + watchdog, AEC-Q100 (TI SGLS143E). VIT- 2.84/2.93/3.0 V, reset 120/200/300 ms, ttout 0.9/1.6/2.5 s. RESET drenador abierto (TPS3828) -> MCU_RST_N (wire-OR con R401 10k + C403 1 uF + SW401). WDI en alta impedancia = watchdog deshabilitado (7.3.4): GPIO17 queda en alta Z en boot/flasheo. Simbolo oficial TPS3823-xxDBV: mismo pinout (1 RESET, 2 GND, 3 MR, 4 WDI, 5 VDD). PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 127 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -2617,6 +2815,28 @@
 			)
 		)
 		(property "Alt_MPN" "TPS3828-33DBVR"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2872895"
+			(at 127 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C20032"
 			(at 127 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -2761,7 +2981,51 @@
 				)
 			)
 		)
-		(property "Notes" "VAR_ID1 (IO5) = 0 si la variante lleva salidas DO. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U)."
+		(property "Notes" "VAR_ID1 (IO5) = 0 si la variante lleva salidas DO. Tabla (ID1 ID0): 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ROT se detecta por SPI (AS5147U). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
+			(at 119.38 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 119.38 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 119.38 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 119.38 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
 			(at 119.38 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -2974,6 +3238,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C116692"
+			(at 109.22 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e2ea76c4-72f3-444d-9cd4-fe15bf8c9605")
 		)
@@ -3166,6 +3441,17 @@
 			)
 		)
 		(property "Notes" "LED 0805 de estado. Montado en PROTO (banco), DNP en PROD: la caja ABS es opaca. MPN a verificar."
+			(at 120.65 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C98224"
 			(at 120.65 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -3444,7 +3730,51 @@
 				)
 			)
 		)
-		(property "Notes" "0 ohm en serie con RESET. Sin montar, la placa funciona sin supervisor (depuracion)."
+		(property "Notes" "0 ohm en serie con RESET. Sin montar, la placa funciona sin supervisor (depuracion). PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
+			(at 143.51 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 143.51 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 143.51 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 143.51 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
 			(at 143.51 76.2 0)
 			(hide yes)
 			(show_name no)

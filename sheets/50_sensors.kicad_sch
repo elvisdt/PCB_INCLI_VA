@@ -2947,7 +2947,7 @@
 				)
 			)
 		)
-		(property "Notes" "Inclinómetro principal, 3 ejes. SPI modo 0 (CPOL=0, CPHA=0), fSCK 0.1-8 MHz, recomendado 2-4 MHz (Doc. 4921 Rev. 4). Huella easyeda2kicad (LCSC C22416657): pads 0.65 x 1.30 mm, 0.32 mm más largos hacia afuera que el land pattern de Murata (0.61 x 0.98, fig. 11): mejor para soldar a mano; en producción volver al de Murata. Compra: sin stock en LCSC, comprar en DigiKey o Mouser."
+		(property "Notes" "Inclinómetro principal, 3 ejes. SPI modo 0 (CPOL=0, CPHA=0), fSCK 0.1-8 MHz, recomendado 2-4 MHz (Doc. 4921 Rev. 4). Huella easyeda2kicad (LCSC C22416657): pads 0.65 x 1.30 mm, 0.32 mm más largos hacia afuera que el land pattern de Murata (0.61 x 0.98, fig. 11): mejor para soldar a mano; en producción volver al de Murata. PROTO (2026-10-30): Murata SCL3300-D01-10 (LCSC C3825395), mismo sensor en carrete de 1000 u (Murata Doc. 4921 Rev. 2, sec. 9); lo monta JLC."
 			(at 99.06 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -2959,6 +2959,39 @@
 			)
 		)
 		(property "DNP" ""
+			(at 99.06 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C22416657"
+			(at 99.06 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "SCL3300-D01-10"
+			(at 99.06 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C3825395"
 			(at 99.06 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -3179,7 +3212,7 @@
 				)
 			)
 		)
-		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3191,6 +3224,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 119.38 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 119.38 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 119.38 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 119.38 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3458,7 +3535,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_ROT a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). Solo variante ROT: DNP en la variante estándar."
+		(property "Notes" "Pull-up de CS_ROT a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 185.42 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -3481,6 +3558,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 185.42 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 185.42 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 185.42 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 185.42 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 185.42 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -3903,7 +4024,7 @@
 				)
 			)
 		)
-		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3915,6 +4036,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 93.98 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 93.98 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 93.98 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 93.98 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4105,7 +4270,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5)."
+		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4117,6 +4282,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 109.22 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 109.22 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 109.22 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 109.22 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4385,7 +4594,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_IMU a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia)."
+		(property "Notes" "Pull-up de CS_IMU a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 170.18 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -4397,6 +4606,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 170.18 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 170.18 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 170.18 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 170.18 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 170.18 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -4599,6 +4852,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 96.52 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C126586"
 			(at 96.52 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4868,7 +5132,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8)."
+		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4880,6 +5144,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 83.82 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 83.82 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 83.82 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 83.82 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5424,7 +5732,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar."
+		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5447,6 +5755,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 236.22 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 236.22 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 236.22 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 236.22 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5836,7 +6188,7 @@
 				)
 			)
 		)
-		(property "Notes" "Sensor de ángulo magnético 14 bit, AEC-Q100 (ángulo de pluma con imán diametral externo). Solo variante ROT: DNP en la variante estándar. SPI modo 1 (CPOL=0, CPHA=1), hasta 10 MHz (DS000639 v1-04). Modo 3.3 V: VDD y VDD3V3 unidos (fig. 13). Salidas ABI/UVW/PWM sin uso. Compra: sin stock en LCSC, comprar en DigiKey o Mouser."
+		(property "Notes" "Sensor de ángulo magnético 14 bit, AEC-Q100 (ángulo de pluma con imán diametral externo). Solo variante ROT: DNP en la variante estándar. SPI modo 1 (CPOL=0, CPHA=1), hasta 10 MHz (DS000639 v1-04). Modo 3.3 V: VDD y VDD3V3 unidos (fig. 13). Salidas ABI/UVW/PWM sin uso. Compra: sin stock en LCSC, comprar en DigiKey o Mouser. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano."
 			(at 236.22 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -5859,6 +6211,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 236.22 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C38675951"
 			(at 236.22 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -6107,6 +6470,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C459826"
+			(at 99.06 165.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d9dcc0aa-3736-486f-a2ea-4a5ef3d9275a")
 		)
@@ -6246,7 +6620,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6258,6 +6632,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 81.28 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 81.28 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 81.28 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 81.28 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6726,7 +7144,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de CS_INC a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia)."
+		(property "Notes" "Pull-up de CS_INC a +3V3_A: mantiene el sensor deseleccionado mientras arranca el ESP32 (GPIO en alta impedancia). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 154.94 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -6738,6 +7156,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 154.94 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 154.94 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 154.94 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 154.94 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 154.94 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -7162,7 +7624,7 @@
 				)
 			)
 		)
-		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo)."
+		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7174,6 +7636,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 106.68 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 106.68 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 106.68 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 106.68 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)

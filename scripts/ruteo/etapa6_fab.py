@@ -12,6 +12,9 @@ Salida:
   INCLI-VA_gerbers.zip   lo que se sube a JLCPCB (no se versiona)
   bom_proto.csv          BOM completa del prototipo (compra), agrupada
   bom_jlc.csv, cpl_jlc.csv   lo que ensambla JLC: sin THT, sin U401 ni lo de MANO
+  bom_jlc_lcsc.csv       BOM de JLC para subir (Comment, Designator, Footprint, LCSC), con LCSC_PROTO o LCSC
+MPN, fabricante y LCSC efectivos del prototipo: MPN_PROTO / Manufacturer_PROTO / LCSC_PROTO si existen; si no,
+MPN / Manufacturer / LCSC (ver docs/BOM_SOURCING.md).
   pos_kicad.csv          pick & place tal como lo exporta KiCad (referencia)
 
 Pasta (gerbers/ y stencil/): sin aperturas en los pads de las piezas DNP. Se plotea desde una copia
@@ -39,7 +42,7 @@ def cli(*a):
     subprocess.run(['kicad-cli', *a], check=True, stdout=subprocess.DEVNULL)
 
 
-# Solo se borran las carpetas generadas: bom_jlc_lcsc.csv se mantiene a mano (docs/BOM_SOURCING.md); el resto se sobrescribe.
+# Solo se borran las carpetas generadas; los CSV se sobrescriben.
 for d in ('gerbers', 'stencil'):
     shutil.rmtree(f'{OUT}/{d}', ignore_errors=True)
 g, st = f'{OUT}/gerbers', f'{OUT}/stencil'
@@ -82,8 +85,8 @@ with zipfile.ZipFile(f'{OUT}/INCLI-VA_gerbers.zip', 'w', zipfile.ZIP_DEFLATED) a
 # BOM: una fila por referencia, luego se agrupa por valor, huella y MPN efectivo.
 raw = f'{OUT}/.bom_raw.csv'
 cli('sch', 'export', 'bom', '--exclude-dnp', '--group-by', '', '--ref-range-delimiter', '',
-    '--fields', 'Reference,Value,Footprint,MPN,MPN_PROTO,Manufacturer,Variant,${EXCLUDE_FROM_BOM}',
-    '--labels', 'Ref,Value,Footprint,MPN,MPN_PROTO,Manufacturer,Variant,Excl', '-o', raw, SCH)
+    '--fields', 'Reference,Value,Footprint,MPN,MPN_PROTO,Manufacturer,Manufacturer_PROTO,LCSC,LCSC_PROTO,Variant,${EXCLUDE_FROM_BOM}',
+    '--labels', 'Ref,Value,Footprint,MPN,MPN_PROTO,Manufacturer,Manufacturer_PROTO,LCSC,LCSC_PROTO,Variant,Excl', '-o', raw, SCH)
 filas = [r for r in csv.DictReader(open(raw)) if not r['Excl']]
 os.remove(raw)
 fps = {f.GetReference(): f for f in b.GetFootprints()}
@@ -93,23 +96,32 @@ tht = {r for r, f in fps.items()
 mano = (tht | MANO) & {r['Ref'] for r in filas}
 
 
-def bom(nombre, refs):
+def bom(nombre, refs, lcsc=None):
     groups = OrderedDict()
     for r in filas:
         if r['Ref'] not in refs: continue
-        key = (r['Value'], r['Footprint'].split(':')[-1], r['MPN_PROTO'] or r['MPN'], r['Manufacturer'])
+        key = (r['Value'], r['Footprint'].split(':')[-1], r['MPN_PROTO'] or r['MPN'],
+               r['Manufacturer_PROTO'] or r['Manufacturer'], r['LCSC_PROTO'] or r['LCSC'])
         groups.setdefault(key, []).append(r['Ref'])
     with open(f'{OUT}/{nombre}', 'w', newline='') as f:
         w = csv.writer(f)
         w.writerow(['Comment', 'Designator', 'Footprint', 'MPN', 'Manufacturer', 'Qty'])
-        for (val, fp, mpn, mfr), rr in groups.items():
+        for (val, fp, mpn, mfr, _), rr in groups.items():
             w.writerow([val, ','.join(rr), fp, mpn, mfr, len(rr)])
+    if lcsc:
+        sin = [rr for k, rr in groups.items() if not k[4]]
+        assert not sin, f'sin código LCSC en el BOM de JLC: {sin}'
+        with open(f'{OUT}/{lcsc}', 'w', newline='') as f:
+            w = csv.writer(f)
+            w.writerow(['Comment', 'Designator', 'Footprint', 'LCSC'])
+            for (val, fp, _, _, code), rr in groups.items():
+                w.writerow([val, ','.join(rr), fp, code])
     return len(groups)
 
 
 refs_bom = {r['Ref'] for r in filas}
 refs_jlc = refs_bom - mano
-n_bom, n_jlc = bom('bom_proto.csv', refs_bom), bom('bom_jlc.csv', refs_jlc)
+n_bom, n_jlc = bom('bom_proto.csv', refs_bom), bom('bom_jlc.csv', refs_jlc, 'bom_jlc_lcsc.csv')
 
 pos = f'{OUT}/pos_kicad.csv'
 cli('pcb', 'export', 'pos', '--format', 'csv', '--units', 'mm', '--side', 'both', '--exclude-dnp', '-o', pos, PCB)

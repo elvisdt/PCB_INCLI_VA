@@ -3435,6 +3435,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C144681"
+			(at 248.92 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7fc05033-3eb0-4057-93b7-5a20d15ab694")
 		)
@@ -3596,6 +3607,28 @@
 				)
 			)
 		)
+		(property "LCSC" "C5260572"
+			(at 220.98 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C102615"
+			(at 220.98 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4d2c35e7-02d8-486f-ad91-82503a363d30")
 		)
@@ -3706,7 +3739,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U701."
+		(property "Notes" "Desacople de U701. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3729,6 +3762,50 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 99.06 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 99.06 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 99.06 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 99.06 143.51 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3878,6 +3955,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C123816"
+			(at 233.68 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3aa9f0b8-444e-4241-a760-a0cc183a721d")
 		)
@@ -4007,6 +4095,17 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 248.92 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144522"
 			(at 248.92 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -4285,7 +4384,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH."
+		(property "Notes" "Pull-down de gate: Q701 apagado sin +5V_VEH. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 200.66 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -4308,6 +4407,50 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 200.66 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 200.66 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 200.66 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 200.66 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
 			(at 200.66 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -4516,7 +4659,7 @@
 				)
 			)
 		)
-		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja."
+		(property "Notes" "Traslada EN de 3.3 V (MCU) a 5 V para el gate (DMN10H220LQ especifica RDS a 4.5 V). Entrada TTL: VIH 2 V. OE a VCC. Sin +5V_VEH la salida queda baja. PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 114.3 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -4550,6 +4693,17 @@
 			)
 		)
 		(property "MPN_PROTO" "SN74AHCT1G126DBVR"
+			(at 114.3 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C163712"
 			(at 114.3 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -4869,6 +5023,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C85087"
+			(at 259.08 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "58b4927c-e16b-4c79-8557-fc66dd908a85")
 		)
@@ -5002,6 +5167,17 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 205.74 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C500776"
 			(at 205.74 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -5196,7 +5372,7 @@
 				)
 			)
 		)
-		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer."
+		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer. PROTO (2026-10-30): UNI-ROYAL 0603WAF4701T5E (LCSC C23162, JLC basic), misma especificación, sin AEC-Q200."
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5219,6 +5395,50 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 194.31 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116697"
+			(at 194.31 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF4701T5E"
+			(at 194.31 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 194.31 110.49 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23162"
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5358,6 +5578,17 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 248.92 99.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144522"
 			(at 248.92 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -5555,7 +5786,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota."
+		(property "Notes" "Pull-down de EN: salida apagada mientras el MCU esta en reset o el GPIO flota. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 86.36 157.48 0)
 			(hide yes)
 			(show_name no)
@@ -5578,6 +5809,50 @@
 			)
 		)
 		(property "Variant" "OUT"
+			(at 86.36 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 86.36 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 86.36 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 86.36 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
 			(at 86.36 157.48 0)
 			(hide yes)
 			(show_name no)

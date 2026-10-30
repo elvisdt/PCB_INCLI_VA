@@ -2252,6 +2252,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C415406"
+			(at 92.71 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "052ddddf-87f5-4148-a103-4f8b76f4601b")
 		)
@@ -2531,6 +2542,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C126598"
+			(at 267.97 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b7ae6aa4-b734-48d9-9d73-6a455744fe03")
 		)
@@ -2634,7 +2656,7 @@
 				)
 			)
 		)
-		(property "Notes" "33 uH (TI tabla 9-1, 400 kHz, 5 V). Isat 3.7 A > limite high-side max del LMR38010 (1.9 A); DCR 105 mohm max. AEC-Q200."
+		(property "Notes" "33 uH (TI tabla 9-1, 400 kHz, 5 V). Isat 3.7 A > limite high-side max del LMR38010 (1.9 A); DCR 105 mohm max. AEC-Q200. Compra (2026-10-30): sin stock en JLC/LCSC; comprar en DigiKey/Mouser y soldar a mano."
 			(at 229.87 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -2646,6 +2668,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 229.87 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C5119929"
 			(at 229.87 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -2781,7 +2814,7 @@
 				)
 			)
 		)
-		(property "Notes" "Buck 80 V / 1 A, PFM + spread spectrum. PROD: LMR38010SQDDARQ1 (AEC-Q100, SNVSC72B). PROTO: LMR38010SDDAR (LCSC C5219310), equivalente comercial: mismo modo, pinout y DDA0008B (ver PENDIENTES 'Equivalencia LMR38010'). EP con 6 vias de 0.2 mm a GND_VEH (soldable con aire caliente). Pin a pin con LMR38020 (2 A). Simbolo de easyeda2kicad con tipos de pin ajustados."
+		(property "Notes" "Buck 80 V / 1 A, PFM + spread spectrum. PROD: LMR38010SQDDARQ1 (AEC-Q100, SNVSC72B). PROTO: LMR38010SDDAR (LCSC C5219310), equivalente comercial: mismo modo, pinout y DDA0008B (ver PENDIENTES 'Equivalencia LMR38010'). EP con 6 vias de 0.2 mm a GND_VEH (soldable con aire caliente). Pin a pin con LMR38020 (2 A). Simbolo de easyeda2kicad con tipos de pin ajustados. PROD (2026-10-30): sin stock suficiente en JLC/LCSC para 100 placas; comprar en DigiKey/Mouser."
 			(at 153.67 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -2793,6 +2826,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 153.67 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C18198885"
 			(at 153.67 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -3081,7 +3125,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_IN del LMR38010 (TI: >= 4.7 uF ceramico, X7R, idealmente 2 x VIN max). 100 V X7S AEC-Q200. 1210 por tension y DC bias. Pegado a VIN/GND de U201. MPN a verificar."
+		(property "Notes" "C_IN del LMR38010 (TI: >= 4.7 uF ceramico, X7R, idealmente 2 x VIN max). 100 V X7S AEC-Q200. 1210 por tension y DC bias. Pegado a VIN/GND de U201. MPN a verificar. PROTO (2026-10-30): Samsung CL32B475KCVZNWE (LCSC C17288249), sin AEC-Q200, solo para el prototipo. PROD: este MPN (AEC-Q200); sin stock en JLC/LCSC, comprar en DigiKey/Mouser."
 			(at 80.01 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -3093,6 +3137,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 80.01 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C2168848"
+			(at 80.01 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL32B475KCVZNWE"
+			(at 80.01 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 80.01 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C17288249"
 			(at 80.01 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -3591,7 +3679,7 @@
 				)
 			)
 		)
-		(property "Notes" "R_FBT (TI recomienda 100k). VOUT = 1 V x (1 + 100k/24.9k) = 5.02 V."
+		(property "Notes" "R_FBT (TI recomienda 100k). VOUT = 1 V x (1 + 100k/24.9k) = 5.02 V. PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
 			(at 298.45 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -3603,6 +3691,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 298.45 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116674"
+			(at 298.45 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1003T5E"
+			(at 298.45 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 298.45 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25803"
 			(at 298.45 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -3969,6 +4101,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C126598"
+			(at 280.67 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "699e10af-9098-4872-9755-d18bcf66d2dc")
 		)
@@ -4149,7 +4292,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7)."
+		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4161,6 +4304,50 @@
 			)
 		)
 		(property "DNP" ""
+			(at 204.47 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 204.47 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 204.47 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 204.47 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4286,6 +4473,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 298.45 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C227732"
 			(at 298.45 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -4498,6 +4696,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C228007"
+			(at 316.23 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b9ace74c-7f28-4115-b446-71e70b91f764")
 		)
@@ -4613,6 +4822,17 @@
 			)
 		)
 		(property "DNP" ""
+			(at 255.27 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C126598"
 			(at 255.27 140.97 0)
 			(hide yes)
 			(show_name no)

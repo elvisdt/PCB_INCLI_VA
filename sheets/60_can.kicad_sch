@@ -2932,7 +2932,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10)."
+		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 295.91 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -2955,6 +2955,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 295.91 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 295.91 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 295.91 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 295.91 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 295.91 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -3180,6 +3224,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 82.55 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2f87ae40-7038-4ca2-829a-b82ac4ce98ca")
 		)
@@ -3394,6 +3449,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C5736151"
+			(at 248.92 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5365f045-1d0f-4c28-9587-32f9d5ca3d5c")
 		)
@@ -3501,7 +3567,7 @@
 				)
 			)
 		)
-		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). En cadena detrás de C601 (pin VIO → C601 10 nF → C602 100 nF), a ~6 mm del pin; ubicación aceptada por el usuario (2026-10-29)."
+		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). En cadena detrás de C601 (pin VIO → C601 10 nF → C602 100 nF), a ~6 mm del pin; ubicación aceptada por el usuario (2026-10-29). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 109.22 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -3524,6 +3590,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 109.22 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 109.22 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 109.22 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 109.22 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 109.22 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -3823,6 +3933,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C113020"
+			(at 289.56 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "793d9764-633a-4391-a6b1-6d7f7ee7214c")
 		)
@@ -4005,7 +4126,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10)."
+		(property "Notes" "VISOIN: 0.01 uF + 0.1 uF a GND2 (tabla 10). PROTO (2026-10-30): FH 0603B103K500NT (LCSC C57112, JLC basic), misma especificación, sin AEC-Q200."
 			(at 281.94 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -4028,6 +4149,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 281.94 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85863"
+			(at 281.94 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B103K500NT"
+			(at 281.94 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 281.94 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C57112"
 			(at 281.94 160.02 0)
 			(hide yes)
 			(show_name no)
@@ -4173,6 +4338,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C113020"
+			(at 290.83 204.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "547c873c-efb3-47fa-adb7-8028e50f4e38")
 		)
@@ -4304,7 +4480,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Notes" "ADM3055E Rev. D: RS a GND2 por R605, AUXIN a GND1 (sin uso), AUXOUT sin conexion. GNDISO por FB602 a GND2. Verificar el land pattern SOIC-20W contra el plano RI-20-1."
+		(property "Notes" "ADM3055E Rev. D: RS a GND2 por R605, AUXIN a GND1 (sin uso), AUXOUT sin conexion. GNDISO por FB602 a GND2. Verificar el land pattern SOIC-20W contra el plano RI-20-1. PROTO (2026-10-30): ADM3055EBRIZ-RL (LCSC C658105), mismo CI en carrete; JLC tenía 55 u. PROD (100 u): comprar ADM3055EBRIZ en DigiKey/Mouser."
 			(at 180.34 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -4328,6 +4504,39 @@
 		)
 		(property "Variant" "CAN"
 			(at 180.34 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C658104"
+			(at 194.31 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "ADM3055EBRIZ-RL"
+			(at 194.31 144.78 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C658105"
+			(at 194.31 144.78 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4573,7 +4782,7 @@
 				)
 			)
 		)
-		(property "Notes" "VCC: 10 uF + 0.1 uF (tabla 10). < 2 mm del pin."
+		(property "Notes" "VCC: 10 uF + 0.1 uF (tabla 10). < 2 mm del pin. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
 			(at 121.92 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4596,6 +4805,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 121.92 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85864"
+			(at 121.92 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+			(at 121.92 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 121.92 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C14663"
 			(at 121.92 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4975,6 +5228,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C126586"
+			(at 259.08 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b8c6d6a3-2eec-4970-b852-4cde6f8e693f")
 		)
@@ -5078,7 +5342,7 @@
 				)
 			)
 		)
-		(property "Notes" "RS a GND2: 0 ohm = velocidad completa (tabla 10). Para control de pendiente (EMI) montar 47k."
+		(property "Notes" "RS a GND2: 0 ohm = velocidad completa (tabla 10). Para control de pendiente (EMI) montar 47k. PROTO (2026-10-30): UNI-ROYAL 0603WAF0000T5E (LCSC C21189, JLC basic), misma especificación, sin AEC-Q200."
 			(at 233.68 190.5 0)
 			(hide yes)
 			(show_name no)
@@ -5101,6 +5365,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 233.68 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C141796"
+			(at 233.68 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF0000T5E"
+			(at 233.68 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 233.68 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21189"
 			(at 233.68 190.5 0)
 			(hide yes)
 			(show_name no)
@@ -5248,6 +5556,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C426631"
+			(at 304.8 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1c0fa337-a69d-4896-821c-c51f17c192e0")
 		)
@@ -5352,7 +5671,7 @@
 				)
 			)
 		)
-		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). < 2 mm del pin."
+		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). < 2 mm del pin. PROTO (2026-10-30): FH 0603B103K500NT (LCSC C57112, JLC basic), misma especificación, sin AEC-Q200."
 			(at 121.92 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -5375,6 +5694,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 121.92 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C85863"
+			(at 121.92 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B103K500NT"
+			(at 121.92 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 121.92 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C57112"
 			(at 121.92 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -5643,7 +6006,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-up de STBY a VIO: el transceiver arranca en standby (bus en silencio) hasta que el firmware baje CAN_STBY. Decision 60_can #5."
+		(property "Notes" "Pull-up de STBY a VIO: el transceiver arranca en standby (bus en silencio) hasta que el firmware baje CAN_STBY. Decision 60_can #5. PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 152.4 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -5666,6 +6029,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 152.4 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 152.4 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 152.4 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 152.4 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 152.4 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -5934,7 +6341,7 @@
 				)
 			)
 		)
-		(property "Notes" "VISOOUT: 0.22 uF + 10 uF a GNDISO (tabla 10)."
+		(property "Notes" "VISOOUT: 0.22 uF + 10 uF a GNDISO (tabla 10). PROTO (2026-10-30): Samsung CL10B224KA8NNNC (LCSC C21120, JLC basic), misma especificación, sin AEC-Q200."
 			(at 266.7 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -5957,6 +6364,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 266.7 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C161217"
+			(at 266.7 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL10B224KA8NNNC"
+			(at 266.7 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 266.7 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C21120"
 			(at 266.7 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -6302,7 +6753,7 @@
 				)
 			)
 		)
-		(property "Notes" "Pull-down de SILENT (el ADM3055E ya tiene pull-down interno; refuerza el modo normal)."
+		(property "Notes" "Pull-down de SILENT (el ADM3055E ya tiene pull-down interno; refuerza el modo normal). PROTO (2026-10-30): UNI-ROYAL 0603WAF1002T5E (LCSC C25804, JLC basic), misma especificación, sin AEC-Q200."
 			(at 170.18 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -6325,6 +6776,50 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 170.18 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C116677"
+			(at 170.18 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF1002T5E"
+			(at 170.18 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 170.18 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C25804"
 			(at 170.18 175.26 0)
 			(hide yes)
 			(show_name no)
@@ -6462,6 +6957,17 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 284.48 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144645"
 			(at 284.48 127 0)
 			(hide yes)
 			(show_name no)
@@ -6686,6 +7192,17 @@
 				)
 			)
 		)
+		(property "LCSC" "C144645"
+			(at 284.48 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "98830aeb-c39d-4852-a4c1-69739b08073b")
 		)
@@ -6813,6 +7330,17 @@
 			)
 		)
 		(property "Variant" "CAN"
+			(at 109.22 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C126586"
 			(at 109.22 140.97 0)
 			(hide yes)
 			(show_name no)

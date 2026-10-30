@@ -24,8 +24,8 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
   - `GND_ISO` y `+5V_ISO` siguen en la librería, pero ya no se usan.
 - Señales entre hojas: pines jerárquicos; en el top se unen por etiquetas del mismo nombre.
 - Prefijos de red por dominio: `VEH_`, `ISO_`, `BUS_`.
-- Campos por componente: `MPN`, `Manufacturer`, `Datasheet`, `Alt_MPN`, `Variant` (CAN, OUT, ROT, CABIN), `Notes` y `DNP`.
-- `MPN_PROTO`: solo cuando el prototipo usa un equivalente distinto del MPN de producción (por ejemplo, la versión comercial de una pieza -Q1). El BOM de prototipo usa `MPN_PROTO` si existe y, si no, `MPN`.
+- Campos por componente: `MPN`, `Manufacturer`, `LCSC`, `Datasheet`, `Alt_MPN`, `Variant` (CAN, OUT, ROT, CABIN), `Notes` y `DNP`. `LCSC` es el código LCSC/JLC del `MPN` (vacío si LCSC no lo lista).
+- `MPN_PROTO`, `Manufacturer_PROTO` y `LCSC_PROTO`: solo cuando el prototipo usa un equivalente distinto del MPN de producción (por ejemplo, la versión comercial de una pieza -Q1, un pasivo JLC Basic o un sustituto aceptado; ver `docs/BOM_SOURCING.md`). `Manufacturer_PROTO` solo si cambia el fabricante. El BOM de prototipo usa el campo `_PROTO` si existe y, si no, el de producción.
 - **Prototipo = producción:** es el mismo esquemático; solo cambia qué se monta. El campo `DNP` define los dos BOM:
   - vacío: se monta siempre.
   - `PROTO`: no se monta en el prototipo.
