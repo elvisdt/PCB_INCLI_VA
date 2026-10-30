@@ -90,7 +90,7 @@ Solo donde coinciden valor, encapsulado, tolerancia y dieléctrico, con tensión
 | R602, R603 | 60.4 | C144645 |
 | R605, R802, R805, R806 | 0 | C21189 |
 | R702, R752 | 4k7 | C23162 |
-| R803, R804 | 470 | C23179 |
+| R803, R804 | 2.2k | C4190 |
 | SW401 | RESET | C720477 |
 | SW402 | BOOT | C720477 |
 | U101 | LM74930QRGERQ1 | C22428070 |
@@ -217,7 +217,7 @@ Los originales tienen stock en JLC (allí siguen montándose), pero 0 en lcsc.co
 | R602, R603 | 60.4 | R_0603_1608Metric | 2 | AC0603FR-0760R4L | C144645 | ext | 14047 | 14000 | 0.0069 (MOQ 100) | JLC | JLC ext, verified 2026-10-30 |  |
 | R605, R802, R805, R806 | 0 | R_0603_1608Metric | 4 | 0603WAF0000T5E | C21189 | basic | 20896231 | 11816300 | 0.0022 (MOQ 100) | JLC | JLC basic (swap from AC0603JR-070RL), verified 2026-10-30 | AC0603JR-070RL / C141796 |
 | R702, R752 | 4k7 | R_0603_1608Metric | 2 | 0603WAF4701T5E | C23162 | basic | 15672993 | 3249500 | 0.0028 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-074K7L), verified 2026-10-30 | AC0603FR-074K7L / C116697 |
-| R803, R804 | 470 | R_0603_1608Metric | 2 | 0603WAF4700T5E | C23179 | basic | 4576407 | 1980200 | 0.0023 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-07470RL), verified 2026-10-30 | AC0603FR-07470RL / C144657 |
+| R803, R804 | 2.2k | R_0603_1608Metric | 2 | 0603WAF2201T5E | C4190 | basic | 5498979 | 2790900 | 0.0018 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-072K2L), verified 2026-10-30; antes 470 Ω (brillo de LED reducido, ~0.6–0.7 mA) | AC0603FR-072K2L / C125931 |
 | SW401 | RESET | SW-SMD_L3.9-W3.0-P4.45 | 1 | TS-1088-AR02016 | C720477 | basic | 605935 | 363750 | 0.0533 | JLC | JLC basic, verified 2026-10-30 |  |
 | SW402 | BOOT | SW-SMD_L3.9-W3.0-P4.45 | 1 | TS-1088-AR02016 | C720477 | basic | 605935 | 363750 | 0.0533 | JLC | JLC basic, verified 2026-10-30 |  |
 | U101 | LM74930QRGERQ1 | TI_RGE0024T_VQFN-24-1EP_4x4m | 1 | LM74930QRGERQ1 | C22428070 | ext | 7308 | 7127 | 5.7664 | JLC | JLC ext, verified 2026-10-30 |  |
