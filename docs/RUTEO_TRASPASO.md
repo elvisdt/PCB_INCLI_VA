@@ -585,6 +585,8 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
   - GND_VEH sin unir a GND_CAN ni a U101_RTN. Rellenos recalculados.
 
 ### Etapa 6 — Cierre
+**Estado (Claude Code, 2026-10-30):** teardrops (`scripts/ruteo/etapa6_teardrops.py`, 697 zonas), revisión de retornos sin hallazgos nuevos, fabricación de prueba (`scripts/ruteo/etapa6_fab.py` → `fab/proto/`) y renders `etapa6-*.png` hechos. DRC 0 errores / 5 avisos conocidos, paridad 0, ERC sin cambios. Quedan dos decisiones del usuario (tramos sin plano y los 5 avisos) y el push: ver «RETOMAR AQUÍ» en `docs/PENDIENTES.md`.
+
 - DRC y paridad en 0. Revisar retornos de corriente: buck, U301, CAN e islas bajo U101.
 - **Teardrops:** generarlos (Edit → Edit Teardrops, o por la API) y repetir el DRC.
 - **Fabricación de prueba para JLCPCB en `fab/`:** Gerbers, drill, BOM y CPL con kicad-cli (`pcb export gerbers`, `pcb export drill`, `pcb export pos`, `sch export bom`).
