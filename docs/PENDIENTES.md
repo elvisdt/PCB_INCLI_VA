@@ -2,7 +2,15 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Codex (etapa 3 cerrada; traspaso preparado; etapa 4 no iniciada).
+Última actualización: 2026-10-30, Claude Code (etapa 4 parcial: todo salvo sensores).
+
+## Etapa 4 parcial — Claude Code, 2026-10-30
+- **Cerrado:** periféricos de U101, desvío de RESET bajo el módulo (autorizado), bus DO/PWR_FLT/LED bajo el módulo con un único cruce del par USB (autorizado), DO1/DO2, +5V a las salidas, LED, VAR_ID, WDI, VMON, R305/R307 y PG_3V3D. DRC 0 errores, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 4 — avance parcial» de `RUTEO_TRASPASO.md`.
+- **A medias:** sensores (39 conexiones: SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC).
+- **Nuevo pendiente (decisión del usuario):** reasignar los GPIO del SPI (pines 17–22, IO9–IO14, y quizá INT1/INT2) para que el SPI se rutee todo en F.Cu sin nada en B.Cu debajo. Antes de editar el esquema hay que mostrar al usuario el intercambio exacto y la verificación de ruteo. Requiere ERC y una nota para firmware (algunas señales pasan de IOMUX a la matriz GPIO).
+- **Autorizado y pendiente de aplicar:** girar 180° C501 y C502; reubicar C505, C506, C508, R502 y TP504 (≤5 mm de U502). Hay que replicarlo en ruteo-manual junto con el desvío de RESET.
+- Reglas del usuario para este turno: no usar la skill agentic-sourcing; en etapa 6 usar kicad-happy solo para reportar hallazgos; avisar antes de usar cualquier otra skill.
+
 
 ## Protección del trabajo manual — Codex, 2026-10-29
 - Añadida en `AGENTS.md` la regla solicitada por el usuario que reserva `PCB_INCLI_VA_manual` y `ruteo-manual` al usuario y prohíbe intervenir sobre ellas o ejecutar `git worktree remove/prune` salvo pedido explícito. Cambio documental completado, sin nuevos pendientes.

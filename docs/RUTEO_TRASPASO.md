@@ -2,7 +2,39 @@
 
 ## Cómo retomar
 
-**Entrega de Codex, 2026-10-29. Etapa 3 cerrada en `a881797`; etapa 4 no iniciada.** La autorización del cuello USB ya está aplicada; no queda una propuesta pendiente. Esta sección es el estado vigente; los apartados históricos inferiores describen estados anteriores. Puede continuar el usuario, otro Codex o Claude Code, un agente por turno.
+**Actualización de Claude Code, 2026-10-30: etapa 4 PARCIAL (commit `[Claude Code] ruteo etapa 4 parcial`).** Quedan solo los sensores (39 conexiones). Leer primero «Etapa 4 — avance parcial» justo debajo; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica.
+
+### Etapa 4 — avance parcial (Claude Code, 2026-10-30)
+
+Generador: `scripts/ruteo/etapa4_senales.py [PCB]` (grupo `CLAUDE_ETAPA4`; borra y recrea sus pistas/vías por UUID; también borra los tres tramos B.Cu viejos de RESET si existen). KiCad cerrado. No es idempotente frente a ediciones manuales del grupo.
+
+| Verificación (PCB guardado) | Resultado |
+|---|---|
+| DRC | **0 errores** / 63 avisos: 58 `via_dangling` de masas (etapa 5) + los 5 conocidos |
+| Paridad | **0** |
+| ERC | 0 errores / 5 avisos conocidos (sin cambios; el esquema no se tocó) |
+| `verify_etapa3.py` | OK (USB, CAN, EN, desacoples sin cambios) |
+| Sin rutear | **154**: 115 de masas (etapa 5) + **39 de sensores** |
+| Renders | [superior](layout/ruteo/etapa4-parcial-top.png), [inferior](layout/ruteo/etapa4-parcial-bottom.png) |
+
+Evidencia: `etapa4-parcial-drc.json`, `-erc.json`, `-medidas.json`.
+
+**Ruteado en esta etapa:**
+- **U101** según los saltos reservados: SW, UVLO (salto B.Cu bajo la Kelvin C_ID), OV (B.Cu x121.85/y85 → R112.2), R108↔R112, TMR, ILIM, FLT (B.Cu bajo HGATE/VA), CAP y VS (saltos B.Cu en U), VS→D104.3 por B.Cu y84.2, C109↔R105, +3V3_D a R111.1 (B.Cu hasta la vía de etapa 3 en (137.345,112.3)). Retornos GND de pines 13/16 y fila R109–R111/R107. C109.2 queda para el plano F.Cu (sin hueco para vía). Pad 25 RTN intacto.
+- **RESET (autorizado por el usuario):** se quitaron los tramos B.Cu (184,107.5)→(180,107.5)→(170,117.5)→(170,130), que pasaban bajo las salidas SPI. Nuevo carril B.Cu bajo el módulo: (185.71,107.5)→(186.3,108.09)→(186.3,128.6)→(171,128.6)→(170,129.6)→(170,130). TP401/C403/R401 sin cambios. Longitudes: U401→SW401 **68.92 mm** (antes 62.81), U401→R802 **61.59 mm** (antes 55.48), ambas con dos vías.
+- **Bus bajo el módulo (autorizado):** pines 28–32 (DO1_EN, DO2_EN, DO1_DIAG, DO2_DIAG, PWR_FLT_N) bajan a B.Cu por el lado interior del pad (vías en y122.75), suben por carriles x175.9–177.5 (se abren a paso 0.7 en el bolsillo) y cruzan el par USB **una sola vez**, en la diagonal (x≈175.9–180.1, y≈81–87). LED_G/LED_R suben por F.Cu entre R805/R806 y se suman al bus en B.Cu. Nada bajo la antena.
+- **WDI:** vía bajo el pin 10 → B.Cu y109.6 / x185.6 → puente F.Cu corto en x175.5 sobre RESET → B.Cu → vía (171.4,136.4) → R801/U801.4.
+- **VAR_ID0/2** por F.Cu; **VAR_ID1** con salto B.Cu bajo el módulo (vía junto al pin 5) hasta R806.
+- **DO1/DO2:** VEH_DO 0.5 mm (clase DO), D704-K/D754-K por y66.3, EN_5V de cada canal por B.Cu, DO*_EN y DO*_DIAG por F.Cu con vías al bus; +5V a U751/C752/U701/C702 desde el tronco (147.7,69.5) con un salto B.Cu de 6 mm bajo las líneas de LED.
+- **PWR_FLT_N:** F.Cu y84.0 → vía (139,84) → B.Cu bajo el tronco +5V → TP104.
+- **Supervisión:** VMON_3V3 (salto B.Cu y129.3 hasta R307.2), VMON_5V por F.Cu, R307.1 a +3V3_D por vía al tronco B.Cu, +5V a R305.1 por F.Cu y125.3 + B.Cu x156.5/y138 (0.5 mm), PG_3V3D a TP305 por B.Cu.
+
+**Distancias de aceptación ya cumplidas:** nada nuevo de potencia o DO a menos de 10 mm del cuerpo de U503 (lo más próximo: +5V B.Cu en y125.3, a >22 mm). SPI aún no ruteado.
+
+**Pendiente — sensores (39 conexiones):** SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC. **Decisión del usuario (2026-10-30): reasignar GPIO.** Con el orden actual de los pines 17–22 (CS_IMU, CS_INC, MOSI, SCK, MISO, CS_ROT) y el orden de pines de U502/U501 no existe ruteo SPI todo en F.Cu sin B.Cu debajo. Próximo paso: proponer el intercambio exacto de GPIO (IO9–IO14 y quizá INT1/INT2), verificar que rutea sin cruces y **mostrarlo al usuario antes de tocar el esquema**. También autorizados: girar 180° C501 y C502 (su pad GND quedó contra los pines 4 y 2 de U501) y reubicar C505, C506, C508, R502 y TP504 a ≤5 mm de U502; aún no aplicados, se informarán coordenadas antes del commit.
+
+**Para replicar en ruteo-manual:** el desvío de RESET (B.Cu) y, cuando se apliquen, los movimientos de pasivos de sensores. No hay movimientos de piezas en este commit.
+
 
 Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`, este documento, `docs/PENDIENTES.md` y `git log -5`; comprobar `git status` antes de cambiar nada. **KiCad debe estar cerrado** y sin archivos `~*.lck`, también en `sheets/`. No tocar `PCB_INCLI_VA_manual`, `ruteo-manual` ni sus worktrees. No mover/girar piezas ni cambiar el esquema, reglas o net classes sin nueva autorización. Las autorizaciones aquí documentadas cubren solo los cambios ya aplicados.
 
@@ -14,7 +46,7 @@ Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`
 | 1 — potencia | Cerrada | `b46f185` |
 | 2 — CAN | Cerrada y aprobada; auditoría B.Cu posterior en `4bfdfef` | `be5cc7c` |
 | 3 — USB/MCU | Cerrada; C404 y movimientos en `802202d`, cuello final autorizado aplicado | `a881797` |
-| 4 — sensores/señales | No iniciada; esperar nuevo visto bueno | — |
+| 4 — sensores/señales | **Parcial** (Claude Code): todo salvo sensores; ver «Etapa 4 — avance parcial» | `[Claude Code] ruteo etapa 4 parcial` |
 | 5 — planos | No iniciada | — |
 | 6 — fabricación/cierre | No iniciada | — |
 
