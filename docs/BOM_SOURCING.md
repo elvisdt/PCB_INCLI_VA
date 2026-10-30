@@ -147,6 +147,7 @@ Supuestos: precio de lcsc.com en el escalón de (cantidad por placa × N placas)
 - `fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`: lo que monta JLC.
 - `bom/A_MANO_PROTO.csv`: lo que se suelda a mano, con proveedor y cantidad.
 - `bom/LCSC_CART_PROTO.csv`: carrito de lcsc.com (formato de su BOM tool: «LCSC Part Number», «Quantity»).
+- `bom/LCSC_BOM_COMPLETO_PROTO.csv`: todo lo de PROTO que está en LCSC (sin DNP ni DigiKey/Mouser), para «Upload a BOM» de lcsc.com. Cantidad = por placa × 6, mínimo 20 en pasivos 0402/0603, subida al MOQ y al múltiplo de lcsc.com. Se regenera con `scripts/bom/lcsc_bom_completo.py` (consulta en vivo).
 - `bom/DIGIKEY_MOUSER.csv`: PROTO a mano y PROD sin stock en JLC/LCSC.
 - `bom/BOM_PROTO.csv`, `bom/BOM_PROD.csv`: BOM completa por variante, con LCSC, tipo, stocks, precio, montaje, estado y MPN/LCSC original.
 
