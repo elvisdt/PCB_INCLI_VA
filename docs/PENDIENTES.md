@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (BOM con LCSC en `bom-sourcing`; **PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
 
 ## RETOMAR AQUÍ — PCB integrado en main (`pcb-v1-rc1`)
 **2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. Después, la rama `ruteo-agente` se eliminó (local y en `origin`, con `-d`: estaba integrada). **El trabajo continúa en `main`.** `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar; el worktree `PCB_INCLI_VA_bom` (`bom-sourcing`) se actualizó a `main` con fast-forward.
@@ -17,10 +17,17 @@ Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, pla
 **Quedan:**
 - [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
 - [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
-- [ ] **BOM con códigos LCSC**, en el worktree `PCB_INCLI_VA_bom` (rama `bom-sourcing`). `fab/proto/bom_jlc.csv` y `bom_proto.csv` tienen MPN y fabricante, pero no LCSC. Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [x] **BOM con códigos LCSC** (Claude Code, 2026-10-30, rama `bom-sourcing`; agentic-sourcing solo para consultar con `jlc_lookup.py`, sin `sourcing.py`; no se hizo ningún pedido). Ver `docs/BOM_SOURCING.md`.
+  - Sustitutos decididos por el usuario: Q101, Q102 y F101 **rechazados** (se compran los originales en DigiKey/Mouser y se sueldan a mano). C101, C201 y C104 sin AEC-Q200 **solo en PROTO**; PROD mantiene los originales. SCL3300-D01-10 aceptado: según Murata (Doc. 4921 Rev. 2, §9) es el carrete de 1000 u. ADM3055EBRIZ-RL, pasivos a Basic/preferred y sustitutos de igual especificación (incluida la tira 1×3 de J402): aceptados.
+  - Lo que monta JLC: `fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 60 líneas, 123 piezas (coinciden una a una). Se quitaron del CPL F101, Q101, Q102, L201 y U503.
+  - A mano (5 placas + 1): `bom/A_MANO_PROTO.csv`. De LCSC: J1, J2, J401, J402 y U401 (carrito `bom/LCSC_CART_PROTO.csv`, USD 51.18). De DigiKey/Mouser: F101, Q101, Q102, L201 y U503 (`bom/DIGIKEY_MOUSER.csv`).
+  - Componentes por placa: PROTO USD 111.48 (5 placas) / 90.88 (100); PROD 107.84 / 89.62, sin U701/U751.
+- [ ] **Sesión nueva (en `main`): pasar al esquema los sustitutos aceptados** (`MPN_PROTO`, código LCSC y `Notes`) según `docs/BOM_SOURCING.md`. PROD conserva los AEC-Q200 de C101, C201 y C104 y los originales de Q101, Q102 y F101.
+- [ ] `scripts/ruteo/etapa6_fab.py`: agregar F101, Q101, Q102, L201 y U503 a su lista de piezas a mano. Si se regenera tal como está, vuelve a meter esas cinco piezas en `cpl_jlc.csv`.
+- [ ] Pedido: U601 ADM3055EBRIZ-RL tiene solo 55 u en JLC. Para PROD, comprar en DigiKey/Mouser lo de `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROD).
 - [ ] **Revisión independiente** con kicad-happy u otro revisor (solo informe). La de 2026-10-30 se hizo con scripts propios porque kicad-happy no estaba instalada.
 - [ ] **Comparación con `ruteo-manual`** (trabajo del usuario en `PCB_INCLI_VA_manual`): decidir qué se conserva de cada ruteo. La lista de cambios a replicar está en «Replicar en `ruteo-manual`», abajo.
-- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
+- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
 - [ ] Esquema, hoja 60 (anterior a este turno): `sch_visual_qa` avisa que #PWR032 se superpone con R601 (~3.2 mm²). Solo legibilidad.
 
 **Antes de tocar el PCB:**
@@ -30,7 +37,7 @@ Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, pla
 4. No mover piezas ni editar el esquema, las reglas o las net classes sin preguntar.
 5. Antes de cada commit, revisar `git diff INCLI-VA.kicad_pro`. Si solo cambió el orden de las net classes, restaurarlo con `git checkout INCLI-VA.kicad_pro`.
 6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. Son idempotentes y se encadenan así si se cambia cobre: `etapa5_planos.py` → `etapa6_costura_u401.py` → `etapa6_teardrops.py` (rellena zonas) → DRC → `etapa6_fab.py`.
-7. Skills: no usar agentic-sourcing. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
+7. Skills: agentic-sourcing solo para consultar (`jlc_lookup.py`) y solo si el usuario lo pide. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
 
 **Etapa 6 — lo hecho (Claude Code, 2026-10-30):**
 - Retornos de corriente revisados, sin hallazgos nuevos: plano B.Cu bajo U201/L201 al 99.6 % y bajo U301/L301 al 98.6 %; barrera de U601 sin cobre; GND_CAN y GND_VEH, una isla cada una; U101_RTN aislada.
