@@ -2,7 +2,54 @@
 
 ## Cómo retomar
 
-**Actualización de Claude Code, 2026-10-30: etapa 4 CERRADA (commit `[Claude Code] ruteo etapa 4: sensores ...`).** No quedan conexiones no-GND; las 132 restantes son masas de la etapa 5. Leer primero «Etapa 4 — cierre: sensores» y «Etapa 4 — avance parcial», justo debajo; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 5 espera el visto bueno del usuario.**
+**Actualización de Claude Code, 2026-10-30: etapa 5 CERRADA (commit `[Claude Code] ruteo etapa 5: planos ...`).** Planos rellenos y guardados, **0 conexiones sin rutear**. Leer primero «Etapa 5 — cierre: planos», justo debajo, y luego las secciones de la etapa 4; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 6 espera el visto bueno del usuario.**
+
+### Etapa 5 — cierre: planos (Claude Code, 2026-10-30)
+
+Generador: `scripts/ruteo/etapa5_planos.py [PCB]` (zonas `E5_*` y grupo `CLAUDE_ETAPA5` con la costura; borra y recrea ambos; KiCad cerrado; probado dos veces seguidas: idempotente). Verificador: `scripts/ruteo/verify_etapa5.py [PCB]` (islas por conectividad completa, cobertura, ranuras bajo señales, antena, imán, costura). Usa los rellenos **guardados**.
+
+| Verificación (PCB guardado con zonas rellenas) | Resultado |
+|---|---|
+| DRC | **0 errores** / 5 avisos conocidos (2 `silk_overlap` Q101/U801, 2 `silk_edge_clearance`, 1 `lib_footprint_mismatch` U401). **0 `via_dangling`**, 0 `isolated_copper`, 0 `starved_thermal`. Igual con `--refill-zones` |
+| Sin rutear | **0** |
+| Paridad | **0** |
+| ERC | 0 errores / 5 avisos conocidos (esquema sin cambios) |
+| `verify_etapa3.py` | OK (USB, CAN, EN, desacoples sin cambios) |
+| Renders | [superior](layout/ruteo/etapa5-top.png), [inferior](layout/ruteo/etapa5-bottom.png), [capa F.Cu](layout/ruteo/etapa5-capa-f_cu.png), [capa B.Cu](layout/ruteo/etapa5-capa-b_cu.png) |
+
+Evidencia: `etapa5-drc.json`, `etapa5-erc.json`, `etapa5-medidas-etapa3.json`, `etapa5-islas.json` (reporte de islas y métricas).
+
+**Zonas** (clearance 0.25 mm o la de la net class/regla si es mayor: HV 1.25, PROT/DO 0.6, ISO 2.5, RTN 0.3, anillos H 0.5; espesor mínimo 0.25 mm, así no quedan astillas < 0.2 mm; islas sin conexión eliminadas):
+
+| Zona | Red / capa | Prioridad | Contorno | Relleno |
+|---|---|---|---|---|
+| `E5_GND_VEH_B` | GND_VEH / B.Cu | 0 | Toda la placa salvo el dominio CAN (x ≤ 124.6, y 112.87–137.5) y el courtyard de U601 | 7272 mm², 3 polígonos |
+| `E5_GND_VEH_F` | GND_VEH / F.Cu | 0 | Ídem | 5378 mm², 32 polígonos |
+| `E5_GND_CAN_B` / `_F` | GND_CAN / B.Cu y F.Cu | 2 | Interior de `BARRERA_CAN` menos el courtyard de U601 | 505 + 454 mm² |
+| `E5_U101_RTN_B` | U101_RTN / B.Cu | 3 | 2.8 × 2.8 mm bajo el EP de U101 | 7.8 mm² |
+
+La banda `BARRERA_CAN`, el courtyard de U601 (`ISO_sin_relleno_bajo_U601`: la regla rechaza zonas cuyo **contorno** toca el courtyard, por eso se recorta) y el keep-out de la antena quedan sin relleno (**0.000 mm²** de relleno en la antena). El área B admite relleno, sin vías.
+
+**Conexión a pads:** alivio térmico de 0.5 mm de rayo y 0.3 mm de separación. Conexión sólida por la regla `Planos_conexion_solida`: EP de U101 (a su isla RTN), U201 pad 9, U401 pad 41, D102 pad 1 (GND de la TVS) y los pines de J1 (GND_VEH y GND_CAN). J2 no tiene pines de masa. Seis pads GND encerrados por pistas resuelven un solo rayo y se aceptan por la regla `Planos_un_rayo` (C501.2, C503.2, C504.2, C604.2, C309.2, U751.3; todos con su pista o vía de retorno).
+
+**Costura:** 321 vías nuevas (295 GND_VEH, 26 GND_CAN), Ø0.6/0.3, todas con cobre en ambas caras:
+- Retícula de 6 mm en GND_VEH y de 5 mm en GND_CAN; borde de la placa cada ~4 mm (91 vías a ≤ 2.5 mm del borde); anillo cada ~3 mm alrededor del ESP32 (42 vías a ≤ 3 mm del módulo y 45 bajo el módulo, tapadas, fuera de la antena).
+- Vías tapadas también bajo los cuerpos de C104, C105 y J2 (fuera de sus pads); en el resto, ninguna vía dentro de courtyards.
+- Distancia de cualquier punto del plano B.Cu a la vía o taladro GND más cercano: **máx. 9.94 mm**, p95 4.91 mm, 95.6 % a ≤ 5 mm (GND_CAN: máx. 5.46 mm, p95 3.81 mm).
+- INT1/INT2 bajo el módulo: tramos verticales con 9 y 11 vías GND a ≤ 1.6 mm; tramos horizontales (bajo la fila de pads 27–34) con 4 vías GND al sur de los pads, en (176/178/180/182, 125.58), en el hueco de 0.5 mm hasta CAN_SILE. Al norte de la fila solo caben las vías de señal.
+- C605: 4 vías GND a ≤ 2.5 mm de su vía de retorno (144.28,121.9).
+- Supervisión: vías GND (188.05,126.55) y (188.05,130.95) con pista corta a C309.2 y R306.2, encerrados entre VMON_3V3/VMON_5V (F.Cu) y el tronco +3V3_D (B.Cu x188.9). Unen la antigua isla B.Cu de ~137 mm² y las islas F de la columna.
+- Ninguna vía nueva en el círculo del imán (siguen solo las tres GND tapadas aprobadas) ni en el área B; ninguna a menos de 4.6 mm del centro de H1–H5.
+
+**Islas (`etapa5-islas.json`):** GND_VEH, GND_CAN y U101_RTN quedan cada una como **una sola región conectada** (polígonos de ambas caras unidos por vías, pads y pistas). Las 17 islas F.Cu de los sensores: las que tenían lugar quedaron cosidas con vía y las demás se eliminaron (en la ventana x143–173, y88–118 quedan 15 polígonos F.Cu, 447 mm², todos conectados). La isla B.Cu de ~137 mm² bajo la supervisión quedó unida al plano. No queda ninguna isla sin conexión.
+
+**Cobertura del plano B.Cu:** bajo U201/L201 99.6 %, bajo U301/L301 98.6 % (solo los cortes de sus propios saltos), bajo U501/U502/U503 100 %.
+
+**Ranuras bajo señales** (tramo continuo más largo sin GND en la capa opuesta, > 3 mm): INT2 9.2 mm e INT1 7.4 mm (B.Cu bajo la fila de pads del módulo, con la costura indicada); USB D− 9.1 mm y D+ 6.9 mm (F.Cu, en el cruce del bus B.Cu bajo el módulo autorizado en la etapa 4); MCU_RST_N 6.4 mm (B.Cu bajo SW401/R802); VS 6.3 y DGATE 5.8 mm (saltos B.Cu de U101, etapa 1); VBUS 4.7 mm (enlace nuevo bajo J401); el resto ≤ 4.3 mm, todos en saltos o carriles ya aprobados. No hay ranuras bajo SPI salvo los cruces numerados de la etapa 4 (≤ 3.2 mm).
+
+**Cambio de ruteo de la etapa 3, autorizado por el usuario (2026-10-30): VBUS y C404.** El GND de C404 (pad 2 y vía (190.375,81.45)) estaba encerrado en ambas caras por los ramales D+/D− hacia B6/B7 y por la rama sur de VBUS en B.Cu; era la única conexión que ningún plano podía cerrar. Se quitó esa rama, (188.95,81.45) → (189.25,81.75) → (189.25,82.8) → (189.75,83.3) → vía (192.55,83.3). Las dos vías VBUS de J401 quedan unidas por B.Cu, por el este de los ramales y bajo la fila de pads de J401: (190.95,78.1) → (191.2,77.85) → (193.35,77.85) → (193.6,78.1) → (193.6,82.6) → (192.9,83.3) → (192.55,83.3), 0.4 mm. Se agregó una pista GND B.Cu de 0.3 mm desde la vía de C404 hasta la vía GND existente (192.4,84.285) de A1/B12. D+/D− y sus cuatro vías no cambian; el camino desde el nodo C404/U402 hasta la vía VBUS sur pasa de ~5 a ~13 mm. Lo aplica `etapa5_planos.py`. **No volver a ejecutar `etapa3_mcu.py`**: recrearía la rama sur.
+
+**Para replicar en ruteo-manual:** el cambio VBUS/C404 anterior y, si el usuario quiere los mismos planos, las zonas `E5_*` y las reglas nuevas del `.kicad_dru`.
 
 ### Etapa 4 — cierre: sensores (Claude Code, 2026-10-30)
 
@@ -95,7 +142,7 @@ Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`
 | 2 — CAN | Cerrada y aprobada; auditoría B.Cu posterior en `4bfdfef` | `be5cc7c` |
 | 3 — USB/MCU | Cerrada; C404 y movimientos en `802202d`, cuello final autorizado aplicado | `a881797` |
 | 4 — sensores/señales | **Cerrada** (Claude Code); ver «Etapa 4 — cierre: sensores» y «Etapa 4 — avance parcial» | `[Claude Code] ruteo etapa 4: sensores ...` |
-| 5 — planos | No iniciada | — |
+| 5 — planos | **Cerrada** (Claude Code); ver «Etapa 5 — cierre: planos» | `[Claude Code] ruteo etapa 5: planos ...` |
 | 6 — fabricación/cierre | No iniciada | — |
 
 Base mecánica: `placement-v1` = `f472680`, más los cambios de ubicación listados abajo. El commit documental posterior a `a881797` solo completa el traspaso; no modifica el PCB.
@@ -270,6 +317,8 @@ Usar `/usr/bin/python3` (pcbnew de KiCad 10; matplotlib para auditoría). Ejecut
 | `verify_etapa2.py` | Lee PCB, reconstruye caminos/cadenas, mide desacoples y CAN incluyendo altura, comprueba dos vías H/ninguna L y Δ≤1 mm. Emite JSON. |
 | `verify_etapa3.py` | Lee **PCB guardado**, ejecuta también regresión CAN; exige USB principal cerrado/sin vías, cuatro vías de ramales, cuello exacto, Δ≤0.5 mm, EN/desacoples/cadenas y conectividad UART/CC/VBUS/3V3. Emite JSON; nunca usa propuesta temporal. |
 | `audit_can_bcu.py` | Copia PCB/.pro/.dru a temporal, rellena GND_CAN B.Cu respetando courtyard y barrera, comprueba una región/8 vías/J1 conectados y DRC 0. Escribe `can-bcu-auditoria.json/png`; no añade planos al PCB guardado. Repetir en etapa 5 y revisar cobertura si cambian retornos. |
+| `etapa5_planos.py` | Regenera zonas `E5_*` y grupo `CLAUDE_ETAPA5` (costura, retornos locales, cambio VBUS/C404), rellena y guarda. Idempotente; KiCad cerrado. |
+| `verify_etapa5.py` | Lee el PCB guardado con rellenos: islas por conectividad, cobertura bajo U201/L201/U301/L301/sensores, ranuras bajo señales, antena, imán, área B y distancia de costura. Emite JSON. |
 | `preview_usb_escape.py` | Propuesta histórica del cuello sobre copia temporal, ahora detecta el cuello existente y sale sin duplicarlo. No usar para verificar cierre; usar `verify_etapa3.py`. |
 
 Comprobación reproducible sin regenerar pistas ni sobrescribir evidencia del cierre (KiCad cerrado; salidas nuevas en /tmp):
@@ -405,6 +454,8 @@ Para regenerar la lista: correr el DRC (sección 8) y agrupar `unconnected_items
 | `PROT_llegada_U101` | Dentro del courtyard de U101: 0.2 mm y 0.25 mm de pista | VQFN-24 de 0.5 mm |
 | `PROT_llegada_U201` | +VPROT puede bajar a 0.6 mm dentro de U201, C202 o `ZONA_BUCK_U201` | Ancho del pin VIN |
 | `J401_land_pattern_oficial` | NPTH-cobre de ≥ 0.19 mm dentro de J401 | Huella oficial GCT, aceptada por el usuario |
+| `Planos_conexion_solida` | Conexión sólida a la zona: EP U101 (RTN), U201.9, U401.41, D102.1 y pines de J1 | Pedido del usuario (etapa 5): pads expuestos y corriente de pulso |
+| `Planos_un_rayo` | `min_resolved_spokes 1` para C501.2, C503.2, C504.2, C604.2, C309.2 y U751.3 | Pads GND encerrados por pistas, cada uno con su retorno propio |
 
 **Antena:** el keep-out viene en la huella de U401 (rule area de 48 × 21 mm, todas las capas, en x 191.94–212.94, y 91.50–139.50). Lo verifica el DRC nativo.
 
@@ -516,7 +567,7 @@ C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece 
 
 Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y criterios de aceptación en «Cómo retomar», al inicio de este documento. Ese plan reemplaza las referencias antiguas a PG_3V3D→MCU y C503 como desacople de ROT.
 
-### Etapa 5 — Planos
+### Etapa 5 — Planos (cerrada, Claude Code, 2026-10-30; resultado en «Etapa 5 — cierre: planos»)
 - **B.Cu:** relleno GND_VEH en toda la placa, salvo la isla CAN, la isla RTN de U101 (la regla ya la aísla) y el keep-out de antena. Prioridad baja; el área B admite relleno.
   - Debe quedar continuo bajo el buck y bajo los sensores.
   - Bajo `ZONA_U101` va a quedar en islas por los saltos: coserlas con vías.

@@ -2,7 +2,15 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (etapa 4 cerrada; la etapa 5 espera el visto bueno).
+Última actualización: 2026-10-30, Claude Code (etapa 5 cerrada; la etapa 6 espera el visto bueno).
+
+## Etapa 5 cerrada (planos) — Claude Code, 2026-10-30
+- **Cerrado:** zonas GND_VEH (B.Cu en toda la placa, F.Cu donde cabe), GND_CAN (ambas caras, solo dominio aislado) y U101_RTN (isla B.Cu), rellenas y guardadas. 321 vías de costura. DRC 0 errores / 5 avisos conocidos, **0 sin rutear**, 0 `via_dangling`, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 5 — cierre: planos» de `RUTEO_TRASPASO.md`.
+- **Pendientes de la etapa 4 resueltos:** 17 islas F.Cu de sensores (cosidas o eliminadas), isla B.Cu de ~137 mm² bajo la supervisión (vías junto a C309/R306), retorno de INT1/INT2 bajo el módulo, costura junto a C605.
+- **Cambio autorizado:** rama sur de VBUS (etapa 3) reemplazada por un enlace B.Cu entre las vías VBUS de J401, para sacar el GND de C404, que estaba encerrado. No volver a ejecutar `etapa3_mcu.py`.
+- **Reglas nuevas en `INCLI-VA.kicad_dru`:** `Planos_conexion_solida` y `Planos_un_rayo` (seis pads GND con un solo rayo térmico).
+- **Para la etapa 6:** revisar las ranuras listadas (INT1/INT2 bajo la fila de pads del módulo, USB en el cruce del bus, MCU_RST_N); teardrops; fabricación de prueba.
+- **Replicar en ruteo-manual:** cambio VBUS/C404 y, si se quieren los mismos planos, zonas `E5_*` y reglas nuevas.
 
 ## Etapa 4 cerrada (sensores) — Claude Code, 2026-10-30
 - **Cerrado:** sensores con la opción C aprobada (GPIO actuales sin cambios, esquema intacto). U503 girado 180°, C501/C502 girados, C505/C506/C508/R502/R501/R503/C507 y TP501–TP504 reubicados (tabla en «Cambios de ubicación» de `RUTEO_TRASPASO.md`); referencias de serigrafía reubicadas. 12 cruces B.Cu numerados, con costura GND. DRC 0 errores (sin avisos nuevos de serigrafía), paridad 0, ERC 0 errores / 5 avisos conocidos, `verify_etapa3.py` OK. Quedan 132 conexiones, todas de masa (etapa 5).
@@ -533,7 +541,7 @@ No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se 
 - [x] 2. CAN: terminada y aprobada por el usuario; continuidad B.Cu auditada. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
 - [x] 3. USB/MCU: cierre con cuello D− autorizado; siguiente etapa espera visto bueno.
 - [x] 4. Sensores y señales: cerrada (Claude Code); opción C, U503 girado 180°. La etapa 5 espera visto bueno.
-- [ ] 5. Planos.
+- [x] 5. Planos: cerrada (Claude Code); 0 sin rutear. La etapa 6 espera visto bueno.
 - [ ] 6. Cierre: DRC y paridad en 0, retornos, fabricación de prueba para JLCPCB en `fab/`.
 
 ## Requisitos para el firmware (SPI de 50_sensors)

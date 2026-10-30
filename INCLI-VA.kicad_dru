@@ -193,6 +193,20 @@
 	(condition "A.NetName == '+VPROT' && A.Type != 'Pad' && (A.intersectsCourtyard('U201') || A.intersectsCourtyard('C202') || A.insideArea('ZONA_BUCK_U201'))")
 	(constraint track_width (min 0.6mm)))
 
+# ---------------------------- Planos (etapa 5, pedido del usuario 2026-10-30) ----
+# Las zonas E5_* usan alivio termico (rayos 0.5 mm, separacion 0.3 mm) para la soldadura a mano.
+# Conexion solida en los pads expuestos (EP de U101 a su isla RTN, U201, U401) y en los de corriente
+# de pulso: GND de D102 (TVS de entrada) y los pines de J1 (GND_VEH y GND_CAN). J2 no tiene pines de masa.
+(rule "Planos_conexion_solida"
+	(condition "A.Type == 'Pad' && ((A.memberOfFootprint('U101') && A.Pad_Number == '25') || (A.memberOfFootprint('U201') && A.Pad_Number == '9') || (A.memberOfFootprint('U401') && A.Pad_Number == '41') || (A.memberOfFootprint('D102') && A.Pad_Number == '1') || A.memberOfFootprint('J1'))")
+	(constraint zone_connection solid))
+
+# Pads GND encerrados por pistas: el alivio solo resuelve un rayo. Cada uno tiene ademas pista o via
+# propia de retorno; se acepta un rayo (sigue siendo alivio termico para la soldadura a mano).
+(rule "Planos_un_rayo"
+	(condition "A.Type == 'Pad' && A.NetName == 'GND_VEH' && ((A.memberOfFootprint('C501') && A.Pad_Number == '2') || (A.memberOfFootprint('C503') && A.Pad_Number == '2') || (A.memberOfFootprint('C504') && A.Pad_Number == '2') || (A.memberOfFootprint('C604') && A.Pad_Number == '2') || (A.memberOfFootprint('C309') && A.Pad_Number == '2') || (A.memberOfFootprint('U751') && A.Pad_Number == '3'))")
+	(constraint min_resolved_spokes 1))
+
 # ---------------------------- Antena del ESP32-S3-WROOM-1 -------------------
 # La huella oficial RF_Module:ESP32-S3-WROOM-1 ya trae un rule area de keep-out (48 x 21 mm,
 # todas las capas de cobre: sin pistas, vias, pads, rellenos ni huellas), equivalente a 15 mm
