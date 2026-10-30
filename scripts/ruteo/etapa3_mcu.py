@@ -91,7 +91,7 @@ for a,z in [((190.45,106.75),(190.45,107.8)),((190.45,124.25),(190.45,125.5)),
             ((160.945,142.55),(160.945,141.25)),((167.645,142.55),(167.645,141.25)),
             ((171.075,135.05),(171.075,134.0)),((164.9625,136.5),(165.9,136.5))]:
     T(G,.3,[a,z]);V(G,z)
-# EN local y RESET remoto. R401 queda pendiente de la decision de ubicacion.
+# EN local y RESET remoto; R401 reubicado con autorizacion.
 RST='/MCU_RST_N'
 T(RST,.2,[(187.91,106.75),(187.91,105.3),(187.91,105.185),(187.,104.275)])
 V(RST,(187.91,105.3));T(RST,.2,[(187.91,105.3),(185.71,107.5),(184.,107.5),(180.,107.5),(170.,117.5),(170.,130.),(166.7,133.3),(160.5,133.3),(160.5,135.7)],B)
@@ -113,8 +113,8 @@ T(P3,.4,[(186.1,99.275),(187.,99.275),(189.2,101.55)],B)
 b.FindFootprintByReference('C404').SetPosition(pos((189.6,81.45)))
 DM,DP='/40_mcu/USB_D-','/40_mcu/USB_D+'
 T(DM,.3,[(193.645,80.27),(190.8,80.27),(190.57,80.5),(187.1375,80.5),(184.8625,80.5),(182.,80.5),(173.,89.5),(173.,107.5)])
-# Pendiente de autorizacion: cuello D- de 1.923 mm a 0.15 mm.
-# La propuesta se verifica exclusivamente en una copia temporal.
+# Excepcion autorizada: escape D- de 1.922754 mm a 0.15 mm, clearance >=0.2.
+T(DM,.15,[(173.,107.5),(173.2825,107.7825),(173.6,107.7825),(174.8,107.9)])
 T(DM,.3,[(174.8,107.9),(175.21,107.9),(175.21,106.75)])
 T(DP,.3,[(193.645,80.77),(191.8,80.77),(191.3,81.27),(191.3,82.4),(187.1375,82.4),(184.8625,82.4),
          (183.5,82.4),(183.3,82.2),(183.3,81.4),(182.9,81.),(182.207107,81.),(173.5,89.707107),(173.5,96.),(174.,96.5),(174.88,96.5),(175.38,97.),(175.38,98.),(174.88,98.5),(174.,98.5),(173.5,99.),(173.5,105.4),(173.94,105.84),(173.94,106.75)])
@@ -144,4 +144,4 @@ for item in b.GetDrawings():
     if isinstance(item,k.PCB_TEXT) and item.GetText()=='SIN BARNIZ' and 185 < k.ToMM(item.GetPosition().x) < 195:
         item.SetPosition(pos((192.,88.)));item.SetTextAngle(k.EDA_ANGLE(0,k.DEGREES_T))
 b.Save(str(PCB))
-print('Etapa 3 parcial regenerada; ejecutar DRC y paridad.')
+print('Etapa 3 regenerada; ejecutar DRC, paridad y verify_etapa3.py.')

@@ -1,6 +1,5 @@
-"""Medidas de etapa 3 y regresion CAN. Distingue PCB actual y propuesta USB.
-La propuesta solo se mide si falta el escape y preview_usb_escape.py ya creo
-la copia temporal. No interpreta una propuesta como un ruteo terminado.
+"""Medidas finales de etapa 3 sobre el PCB guardado; incluye regresion CAN.
+Falla si el USB esta abierto. Nunca sustituye el PCB por una copia temporal.
 """
 from pathlib import Path
 import sys,io,contextlib,importlib.util,json,math
@@ -26,12 +25,6 @@ for ref,ic,pin in [('C402','U401',2),('C401','U401',2),('C404','U402',5),('C801'
     if ref in ['C402','C404']:assert r['pad_edge_path_mm']<=1
     if ref=='C401':assert any(v.inside(v.pad('C402',1),p,p[2]) for p in r['path'])
     out['decoupling'].append(r)
-actual_board=v.b
-out['USB_actual']={s:v.route(v.pad('J401',p),v.pad('U401',n)) for s,p,n in [('D-','A7',13),('D+','A6',14)]}
-proposal=out['USB_actual']['D-'] is None
-if proposal:
-    tmp=Path('/tmp/incli-etapa3-propuesta/INCLI-VA.kicad_pcb');assert tmp.exists(),'Ejecutar preview_usb_escape.py'
-    v.b=v.k.LoadBoard(str(tmp))
 usb={s:v.route(v.pad('J401',p),v.pad('U401',n)) for s,p,n in [('D-','A7',13),('D+','A6',14)]}
 for s,r in usb.items():assert r and r['via_vertical_mm']==0,s
 usb['delta_mm']=round(abs(usb['D-']['centerline_mm']-usb['D+']['centerline_mm']),4);assert usb['delta_mm']<=.5
@@ -45,8 +38,17 @@ for sign,pin,upin in [('D+','B6',14),('D-','B7',13)]:
         if a[2]!=z[2]:length+=v.VIA_HEIGHT;via+=v.VIA_HEIGHT
         else:length+=math.dist(a[:2],z[:2])
     usb['branches'][pin]={'to_main_junction_total_mm':round(length,4),'planar_mm':round(length-via,4),'via_vertical_mm':via}
-out['USB_proposal' if proposal else 'USB_final']=usb
-out['status']='PENDIENTE: escape D- de 0.15 mm solo en copia temporal' if proposal else 'Ruteo completo para verificacion DRC/paridad'
-v.b=actual_board
+out['USB_final']=usb
+out['status']='Etapa 3 completa en el PCB guardado'
+neck=[t for t in v.b.GetTracks() if not isinstance(t,v.k.PCB_VIA) and t.GetNetname()=='/40_mcu/USB_D-' and abs(v.k.ToMM(t.GetWidth())-.15)<1e-6]
+assert len(neck)==3, 'Escape autorizado: tres segmentos'
+expected={frozenset([a,z]) for a,z in zip([(173.,107.5),(173.2825,107.7825),(173.6,107.7825)],[(173.2825,107.7825),(173.6,107.7825),(174.8,107.9)])}
+actual={frozenset([v.xy(t.GetStart()),v.xy(t.GetEnd())]) for t in neck}
+assert actual==expected
+out['USB_escape']={'width_mm':.15,'length_mm':round(sum(v.k.ToMM(t.GetLength()) for t in neck),6),'layer':'F.Cu','approved':True}
+assert abs(out['USB_escape']['length_mm']-1.922754)<.00001
+for t in v.b.GetTracks():
+    if isinstance(t,v.k.PCB_VIA) or t.GetNetname() not in ['/40_mcu/USB_D-','/40_mcu/USB_D+']:continue
+    assert abs(v.k.ToMM(t.GetWidth())-.3)<1e-6 or t in neck
 out['central_ground_plated_holes']=sum(p.GetNumber()=='41' and p.GetDrillSize().x>0 for p in v.b.FindFootprintByReference('U401').Pads());assert out['central_ground_plated_holes']==12
 print(json.dumps(out,indent=2))

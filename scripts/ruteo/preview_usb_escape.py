@@ -1,4 +1,4 @@
-"""Evalua el cuello USB pendiente de autorizacion EN UNA COPIA TEMPORAL.
+"""Historico: evalua el escape USB EN UNA COPIA TEMPORAL.
 Nunca guarda el cuello en el proyecto. No equivale a cerrar la etapa 3.
 """
 from pathlib import Path
@@ -11,6 +11,8 @@ from matplotlib.patches import Rectangle,Polygon,Circle
 ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'docs/layout/ruteo';TMP=Path('/tmp/incli-etapa3-propuesta');TMP.mkdir(exist_ok=True)
 for ext in ('kicad_pcb','kicad_pro','kicad_dru'):shutil.copy2(ROOT/f'INCLI-VA.{ext}',TMP/f'INCLI-VA.{ext}')
 b=k.LoadBoard(str(TMP/'INCLI-VA.kicad_pcb'));net=b.FindNet('/40_mcu/USB_D-')
+if any(not isinstance(t,k.PCB_VIA) and t.GetNetname()=='/40_mcu/USB_D-' and abs(k.ToMM(t.GetWidth())-.15)<1e-6 for t in b.GetTracks()):
+    raise SystemExit('Escape ya aplicado: usar verify_etapa3.py. No se duplican segmentos ni evidencias historicas.')
 points=[(173.,107.5),(173.2825,107.7825),(173.6,107.7825),(174.8,107.9)]
 for a,z in zip(points,points[1:]):
  t=k.PCB_TRACK(b);t.SetStart(k.VECTOR2I(k.FromMM(a[0]),k.FromMM(a[1])));t.SetEnd(k.VECTOR2I(k.FromMM(z[0]),k.FromMM(z[1])));t.SetLayer(k.F_Cu);t.SetWidth(k.FromMM(.15));t.SetNet(net);b.Add(t)

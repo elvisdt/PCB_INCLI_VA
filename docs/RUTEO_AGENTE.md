@@ -262,3 +262,12 @@ Etapa 3 parcial mediante `etapa3_mcu.py`: UART, BOOT, EN local/C403, RESET remot
 Aplicados los movimientos autorizados de C401/C402/R401 y C404 en esquema/PCB; coordenadas y MPN completos en `RUTEO_TRASPASO.md`. C404 debe replicarse en la copia manual, que no fue modificada. ERC sin errores; paridad 0, no fue necesario F8. QA visual del esquema exportado completa; `sch_visual_qa` no está disponible en esta sesión.
 
 Ruteo y medidas completados salvo el cuello final de D− junto a U401. La prueba con 0.3 mm infringe clearance entre pads 14/15; se solicitó autorizar 0.15 mm por 1.923 mm. La copia temporal con ese cuello da DRC 0 errores, USB principal sin vías y diferencia nominal 0.0001 mm. El proyecto conserva ese enlace abierto hasta la respuesta: DRC 0 errores /59 avisos /224 conexiones pendientes. Los JSON distinguen medidas reales y propuesta. Renders de ambas caras actualizados. Etapa 3 sigue abierta; no se avanza a etapa 4.
+
+
+## Codex — cierre final de etapa 3 (2026-10-29)
+
+Aplicada la autorización del cuello D− de 0.15 mm durante 1.922754 mm, únicamente tres segmentos F.Cu del escape junto a U401. Ningún movimiento ni cambio de esquema adicional. El generador reproduce la solución y el verificador exige el USB completo en la placa guardada, sin usar la antigua propuesta temporal.
+
+DRC 0 errores /57 avisos (52 vías GND de etapa 5 +5 conocidos), paridad 0, ERC 0 errores /5 avisos conocidos. Quedan 223 conexiones: 108 para etapa 4 y 115 de masas para etapa 5. USB D−/D+ 45.9509/45.9508 mm, diferencia 0.0001 mm, sin vías principales. C402 0.7750 mm, C404 0.5748 mm, EN–C403 1.5415 mm y EN–R401 4.9641 mm entre bordes. Tabla completa en RUTEO_TRASPASO.md y JSON final.
+
+Renders finales de ambas caras generados y revisados. `.kicad_pro` revisado: solo orden de clases, se conserva el original después de comprobar equivalencia. Etapa 4 no iniciada; retoma sujeta a nuevo visto bueno. La tabla de componentes y C404 posterior a placement-v1 siguen pendientes de replicar por el usuario en ruteo-manual.
