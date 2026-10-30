@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,10.0.7-10.0.7~ubuntu26.04.1*%
-%TF.CreationDate,2026-10-30T10:43:54-05:00*%
+%TF.CreationDate,2026-10-30T10:58:27-05:00*%
 %TF.ProjectId,INCLI-VA,494e434c-492d-4564-912e-6b696361645f,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Soldermask,Top*%
 %TF.FilePolarity,Negative*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 10.0.7-10.0.7~ubuntu26.04.1) date 2026-10-30 10:43:54*
+G04 Created by KiCad (PCBNEW 10.0.7-10.0.7~ubuntu26.04.1) date 2026-10-30 10:58:27*
 %MOMM*%
 %LPD*%
 G01*
@@ -771,8 +771,8 @@ X144280000Y-120700000D03*
 %TD*%
 D61*
 %TO.C,C401*%
-X189200000Y-101550000D03*
-X189200000Y-99650000D03*
+X189200000Y-100750000D03*
+X189200000Y-98850000D03*
 %TD*%
 D19*
 %TO.C,R806*%

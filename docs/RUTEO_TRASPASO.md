@@ -296,7 +296,7 @@ Ajustes de serigrafía asociados: referencia U301 (142.2,132.8); C401 (189.2,97.
 ### Decisiones abiertas y obligaciones futuras
 
 - Nuevo visto bueno para comenzar etapa 4. No queda autorización de etapa 3 pendiente.
-- Lado del imán ROT sin definir: mantener Ø17.9 mm libre en ambas caras, salvo U503 y pasivos previstos.
+- Imán ROT arriba (F.Cu) desde el 2026-10-30: ver «Requisitos para la caja» de `PENDIENTES.md`.
 - Velocidad CAN 250/500 kbps se define en firmware; no bloquea este ruteo.
 - R602/R603/C609 montadas en PROTO; montaje de terminación en PROD según instalación.
 - Stock de C105 PROD se confirma con el BOM, sin bloquear ruteo. Revisar también MPN «a verificar» de PENDIENTES antes del BOM final; ensamblador/stock de producción se revisarán cuando corresponda.
@@ -511,7 +511,7 @@ C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece 
 - **Barrera CAN:** ningún cobre cruza `BARRERA_CAN`, salvo los pads de U601 sobre su cuerpo. El dominio CAN (J1.3–5, D601, R602/R603/C609, R605, C607/C608, C610/C606, FB601, FB602) queda a la izquierda/abajo de la banda. GND_CAN propio, sin unirlo nunca a GND_VEH. Separación ≥ 2.5 mm (`ISO_CAN_barrera`).
 - **Antena del ESP32-S3:** nada de cobre en el keep-out de la huella (x ≥ 191.94, y 91.5–139.5). La placa tiene un recorte allí.
 - **Sensores:** **sin pistas ni vías bajo U501** (crt 154.96–163.65 × 99.45–106.54), **U502** (165.50–169.09 × 93.45–96.55) **ni U503** (146.10–153.90 × 97.20–102.80), en ninguna capa. El plano GND sí puede pasar por debajo.
-- **Imán de ROT:** círculo libre de Ø17.9 mm con centro en el eje de U503 (150.0, 100.0), **en las dos caras**. Adentro solo U503 y sus pasivos: sin tornillería, sin H5 y sin el área B. Vías: solo las tres GND tapadas aprobadas en la etapa 4. El lado del imán todavía no está decidido.
+- **Imán de ROT (actualizado 2026-10-30):** el imán va **arriba** (F.Cu), frente a U503 (150.0, 100.0). El círculo de Ø17.9 mm no está libre en F.Cu (U501 a 4.88 mm del eje, C503 a 7.24 mm; no se mueven): portaimán de Ø ≤ 8.7 mm o con la cara a ≥ 3.8 mm de la placa. Detalle en «Requisitos para la caja» de `PENDIENTES.md`. Texto original: círculo libre de Ø17.9 mm con centro en el eje de U503 (150.0, 100.0), **en las dos caras**. Adentro solo U503 y sus pasivos: sin tornillería, sin H5 y sin el área B. Vías: solo las tres GND tapadas aprobadas en la etapa 4. El lado del imán todavía no está decidido.
 - **Fijaciones H1 (105,55), H2 (195,55), H3 (105,145), H4 (195,145), H5 (156,88.5):** M3, anillo de 6.4 mm sin red. Pistas y vías a ≥ 4 mm del centro (`H_zona_arandela`); otro cobre a ≥ 0.5 mm del anillo.
 - **Área B (`APOYO_CAJA_B`):** Ø8 mm en (163.5, 99.0), en B.Cu. Sin pistas, vías ni pads; el relleno de GND sí puede pasar.
 - **Potencia y DO lejos de U503:** nada de potencia (+5V, VBAT/VIN, buck) ni DO a menos de 10 mm de U503.
@@ -585,6 +585,8 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
   - GND_VEH sin unir a GND_CAN ni a U101_RTN. Rellenos recalculados.
 
 ### Etapa 6 — Cierre
+**Hallazgos 2 y 4 (Claude Code, 2026-10-30):** imán arriba, sin mover U501/C503/TP502; de los 6 movimientos de pasivos, solo C401 pasó el DRC sin rerutear otras redes y se aplicó (`etapa6_mover_pasivos.py`); C402 queda como excepción por el límite de ≤ 2 mm; C404, C507, R502 y C506 esperan decisión. Ver `PENDIENTES.md`.
+
 **Revisión independiente (Claude Code, 2026-10-30):** stencil sin pasta en DNP, Notes de C602, «K» de cátodo en D101–D103/D701/D751 (`etapa6_serigrafia_catodo.py`), teardrops de U601 verificados en `verify_etapa5.py`, CPL/BOM de JLC sin THT ni U401 con rotaciones por familia (`cpl_jlc.csv`, `bom_jlc.csv`). Aceptados: H5 sin acero, par CAN asimétrico, C104 a 1.6 mm del borde y placa sin V-cut. **Esperan aprobación:** círculo del imán (U501 a 4.88 mm del eje) y courtyards < 1 mm. Detalle en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`.
 
 **Estado (Claude Code, 2026-10-30): CERRADA, ruteo terminado.** Teardrops (`etapa6_teardrops.py`, 697 zonas), referencias de Q101/U801 movidas (silk_overlap corregido), costura de la ranura bajo U401 (`etapa6_costura_u401.py`, 13 vías, medición en `verify_ranura_u401.py` → `docs/layout/ruteo/etapa6-ranura-u401.json`), fabricación de prueba (`etapa6_fab.py` → `fab/proto/`) y renders `etapa6-*.png`. DRC 0 errores / 3 avisos aceptados (2 `silk_edge_clearance` y `lib_footprint_mismatch` de U401), paridad 0, ERC sin cambios. Tramos sin plano de la etapa 5 aceptados por el usuario. Detalle y lo que queda (LCSC, kicad-happy, confirmar rotaciones JLC, hallazgos 2 y 4) en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`.
@@ -648,7 +650,7 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 
 ## 9. Decisiones registradas y pendientes (2026-10-29)
 1. **U503:** 10 mm desde el borde del cuerpo; excepción aceptada del tronco +5V existente a 7.6 mm (corregido; antes 9.8 mm).
-2. **Imán ROT:** lado sin definir; mantener libre el círculo de Ø17.9 mm en ambas caras, salvo U503 y sus pasivos previstos.
+2. **Imán ROT:** arriba (F.Cu), decisión del usuario del 2026-10-30; portaimán de Ø ≤ 8.7 mm o con la cara a ≥ 3.8 mm de la placa (U501 a 4.88 mm del eje).
 3. **C105 PROD (EEE-FK1H102AV):** confirmar stock en la revisión del BOM; no bloquea el ruteo. La huella J16 antivibración ya acepta EEE-FK1H102AM.
 4. **TP301:** traslado ya aplicado y registrado en Cambios de ubicación; asegurar plano continuo bajo SW en etapa 5.
 5. **Terminación CAN:** R602/R603/C609 montadas en PROTO; en PROD se definen según instalación.

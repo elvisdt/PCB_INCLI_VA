@@ -2,14 +2,14 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**ruteo terminado**; correcciones de la revisión independiente aplicadas; hallazgos 2 y 4 esperan aprobación; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (**ruteo terminado**; revisión independiente aplicada; imán arriba; C401 movido; 4 movimientos de pasivos esperan decisión; ver «RETOMAR AQUÍ»).
 
 ## RETOMAR AQUÍ — ruteo terminado (etapa 6 cerrada)
 Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
 **Quedan:**
-- [ ] **Hallazgo 2 (círculo del imán) — espera aprobación del usuario; no mover nada antes.** Ver «Revisión independiente», abajo.
-- [ ] **Hallazgo 4 (courtyards < 1 mm) — espera aprobación del usuario; no mover nada antes.** Ver «Revisión independiente».
+- [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
+- [ ] **Hallazgo 4 (courtyards):** C401 aplicado. **Esperan decisión del usuario:** C404, C507, R502 (o la alternativa C508) y C506, que requieren rerutear pistas de otras redes; y confirmar la excepción C402–U401. No mover nada antes.
 - [ ] BOM con códigos LCSC (`bom_jlc.csv` y `bom_proto.csv` no los tienen). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
 - [ ] Revisión independiente con kicad-happy (solo informe). No estaba instalada; la revisión de 2026-10-30 se hizo con scripts propios.
 - [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
@@ -51,20 +51,28 @@ Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo complet
   - **8.** Par CAN asimétrico: CAN_H salta 3.8 mm por B.Cu (2 vías), CAN_L todo en F.Cu. Sin efecto a la velocidad de CAN clásico.
   - **9.** C104 (cara inferior) a ~1.6 mm del borde izquierdo, con el courtyard sobre el borde. En «Requisitos para la caja»; el pedido a JLC va **sin V-cut** (fresado).
 
-**Revisión independiente — esperan aprobación (no mover nada antes):**
-- **2. Círculo del imán (Ø17.9 mm, eje (150, 100)).** Corrección del informe anterior: el cuerpo de U501 (SCL3300, 8.8 × 8.2 mm medido en su serigrafía, ~3.3 mm de alto; la huella easyeda no tiene F.Fab) queda a **4.88 mm** del eje: entra **4.07 mm**, no 1.4. Pads a 6.47 mm. C503 (0603, cuerpo a 7.24 mm). En B.Cu, TP502 (courtyard a 8.08 mm). Para sacar U501 del círculo hay que moverlo ≥ 4.6 mm al este (choca con C505 y U502) o ~8.7 mm al sur: es replantear el grupo de sensores y rerutear sus 9 pistas SPI/alimentación.
-- **4. Courtyards:** 22 de 37 pares incumplen el criterio de LAYOUT_NOTES (1 mm entre pasivos; 0.5 mm pasivo–IC). Distancia real entre pads: 0.58–1.83 mm. Propuesta y detalle en el informe al usuario del 2026-10-30.
+**Revisión independiente — hallazgos 2 y 4 (decisiones del usuario, 2026-10-30):**
+- **2. Imán:** va **arriba** (F.Cu). U501, C503 y TP502 no se mueven. El cuerpo de U501 (8.8 × 8.2 mm medido en su serigrafía; la huella easyeda no tiene F.Fab) queda a 4.88 mm del eje, no 7.54 como decía el primer informe. Restricciones del portaimán en «Requisitos para la caja».
+- **4. Courtyards:** de los 6 movimientos aprobados, probados uno por uno con el DRC real (copia aislada, zonas rellenas), **solo C401 se aplicó**: (189.2, 100.6) → (189.2, 99.8), `etapa6_mover_pasivos.py`, tramos de reconexión en el grupo `CLAUDE_ETAPA6_MOV`. C401–C402 pasa de 0.23 a 1.03 mm y C403–C401 de 0.51 a 0.73 mm. DRC 0 errores.
+  - **C402 no se movió:** para 0.5 mm de courtyard con U401 habría que alejarlo 0.22 mm, y la pista al pin 3V3 pasaría de 1.98 a ~2.2 mm, por encima del límite de ≤ 2 mm del usuario. C402–U401 (courtyard 0.28 mm, pads a 0.78 mm) queda como **excepción**, pendiente de confirmación.
+  - **Sin aplicar, esperan decisión** (chocan con pistas de otras redes; habría que rerutearlas):
+    - C404 (+0.5, 0): pad GND sobre USB D+; vía VBUS sobre una pista GND en B.Cu. Ningún desplazamiento ≤ 1.2 mm pasa sin tocar USB D±.
+    - C507 (−0.4, 0): pad GND sobre el tronco +3V3_A (x 144.3).
+    - R502 (+0.8, 0): pad CS_IMU sobre el tronco +3V3_A (x 172.3). **Alternativa limpia:** mover C508 (168.7, 90.3) → (167.9, 90.3); DRC 0 errores, resuelve el mismo par. No se aplicó porque C508 no estaba aprobado.
+    - C506 (+0.8, 0): pads sobre IMU_INT2 y +3V3_A. Ni C506 ni C505 tienen desplazamiento ≤ 1.2 mm sin rerutear.
+  - **Excepción aceptada por el usuario:** los 16 pares con ≥ 0.86 mm entre pads (incluido el grupo de desacoples CAN C601–C605).
 
 **Pendientes fuera del ruteo:**
 - Verificar los MPN marcados «a verificar» antes de la BOM final. Confirmar el stock de C105 PROD (EEE-FK1H102AV).
 - SCL3300 (DFL-12): revisar la huella para producción; los pads son 0.32 mm más largos que el land pattern.
 - C104 va en B.Cu: la caja necesita separadores de ≥ 12 mm y adhesivo.
 - Firmware: U503 está girado 180°, lo que da un desfase fijo de 180° (compensar con ZPOS). La velocidad CAN se define en firmware. El modo SPI de cada sensor está en «Requisitos para el firmware».
-- Lado del imán de ROT sin definir: mantener libre el círculo de Ø17.9 mm en ambas caras.
+- Imán de ROT arriba (F.Cu), con portaimán de Ø ≤ 8.7 mm o cara a ≥ 3.8 mm de la placa (ver «Requisitos para la caja»).
 
 **Replicar en `ruteo-manual`** (lo hace el usuario; detalle en `RUTEO_TRASPASO.md`):
 - Movimientos de las etapas 1–4 (sección 3, «Cambios de ubicación»).
 - Etapa 6: teardrops, costura `CLAUDE_ETAPA6_COSTURA` junto al haz bajo U401 y referencias de Q101/U801 movidas.
+- Revisión independiente: C401 de (189.2, 100.6) a (189.2, 99.8) con sus tramos de reconexión, y las «K» de cátodo de D101–D103, D701 y D751 (grupo `CLAUDE_ETAPA6_SILK`).
 - C404 nuevo.
 - Desvío de RESET.
 - Giro de U503 y movimientos de los pasivos de sensores.
@@ -174,10 +182,7 @@ Cerradas; antes figuraban como abiertas.
 - **Fabricación:** 2 capas, JLCPCB. El prototipo se arma en la variante CAN + DO + ROT.
 - **ASM330 (LGA):** lo suelda el usuario con aire caliente y stencil. Pedir el stencil a JLCPCB.
 - **Conformal coating: sí.** Zonas a enmascarar (J1, J2, J401 y J402) dibujadas en `User.Comments`, con el rótulo "SIN BARNIZ" en F.Silkscreen. Se asume PD1 bajo el barniz; las distancias de la `.kicad_dru` (PD2) quedan con margen.
-- **Imán de ROT:** lado aún no definido, así que se mantienen libres las dos caras.
-  - Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
-  - Portaimán no ferromagnético de hasta Ø16 mm.
-  - Tornillo o inserto de H5 de inoxidable A2 o de latón (no magnético).
+- **Imán de ROT:** arriba (F.Cu), frente a U503; portaimán de Ø ≤ 8.7 mm o, si es mayor, con la cara a ≥ 3.8 mm de la placa. Detalle en «Requisitos para la caja». H5 no magnético (inoxidable A2/A4, latón o nylon).
 - **Mecánica:** la caja todavía no está diseñada. Sus requisitos quedan en "Requisitos para la caja".
 
 ## Hecho en este turno (2026-10-27)
@@ -604,9 +609,13 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
   - **C104 a ~1.6 mm del borde izquierdo** (cuerpo; el courtyard llega al borde): sin nervios ni paredes de la caja en x < 102 frente a C104. Placa **fresada, sin V-cut** (aceptado por el usuario, 2026-10-30).
 - **Adhesivo:** C104 (cara inferior, vibración) y C105 si se monta la versión sin terminales de soporte.
 - **Antena del ESP32-S3:** keep-out de la huella oficial (48 × 21 mm alrededor de la antena, borde derecho). Sin metal de la caja ni tornillería sobre la antena ni a menos de 15 mm.
-- **ROT:**
-  - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
-  - Portaimán no ferromagnético de Ø ≤ 16 mm. Hay libre un círculo de Ø17.9 mm en las dos caras.
+- **ROT (decisión del usuario, 2026-10-30): imán arriba, en la cara F.Cu, frente a U503.**
+  - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral, pegado en la punta del eje o en un portaimán no ferromagnético de **Ø ≤ 8.7 mm** centrado en el eje. Air gap 0.5–3 mm a U503.
+  - El círculo de Ø17.9 mm **no** está libre en F.Cu: U501 (SCL3300, ~3.3 mm de alto) tiene el cuerpo a 4.88 mm del eje y C503 (0603, ~0.9 mm) a 7.24 mm. No se mueven (decisión del usuario).
+  - Holgura radial con portaimán de Ø8.7 mm: 0.53 mm a U501 y 2.89 mm a C503.
+  - **Portaimán mayor que Ø8.7 mm:** su cara inferior debe quedar por encima de U501. Con 0.5 mm de margen: cara a **≥ 3.8 mm** sobre la placa, es decir air gap **≥ 2.6 mm** sobre U503 (TSSOP-14, 1.2 mm máx.), dentro del rango 0.5–3 mm solo entre 2.6 y 3.0 mm. Distancia radial del borde del portaimán: a U501 = 4.88 − Ø/2 mm y a C503 = 7.24 − Ø/2 mm (negativo = el portaimán pasa por encima). Ejemplo Ø16 mm: −3.12 mm (U501) y −0.76 mm (C503), ambos por encima.
+  - Cara inferior: TP502 (courtyard a 8.08 mm del eje) se queda; no afecta con el imán arriba.
+  - Tornillo e inserto de H5 no magnéticos (inoxidable A2/A4, latón o nylon).
 - **Coating:** enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`).
 
 ## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
