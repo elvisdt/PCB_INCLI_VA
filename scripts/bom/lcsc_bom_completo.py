@@ -13,6 +13,10 @@ import csv, json, math, time, urllib.request
 
 PLACAS = 6
 MIN_PASIVO_CHICO = 20
+# Sustitutos solo para la compra en lcsc.com (el original no tiene stock en lcsc.com; JLC sigue montando el
+# original, que sí tiene stock en JLC). Estado «substitute ... VERIFY» en docs/BOM_SOURCING.md.
+SUST_LCSC = {'C1634': ('C106245', 'CC0603JRNPO9BN100'),     # C303: 10 pF 50 V C0G ±5 % 0603, YAGEO (2026-10-30)
+             'C57112': ('C100042', 'CC0603KRX7R9BB103')}    # C601, C607: 10 nF 50 V X7R ±10 % 0603, YAGEO (2026-10-30)
 URL = 'https://wmsc.lcsc.com/ftps/wm/product/detail?productCode={}'
 
 
@@ -37,6 +41,7 @@ filas, avisos, por_codigo = [], [], {}
 for row in csv.DictReader(open('bom/BOM_PROTO.csv')):
     code = row['LCSC'].strip()
     if not code or row['Supplier'] == 'DigiKey/Mouser': continue
+    if code in SUST_LCSC: code, row['MPN'] = SUST_LCSC[code]
     if code in por_codigo:          # mismo código en dos líneas (SW401, SW402): una sola línea en el carrito
         r = por_codigo[code]
         r['Qty'] = str(int(r['Qty']) + int(row['Qty'])); r['Designator'] += ',' + row['Designator']

@@ -143,6 +143,14 @@ Supuestos: precio de lcsc.com en el escalón de (cantidad por placa × N placas)
 - Se montan D703/D753, R708–R710, R758–R760 y C105; no se montan D801, D802, R803 ni R804.
 - Los pasivos a Basic y los sustitutos de igual especificación (aceptados) valen también para PROD.
 
+## Sustitutos solo para la compra en lcsc.com (`bom/LCSC_BOM_COMPLETO_PROTO.csv`)
+Los originales tienen stock en JLC (allí siguen montándose), pero 0 en lcsc.com (consulta 2026-10-30). Mismos huella 0603, dieléctrico, tensión y tolerancia. No cambian el esquemático, el PCB, `bom/BOM_PROTO.csv` ni `fab/proto/bom_jlc_lcsc.csv`.
+
+| Ref | Original (LCSC) | Sustituto (LCSC) | Especificación | Stock lcsc.com | Estado |
+|---|---|---|---|---|---|
+| C303 | CL10C100JB8NNNC (C1634), Samsung | CC0603JRNPO9BN100 (C106245), YAGEO | 10 pF 50 V C0G/NP0 ±5 % 0603 | 4 768 800 | substitute CC0603JRNPO9BN100 for CL10C100JB8NNNC (lcsc.com only), VERIFY, 2026-10-30 |
+| C601, C607 | 0603B103K500NT (C57112), FH | CC0603KRX7R9BB103 (C100042), YAGEO | 10 nF 50 V X7R ±10 % 0603 | 4 000 | substitute CC0603KRX7R9BB103 for 0603B103K500NT (lcsc.com only), VERIFY, 2026-10-30 |
+
 ## Archivos
 - `fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`: lo que monta JLC.
 - `bom/A_MANO_PROTO.csv`: lo que se suelda a mano, con proveedor y cantidad.
