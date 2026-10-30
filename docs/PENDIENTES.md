@@ -9,6 +9,11 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 
 Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
+**Pedido a JLCPCB (prototipo, `pcb-v1-rc1`):**
+- Archivo de placa: `fab/proto/INCLI-VA_gerbers.zip` (no versionado; idéntico byte a byte a `fab/proto/gerbers/` del tag `pcb-v1-rc1`, comprobado el 2026-10-30). Si falta, regenerarlo con `/usr/bin/python3 -B scripts/ruteo/etapa6_fab.py`.
+- Opciones: **2 capas, FR4, 1.6 mm, cobre 1 oz, acabado ENIG, sin panel (placa individual 100 × 100 mm), sin V-cut (fresado), con stencil.**
+- Stencil: capas de pasta en `fab/proto/stencil/` (`INCLI-VA-F_Paste.gtp`, `INCLI-VA-B_Paste.gbp`, `INCLI-VA-Edge_Cuts.gm1`); son las mismas que van en el zip. Sin aperturas en los 12 DNP. La cara inferior solo tiene los 2 pads de C104: alcanza con stencil superior, y C104 se suelda a mano.
+
 **Quedan:**
 - [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
 - [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
