@@ -17,14 +17,17 @@ Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, pla
 **Quedan:**
 - [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
 - [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
-- [x] **BOM con códigos LCSC** (Claude Code, 2026-10-30, rama `bom-sourcing`): `docs/BOM_SOURCING.md`, `fab/proto/bom_jlc_lcsc.csv` (63 líneas, 126 piezas; sin L201 ni U503), `bom/BOM_PROTO.csv`, `bom/BOM_PROD.csv`, `bom/LCSC_CART_PROTO.csv` y `bom/DIGIKEY_MOUSER.csv`. El usuario autorizó la skill agentic-sourcing **solo para consultar** (`jlc_lookup.py`, sin `sourcing.py`). Componentes por placa: PROTO USD 104.76 (5 placas) / 85.32 (100); PROD 99.45 / 83.06, sin U701/U751. No se hizo ningún pedido.
-- [ ] **Decidir los sustitutos `VERIFY`** de `docs/BOM_SOURCING.md` («Antes de subir a JLC») antes de subir la BOM. Los críticos son Q101 (AOD458 por STD18NF25), Q102 (IRLR3110Z por IPD30N10S3L-34), F101 (AEM MF2410 por Bourns SF-2410), C101, C104 y C201. U601 ADM3055EBRIZ-RL: JLC tiene solo 55 u.
-- [ ] Si se aprueban los sustitutos, pasar los MPN al esquema en `main` (campos `MPN`/`MPN_PROTO`/`Notes`). En este turno no se tocó el esquema.
-- [ ] PROD: decidir si los pasivos deben ser AEC-Q200. Los cambios a Basic y varios sustitutos no lo son.
-- [ ] Comprar a mano en DigiKey/Mouser L201 (XAL6060-333MEC) y U503 (AS5147U-HTSM): JLC/LCSC sin stock. En la vista previa de JLC, marcarlos «no montar» (siguen en `cpl_jlc.csv`).
+- [x] **BOM con códigos LCSC** (Claude Code, 2026-10-30, rama `bom-sourcing`; agentic-sourcing solo para consultar con `jlc_lookup.py`, sin `sourcing.py`; no se hizo ningún pedido). Ver `docs/BOM_SOURCING.md`.
+  - Sustitutos decididos por el usuario: Q101, Q102 y F101 **rechazados** (se compran los originales en DigiKey/Mouser y se sueldan a mano). C101, C201 y C104 sin AEC-Q200 **solo en PROTO**; PROD mantiene los originales. SCL3300-D01-10 aceptado: según Murata (Doc. 4921 Rev. 2, §9) es el carrete de 1000 u. ADM3055EBRIZ-RL, pasivos a Basic/preferred y sustitutos de igual especificación (incluida la tira 1×3 de J402): aceptados.
+  - Lo que monta JLC: `fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 60 líneas, 123 piezas (coinciden una a una). Se quitaron del CPL F101, Q101, Q102, L201 y U503.
+  - A mano (5 placas + 1): `bom/A_MANO_PROTO.csv`. De LCSC: J1, J2, J401, J402 y U401 (carrito `bom/LCSC_CART_PROTO.csv`, USD 51.18). De DigiKey/Mouser: F101, Q101, Q102, L201 y U503 (`bom/DIGIKEY_MOUSER.csv`).
+  - Componentes por placa: PROTO USD 111.48 (5 placas) / 90.88 (100); PROD 107.84 / 89.62, sin U701/U751.
+- [ ] **Sesión nueva (en `main`): pasar al esquema los sustitutos aceptados** (`MPN_PROTO`, código LCSC y `Notes`) según `docs/BOM_SOURCING.md`. PROD conserva los AEC-Q200 de C101, C201 y C104 y los originales de Q101, Q102 y F101.
+- [ ] `scripts/ruteo/etapa6_fab.py`: agregar F101, Q101, Q102, L201 y U503 a su lista de piezas a mano. Si se regenera tal como está, vuelve a meter esas cinco piezas en `cpl_jlc.csv`.
+- [ ] Pedido: U601 ADM3055EBRIZ-RL tiene solo 55 u en JLC. Para PROD, comprar en DigiKey/Mouser lo de `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROD).
 - [ ] **Revisión independiente** con kicad-happy u otro revisor (solo informe). La de 2026-10-30 se hizo con scripts propios porque kicad-happy no estaba instalada.
 - [ ] **Comparación con `ruteo-manual`** (trabajo del usuario en `PCB_INCLI_VA_manual`): decidir qué se conserva de cada ruteo. La lista de cambios a replicar está en «Replicar en `ruteo-manual`», abajo.
-- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
+- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
 - [ ] Esquema, hoja 60 (anterior a este turno): `sch_visual_qa` avisa que #PWR032 se superpone con R601 (~3.2 mm²). Solo legibilidad.
 
 **Antes de tocar el PCB:**

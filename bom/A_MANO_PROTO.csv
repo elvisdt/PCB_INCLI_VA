@@ -1,0 +1,11 @@
+Designator,Comment,Footprint,MPN,Manufacturer,Proveedor,Codigo_LCSC,Qty_por_placa,Qty_5_placas_mas_1,Qty_a_comprar,Precio_10_USD,Motivo
+F101,2A 250VDC,Fuse_Bourns_SF-2410,SF-2410FPA200W-2,Bourns,DigiKey/Mouser,,1,6,6,1.0524 (ref. LCSC),"JLC/LCSC stock 0; sustituto AEM MF2410 rechazado (proteccion de entrada, el prototipo valida el diseno de produccion)"
+J1,"MSTBV 2,5/5-GF-5,08","PhoenixContact_MSTBV_2,5_5-GF-5,08_1x05_P5.08mm_Vertical_ThreadedFlange",1777109,Phoenix Contact,LCSC,C7164734,1,6,6,0.9724,THT
+J2,"MSTBV 2,5/2-GF-5,08","PhoenixContact_MSTBV_2,5_2-GF-5,08_1x02_P5.08mm_Vertical_ThreadedFlange",1777073,Phoenix Contact,LCSC,C480552,1,6,6,1.1001,THT
+J401,USB4105-GF-A,USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,USB4105-GF-A,GCT,LCSC,C3020560,1,6,6,1.1001,THT
+J402,UART0,PinHeader_1x03_P2.54mm_Vertical,2.54-1*3PPin,BOOMELE,LCSC,C49257,1,6,20,0.0286 (MOQ 20),THT
+L201,33uH,L_Coilcraft_XAL6060-XXX,XAL6060-333MEC,Coilcraft,DigiKey/Mouser,,1,6,6,2.8281 (ref. LCSC),JLC/LCSC stock 0; sin equivalente 33uH en la misma huella
+Q101,STD18NF25,TO-252-2,STD18NF25,STMicroelectronics,DigiKey/Mouser,,1,6,6,5.3743 (ref. LCSC),JLC/LCSC stock 0; sustituto AOD458 rechazado (proteccion de entrada)
+Q102,IPD30N10S3L-34,TO-252-2,IPD30N10S3L34ATMA1,Infineon,DigiKey/Mouser,,1,6,6,1.2069 (ref. LCSC),JLC/LCSC stock 0; sustituto IRLR3110Z rechazado (proteccion de entrada)
+U401,ESP32-S3-WROOM-1-N8R2,ESP32-S3-WROOM-1,ESP32-S3-WROOM-1-N8R2,Espressif Systems,LCSC,C2913204,1,6,6,4.0407,"modulo castellado, soldar a mano"
+U503,AS5147U-HTSM,TSSOP-14_4.4x5mm_P0.65mm,AS5147U-HTSM,ams OSRAM,DigiKey/Mouser,,1,6,6,10.8657 (ref. LCSC),JLC/LCSC stock 0
