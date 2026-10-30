@@ -3190,7 +3190,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3212,7 +3212,7 @@
 				)
 			)
 		)
-		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "DVIO de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3234,7 +3234,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3245,7 +3245,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3256,7 +3256,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -3267,7 +3267,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 119.38 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4002,7 +4002,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4024,7 +4024,7 @@
 				)
 			)
 		)
-		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "A_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4046,7 +4046,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4057,7 +4057,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4068,7 +4068,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4079,7 +4079,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 93.98 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -4248,7 +4248,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4270,7 +4270,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "VDDIO de U502 (ST fig. 14: C3 = 100 nF junto al pin 5). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4292,7 +4292,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4303,7 +4303,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4314,7 +4314,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4325,7 +4325,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 109.22 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4840,7 +4840,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U502 (ST fig. 14: C2 = 10 uF; ST sugiere aluminio, aquí cerámico X7R). 0805 por DC bias. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "VDD de U502 (ST fig. 14: C2 = 10 uF; ST sugiere aluminio, aquí cerámico X7R). 0805 por DC bias. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30, consolidacion): Samsung CL21B106KAYQNNE (25 V X7R, LCSC C3039694), sin AEC-Q200: el original no tiene stock en lcsc.com."
 			(at 96.52 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -4863,6 +4863,39 @@
 			)
 		)
 		(property "LCSC" "C126586"
+			(at 96.52 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CL21B106KAYQNNE"
+			(at 96.52 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Samsung"
+			(at 96.52 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C3039694"
 			(at 96.52 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5110,7 +5143,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5132,7 +5165,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "VDD de U502 (ST fig. 14: C1 = 100 nF junto al pin 8). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5154,7 +5187,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5165,7 +5198,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5176,7 +5209,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5187,7 +5220,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 83.82 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -5710,7 +5743,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5732,7 +5765,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "VDD/VDD3V3 de U503 (fig. 13, modo 3.3 V: 100 nF). Solo variante ROT: DNP en la variante estándar. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5765,7 +5798,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5776,7 +5809,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5787,7 +5820,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -5798,7 +5831,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 236.22 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6598,7 +6631,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6620,7 +6653,7 @@
 				)
 			)
 		)
-		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "VDD de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6642,7 +6675,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6653,7 +6686,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6664,7 +6697,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -6675,7 +6708,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 81.28 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7602,7 +7635,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7624,7 +7657,7 @@
 				)
 			)
 		)
-		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "D_EXTC de U501. Circuito de aplicación de Murata (Doc. 4921, fig. 16 y tabla 48): 70-130 nF, ESR <= 100 mohm, junto al pin. Murata usa 0402; aquí 0603 (prototipo). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7646,7 +7679,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7657,7 +7690,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7668,7 +7701,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -7679,7 +7712,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 106.68 115.57 0)
 			(hide yes)
 			(show_name no)

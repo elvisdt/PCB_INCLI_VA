@@ -2230,7 +2230,7 @@
 				)
 			)
 		)
-		(property "Notes" "Bypass de alta frecuencia de VIN (TI: 100-220 nF, 100 V X7R), lo mas cerca posible de los pines 3 y 1."
+		(property "Notes" "Bypass de alta frecuencia de VIN (TI: 100-220 nF, 100 V X7R), lo mas cerca posible de los pines 3 y 1. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 92.71 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -2253,6 +2253,39 @@
 			)
 		)
 		(property "LCSC" "C415406"
+			(at 92.71 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B104K101NT"
+			(at 92.71 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 92.71 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C88219"
 			(at 92.71 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4270,7 +4303,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4292,7 +4325,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "C_BOOT entre BOOT (7) y SW (8): 100 nF >= 16 V (TI 9.2.2.7). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4314,7 +4347,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4325,7 +4358,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4336,7 +4369,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -4347,7 +4380,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 204.47 140.97 0)
 			(hide yes)
 			(show_name no)

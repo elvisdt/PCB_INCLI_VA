@@ -2,6 +2,39 @@
 
 Consulta: **2026-10-30**. Decisiones del usuario sobre los sustitutos: **2026-10-30**. Claude Code, rama `bom-sourcing`, PCB `pcb-v1-rc1`. No se hizo ningún pedido. El esquema no se modificó: el paso de los sustitutos aceptados a `MPN_PROTO`/LCSC queda para otra sesión.
 
+## Plan de compra vigente (usuario, 2026-10-30) — RESUMEN
+**JLC solo fabrica la PCB y el stencil Top; todos los componentes se compran en LCSC y se sueldan a mano.** Los archivos de ensamblado de JLC (`fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 58 líneas, 123 piezas) se mantienen al día como alternativa, pero no se compara el costo de ensamblado.
+
+| Compra | Archivo | 6 juegos (5 placas + 1) | 3 juegos (2 placas + 1) |
+|---|---|---|---|
+| **LCSC** (todo lo que está en lcsc.com) | `bom/LCSC_BOM_COMPLETO_PROTO.csv` («Upload a BOM»: LCSC Part Number, Quantity, Manufacturer Part Number, Description, Designator) | 62 líneas, 2509 piezas, **USD 552.43** | 2312 piezas, **USD 286.65** |
+| **DigiKey/Mouser** (sin stock en LCSC) | `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROTO mano + PROD) | 5 líneas × 6 u, **≈ USD 99.54** | ≈ USD 49.77 |
+| **Total componentes** | | **≈ USD 651.97** | **≈ USD 336.42** |
+| por juego | | ≈ USD 108.66 | ≈ USD 112.14 |
+| **por placa armada** (repuesto incluido) | | **≈ USD 130.39** (÷ 5) | ≈ USD 168.21 (÷ 2) |
+
+- LCSC: precio de lcsc.com en el escalón de cada cantidad (consulta en vivo del 2026-10-30), sin envío ni impuestos. Cantidad = por placa × juegos; pasivos 0402/0603 al menos 20 por la merma al soldar a mano; después se sube al pedido mínimo y al múltiplo de lcsc.com. Regenerar con `/usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py [JUEGOS]` (`--solo-costo` para no escribir el archivo). Sin avisos de stock.
+- **DigiKey/Mouser: precios estimados, a verificar** en sus sitios antes de comprar (no se pudieron leer en vivo):
+  - U503 AS5147U-HTSM ≈ 8.44 (Mouser)
+  - Q101 STD18NF25 ≈ 2.79 (DigiKey)
+  - Q102 IPD30N10S3L34ATMA1 ≈ 1.50 (Farnell como referencia)
+  - F101 SF-2410FPA200W-2 ≈ 1.03 (otra corriente de la misma familia)
+  - **L201 XAL6060-333MEC ≈ 2.83 (lista de LCSC): DigiKey lo marca «Not Available» y sugiere XGL6060-333MEC; hay que pedir cotización a Coilcraft o buscarlo en Mouser.** Cambiar L201 por otra serie es una decisión de diseño (buck de U201), pendiente.
+- Los cinco **siguen sin stock en lcsc.com** (consulta 2026-10-30: XAL6060-333MEC C5119929, AS5147U-HTSM C38675951, STD18NF25 C183634, IPD30N10S3L34ATMA1 C148263, SF-2410FPA200W-2 C3159902, todos con 0).
+- No incluye la PCB, el stencil ni el envío. `bom/A_MANO_PROTO.csv` y `bom/LCSC_CART_PROTO.csv` quedan como historia (lista a mano cuando JLC montaba).
+
+### Consolidación de pasivos (aprobada, aplicada el 2026-10-30)
+Solo cambian valor y campos; ninguna huella cambia. Script: `scripts/bom/consolidar_pasivos.py`.
+
+| Referencias | Antes | Ahora | Por qué no afecta |
+|---|---|---|---|
+| R702, R752 (gate en serie de Q701/Q751) | 4k7 | **2.2k**, la misma línea que R803/R804 (PROTO C4190; PROD AC0603FR-072K2L) | Con el pull-down de 100k, Vgs sube de 4.78 a 4.89 V; pico de carga 2.3 mA (el 74AHCT da 8 mA); consumo fijo igual (~49 µA); τ = 2.2k × Ciss < 2.2 µs |
+| 23 × 100 nF 0603 (C107–C109, C202, C203, C302, C309, C310, C402, C404, C501–C507, C602, C604, C608, C702, C752, C801) | 2 MPN (100 V y 50 V) | **un solo MPN 100 V X7R**: PROTO FH 0603B104K101NT (C88219); PROD Murata GCM188R72A104KA64D (AEC-Q200) | Mismo valor, tolerancia y dieléctrico; más tensión y menos pérdida por DC bias. C109 (C_dVdT) mantiene la corriente de arranque |
+| C306, C307, C403 (1 µF 0603) | GCM 16 V | PROTO **Yageo CC0603KRX7R9BB105, 50 V X7R** (C559769); PROD sin cambio | Más stock y DC bias; τ de EN (R401 × C403 = 10 ms) igual |
+| C301, C508, C603, C605, C606 (10 µF 0805) | GCM 10 V (0 en lcsc.com) | PROTO **Samsung CL21B106KAYQNNE, 25 V X7R** (C3039694); PROD sin cambio | Más tensión, mismo dieléctrico; a 5 V conserva más capacidad |
+
+Resultado: BOM PROTO de 70 a **68 líneas**; JLC de 60 a **58 líneas**. Los cargos de ensamblado no cambian (ya no aplican al plan de compra).
+
 ## Estado en el esquema y el PCB (`pcb-v1-rc2`, 2026-10-30)
 - Todos los componentes llevan `LCSC` = código del `MPN` (producción; vacío en C106 y U701/U751, que LCSC no lista). `MPN` no cambió: sigue siendo el original (AEC-Q200 / -Q1).
 - PROTO: `MPN_PROTO`, `LCSC_PROTO` y, si cambia el fabricante, `Manufacturer_PROTO`, con los sustitutos aceptados (pasivos Basic/preferred, igual especificación, C101/C201/C104 sin AEC-Q200, SCL3300-D01-10, ADM3055EBRIZ-RL y tira genérica de J402). `Notes` indica PROTO/PROD, compra y montaje a mano donde corresponde.
@@ -47,15 +80,14 @@ Solo donde coinciden valor, encapsulado, tolerancia y dieléctrico, con tensión
 | C102, C103 | 1uF | C13832 |
 | C104 | 47uF | C164068 |
 | C106 | 10uF | C138687 |
-| C107, C109, C202 | 100nF | C415406 |
-| C108, C203, C302, C309, C310, C402, C404, C501, C502, C503, C504, C505, C506, C507, C602, C604, C608, C702, C752, C801 | 100nF | C14663 |
+| C107, C108, C109, C202, C203, C302, C309, C310, C402, C404, C501, C502, C503, C504, C505, C506, C507, C602, C604, C608, C702, C752, C801 | 100nF | C88219 |
 | C110 | 68nF | C31658 |
 | C201 | 4.7uF | C17288249 |
 | C204, C205, C206 | 22uF | C126598 |
-| C301, C508, C603, C605, C606 | 10uF | C126586 |
+| C301, C508, C603, C605, C606 | 10uF | C3039694 |
 | C303 | 10pF | C1634 |
 | C304, C401 | 22uF | C907991 |
-| C306, C307, C403 | 1uF | C161212 |
+| C306, C307, C403 | 1uF | C559769 |
 | C601, C607 | 10nF | C57112 |
 | C609 | 4.7nF | C426631 |
 | C610 | 220nF | C21120 |
@@ -89,8 +121,7 @@ Solo donde coinciden valor, encapsulado, tolerancia y dieléctrico, con tensión
 | R403, R404 | 5.1k | C23186 |
 | R602, R603 | 60.4 | C144645 |
 | R605, R802, R805, R806 | 0 | C21189 |
-| R702, R752 | 4k7 | C23162 |
-| R803, R804 | 2.2k | C4190 |
+| R702, R752, R803, R804 | 2.2k | C4190 |
 | SW401 | RESET | C720477 |
 | SW402 | BOOT | C720477 |
 | U101 | LM74930QRGERQ1 | C22428070 |
@@ -166,15 +197,14 @@ Los originales tienen stock en JLC (allí siguen montándose), pero 0 en lcsc.co
 | C102, C103 | 1uF | C_1206_3216Metric | 2 | CL31B105KCHNNNE | C13832 | ext | 347728 | 261400 | 0.0650 | JLC | substitute CL31B105KCHNNNE for CGA5L2X7R2A105K160AA accepted 2026-10-30, JLC ext | CGA5L2X7R2A105K160AA / C2168321 |
 | C104 | 47uF | CP_Elec_10x10 | 1 | VZH470M2ATR-1010 | C164068 | ext | 1333 | 1330 | 0.2972 | JLC | substitute VZH470M2ATR-1010 for EEE-HA2A470UP accepted 2026-10-30, JLC ext | EEE-HA2A470UP / C344077 |
 | C106 | 10uF | C_1210_3225Metric | 1 | CL32B106KBJNNNE | C138687 | ext | 101468 | 9473 | 0.2610 | JLC | substitute CL32B106KBJNNNE for GCM32ER71H106KA12L accepted 2026-10-30, JLC ext | GCM32ER71H106KA12L |
-| C107, C109, C202 | 100nF | C_0603_1608Metric | 3 | GCM188R72A104KA64D | C415406 | ext | 15215 | 10420 | 0.0637 | JLC | JLC ext, verified 2026-10-30 |  |
-| C108, C203, C302, C309, C310, C402, C404, C501, C502, C503, C504, C505, C506, C507, C602, C604, C608, C702, C752, C801 | 100nF | C_0603_1608Metric | 20 | CC0603KRX7R9BB104 | C14663 | basic | 42191376 | 4848800 | 0.0087 (MOQ 100) | JLC | JLC basic (swap from GCM188R71H104KA57D), verified 2026-10-30 | GCM188R71H104KA57D / C85864 |
+| C107, C108, C109, C202, C203, C302, C309, C310, C402, C404, C501, C502, C503, C504, C505, C506, C507, C602, C604, C608, C702, C752, C801 | 100nF | C_0603_1608Metric | 23 | 0603B104K101NT | C88219 | ext | 1825125 | 1684850 | 0.0117 (MOQ 50) | JLC | consolidado 2026-10-30: un solo MPN de 100 nF, 100 V X7R (PROTO, sin AEC-Q200) | GCM188R72A104KA64D / C415406 |
 | C110 | 68nF | C_0603_1608Metric | 1 | CL10B683KB8NNNC | C31658 | pref | 150525 | 115600 | 0.0190 (MOQ 50) | JLC | substitute CL10B683KB8NNNC for GCM188R71H683KA57D accepted 2026-10-30, JLC pref | GCM188R71H683KA57D / C380380 |
 | C201 | 4.7uF | C_1210_3225Metric | 1 | CL32B475KCVZNWE | C17288249 | ext | 435 | 435 | 1.0782 | JLC | substitute CL32B475KCVZNWE for CGA6M3X7S2A475K200AB accepted 2026-10-30, JLC ext | CGA6M3X7S2A475K200AB / C2168848 |
 | C204, C205, C206 | 22uF | C_1206_3216Metric | 3 | GCM31CR71A226KE02L | C126598 | ext | 13053 | 11240 | 0.3296 | JLC | JLC ext, verified 2026-10-30 |  |
-| C301, C508, C603, C605, C606 | 10uF | C_0805_2012Metric | 5 | GCM21BR71A106KE22L | C126586 | ext | 9971 | 0 | 0.1029 | JLC | JLC ext, verified 2026-10-30 |  |
+| C301, C508, C603, C605, C606 | 10uF | C_0805_2012Metric | 5 | CL21B106KAYQNNE | C3039694 | ext | 239941 | 126510 | 0.1051 | JLC | consolidado 2026-10-30: 25 V X7R (PROTO, sin AEC-Q200) | GCM21BR71A106KE22L / C126586 |
 | C303 | 10pF | C_0603_1608Metric | 1 | CL10C100JB8NNNC | C1634 | basic | 1212785 | 100 | 0.0061 (MOQ 100) | JLC | JLC basic (swap from GCM1885C1H100JA16D), verified 2026-10-30 | GCM1885C1H100JA16D / C126542 |
 | C304, C401 | 22uF | C_0805_2012Metric | 2 | GRM21BZ71A226ME15L | C907991 | ext | 166294 | 140195 | 0.3744 | JLC | JLC ext, verified 2026-10-30 |  |
-| C306, C307, C403 | 1uF | C_0603_1608Metric | 3 | GCM188R71C105KA64D | C161212 | ext | 33722 | 18280 | 0.0383 (MOQ 20) | JLC | JLC ext, verified 2026-10-30 |  |
+| C306, C307, C403 | 1uF | C_0603_1608Metric | 3 | CC0603KRX7R9BB105 | C559769 | ext | 844148 | 700160 | 0.0569 (MOQ 20) | JLC | consolidado 2026-10-30: 50 V X7R (PROTO, sin AEC-Q200) | GCM188R71C105KA64D / C161212 |
 | C601, C607 | 10nF | C_0603_1608Metric | 2 | 0603B103K500NT | C57112 | basic | 5628260 | 28450 | 0.0098 (MOQ 50) | JLC | JLC basic (swap from GCM188R71H103KA37D), verified 2026-10-30 | GCM188R71H103KA37D / C85863 |
 | C609 | 4.7nF | C_0603_1608Metric | 1 | GCM188R72A472KA37D | C426631 | ext | 16111 | 16100 | 0.0288 (MOQ 20) | JLC | JLC ext, verified 2026-10-30 |  |
 | C610 | 220nF | C_0603_1608Metric | 1 | CL10B224KA8NNNC | C21120 | basic | 1011962 | 394350 | 0.0094 (MOQ 50) | JLC | JLC basic (swap from GCM188R71E224KA55D), verified 2026-10-30 | GCM188R71E224KA55D / C161217 |
@@ -216,8 +246,7 @@ Los originales tienen stock en JLC (allí siguen montándose), pero 0 en lcsc.co
 | R403, R404 | 5.1k | R_0603_1608Metric | 2 | 0603WAF5101T5E | C23186 | basic | 21368680 | 16397700 | 0.0016 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-075K1L), verified 2026-10-30 | AC0603FR-075K1L / C125891 |
 | R602, R603 | 60.4 | R_0603_1608Metric | 2 | AC0603FR-0760R4L | C144645 | ext | 14047 | 14000 | 0.0069 (MOQ 100) | JLC | JLC ext, verified 2026-10-30 |  |
 | R605, R802, R805, R806 | 0 | R_0603_1608Metric | 4 | 0603WAF0000T5E | C21189 | basic | 20896231 | 11816300 | 0.0022 (MOQ 100) | JLC | JLC basic (swap from AC0603JR-070RL), verified 2026-10-30 | AC0603JR-070RL / C141796 |
-| R702, R752 | 4k7 | R_0603_1608Metric | 2 | 0603WAF4701T5E | C23162 | basic | 15672993 | 3249500 | 0.0028 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-074K7L), verified 2026-10-30 | AC0603FR-074K7L / C116697 |
-| R803, R804 | 2.2k | R_0603_1608Metric | 2 | 0603WAF2201T5E | C4190 | basic | 5498979 | 2790900 | 0.0018 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-072K2L), verified 2026-10-30; antes 470 Ω (brillo de LED reducido, ~0.6–0.7 mA) | AC0603FR-072K2L / C125931 |
+| R702, R752, R803, R804 | 2.2k | R_0603_1608Metric | 4 | 0603WAF2201T5E | C4190 | basic | 5498979 | 2790900 | 0.0018 (MOQ 100) | JLC | JLC basic (swap from AC0603FR-072K2L), verified 2026-10-30; R803/R804 antes 470 Ω (LED ~0.6–0.7 mA); R702/R752 antes 4k7 (consolidación) | AC0603FR-072K2L / C125931 |
 | SW401 | RESET | SW-SMD_L3.9-W3.0-P4.45 | 1 | TS-1088-AR02016 | C720477 | basic | 605935 | 363750 | 0.0533 | JLC | JLC basic, verified 2026-10-30 |  |
 | SW402 | BOOT | SW-SMD_L3.9-W3.0-P4.45 | 1 | TS-1088-AR02016 | C720477 | basic | 605935 | 363750 | 0.0533 | JLC | JLC basic, verified 2026-10-30 |  |
 | U101 | LM74930QRGERQ1 | TI_RGE0024T_VQFN-24-1EP_4x4m | 1 | LM74930QRGERQ1 | C22428070 | ext | 7308 | 7127 | 5.7664 | JLC | JLC ext, verified 2026-10-30 |  |
@@ -243,7 +272,11 @@ Fuera de PROD: D801, D802, R803, R804 (DNP PROD). El resto es igual que en PROTO
 | C101 | 100nF | C_1206_3216Metric | 1 | CGA5L4X7T2W104K160AA | — | — | — | — | 0.7901 (ref. LCSC) | consigna JLC o mano | not at JLC, DigiKey/Mouser, checked 2026-10-30 | C3887150 |
 | C104 | 47uF | CP_Elec_10x10 | 1 | EEE-HA2A470UP | — | — | — | — | 0.3957 (ref. LCSC) | consigna JLC o mano | not at JLC, DigiKey/Mouser, checked 2026-10-30 | C344077 |
 | C105 | 1000uF 50V | CP_Elec_Panasonic_J16_VibPro | 1 | EEE-FK1H102AV | — | — | — | — | 0.8694 (ref. LCSC) | consigna JLC o mano | not at JLC, DigiKey/Mouser, checked 2026-10-30 | C2164039 |
+| C107, C108, C109, C202, C203, C302, C309, C310, C402, C404, C501–C507, C602, C604, C608, C702, C752, C801 | 100nF | C_0603_1608Metric | 23 | GCM188R72A104KA64D | C415406 | ext | 15215 | 10480 | 0.0637 | JLC | consolidado 2026-10-30: un solo MPN de 100 nF, 100 V X7R AEC-Q200 (PROTO: FH 0603B104K101NT) |  |
 | C201 | 4.7uF | C_1210_3225Metric | 1 | CGA6M3X7S2A475K200AB | — | — | — | — | 1.5766 (ref. LCSC) | consigna JLC o mano | not at JLC, DigiKey/Mouser, checked 2026-10-30 | C2168848 |
+| C301, C508, C603, C605, C606 | 10uF | C_0805_2012Metric | 5 | GCM21BR71A106KE22L | C126586 | ext | 9971 | 0 | 0.1029 | JLC | PROD conserva el AEC-Q200 (PROTO: Samsung CL21B106KAYQNNE) |  |
+| C306, C307, C403 | 1uF | C_0603_1608Metric | 3 | GCM188R71C105KA64D | C161212 | ext | 33722 | 18280 | 0.0383 (MOQ 20) | JLC | PROD conserva el AEC-Q200 (PROTO: Yageo CC0603KRX7R9BB105) |  |
+| R702, R752 | 2.2k | R_0603_1608Metric | 2 | 0603WAF2201T5E | C4190 | basic | 5498979 | 2790900 | 0.0018 (MOQ 100) | JLC | consolidado 2026-10-30 desde 4k7 (en PROTO comparte línea con R803/R804) | AC0603FR-072K2L / C125931 |
 | D703, D753 | BZX84-C3V3 | SOT-23 | 2 | BZX84-C3V3,215 | C85087 | ext | 28154 | 28150 | 0.0180 (MOQ 50) | JLC | JLC ext, verified 2026-10-30 |  |
 | Q701, Q751 | DMN10H220LQ | SOT-23 | 2 | DMN10H220LQ-7 | C5260572 | ext | 4738 | 4595 | 0.2997 | JLC | JLC ext, verified 2026-10-30 |  |
 | R708, R709, R758, R759 | 100k | R_1206_3216Metric | 4 | 1206W4F1003T5E | C17900 | basic | 937779 | 315500 | 0.0097 (MOQ 50) | JLC | JLC basic (swap from AC1206FR-07100KL), verified 2026-10-30 | AC1206FR-07100KL / C144522 |

@@ -1,17 +1,21 @@
 #!/usr/bin/python3
 """BOM completa del prototipo para "Upload a BOM" de lcsc.com: bom/LCSC_BOM_COMPLETO_PROTO.csv.
 
-Uso (desde la carpeta del proyecto): /usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py
+Uso (desde la carpeta del proyecto): /usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py [JUEGOS] [--solo-costo]
+  JUEGOS: placas + 1 de repuesto (por defecto 6 = 5 + 1). --solo-costo: calcula el costo sin escribir el archivo.
+Compra principal (desde 2026-10-30): JLC solo fabrica la PCB y el stencil; todo se compra en LCSC y se suelda a mano.
 Entrada: bom/BOM_PROTO.csv (variante PROTO, ya sin DNP). Solo las líneas con código LCSC; lo de DigiKey/Mouser
 queda en bom/DIGIKEY_MOUSER.csv.
-Cantidad = piezas por placa × 6 (5 placas + 1 de repuesto); en pasivos 0402/0603 (R, C, FB) al menos 20 por la
+Cantidad = piezas por placa × JUEGOS; en pasivos 0402/0603 (R, C, FB) al menos 20 por la
 merma al soldar a mano; después se sube al pedido mínimo (minBuyNumber) y al múltiplo (split) de lcsc.com.
 MOQ, múltiplo, descripción y stock se leen en vivo del endpoint público que usa lcsc.com (el mismo de
 jlc_lookup.py de agentic-sourcing, solo consulta). Las líneas con stock de lcsc.com menor a la cantidad se avisan.
 """
-import csv, json, math, time, urllib.request
+import csv, json, math, sys, time, urllib.request
 
-PLACAS = 6
+args = [a for a in sys.argv[1:] if not a.startswith('--')]
+PLACAS = int(args[0]) if args else 6
+SOLO_COSTO = '--solo-costo' in sys.argv
 MIN_PASIVO_CHICO = 20
 # Sustitutos solo para la compra en lcsc.com (el original no tiene stock en lcsc.com; JLC sigue montando el
 # original, que sí tiene stock en JLC). Estado «substitute ... VERIFY» en docs/BOM_SOURCING.md.
@@ -37,7 +41,7 @@ def pasivo_chico(row):
     return ('_0402_' in fp or '_0603_' in fp) and ref.rstrip('0123456789') in ('R', 'C', 'FB')
 
 
-filas, avisos, por_codigo = [], [], {}
+filas, avisos, por_codigo, costo = [], [], {}, 0.0
 for row in csv.DictReader(open('bom/BOM_PROTO.csv')):
     code = row['LCSC'].strip()
     if not code or row['Supplier'] == 'DigiKey/Mouser': continue
@@ -56,12 +60,17 @@ for code, row in por_codigo.items():
     q = math.ceil(q / mult) * mult
     stock = d.get('stockNumber') or 0
     if stock < q: avisos.append(f'{code} {row["MPN"]} ({row["Designator"]}): stock lcsc.com {stock} < {q}')
+    escalones = sorted((p['ladder'], p['usdPrice']) for p in d.get('productPriceList') or [])
+    unit = ([u for n, u in escalones if n <= q] or [escalones[0][1] if escalones else 0])[-1]
+    costo += unit * q
     filas.append([code, q, row['MPN'], d.get('productDescEn') or d.get('productNameEn') or row['Comment'],
                   row['Designator']])
 
-with open('bom/LCSC_BOM_COMPLETO_PROTO.csv', 'w', newline='') as f:
-    w = csv.writer(f)
-    w.writerow(['LCSC Part Number', 'Quantity', 'Manufacturer Part Number', 'Description', 'Designator'])
-    w.writerows(filas)
-print(f'{len(filas)} líneas, {sum(r[1] for r in filas)} piezas')
+if not SOLO_COSTO:
+    with open('bom/LCSC_BOM_COMPLETO_PROTO.csv', 'w', newline='') as f:
+        w = csv.writer(f)
+        w.writerow(['LCSC Part Number', 'Quantity', 'Manufacturer Part Number', 'Description', 'Designator'])
+        w.writerows(filas)
+print(f'{PLACAS} juegos: {len(filas)} líneas, {sum(r[1] for r in filas)} piezas, '
+      f'USD {costo:.2f} en lcsc.com (precio del escalón de cada cantidad, sin envío)')
 for a in avisos: print('AVISO', a)

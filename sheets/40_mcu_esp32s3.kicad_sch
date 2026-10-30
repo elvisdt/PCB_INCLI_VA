@@ -6437,7 +6437,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6459,7 +6459,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "Desacople de alta frecuencia, pegado al pin 3V3 del módulo. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6481,7 +6481,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6492,7 +6492,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6503,7 +6503,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6514,7 +6514,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -7859,7 +7859,7 @@
 				)
 			)
 		)
-		(property "Notes" "Retardo de EN (Espressif: 1 uF; tau = 10 ms) para que EN suba después de que 3V3 esté estable. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "Retardo de EN (Espressif: 1 uF; tau = 10 ms) para que EN suba después de que 3V3 esté estable. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30, consolidacion): Yageo CC0603KRX7R9BB105 (50 V X7R, LCSC C559769), sin AEC-Q200: mas stock y menos perdida por DC bias."
 			(at 116.84 120.65 0)
 			(hide yes)
 			(show_name no)
@@ -7882,6 +7882,39 @@
 			)
 		)
 		(property "LCSC" "C161212"
+			(at 116.84 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "CC0603KRX7R9BB105"
+			(at 116.84 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Yageo"
+			(at 116.84 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C559769"
 			(at 116.84 120.65 0)
 			(hide yes)
 			(show_name no)
@@ -8914,7 +8947,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8936,7 +8969,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "Desacople VBUS del USBLC6-2SC6: 100 nF, X7R, 50 V, 0603; no alimenta el riel +5V. Agregado despues de placement-v1, autorizado en etapa 3. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8958,7 +8991,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8969,7 +9002,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8980,7 +9013,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)
@@ -8991,7 +9024,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 365.7600 63.5000 0)
 			(hide yes)
 			(show_name no)

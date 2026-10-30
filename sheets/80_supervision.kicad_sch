@@ -2436,7 +2436,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2469,7 +2469,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U801. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "Desacople de U801. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2480,7 +2480,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2491,7 +2491,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2502,7 +2502,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2513,7 +2513,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 181.61 73.66 0)
 			(hide yes)
 			(show_name no)

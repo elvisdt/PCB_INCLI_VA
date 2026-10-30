@@ -8713,7 +8713,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8735,7 +8735,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_CAP entre CAP y VS (bomba de carga). PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "C_CAP entre CAP y VS (bomba de carga). PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8757,7 +8757,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8768,7 +8768,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8779,7 +8779,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8790,7 +8790,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 168.91 166.37 0)
 			(hide yes)
 			(show_name no)
@@ -8903,7 +8903,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_dVdT (TI ec. 2): Iinrush = C_OUT x 55 uA / C_dVdT. Con C105 montado (~1.07 mF): 0.59 A < breaker 1 A (con 10 nF eran 5.9 A y disparaba). Sin C105: ~34 mA. Arranque ~60 ms. 100 V en 0603."
+		(property "Notes" "C_dVdT (TI ec. 2): Iinrush = C_OUT x 55 uA / C_dVdT. Con C105 montado (~1.07 mF): 0.59 A < breaker 1 A (con 10 nF eran 5.9 A y disparaba). Sin C105: ~34 mA. Arranque ~60 ms. 100 V en 0603. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -8926,6 +8926,39 @@
 			)
 		)
 		(property "LCSC" "C415406"
+			(at 189.23 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B104K101NT"
+			(at 189.23 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 189.23 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C88219"
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -9327,7 +9360,7 @@
 				)
 			)
 		)
-		(property "Notes" "100 V en 0603. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "100 V en 0603. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -9350,6 +9383,39 @@
 			)
 		)
 		(property "LCSC" "C415406"
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603B104K101NT"
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "FH"
+			(at 288.29 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C88219"
 			(at 288.29 80.01 0)
 			(hide yes)
 			(show_name no)

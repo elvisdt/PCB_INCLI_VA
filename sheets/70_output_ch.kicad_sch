@@ -3717,7 +3717,7 @@
 				)
 			)
 		)
-		(property "MPN" "GCM188R71H104KA57D"
+		(property "MPN" "GCM188R72A104KA64D"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3739,7 +3739,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople de U701. PROTO (2026-10-30): Yageo CC0603KRX7R9BB104 (LCSC C14663, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "Desacople de U701. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3772,7 +3772,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C85864"
+		(property "LCSC" "C415406"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3783,7 +3783,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "CC0603KRX7R9BB104"
+		(property "MPN_PROTO" "0603B104K101NT"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3794,7 +3794,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "Yageo"
+		(property "Manufacturer_PROTO" "FH"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -3805,7 +3805,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C14663"
+		(property "LCSC_PROTO" "C88219"
 			(at 99.06 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -5308,7 +5308,7 @@
 				)
 			)
 		)
-		(property "Value" "4k7"
+		(property "Value" "2.2k"
 			(at 194.31 107.95 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5350,7 +5350,7 @@
 				)
 			)
 		)
-		(property "MPN" "AC0603FR-074K7L"
+		(property "MPN" "AC0603FR-072K2L"
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5372,7 +5372,7 @@
 				)
 			)
 		)
-		(property "Notes" "Gate en serie: limita la corriente de carga del gate desde el buffer. PROTO (2026-10-30): UNI-ROYAL 0603WAF4701T5E (LCSC C23162, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "Gate en serie desde el 74AHCT1G126 (5 V): 2.2k, el mismo valor que R803/R804 (una linea de BOM). Con el pull-down de 100k, Vgs = 4.89 V (antes 4.78 V con 4k7); pico de carga 2.3 mA (el buffer da 8 mA). PROTO (2026-10-30, consolidacion): UNI-ROYAL 0603WAF2201T5E (LCSC C4190), sin AEC-Q200."
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5405,7 +5405,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C116697"
+		(property "LCSC" "C125931"
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5416,7 +5416,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "0603WAF4701T5E"
+		(property "MPN_PROTO" "0603WAF2201T5E"
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -5438,7 +5438,7 @@
 				)
 			)
 		)
-		(property "LCSC_PROTO" "C23162"
+		(property "LCSC_PROTO" "C4190"
 			(at 194.31 110.49 0)
 			(hide yes)
 			(show_name no)
