@@ -15,7 +15,12 @@
 # ============================================================================
 
 # ---------------------------- Capacidades del fabricante --------------------
-(rule "JLC_espacio_cobre"
+# El piso de 0.15 mm cobre-cobre esta en Board Setup (min_clearance), no aca: una regla de clearance sin
+# condicion anula las clearances de las net classes (HV 1.25, DO 0.6, Default 0.2). Comprobado con DRC, 2026-10-29.
+# Pads de un mismo encapsulado: la separacion la fija el fabricante del componente (QFN de 0.5 mm, SOIC, LGA).
+# Las reglas posteriores (U101_RTN, barrera CAN) siguen mandando sobre esta.
+(rule "Pads_mismo_encapsulado"
+	(condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent")
 	(constraint clearance (min 0.15mm)))
 
 (rule "JLC_ancho_pista"
@@ -103,11 +108,10 @@
 	(condition "(A.NetName == '/VEH_DO1' || A.NetName == '/VEH_DO2') && B.NetName != A.NetName && !(A.Type == 'Pad' && B.Type == 'Pad')")
 	(constraint clearance (min 0.6mm)))
 
-# Rieles de la entrada protegida (<= 38.4 V, corte por OV): IPC-2221B B2, 31-50 V -> 0.6 mm
-# entre conductores (pistas, vias y zonas). Los pines de U101 (QFN de 0.5 mm) quedan fuera de esta regla.
-(rule "MV_entrada_protegida_40V"
-	(condition "(A.NetName == '+VPROT' || A.NetName == '/10_power_input/VA' || A.NetName == '/10_power_input/C_ID' || A.NetName == '/10_power_input/VOUT') && B.NetName != A.NetName && A.Type != 'Pad' && B.Type != 'Pad'")
-	(constraint clearance (min 0.6mm)))
+# Rieles de la entrada protegida (<= 38.4 V, despues del corte de Q101): VA, C_ID, VOUT y +VPROT.
+# Net class PROT: 0.6 mm contra todo (IPC-2221B B2, 31-50 V; placa con conformal coating). Decision del
+# usuario, 2026-10-29 (reemplaza los 1.25 mm entre conductores de la etapa 0). VIN_VEH y VBAT_F siguen en la
+# net class HV (1.25 mm) y en HV_entrada_202V.
 
 # ---------------------------- Barrera del ADM3055E (U601) -------------------
 # El ADM3055E garantiza CLR = CRP = 8.3 mm en el encapsulado (datasheet ADI Rev. D, especificaciones
@@ -142,6 +146,66 @@
 (rule "IPC2152_buck_5V"
 	(condition "A.Type == 'Track' && (A.NetName == '+5V_VEH' || A.NetName == '/20_buck_5v/BUCK_SW')")
 	(constraint track_width (min 0.5mm)))
+
+# ---------------------------- Sensado del controlador U101 (etapa 1, 2026-10-29) ----
+# Pistas PROT de <= 0.3 mm = sensado (uA): Kelvin de R103 (CS+/CS-, ISCP), pines A/OUT y C de U101.
+# Las de potencia son de >= 1.0 mm (IPC2152_entrada_2A). Contra otras redes rige la net class (0.6 mm);
+# entre redes PROT bastan 0.3 mm (la Kelvin VOUT/C_ID solo ve la caida del shunt, mV).
+(rule "PROT_sensado"
+	(condition "A.NetClass == 'PROT' && A.Type == 'Track' && A.Width <= 0.3mm")
+	(constraint track_width (min 0.25mm)))
+
+(rule "PROT_sensado_entre_PROT"
+	(condition "A.NetClass == 'PROT' && A.Type == 'Track' && A.Width <= 0.3mm && B.NetClass == 'PROT'")
+	(constraint clearance (min 0.3mm)))
+
+# ZONA_U101 (rule area sin restricciones, x 113.8-134.4, y 64.2-84.4): controlador y llegada del sensado.
+# Mismas tensiones que entre los pines del VQFN de 0.5 mm, placa con conformal coating (IPC-2221B B4,
+# 31-50 V: 0.13 mm) -> 0.2 mm. No aplica a VIN_VEH/VBAT_F ni a la red aislada de U101 (RTN).
+(rule "PROT_zona_U101"
+	(condition "A.NetClass == 'PROT' && A.insideArea('ZONA_U101') && B.NetClass != 'HV' && B.NetName != '/10_power_input/U101_RTN' && !(A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent)")
+	(constraint clearance (min 0.2mm))
+	(constraint track_width (min 0.25mm)))
+
+# ZONA_BUCK_U201 (rule area sin restricciones, x 124.0-151.0, y 52.0-69.0): lazo de entrada del buck.
+# Pedido del usuario (2026-10-29): 0.25 mm para PROT dentro del area, asi el retorno de C202 va por F.Cu
+# directo al pin 1 y al pad expuesto de U201.
+(rule "PROT_zona_buck_U201"
+	(condition "A.NetClass == 'PROT' && A.insideArea('ZONA_BUCK_U201') && B.NetClass != 'HV' && !(A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent)")
+	(constraint clearance (min 0.25mm)))
+
+# VA es la fuente comun de Q101/Q102: frente a sus gates la tension es Vgs (<= 15 V, clamp del LM74930).
+(rule "VA_compuertas_Vgs"
+	(condition "A.NetName == '/10_power_input/VA' && (B.NetName == '/10_power_input/HGATE' || B.NetName == '/10_power_input/DGATE')")
+	(constraint clearance (min 0.2mm)))
+
+# ---------------------------- Llegadas a pines finos (despues de los anchos: la ultima regla manda) ----
+# Llegada a los pines de U101 (VQFN-24 de 0.5 mm): VA (2, 15), C_ID (18, 24) y VOUT (19) son entradas de
+# sensado de uA. Dentro del courtyard de U101 la pista se angosta a 0.25 mm con 0.2 mm de separacion.
+(rule "PROT_llegada_U101"
+	(condition "A.NetClass == 'PROT' && A.Type != 'Pad' && A.intersectsCourtyard('U101') && B.NetName != '/10_power_input/U101_RTN'")
+	(constraint clearance (min 0.2mm))
+	(constraint track_width (min 0.25mm)))
+
+# Llegada a VIN de U201 (HSOIC-8 de 1.27 mm): pista de 0.6 mm (ancho del pad) dentro del courtyard,
+# a 0.67 mm del pin 1 (GND) y del pin 4 (RT). Incluye el camino C201 -> C202 -> VIN y TP101 (ZONA_BUCK_U201).
+(rule "PROT_llegada_U201"
+	(condition "A.NetName == '+VPROT' && A.Type != 'Pad' && (A.intersectsCourtyard('U201') || A.intersectsCourtyard('C202') || A.insideArea('ZONA_BUCK_U201'))")
+	(constraint track_width (min 0.6mm)))
+
+# ---------------------------- Planos (etapa 5, pedido del usuario 2026-10-30) ----
+# Las zonas E5_* usan alivio termico (rayos 0.5 mm, separacion 0.3 mm) para la soldadura a mano.
+# Conexion solida en los pads expuestos (EP de U101 a su isla RTN, U201, U401) y en los de corriente
+# de pulso: GND de D102 (TVS de entrada) y los pines de J1 (GND_VEH y GND_CAN). J2 no tiene pines de masa.
+(rule "Planos_conexion_solida"
+	(condition "A.Type == 'Pad' && ((A.memberOfFootprint('U101') && A.Pad_Number == '25') || (A.memberOfFootprint('U201') && A.Pad_Number == '9') || (A.memberOfFootprint('U401') && A.Pad_Number == '41') || (A.memberOfFootprint('D102') && A.Pad_Number == '1') || A.memberOfFootprint('J1'))")
+	(constraint zone_connection solid))
+
+# Pads GND encerrados por pistas: el alivio solo resuelve un rayo. Cada uno tiene ademas pista o via
+# propia de retorno; se acepta un rayo (sigue siendo alivio termico para la soldadura a mano).
+(rule "Planos_un_rayo"
+	(condition "A.Type == 'Pad' && A.NetName == 'GND_VEH' && ((A.memberOfFootprint('C501') && A.Pad_Number == '2') || (A.memberOfFootprint('C503') && A.Pad_Number == '2') || (A.memberOfFootprint('C504') && A.Pad_Number == '2') || (A.memberOfFootprint('C604') && A.Pad_Number == '2') || (A.memberOfFootprint('C309') && A.Pad_Number == '2') || (A.memberOfFootprint('U751') && A.Pad_Number == '3'))")
+	(constraint min_resolved_spokes 1))
 
 # ---------------------------- Antena del ESP32-S3-WROOM-1 -------------------
 # La huella oficial RF_Module:ESP32-S3-WROOM-1 ya trae un rule area de keep-out (48 x 21 mm,

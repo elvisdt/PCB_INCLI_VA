@@ -2,7 +2,147 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Claude Code (decisiones cerradas, correcciones previas al ruteo, tag `placement-v1` y rama `ruteo-agente`).
+Última actualización: 2026-10-30, Claude Code (**PCB cerrado**; lo siguiente es la BOM con códigos LCSC, en otra sesión; ver «RETOMAR AQUÍ»).
+
+## RETOMAR AQUÍ — PCB cerrado (ruteo y revisión independiente terminados)
+Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
+
+**Quedan:**
+- [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
+- [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
+- [ ] **Siguiente (otra sesión): BOM con códigos LCSC.**
+- [ ] BOM con códigos LCSC (`bom_jlc.csv` y `bom_proto.csv` no los tienen). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [ ] Revisión independiente con kicad-happy (solo informe). No estaba instalada; la revisión de 2026-10-30 se hizo con scripts propios.
+- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
+- [ ] Esquema, hoja 60 (anterior a este turno): `sch_visual_qa` avisa que #PWR032 se superpone con R601 (~3.2 mm²). Solo legibilidad.
+
+**Antes de tocar el PCB:**
+1. Leer `AGENTS.md`, `docs/RUTEO_TRASPASO.md` («Cómo retomar» y «Etapa 6 — Cierre») y `git log -5`.
+2. KiCad cerrado, sin archivos `~*.lck` (también en `sheets/`). `git status` limpio.
+3. No tocar `PCB_INCLI_VA_manual`, la rama `ruteo-manual` ni `PCB_INCLI_VA_bom`. No ejecutar `git worktree remove/prune`.
+4. No mover piezas ni editar el esquema, las reglas o las net classes sin preguntar.
+5. Antes de cada commit, revisar `git diff INCLI-VA.kicad_pro`. Si solo cambió el orden de las net classes, restaurarlo con `git checkout INCLI-VA.kicad_pro`.
+6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. Son idempotentes y se encadenan así si se cambia cobre: `etapa5_planos.py` → `etapa6_costura_u401.py` → `etapa6_teardrops.py` (rellena zonas) → DRC → `etapa6_fab.py`.
+7. Skills: no usar agentic-sourcing. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
+
+**Etapa 6 — lo hecho (Claude Code, 2026-10-30):**
+- Retornos de corriente revisados, sin hallazgos nuevos: plano B.Cu bajo U201/L201 al 99.6 % y bajo U301/L301 al 98.6 %; barrera de U601 sin cobre; GND_CAN y GND_VEH, una isla cada una; U101_RTN aislada.
+- Teardrops: `etapa6_teardrops.py`, 697 zonas. `verify_etapa5.py` ignora las zonas teardrop en el cálculo de islas.
+- **Tramos sin plano debajo: aceptados por el usuario** (registro en `docs/layout/ruteo/etapa5-islas.json`, `ranuras_bajo_senal_mm`): INT2 9.2 mm, INT1 7.4 mm, USB D− 9.1 mm, D+ 6.9 mm, MCU_RST_N 6.4 mm, VS 6.3 mm, DGATE 5.8 mm.
+- **Avisos del DRC:**
+  - `silk_overlap` Q101 y U801: **corregidos** moviendo solo la referencia (componentes sin mover). Q101: horizontal en (117.62, 95.3), bajo el cuerpo, porque entre las serigrafías de Q101 y Q102 hay 1.12 mm y el texto ocupa 1.46. U801: de (166.0, 134.2) a (166.0, 133.6), separada de la marca de pin 1.
+  - **Excepciones aceptadas por el usuario:** 2 `silk_edge_clearance` de U401 (JLC recorta la serigrafía cerca del borde) y `lib_footprint_mismatch` de U401 (recorte intencional de la huella).
+- **Ranura del haz B.Cu bajo U401** (DO1/DO2 EN/DIAG, PWR_FLT_N, LED_G/LED_R; detalle en `docs/layout/ruteo/etapa6-ranura-u401.json`, script `verify_ranura_u401.py`):
+  - Largo 46.9 mm (y 77.9–124.7, x 173.5–184.1). Ancho 2.3–4.9 mm (mediana 3.7); hasta 9.9 mm en los abanicos de los extremos.
+  - Sobre la ranura, GND F.Cu continuo de borde a borde en 268 de 469 filas de 0.1 mm (y 88.2–96.6, 98.9–100.1 y 108.6–121.8, sobre todo).
+  - Pistas F.Cu que la cruzan: el par USB D+/D− (diagonal y 80.5–89.7; es el cruce autorizado en la etapa 4, con GND F.Cu al costado en el 76–100 % del cruce), los quiebres F.Cu de las propias redes del haz (DO2_EN, DO2_DIAG, LED_G, LED_R y PWR_FLT_N, en y 79.6–82.8), VAR_ID2 (2.5 mm) y los tramos de pad de la fila de U401 (1.5 mm cada uno).
+  - Costura: 13 vías GND nuevas (grupo `CLAUDE_ETAPA6_COSTURA`, `etapa6_costura_u401.py`). Paso máximo: 3.3 mm al este; 6.0 mm al oeste solo en y 95–101, donde F.Cu no tiene GND (meandro de USB D+ y USB D−). Ahí no va vía, por el criterio del usuario («donde haya cobre GND en F.Cu»).
+  - Pad central de U401: 12 vías a B.Cu, que llegan al plano principal (7099 mm²).
+- Fabricación de prueba (`etapa6_fab.py` → `fab/proto/`, regenerada tras la costura): gerbers y drill PTH/NPTH con mapa, `stencil/`, `bom_proto.csv`, `pos_kicad.csv` y, desde la revisión independiente, `bom_jlc.csv`/`cpl_jlc.csv` (abajo). BOM: 70 líneas, 133 piezas (145 − 12 DNP). `INCLI-VA_gerbers.zip` no se versiona (`.gitignore`: `fab/**/*.zip`; en el commit anterior había entrado por error).
+- Renders finales: `docs/layout/ruteo/etapa6-top.png` y `etapa6-bottom.png`.
+
+**Revisión independiente (Claude Code, 2026-10-30, solo scripts propios: kicad-happy no disponible) — lo resuelto:**
+- **1. Stencil sin DNP:** `etapa6_fab.py` plotea F.Paste/B.Paste (en `gerbers/` y en `stencil/`) desde una copia temporal del PCB, fuera del proyecto, sin pasta en los pads de las 12 piezas DNP (C105, D601, D703, D753, R708–R710, R758–R760, R801, R807). Verificado: 0 pads DNP con apertura. Cobre, máscara y taladros: idénticos a los del commit anterior.
+- **5. Notes de C602:** corregido en el esquema (hoja 60) y en el PCB: en cadena detrás de C601, a ~6 mm del pin VIO, ubicación aceptada. ERC de la hoja 60: 0.
+- **10. Marca de cátodo:** «K» de 0.8 / 0.15 mm en F.Silkscreen junto al pad 1 de D101, D102, D103, D701 y D751, fuera del cuerpo, sin pisar pads ni otra serigrafía (`etapa6_serigrafia_catodo.py`, grupo `CLAUDE_ETAPA6_SILK`, idempotente). Texto de placa, no de huella: no agrega `lib_footprint_mismatch`. DRC sin avisos nuevos.
+- **7. Teardrops bajo U601: registrado como verificado.** La regla `ISO_sin_relleno_bajo_U601` no ve los teardrops, y ampliarla marcaría como error los 29 teardrops legítimos de los extremos exteriores de los pads. `verify_etapa5.py` comprueba ahora `U601_teardrops_entre_filas`: 0 teardrops en la franja entre filas (7.25 mm entre bordes interiores de pads).
+- **CPL (JLC ensambla parte):** `cpl_jlc.csv` y `bom_jlc.csv` (65 líneas, 128 piezas) sin los THT (J1, J2, J401, J402) ni U401, que se sueldan a mano; `bom_proto.csv` sigue siendo la BOM completa de compra (70 líneas, 133 piezas). `cpl_proto.csv` desaparece. Rotación corregida por familia (JLCKicadTools `cpl_rotations_db.csv`): SOT-23/-5/-6 −90°, SOIC 270°, TSSOP 270°, CP_Elec_10x10 180°, y VQFN-24 de U101 270° (regla propia, por analogía con QFN). Ángulos llevados a 0–359°. Posición = centro de los pads (Q101 y Q102 se corren 0.84 mm; el resto coincide con el origen).
+- **Aceptados por el usuario:**
+  - **6.** H5 con tornillo o inserto de inoxidable A2/A4, latón o nylon, nunca acero (está a 9.77 mm del eje del imán). En «Requisitos para la caja».
+  - **8.** Par CAN asimétrico: CAN_H salta 3.8 mm por B.Cu (2 vías), CAN_L todo en F.Cu. Sin efecto a la velocidad de CAN clásico.
+  - **9.** C104 (cara inferior) a ~1.6 mm del borde izquierdo, con el courtyard sobre el borde. En «Requisitos para la caja»; el pedido a JLC va **sin V-cut** (fresado).
+
+**Revisión independiente — hallazgos 2 y 4 (decisiones del usuario, 2026-10-30):**
+- **2. Imán:** va **arriba** (F.Cu). U501, C503 y TP502 no se mueven. El cuerpo de U501 (8.8 × 8.2 mm medido en su serigrafía; la huella easyeda no tiene F.Fab) queda a 4.88 mm del eje, no 7.54 como decía el primer informe. Restricciones del portaimán en «Requisitos para la caja».
+- **4. Courtyards:** de los 6 movimientos aprobados, probados uno por uno con el DRC real (copia aislada, zonas rellenas), **solo C401 se aplicó**: (189.2, 100.6) → (189.2, 99.8), `etapa6_mover_pasivos.py`, tramos de reconexión en el grupo `CLAUDE_ETAPA6_MOV`. C401–C402 pasa de 0.23 a 1.03 mm y C403–C401 de 0.51 a 0.73 mm. DRC 0 errores.
+  - **C402 no se movió:** para 0.5 mm de courtyard con U401 habría que alejarlo 0.22 mm, y la pista al pin 3V3 pasaría de 1.98 a ~2.2 mm, por encima del límite de ≤ 2 mm del usuario. C402–U401 (courtyard 0.28 mm, pads a 0.78 mm) queda como **excepción**, pendiente de confirmación.
+  - **C508 movido en lugar de R502** (aprobado por el usuario): (168.7, 90.3) → (167.9, 90.3). R502–C508 pasa de 0.23 a 1.03 mm. R502 no se pudo mover: su pad CS_IMU caía sobre el tronco +3V3_A (x 172.3).
+  - **Excepciones aceptadas por el usuario** (no se pueden mover sin rerutear pistas de otras redes):
+    - C402–U401: courtyard 0.28 mm, pads a 0.78 mm. Pista al pin 3V3 de 1.98 mm (límite ≤ 2 mm).
+    - C404–U402: courtyard 0.09 mm, pads a 0.58 mm. Moverlo choca con USB D±. Pista a VBUS de U402: 1.68 mm.
+    - C507–U503: courtyard 0.13 mm, pads a 0.63 mm. Moverlo choca con el tronco +3V3_A (x 144.3).
+    - C505–C506 (courtyard 0.26 mm, pads a 0.76 mm) y U502–C506. Moverlos choca con IMU_INT1/INT2 y +3V3_A. **U502–C506: los 0.23 mm son entre courtyards; entre pads y entre aperturas de pasta hay 1.17 mm**, así que no hace falta ajustar el stencil de C506.
+    - Los 16 pares con ≥ 0.86 mm entre pads (incluido el grupo de desacoples CAN C601–C605).
+
+**Pendientes fuera del ruteo:**
+- Verificar los MPN marcados «a verificar» antes de la BOM final. Confirmar el stock de C105 PROD (EEE-FK1H102AV).
+- SCL3300 (DFL-12): revisar la huella para producción; los pads son 0.32 mm más largos que el land pattern.
+- C104 va en B.Cu: la caja necesita separadores de ≥ 12 mm y adhesivo.
+- Firmware: U503 está girado 180°, lo que da un desfase fijo de 180° (compensar con ZPOS). La velocidad CAN se define en firmware. El modo SPI de cada sensor está en «Requisitos para el firmware».
+- Imán de ROT arriba (F.Cu), con portaimán de Ø ≤ 8.7 mm o cara a ≥ 3.8 mm de la placa (ver «Requisitos para la caja»).
+
+**Replicar en `ruteo-manual`** (lo hace el usuario; detalle en `RUTEO_TRASPASO.md`):
+- Movimientos de las etapas 1–4 (sección 3, «Cambios de ubicación»).
+- Etapa 6: teardrops, costura `CLAUDE_ETAPA6_COSTURA` junto al haz bajo U401 y referencias de Q101/U801 movidas.
+- Revisión independiente: C401 de (189.2, 100.6) a (189.2, 99.8) y C508 de (168.7, 90.3) a (167.9, 90.3), con sus tramos de reconexión (grupos `CLAUDE_ETAPA6_MOV`), y las «K» de cátodo de D101–D103, D701 y D751 (grupo `CLAUDE_ETAPA6_SILK`).
+- C404 nuevo.
+- Desvío de RESET.
+- Giro de U503 y movimientos de los pasivos de sensores.
+- Cambio de VBUS/C404 de la etapa 5.
+- Zonas `E5_*` y las reglas `Planos_*` del `.kicad_dru`, si se quieren los mismos planos.
+
+**Verificación rápida (sin modificar el PCB):**
+```bash
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o /tmp/drc.json INCLI-VA.kicad_pcb
+kicad-cli sch erc --severity-all --format json -o /tmp/erc.json INCLI-VA.kicad_sch
+/usr/bin/python3 -B scripts/ruteo/verify_etapa3.py > /tmp/v3.json
+/usr/bin/python3 -B scripts/ruteo/verify_etapa5.py > /tmp/v5.json
+```
+
+## Etapa 5 cerrada (planos) — Claude Code, 2026-10-30
+- **Cerrado:** zonas GND_VEH (B.Cu en toda la placa, F.Cu donde cabe), GND_CAN (ambas caras, solo dominio aislado) y U101_RTN (isla B.Cu), rellenas y guardadas. 321 vías de costura. DRC 0 errores / 5 avisos conocidos, **0 sin rutear**, 0 `via_dangling`, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 5 — cierre: planos» de `RUTEO_TRASPASO.md`.
+- **Pendientes de la etapa 4 resueltos:** 17 islas F.Cu de sensores (cosidas o eliminadas), isla B.Cu de ~137 mm² bajo la supervisión (vías junto a C309/R306), retorno de INT1/INT2 bajo el módulo, costura junto a C605.
+- **Cambio autorizado:** rama sur de VBUS (etapa 3) reemplazada por un enlace B.Cu entre las vías VBUS de J401, para sacar el GND de C404, que estaba encerrado. No volver a ejecutar `etapa3_mcu.py`.
+- **Reglas nuevas en `INCLI-VA.kicad_dru`:** `Planos_conexion_solida` y `Planos_un_rayo` (seis pads GND con un solo rayo térmico).
+- **Para la etapa 6:** revisar las ranuras listadas (INT1/INT2 bajo la fila de pads del módulo, USB en el cruce del bus, MCU_RST_N); teardrops; fabricación de prueba.
+- **Replicar en ruteo-manual:** cambio VBUS/C404 y, si se quieren los mismos planos, zonas `E5_*` y reglas nuevas.
+
+## Etapa 4 cerrada (sensores) — Claude Code, 2026-10-30
+- **Cerrado:** sensores con la opción C aprobada (GPIO actuales sin cambios, esquema intacto). U503 girado 180°, C501/C502 girados, C505/C506/C508/R502/R501/R503/C507 y TP501–TP504 reubicados (tabla en «Cambios de ubicación» de `RUTEO_TRASPASO.md`); referencias de serigrafía reubicadas. 12 cruces B.Cu numerados, con costura GND. DRC 0 errores (sin avisos nuevos de serigrafía), paridad 0, ERC 0 errores / 5 avisos conocidos, `verify_etapa3.py` OK. Quedan 132 conexiones, todas de masa (etapa 5).
+- **Excepciones aceptadas por el usuario:** cruce 12 (+3V3_A → TP303) de 3.6 mm; tres vías GND dentro del círculo del imán, tapadas en ambas caras; tronco +5V a 7.6 mm del cuerpo de U503 (cifra corregida, antes 9.8 mm).
+- **Firmware:** U503 girado 180° → desfase fijo de 180° en el ángulo, sin inversión del sentido de giro; se compensa con el registro ZPOS o en la calibración del cero (ver «Requisitos para el firmware»).
+- **Para la etapa 5:** eliminar o coser las 17 islas F.Cu del grupo de sensores y la isla B.Cu de ~137 mm² bajo la supervisión (vías GND junto a R306/R308/C309/C310).
+- **Replicar en ruteo-manual:** giro de U503 y movimientos de pasivos/TP de sensores, además del desvío de RESET.
+- La reasignación de GPIO del SPI (pendiente anterior) queda **descartada**: el usuario eligió la opción C.
+
+## Etapa 4 parcial — Claude Code, 2026-10-30 (histórico)
+- **Cerrado:** periféricos de U101, desvío de RESET bajo el módulo (autorizado), bus DO/PWR_FLT/LED bajo el módulo con un único cruce del par USB (autorizado), DO1/DO2, +5V a las salidas, LED, VAR_ID, WDI, VMON, R305/R307 y PG_3V3D. DRC 0 errores, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 4 — avance parcial» de `RUTEO_TRASPASO.md`.
+- **A medias (cerrado después):** sensores (39 conexiones: SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC).
+- **Descartado (el usuario eligió la opción C):** reasignar los GPIO del SPI (pines 17–22, IO9–IO14, y quizá INT1/INT2) para que el SPI se rutee todo en F.Cu sin nada en B.Cu debajo. Antes de editar el esquema hay que mostrar al usuario el intercambio exacto y la verificación de ruteo. Requiere ERC y una nota para firmware (algunas señales pasan de IOMUX a la matriz GPIO).
+- **Aplicado en el cierre de la etapa 4:** girar 180° C501 y C502; reubicar C505, C506, C508, R502 y TP504 (≤5 mm de U502). Hay que replicarlo en ruteo-manual junto con el desvío de RESET.
+- Reglas del usuario para este turno: no usar la skill agentic-sourcing; en etapa 6 usar kicad-happy solo para reportar hallazgos; avisar antes de usar cualquier otra skill.
+
+
+## Protección del trabajo manual — Codex, 2026-10-29
+- Añadida en `AGENTS.md` la regla solicitada por el usuario que reserva `PCB_INCLI_VA_manual` y `ruteo-manual` al usuario y prohíbe intervenir sobre ellas o ejecutar `git worktree remove/prune` salvo pedido explícito. Cambio documental completado, sin nuevos pendientes.
+
+## Etapa 3 — cierre actual (`a881797`)
+- Etapa 2 aprobada y auditada. Solo etapa 3 autorizada; no comenzar etapa 4.
+- Decisiones del usuario aplicadas: C402 primero junto a 3V3, C401 detrás, R401 junto al RC de EN; posiciones en «Cambios de ubicación» de `RUTEO_TRASPASO.md`.
+- **Cambio de esquemático posterior a placement-v1, para replicar en ruteo-manual por el usuario:** añadido **C404**, hoja 40, 100 nF, 0603, X7R, 50 V, `GCM188R71H104KA57D` (Murata), DNP vacío, VBUS–GND_VEH. Símbolo en (365.76,63.5), PCB F.Cu (189.6,81.45) r0. Huella oficial `Capacitor_SMD:C_0603_1608Metric`; campos completos. Incorporado al PCB con el path correcto, **paridad 0; no hace falta F8**. No se tocó la copia manual.
+- Ruteados 3V3 al MCU/CAN, desacoples, EN/R401/C403, RESET completo, BOOT, UART, CC1/CC2 y VBUS/C404/TP403. Las cuatro vías USB autorizadas están solo en los ramales B6/B7.
+- **Excepción autorizada y aplicada:** cuello D− a 0.15 mm × 1.922754 mm junto a U401, clearance ≥0.2 mm. USB principal completo y sin vías: D−/D+ 45.9509/45.9508 mm, diferencia nominal 0.0001 mm. Las cuatro vías se limitan a ramales B6/B7.
+- PCB guardado: **DRC 0 errores /57 avisos** (52 vías de masas +5 conocidos), **paridad 0**, **223 conexiones pendientes**: 108 de etapa 4 y 115 GND de etapa 5. No quedan extremos USB abiertos.
+- ERC: **0 errores /5 avisos conocidos**; hoja 40: 0 errores /4 avisos de SW401/SW402. `sch_visual_qa` no está disponible en esta sesión; revisión visual de hoja completa y sector USB/C404 sin solapes nuevos. Evidencia `etapa3-erc.json`, `etapa3-hoja40.png`, `etapa3-c404-esquema.png`.
+- Tabla de mediciones y posiciones en `RUTEO_TRASPASO.md`; renders y medidas finales en `docs/layout/ruteo/etapa3-*`. C402 0.775 mm al pin; C404 0.575 mm; R401 4.964 mm a EN (distancias entre bordes de pads).
+- Cierre completado: DRC, paridad, ERC, renders y mediciones. **No iniciar etapa 4 sin visto bueno.** Leer «Cómo retomar» al inicio de `RUTEO_TRASPASO.md`; incluye inventario de redes, excepciones, cambios a replicar y comandos. `preview_usb_escape.py` queda como archivo histórico; usar `verify_etapa3.py` para comprobar la placa entregada.
+- El detalle que sigue conserva el historial anterior.
+
+## Retoma de ruteo — histórico de etapa 2, Codex, 2026-10-29
+- Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
+- Registrada la línea de continuidad en `AGENTS.md` y las decisiones del usuario en `docs/RUTEO_TRASPASO.md`.
+- U503: medir 10 mm desde el borde del cuerpo; excepción del tronco +5V existente a 9.8 mm (corregido 2026-10-30: mínimo 7.6 mm en la esquina (147.3,110.6)).
+- TP301: traslado aplicado de (140,134) a (140,131.6), B.Cu, sobre el tronco +5V y fuera del SW; retirada la bajada anterior. Registrado en «Cambios de ubicación».
+- ROT: mantener libre Ø17.9 mm en ambas caras. C105 PROD: confirmar stock en BOM, sin bloquear el ruteo.
+- R602/R603/C609 montadas en PROTO; PROD según instalación.
+- Desacoples U601: ≤2 mm para C601/C604/C607/C610; excepción aceptada C608 = 2.145 mm (≤2.15 mm); C602/C603/C606 en cadena detrás del pequeño, sin derivación independiente y con retorno corto a su masa. Conservar ubicación y valores (C602 es 100 nF). C606/C610 retornan a GNDISO_CAN antes de FB602.
+- Usuario confirmó cierre completo de KiCad; comprobada ausencia de bloqueos antes de editar. Esquemáticos intactos. Solo TP301 cambia de ubicación; net classes y reglas conservadas.
+- Fuente aislada, desacoples en cadena, CAN_RS y CAN_TX/RX/STBY/SILENT completos hasta U401, con TP404/TP405 y resistencias. El riel +3V3_D desde U301 y los planos siguen en sus etapas previstas.
+- **Etapa 2 terminada:** DRC 0 errores / 42 avisos (37 vías de masas pendientes de planos + 5 conocidos), paridad 0, 254 conexiones pendientes para las etapas posteriores. Renders, DRC y medidas finales en `docs/layout/ruteo/etapa2-*`; detalle en `docs/RUTEO_AGENTE.md`.
+- **Decisiones resueltas:** C608 aceptado a 2.145 mm. Evaluado giro de D601 a 180°: traslada la inversión al acceso desde J1; se conserva r0 y se aplica el puente CANH autorizado, recto de 3.844 mm en B.Cu, con dos vías. CANL sin vías. Terminación completa.
+- **Longitudes principales J1→U601:** H 22.2139 / L 22.2120 mm, diferencia nominal 0.0019 mm incluyendo 1.6 mm por vía (ajuste de altura ya activo en el proyecto). Los ramales a terminación se miden aparte.
+- **Etapa 5, C605:** asegurar plano GND_VEH continuo y costura local entre su vía (144.28,121.9), C602/C601 y GND de U601; su camino VIO mide 12.270 mm. Revisar además continuidad GND_CAN alrededor del puente H y plano bajo SW de U301 tras mover TP301.
+- Cierre de etapa 2: DRC, paridad, renders de ambas caras, tabla final de desacoples y CAN completados; `.kicad_pro` revisado y conservado. Commit y push del cierre de este turno. **Esperar aprobación antes de etapa 3.**
 
 ## Criterio general (decisión del usuario, 2026-10-27)
 - **El prototipo es el mismo diseño que irá a producción.** Entre prototipo y producción solo cambia qué se monta.
@@ -44,10 +184,7 @@ Cerradas; antes figuraban como abiertas.
 - **Fabricación:** 2 capas, JLCPCB. El prototipo se arma en la variante CAN + DO + ROT.
 - **ASM330 (LGA):** lo suelda el usuario con aire caliente y stencil. Pedir el stencil a JLCPCB.
 - **Conformal coating: sí.** Zonas a enmascarar (J1, J2, J401 y J402) dibujadas en `User.Comments`, con el rótulo "SIN BARNIZ" en F.Silkscreen. Se asume PD1 bajo el barniz; las distancias de la `.kicad_dru` (PD2) quedan con margen.
-- **Imán de ROT:** lado aún no definido, así que se mantienen libres las dos caras.
-  - Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
-  - Portaimán no ferromagnético de hasta Ø16 mm.
-  - Tornillo o inserto de H5 de inoxidable A2 o de latón (no magnético).
+- **Imán de ROT:** arriba (F.Cu), frente a U503; preferido portaimán de Ø ≤ 8.7 mm; alternativa: mayor, con la cara a ≥ 3.8 mm de la placa (air gap 2.6–3.0 mm). Detalle en «Requisitos para la caja». H5 no magnético (inoxidable A2/A4, latón o nylon).
 - **Mecánica:** la caja todavía no está diseñada. Sus requisitos quedan en "Requisitos para la caja".
 
 ## Hecho en este turno (2026-10-27)
@@ -461,7 +598,7 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 - **Fijaciones:**
   - H1 (105, 55), H2 (195, 55), H3 (105, 145), H4 (195, 145) y H5 (156, 88.5).
   - M3, PTH de 3.2 mm, anillo de 6.4 mm sin red. Arandela de Ø ≤ 8 mm.
-  - Tornillo o inserto de H5 de inoxidable A2 o de latón.
+  - Tornillo o inserto de H5 de inoxidable A2/A4, latón o nylon; **nunca acero** (H5 a 9.77 mm del eje del imán de ROT; aceptado por el usuario, 2026-10-30).
 - **Apoyo B:** columna de la caja contra B.Cu en (163.5, 99.0), Ø8 mm. Esa zona no tiene cobre expuesto.
 - **Aberturas:**
   - J1: MSTBV de 5 pines, borde izquierdo, y ~96–132.
@@ -470,21 +607,29 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
   - J402 (UART0) es interno: no necesita abertura.
 - **Altura:**
   - Cara superior: C105 hasta 17.3 mm (solo en PROD) y J1/J2 con la brida.
-  - Cara inferior: solo TP y chips planos.
+  - Cara inferior: **C104 (47 µF, CP 10 × 10 mm) de 10.5 mm** en (106.85, 71.0); el resto son TP. **Separadores de ≥ 12 mm** entre la placa y el fondo de la caja.
+  - **C104 a ~1.6 mm del borde izquierdo** (cuerpo; el courtyard llega al borde): sin nervios ni paredes de la caja en x < 102 frente a C104. Placa **fresada, sin V-cut** (aceptado por el usuario, 2026-10-30).
+- **Adhesivo:** C104 (cara inferior, vibración) y C105 si se monta la versión sin terminales de soporte.
 - **Antena del ESP32-S3:** keep-out de la huella oficial (48 × 21 mm alrededor de la antena, borde derecho). Sin metal de la caja ni tornillería sobre la antena ni a menos de 15 mm.
-- **ROT:**
-  - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral, air gap 0.5–3 mm.
-  - Portaimán no ferromagnético de Ø ≤ 16 mm. Hay libre un círculo de Ø17.9 mm en las dos caras.
+- **ROT (decisión del usuario, 2026-10-30): imán arriba, en la cara F.Cu, frente a U503.**
+  - Eje sobre U503 (150, 100). Imán Ø8 × 2.5 mm diametral. Air gap 0.5–3 mm a U503.
+  - **Preferido:** imán pegado en la punta del eje o en un portaimán no ferromagnético de **Ø ≤ 8.7 mm** centrado en el eje.
+  - El círculo de Ø17.9 mm **no** está libre en F.Cu: U501 (SCL3300, ~3.3 mm de alto) tiene el cuerpo a 4.88 mm del eje y C503 (0603, ~0.9 mm) a 7.24 mm. No se mueven (decisión del usuario).
+  - Holgura radial con portaimán de Ø8.7 mm: 0.53 mm a U501 y 2.89 mm a C503.
+  - **Alternativa, portaimán mayor que Ø8.7 mm:** solo con air gap de **2.6–3.0 mm**. Su cara inferior debe quedar por encima de U501. Con 0.5 mm de margen: cara a **≥ 3.8 mm** sobre la placa, es decir air gap **≥ 2.6 mm** sobre U503 (TSSOP-14, 1.2 mm máx.), dentro del rango 0.5–3 mm solo entre 2.6 y 3.0 mm. Distancia radial del borde del portaimán: a U501 = 4.88 − Ø/2 mm y a C503 = 7.24 − Ø/2 mm (negativo = el portaimán pasa por encima). Ejemplo Ø16 mm: −3.12 mm (U501) y −0.76 mm (C503), ambos por encima.
+  - Cara inferior: TP502 (courtyard a 8.08 mm del eje) se queda; no afecta con el imán arriba.
+  - Tornillo e inserto de H5 no magnéticos (inoxidable A2/A4, latón o nylon).
 - **Coating:** enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`).
 
 ## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
 No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
-- [ ] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops.
-- [ ] 1. Potencia.
-- [ ] 2. CAN.
-- [ ] 3. USB/MCU.
-- [ ] 4. Sensores y señales.
-- [ ] 5. Planos.
+- [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
+- [x] 1. Potencia: cerrada (Claude Code). Cambios de ubicación: C104 a B.Cu, U301 girado 180°, C302 junto a VIN y TP101 a (127.6, 61.5).
+- **Las etapas 2 a 6 las sigue Codex en `ruteo-agente`.** Plan, reglas y restricciones en `docs/RUTEO_TRASPASO.md`.
+- [x] 2. CAN: terminada y aprobada por el usuario; continuidad B.Cu auditada. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
+- [x] 3. USB/MCU: cierre con cuello D− autorizado; siguiente etapa espera visto bueno.
+- [x] 4. Sensores y señales: cerrada (Claude Code); opción C, U503 girado 180°. La etapa 5 espera visto bueno.
+- [x] 5. Planos: cerrada (Claude Code); 0 sin rutear. La etapa 6 espera visto bueno.
 - [ ] 6. Cierre: DRC y paridad en 0, retornos, fabricación de prueba para JLCPCB en `fab/`.
 
 ## Requisitos para el firmware (SPI de 50_sensors)
@@ -498,6 +643,7 @@ Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` 
 
 - ASM330LHH: configurar `I2C_disable = 1` (CTRL4_C) y `DEVICE_CONF = 1` (CTRL9_XL); INT1/INT2 en push-pull (IO40/IO41).
 - Variante estándar: U503 no está montado; no inicializarlo (leer VAR_ID antes de tocar CS_ROT).
+- **U503 girado 180° en el PCB (etapa 4):** desfase fijo de 180° en el ángulo, sin inversión del sentido de giro. Compensarlo con el registro ZPOS o en la calibración del cero.
 
 ## Conectores J1 y J2 (confirmado por el usuario, 2026-10-27)
 Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida roscada (GF)**.
@@ -551,6 +697,8 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
     - C508 GCM21BR71A106KE22L
 
 ## Notas para el próximo turno
+- **pcbnew en scripts:** `LoadBoard()` de un PCB fuera de la carpeta del proyecto, seguido de `Save()` dentro del proyecto, sobrescribe `INCLI-VA.kicad_pro` con valores por defecto (se pierden las net classes). Cargar siempre el archivo del proyecto. Verificar `git diff INCLI-VA.kicad_pro` antes de cada commit.
+- **Reglas DRC:** una regla de clearance sin condición anula las net classes. La propiedad para la net class es `A.NetClass`.
 - Variante ROT: U503, C507 y R503 tienen `dnp yes` y el campo `Variant = ROT`. En la variante ROT la placa va centrada sobre el eje del pivote.
 - Huella del SCL3300 (easyeda2kicad DFL-12): pads 0.32 mm más largos que el land pattern de Murata, para soldar a mano; en producción volver al de Murata.
 - Pines del ESP32-S3: la tabla aprobada y sus criterios están en un texto de la hoja 40. No mover señales críticas a GPIO1–14/17/18 (glitch de encendido) ni a strapping.

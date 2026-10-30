@@ -3501,7 +3501,7 @@
 				)
 			)
 		)
-		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). < 2 mm del pin."
+		(property "Notes" "VIO: 0.01 uF + 0.1 uF (ADM3055E Rev. D, tabla 10). En cadena detrás de C601 (pin VIO → C601 10 nF → C602 100 nF), a ~6 mm del pin; ubicación aceptada por el usuario (2026-10-29)."
 			(at 109.22 175.26 0)
 			(hide yes)
 			(show_name no)
