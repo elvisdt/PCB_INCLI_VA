@@ -52,6 +52,7 @@ Esta revisión es un demo que se va a soldar a mano. Hasta que el usuario indiqu
 
 ## Trabajo entre agentes
 Este proyecto lo trabajan dos agentes, Claude Code y Codex, por turnos. Estas reglas valen para los dos (`CLAUDE.md` solo importa este archivo).
+- La carpeta PCB_INCLI_VA_manual y la rama ruteo-manual son del usuario (ruteo y reubicación manual en curso). Ningún agente las lee para editar, las modifica, hace commit, rebase, merge ni push sobre ellas, ni ejecuta git worktree remove/prune, salvo pedido explícito del usuario.
 - Nunca editar el mismo archivo en paralelo: un agente por turno.
 - Al empezar el turno: leer `git log` (los últimos commits) y `docs/PENDIENTES.md`.
 - Al terminar el turno:

@@ -4,6 +4,9 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 
 Última actualización: 2026-10-29, Codex (etapa 3 cerrada; traspaso preparado; etapa 4 no iniciada).
 
+## Protección del trabajo manual — Codex, 2026-10-29
+- Añadida en `AGENTS.md` la regla solicitada por el usuario que reserva `PCB_INCLI_VA_manual` y `ruteo-manual` al usuario y prohíbe intervenir sobre ellas o ejecutar `git worktree remove/prune` salvo pedido explícito. Cambio documental completado, sin nuevos pendientes.
+
 ## Etapa 3 — cierre actual (`a881797`)
 - Etapa 2 aprobada y auditada. Solo etapa 3 autorizada; no comenzar etapa 4.
 - Decisiones del usuario aplicadas: C402 primero junto a 3V3, C401 detrás, R401 junto al RC de EN; posiciones en «Cambios de ubicación» de `RUTEO_TRASPASO.md`.
