@@ -2,17 +2,19 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**PCB cerrado**; lo siguiente es la BOM con códigos LCSC, en otra sesión; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (**PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
 
-## RETOMAR AQUÍ — PCB cerrado (ruteo y revisión independiente terminados)
-Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
+## RETOMAR AQUÍ — PCB integrado en main (`pcb-v1-rc1`)
+**2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. La rama `ruteo-agente`, los worktrees, `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar.
+
+Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
 **Quedan:**
 - [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
 - [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
-- [ ] **Siguiente (otra sesión): BOM con códigos LCSC.**
-- [ ] BOM con códigos LCSC (`bom_jlc.csv` y `bom_proto.csv` no los tienen). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
-- [ ] Revisión independiente con kicad-happy (solo informe). No estaba instalada; la revisión de 2026-10-30 se hizo con scripts propios.
+- [ ] **BOM con códigos LCSC**, en el worktree `PCB_INCLI_VA_bom` (rama `bom-sourcing`). `fab/proto/bom_jlc.csv` y `bom_proto.csv` tienen MPN y fabricante, pero no LCSC. Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [ ] **Revisión independiente** con kicad-happy u otro revisor (solo informe). La de 2026-10-30 se hizo con scripts propios porque kicad-happy no estaba instalada.
+- [ ] **Comparación con `ruteo-manual`** (trabajo del usuario en `PCB_INCLI_VA_manual`): decidir qué se conserva de cada ruteo. La lista de cambios a replicar está en «Replicar en `ruteo-manual`», abajo.
 - [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
 - [ ] Esquema, hoja 60 (anterior a este turno): `sch_visual_qa` avisa que #PWR032 se superpone con R601 (~3.2 mm²). Solo legibilidad.
 
