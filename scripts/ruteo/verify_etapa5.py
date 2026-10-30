@@ -194,6 +194,20 @@ def main():
             s = z.GetFilledPolysList(F).CloneDropTriangulation(); s.BooleanIntersection(win)
             rep['sensores_FCu'] = {'regiones': s.OutlineCount(), 'area_mm2': round(s.Area() / 1e12, 1)}
     rep['vias_costura_CLAUDE_ETAPA5'] = sum(1 for g in b.Groups() if g.GetName() == 'CLAUDE_ETAPA5' for i in g.GetItems() if i.Type() == k.PCB_VIA_T)
+    # Barrera U601: la regla ISO_sin_relleno_bajo_U601 no ve los teardrops (zonas con atributo teardrop).
+    # Se comprueba aquí que ninguno entre en la franja entre las dos filas de pads (bajo el cuerpo).
+    u = b.FindFootprintByReference('U601'); xc = u.GetPosition().x
+    pb = [p.GetBoundingBox() for p in u.Pads()]
+    xi = max(p.GetRight() for p in pb if p.GetCenter().x < xc); xd = min(p.GetLeft() for p in pb if p.GetCenter().x > xc)
+    yt = min(p.GetTop() for p in pb); yb = max(p.GetBottom() for p in pb)
+    entre = []
+    for z in b.Zones():
+        if not z.IsTeardropArea(): continue
+        r = z.GetFilledPolysList(z.GetFirstLayer()).BBox()
+        if r.GetRight() > xi + mm(.01) and r.GetLeft() < xd - mm(.01) and r.GetBottom() > yt and r.GetTop() < yb:
+            entre.append(z.GetNetname())
+    rep['U601_teardrops_entre_filas'] = {'cantidad': len(entre), 'redes': entre,
+                                         'separacion_filas_mm': round((xd - xi) / 1e6, 2)}
     print(json.dumps(rep, indent=1, ensure_ascii=False))
 
 

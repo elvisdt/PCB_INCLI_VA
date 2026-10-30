@@ -5,12 +5,12 @@
       "Application": "Pcbnew",
       "Version": "10.0.7-10.0.7~ubuntu26.04.1"
     },
-    "CreationDate": "2026-10-30T10:00:04-05:00"
+    "CreationDate": "2026-10-30T10:43:56-05:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
-      "Name": "INCLI-VA",
-      "GUID": "494e434c-492d-4564-912e-6b696361645f",
+      "Name": "pasta",
+      "GUID": "70617374-612e-46b6-9963-61645f706362",
       "Revision": "rev?"
     },
     "Size": {

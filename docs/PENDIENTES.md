@@ -2,15 +2,18 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**ruteo terminado**: etapas 0–6 cerradas; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (**ruteo terminado**; correcciones de la revisión independiente aplicadas; hallazgos 2 y 4 esperan aprobación; ver «RETOMAR AQUÍ»).
 
 ## RETOMAR AQUÍ — ruteo terminado (etapa 6 cerrada)
 Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
-**Quedan (no son ruteo):**
-- [ ] BOM con códigos LCSC (`fab/proto/bom_proto.csv` no los tiene). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
-- [ ] Revisión independiente con kicad-happy (solo informe, sin aplicar cambios). No estaba instalada en la sesión de cierre.
-- [ ] Rotaciones del CPL para JLC (`fab/proto/cpl_proto.csv` usa las de KiCad): revisarlas en la vista previa de JLC si se pide ensamblado.
+**Quedan:**
+- [ ] **Hallazgo 2 (círculo del imán) — espera aprobación del usuario; no mover nada antes.** Ver «Revisión independiente», abajo.
+- [ ] **Hallazgo 4 (courtyards < 1 mm) — espera aprobación del usuario; no mover nada antes.** Ver «Revisión independiente».
+- [ ] BOM con códigos LCSC (`bom_jlc.csv` y `bom_proto.csv` no los tienen). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [ ] Revisión independiente con kicad-happy (solo informe). No estaba instalada; la revisión de 2026-10-30 se hizo con scripts propios.
+- [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
+- [ ] Esquema, hoja 60 (anterior a este turno): `sch_visual_qa` avisa que #PWR032 se superpone con R601 (~3.2 mm²). Solo legibilidad.
 
 **Antes de tocar el PCB:**
 1. Leer `AGENTS.md`, `docs/RUTEO_TRASPASO.md` («Cómo retomar» y «Etapa 6 — Cierre») y `git log -5`.
@@ -34,8 +37,23 @@ Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo complet
   - Pistas F.Cu que la cruzan: el par USB D+/D− (diagonal y 80.5–89.7; es el cruce autorizado en la etapa 4, con GND F.Cu al costado en el 76–100 % del cruce), los quiebres F.Cu de las propias redes del haz (DO2_EN, DO2_DIAG, LED_G, LED_R y PWR_FLT_N, en y 79.6–82.8), VAR_ID2 (2.5 mm) y los tramos de pad de la fila de U401 (1.5 mm cada uno).
   - Costura: 13 vías GND nuevas (grupo `CLAUDE_ETAPA6_COSTURA`, `etapa6_costura_u401.py`). Paso máximo: 3.3 mm al este; 6.0 mm al oeste solo en y 95–101, donde F.Cu no tiene GND (meandro de USB D+ y USB D−). Ahí no va vía, por el criterio del usuario («donde haya cobre GND en F.Cu»).
   - Pad central de U401: 12 vías a B.Cu, que llegan al plano principal (7099 mm²).
-- Fabricación de prueba (`etapa6_fab.py` → `fab/proto/`, regenerada tras la costura): gerbers y drill PTH/NPTH con mapa, `stencil/`, `bom_proto.csv` y `cpl_proto.csv` (formato JLC), `pos_kicad.csv`. BOM: 70 líneas, 133 piezas (145 − 12 DNP); CPL: 133. `INCLI-VA_gerbers.zip` no se versiona (`.gitignore`: `fab/**/*.zip`; en el commit anterior había entrado por error).
+- Fabricación de prueba (`etapa6_fab.py` → `fab/proto/`, regenerada tras la costura): gerbers y drill PTH/NPTH con mapa, `stencil/`, `bom_proto.csv`, `pos_kicad.csv` y, desde la revisión independiente, `bom_jlc.csv`/`cpl_jlc.csv` (abajo). BOM: 70 líneas, 133 piezas (145 − 12 DNP). `INCLI-VA_gerbers.zip` no se versiona (`.gitignore`: `fab/**/*.zip`; en el commit anterior había entrado por error).
 - Renders finales: `docs/layout/ruteo/etapa6-top.png` y `etapa6-bottom.png`.
+
+**Revisión independiente (Claude Code, 2026-10-30, solo scripts propios: kicad-happy no disponible) — lo resuelto:**
+- **1. Stencil sin DNP:** `etapa6_fab.py` plotea F.Paste/B.Paste (en `gerbers/` y en `stencil/`) desde una copia temporal del PCB, fuera del proyecto, sin pasta en los pads de las 12 piezas DNP (C105, D601, D703, D753, R708–R710, R758–R760, R801, R807). Verificado: 0 pads DNP con apertura. Cobre, máscara y taladros: idénticos a los del commit anterior.
+- **5. Notes de C602:** corregido en el esquema (hoja 60) y en el PCB: en cadena detrás de C601, a ~6 mm del pin VIO, ubicación aceptada. ERC de la hoja 60: 0.
+- **10. Marca de cátodo:** «K» de 0.8 / 0.15 mm en F.Silkscreen junto al pad 1 de D101, D102, D103, D701 y D751, fuera del cuerpo, sin pisar pads ni otra serigrafía (`etapa6_serigrafia_catodo.py`, grupo `CLAUDE_ETAPA6_SILK`, idempotente). Texto de placa, no de huella: no agrega `lib_footprint_mismatch`. DRC sin avisos nuevos.
+- **7. Teardrops bajo U601: registrado como verificado.** La regla `ISO_sin_relleno_bajo_U601` no ve los teardrops, y ampliarla marcaría como error los 29 teardrops legítimos de los extremos exteriores de los pads. `verify_etapa5.py` comprueba ahora `U601_teardrops_entre_filas`: 0 teardrops en la franja entre filas (7.25 mm entre bordes interiores de pads).
+- **CPL (JLC ensambla parte):** `cpl_jlc.csv` y `bom_jlc.csv` (65 líneas, 128 piezas) sin los THT (J1, J2, J401, J402) ni U401, que se sueldan a mano; `bom_proto.csv` sigue siendo la BOM completa de compra (70 líneas, 133 piezas). `cpl_proto.csv` desaparece. Rotación corregida por familia (JLCKicadTools `cpl_rotations_db.csv`): SOT-23/-5/-6 −90°, SOIC 270°, TSSOP 270°, CP_Elec_10x10 180°, y VQFN-24 de U101 270° (regla propia, por analogía con QFN). Ángulos llevados a 0–359°. Posición = centro de los pads (Q101 y Q102 se corren 0.84 mm; el resto coincide con el origen).
+- **Aceptados por el usuario:**
+  - **6.** H5 con tornillo o inserto de inoxidable A2/A4, latón o nylon, nunca acero (está a 9.77 mm del eje del imán). En «Requisitos para la caja».
+  - **8.** Par CAN asimétrico: CAN_H salta 3.8 mm por B.Cu (2 vías), CAN_L todo en F.Cu. Sin efecto a la velocidad de CAN clásico.
+  - **9.** C104 (cara inferior) a ~1.6 mm del borde izquierdo, con el courtyard sobre el borde. En «Requisitos para la caja»; el pedido a JLC va **sin V-cut** (fresado).
+
+**Revisión independiente — esperan aprobación (no mover nada antes):**
+- **2. Círculo del imán (Ø17.9 mm, eje (150, 100)).** Corrección del informe anterior: el cuerpo de U501 (SCL3300, 8.8 × 8.2 mm medido en su serigrafía, ~3.3 mm de alto; la huella easyeda no tiene F.Fab) queda a **4.88 mm** del eje: entra **4.07 mm**, no 1.4. Pads a 6.47 mm. C503 (0603, cuerpo a 7.24 mm). En B.Cu, TP502 (courtyard a 8.08 mm). Para sacar U501 del círculo hay que moverlo ≥ 4.6 mm al este (choca con C505 y U502) o ~8.7 mm al sur: es replantear el grupo de sensores y rerutear sus 9 pistas SPI/alimentación.
+- **4. Courtyards:** 22 de 37 pares incumplen el criterio de LAYOUT_NOTES (1 mm entre pasivos; 0.5 mm pasivo–IC). Distancia real entre pads: 0.58–1.83 mm. Propuesta y detalle en el informe al usuario del 2026-10-30.
 
 **Pendientes fuera del ruteo:**
 - Verificar los MPN marcados «a verificar» antes de la BOM final. Confirmar el stock de C105 PROD (EEE-FK1H102AV).
@@ -573,7 +591,7 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 - **Fijaciones:**
   - H1 (105, 55), H2 (195, 55), H3 (105, 145), H4 (195, 145) y H5 (156, 88.5).
   - M3, PTH de 3.2 mm, anillo de 6.4 mm sin red. Arandela de Ø ≤ 8 mm.
-  - Tornillo o inserto de H5 de inoxidable A2 o de latón.
+  - Tornillo o inserto de H5 de inoxidable A2/A4, latón o nylon; **nunca acero** (H5 a 9.77 mm del eje del imán de ROT; aceptado por el usuario, 2026-10-30).
 - **Apoyo B:** columna de la caja contra B.Cu en (163.5, 99.0), Ø8 mm. Esa zona no tiene cobre expuesto.
 - **Aberturas:**
   - J1: MSTBV de 5 pines, borde izquierdo, y ~96–132.
@@ -583,6 +601,7 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
 - **Altura:**
   - Cara superior: C105 hasta 17.3 mm (solo en PROD) y J1/J2 con la brida.
   - Cara inferior: **C104 (47 µF, CP 10 × 10 mm) de 10.5 mm** en (106.85, 71.0); el resto son TP. **Separadores de ≥ 12 mm** entre la placa y el fondo de la caja.
+  - **C104 a ~1.6 mm del borde izquierdo** (cuerpo; el courtyard llega al borde): sin nervios ni paredes de la caja en x < 102 frente a C104. Placa **fresada, sin V-cut** (aceptado por el usuario, 2026-10-30).
 - **Adhesivo:** C104 (cara inferior, vibración) y C105 si se monta la versión sin terminales de soporte.
 - **Antena del ESP32-S3:** keep-out de la huella oficial (48 × 21 mm alrededor de la antena, borde derecho). Sin metal de la caja ni tornillería sobre la antena ni a menos de 15 mm.
 - **ROT:**
