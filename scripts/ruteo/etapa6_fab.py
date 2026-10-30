@@ -27,7 +27,7 @@ import pcbnew as k
 PCB, SCH = 'INCLI-VA.kicad_pcb', 'INCLI-VA.kicad_sch'
 OUT = 'fab/proto'
 LAYERS = 'F.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts'  # la pasta se reemplaza abajo (sin DNP)
-MANO = {'U401'}                 # SMD que se suelda a mano (además de todo lo THT)
+MANO = {'U401', 'F101', 'Q101', 'Q102', 'L201', 'U503'}  # SMD a mano (además de todo lo THT). F101, Q101, Q102: originales de DigiKey/Mouser (sustitutos rechazados); L201, U503: sin stock en JLC. Ver docs/BOM_SOURCING.md
 # Rotación JLC = rotación KiCad + corrección. Fuente: matthewlai/JLCKicadTools, cpl_rotations_db.csv
 # (consultado 2026-10-30); solo las familias de esta placa. Primera coincidencia manda.
 ROT = [(r'^SOT-23', -90), (r'^SOIC-', 270), (r'^TSSOP-', 270), (r'^CP_Elec_10x10', 180),
@@ -39,7 +39,9 @@ def cli(*a):
     subprocess.run(['kicad-cli', *a], check=True, stdout=subprocess.DEVNULL)
 
 
-shutil.rmtree(OUT, ignore_errors=True)
+# Solo se borran las carpetas generadas: bom_jlc_lcsc.csv se mantiene a mano (docs/BOM_SOURCING.md); el resto se sobrescribe.
+for d in ('gerbers', 'stencil'):
+    shutil.rmtree(f'{OUT}/{d}', ignore_errors=True)
 g, st = f'{OUT}/gerbers', f'{OUT}/stencil'
 os.makedirs(g); os.makedirs(st)
 cli('pcb', 'export', 'gerbers', '-o', g + '/', '--layers', LAYERS, '--subtract-soldermask', PCB)
