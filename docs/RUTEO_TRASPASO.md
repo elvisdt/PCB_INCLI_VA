@@ -2,7 +2,55 @@
 
 ## Cómo retomar
 
-**Actualización de Claude Code, 2026-10-30: etapa 4 PARCIAL (commit `[Claude Code] ruteo etapa 4 parcial`).** Quedan solo los sensores (39 conexiones). Leer primero «Etapa 4 — avance parcial» justo debajo; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica.
+**Actualización de Claude Code, 2026-10-30: etapa 4 CERRADA (commit `[Claude Code] ruteo etapa 4: sensores ...`).** No quedan conexiones no-GND; las 132 restantes son masas de la etapa 5. Leer primero «Etapa 4 — cierre: sensores» y «Etapa 4 — avance parcial», justo debajo; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 5 espera el visto bueno del usuario.**
+
+### Etapa 4 — cierre: sensores (Claude Code, 2026-10-30)
+
+Opción C aprobada por el usuario: se **mantienen los GPIO actuales** (la reasignación de GPIO quedó descartada; el esquema no se tocó), se gira U503 y se reubican pasivos y TP; se aceptan cruces B.Cu cortos entre SCK/MOSI/MISO. Mismo generador `scripts/ruteo/etapa4_senales.py` (sección «Sensores», grupo `CLAUDE_ETAPA4`); probado dos veces seguidas sobre una copia: idempotente.
+
+| Verificación (PCB guardado) | Resultado |
+|---|---|
+| DRC | **0 errores** / 89 avisos: 84 `via_dangling` de masas (etapa 5) + los 5 conocidos (2 `silk_overlap` Q101/U801, 2 `silk_edge_clearance`, 1 `lib_footprint_mismatch` U401). Sin avisos nuevos de serigrafía |
+| Paridad | **0** |
+| ERC | 0 errores / 5 avisos conocidos (esquema sin cambios) |
+| `verify_etapa3.py` | OK |
+| Sin rutear | **132, todas de masa**: 124 GND_VEH + 8 GND_CAN (etapa 5) |
+| Renders | [superior](layout/ruteo/etapa4-top.png), [inferior](layout/ruteo/etapa4-bottom.png), [cruces numerados](layout/ruteo/etapa4-sensores-cruces.png), [relleno preliminar](layout/ruteo/etapa4-sensores-relleno.png) |
+
+Evidencia: `etapa4-drc.json`, `etapa4-erc.json`, `etapa4-medidas.json`.
+
+**U503 girado 180° sobre su centro (150,100).** Datasheet AS5147U (Fig. 72, nota 2): el centro del array Hall coincide con el centro del encapsulado, tolerancia del die ±0.235 mm por eje; el origen de la huella es el centroide de pads, así que el eje no cambia (peor caso 0.33 mm radial, dentro de ±0.5 mm). **Firmware:** desfase fijo de 180° en el ángulo, sin inversión del sentido de giro; se compensa con ZPOS o en la calibración del cero.
+
+**Topología:**
+- **CS_IMU** al norte por x171.35 hasta U502.12, con R502 en el camino. **INT1/INT2** por B.Cu bajo el módulo (y123.9/y124.4, carriles x174.35/x173.85) hasta las vías (170.1,108.5) y (170.75,109.8); TP504 sobre INT1.
+- **U502:** recinto de alimentación con C505/C506 y vía GND (168.7,99.4), alimentado desde la red norte de +3V3_A (C508/R502) bajando por x172.3.
+- **Bus SPI de U502/U501:** SCK y92.6, MOSI y93.4, MISO por banda al este de U501 (x163–166.4) hasta los pines 19–21.
+- **U503** sale por el hueco U501/U503 hacia el sur: CS_ROT x153.6 → pin 22 (R503 en el camino), SCK x154.0, MISO x154.4, MOSI x154.8 → haz al este en y114.4/113.15/112.15.
+- **+3V3_A:** C307 → F.Cu y126 → salto bajo +5V → pasillo F.Cu x146.45 (allí CAN va por B.Cu) → salto bajo +5V → F.Cu y109.5 → R503, C507/U503.11–12, al norte por y94.8 → C504/U501.9 → red norte (y88.6) → C508/R502. Salto hacia el sur de U501 (R501, C501). TP303 por B.Cu con vía (158.3,136.9).
+- 21 vías de costura GND junto a los saltos (todos los saltos SPI con costura a ambos lados; el tramo horizontal de INT1 bajo el módulo no la tiene).
+
+**Cruces B.Cu** (todos a 90°; ninguno bajo U501/U502/U503 ni dentro del círculo del imán, el más cercano a 11.26 mm del eje; ninguna vía en el área B):
+
+| # | Línea en B.Cu | Cruza bajo | Posición | Longitud (mm) |
+|---|---|---|---|---|
+| 1 | MOSI | SCK | (163.0, 93.4) | 1.90 |
+| 2 | +3V3_A (U502) | INT2, CS_IMU | y100.6 | 1.80 |
+| 3 | MISO | SCK, MOSI | y107.3 | 3.00 |
+| 4 | INT1 | INT2, CS_IMU | y108.5 | 4.25 total; 1.6 fuera del módulo |
+| 5 | CS_INC | MISO, SCK, MOSI | y109.5 | 3.00 |
+| 6 | INT2 | CS_IMU | y109.8 | 3.10 total; 0.9 fuera del módulo |
+| 7 | +3V3_A | tronco +5V | (146.2, 110.6) | 2.25 |
+| 8 | +3V3_A | CS_ROT, SCK, MISO, MOSI | y111.0 | 2.40 |
+| 9 | MOSI | MISO, SCK | y112.15 | 2.60 |
+| 10 | SCK | MISO | y114.4 | 1.65 |
+| 11 | +3V3_A | tronco +5V | (146.3, 124.8) | 2.30 |
+| 12 | +3V3_A → TP303 | +3V3_D, RESET | y136.9 | **3.60 (excepción aceptada)** |
+
+**Medidas:** SPI a L301 17.5 mm, a U201 34.4 mm, a L201 36.7 mm. +3V3_A a L301 6.63 mm y a U301 9.72 mm. Potencia más próxima a U503: tronco +5V de etapa 1, esquina (147.3,110.6), **7.6 mm** del cuerpo (aceptado). Bajo los cuerpos de los sensores solo están los escapes obligados de los pads LGA de U502.
+
+**Relleno preliminar (solo verificación, no guardado en el PCB):** ventana x143–173, y88–118. B.Cu: 826.6 mm² de 900, una sola región unida al plano principal; única isla B en la ventana, 1.45 mm² entre los saltos CAN_STBY/CAN_TX de la etapa 2. F.Cu: 471.9 mm² con 17 islas entre las líneas SPI. Fuera de la ventana, isla B.Cu de ~137 mm² bajo la supervisión (x175–188, y129–138.5) encerrada por los carriles de RESET/WDI/VMON/+5V/+3V3_D de la etapa 4 parcial. Ambas quedan como obligaciones de la etapa 5.
+
+**Para replicar en ruteo-manual:** el giro de U503 y los movimientos de la tabla «Cambios de ubicación» (sección 3), además del desvío de RESET de la etapa 4 parcial.
 
 ### Etapa 4 — avance parcial (Claude Code, 2026-10-30)
 
@@ -31,7 +79,7 @@ Evidencia: `etapa4-parcial-drc.json`, `-erc.json`, `-medidas.json`.
 
 **Distancias de aceptación ya cumplidas:** nada nuevo de potencia o DO a menos de 10 mm del cuerpo de U503 (lo más próximo: +5V B.Cu en y125.3, a >22 mm). SPI aún no ruteado.
 
-**Pendiente — sensores (39 conexiones):** SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC. **Decisión del usuario (2026-10-30): reasignar GPIO.** Con el orden actual de los pines 17–22 (CS_IMU, CS_INC, MOSI, SCK, MISO, CS_ROT) y el orden de pines de U502/U501 no existe ruteo SPI todo en F.Cu sin B.Cu debajo. Próximo paso: proponer el intercambio exacto de GPIO (IO9–IO14 y quizá INT1/INT2), verificar que rutea sin cruces y **mostrarlo al usuario antes de tocar el esquema**. También autorizados: girar 180° C501 y C502 (su pad GND quedó contra los pines 4 y 2 de U501) y reubicar C505, C506, C508, R502 y TP504 a ≤5 mm de U502; aún no aplicados, se informarán coordenadas antes del commit.
+**Pendiente — sensores (39 conexiones), histórico; resuelto en «Etapa 4 — cierre: sensores» con la opción C, sin reasignar GPIO:** SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC. **Decisión del usuario (2026-10-30): reasignar GPIO.** Con el orden actual de los pines 17–22 (CS_IMU, CS_INC, MOSI, SCK, MISO, CS_ROT) y el orden de pines de U502/U501 no existe ruteo SPI todo en F.Cu sin B.Cu debajo. Próximo paso: proponer el intercambio exacto de GPIO (IO9–IO14 y quizá INT1/INT2), verificar que rutea sin cruces y **mostrarlo al usuario antes de tocar el esquema**. También autorizados: girar 180° C501 y C502 (su pad GND quedó contra los pines 4 y 2 de U501) y reubicar C505, C506, C508, R502 y TP504 a ≤5 mm de U502; aún no aplicados, se informarán coordenadas antes del commit.
 
 **Para replicar en ruteo-manual:** el desvío de RESET (B.Cu) y, cuando se apliquen, los movimientos de pasivos de sensores. No hay movimientos de piezas en este commit.
 
@@ -46,7 +94,7 @@ Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`
 | 1 — potencia | Cerrada | `b46f185` |
 | 2 — CAN | Cerrada y aprobada; auditoría B.Cu posterior en `4bfdfef` | `be5cc7c` |
 | 3 — USB/MCU | Cerrada; C404 y movimientos en `802202d`, cuello final autorizado aplicado | `a881797` |
-| 4 — sensores/señales | **Parcial** (Claude Code): todo salvo sensores; ver «Etapa 4 — avance parcial» | `[Claude Code] ruteo etapa 4 parcial` |
+| 4 — sensores/señales | **Cerrada** (Claude Code); ver «Etapa 4 — cierre: sensores» y «Etapa 4 — avance parcial» | `[Claude Code] ruteo etapa 4: sensores ...` |
 | 5 — planos | No iniciada | — |
 | 6 — fabricación/cierre | No iniciada | — |
 
@@ -151,12 +199,12 @@ Cerrar las **108 conexiones no-GND** del inventario siguiente; son airwires del 
 - **Aceptación:**
   - DRC 0 errores. Ninguna pista ni vía bajo U501/U502/U503.
   - Círculo de Ø17.9 mm libre de piezas ajenas.
-  - Potencia y DO a ≥ 10 mm del borde del cuerpo de U503; solo se conserva la excepción aprobada del tronco +5V existente a 9.8 mm.
+  - Potencia y DO a ≥ 10 mm del borde del cuerpo de U503; solo se conserva la excepción aprobada del tronco +5V existente (mínimo **7.6 mm**, esquina (147.3,110.6); corregido, antes figuraba 9.8 mm).
   - SPI a ≥ 10 mm de L201/U201/L301.
 
 Las reservas anteriores son propuestas geométricas heredadas, **no una orden de insertar vías sin revisar obstáculos**. Los enlaces UVLO, OV, FLT, EN/MODE, CAP y VS requieren los saltos B.Cu indicados; conservar Kelvin y arcos VOUT/C_ID. Los saltos CAN y USB ya están implementados, no son pendientes de etapa 4.
 
-**Criterios de cierre de etapa 4:** todas las conexiones no-GND anteriores cerradas (o excepción explícita del usuario), DRC 0 errores, paridad 0, ERC sin regresiones; regresión CAN/USB/EN/desacoples con `verify_etapa3.py`. Nada de pistas/vías bajo U501/U502/U503 en ninguna cara; círculo ROT, apoyo B, arandelas y antena respetados. SPI ≥10 mm de U201/L201/L301 y potencia/DO ≥10 mm del cuerpo de U503, salvo tronco existente +5V a 9.8 mm. Mantener barrera CAN y aislamiento absoluto de U101 pad 25. Renders de ambas caras, tabla de medidas críticas y pendientes restantes, revisar `.kicad_pro`, actualizar documentos, commit con agente y push; esperar visto bueno antes de etapa 5. No generar planos como parte de etapa 4.
+**Criterios de cierre de etapa 4:** todas las conexiones no-GND anteriores cerradas (o excepción explícita del usuario), DRC 0 errores, paridad 0, ERC sin regresiones; regresión CAN/USB/EN/desacoples con `verify_etapa3.py`. Nada de pistas/vías bajo U501/U502/U503 en ninguna cara; círculo ROT, apoyo B, arandelas y antena respetados. SPI ≥10 mm de U201/L201/L301 y potencia/DO ≥10 mm del cuerpo de U503, salvo tronco existente +5V a 7.6 mm (corregido; antes 9.8 mm). Mantener barrera CAN y aislamiento absoluto de U101 pad 25. Renders de ambas caras, tabla de medidas críticas y pendientes restantes, revisar `.kicad_pro`, actualizar documentos, commit con agente y push; esperar visto bueno antes de etapa 5. No generar planos como parte de etapa 4.
 
 ### Excepciones y compromisos aprobados: conservar
 
@@ -170,7 +218,9 @@ Las reservas anteriores son propuestas geométricas heredadas, **no una orden de
 | USB B6/B7 | Cuatro vías totales solo en los ramales de J401: D+ (192.2,79.37)/(190,82.5); D− (192.4,81.425)/(190.4,79.6), Ø0.6/0.3. Principal A6/A7→U402→U401 sin vías; ramales no incluidos en su Δ. |
 | Cuello D− | **0.15 mm × 1.922754 mm**, F.Cu, autorizado y aplicado. (173,107.5) → (173.2825,107.7825) → (173.6,107.7825) → (174.8,107.9); clearance ≥0.2 mm. Resto USB 0.3/0.2 en tramos acoplados, aperturas de pads y ajuste D+; Δ≤0.5 mm. |
 | USB/EN y desacoples MCU | USB Full-Speed 0.3/0.2 aprobado sin impedancia controlada. C402 primero (0.7750 mm al pin entre bordes), C401 detrás en cadena; C404 0.5748 mm a U402. EN≤5 mm se aplica al RC local entre bordes (R401 4.9641, C403 1.5415), no a los ramales RESET remotos documentados. |
-| U503 | 10 mm medidos desde **borde del cuerpo**; única excepción de potencia: tronco +5V existente x137.6 a **9.8 mm**. Mantener libre Ø17.9 en ambas caras. |
+| U503 | 10 mm medidos desde **borde del cuerpo**; única excepción de potencia: tronco +5V existente de etapa 1, mínimo **7.6 mm** en la esquina (147.3,110.6) (corregido el 2026-10-30; antes figuraba 9.8 mm, que corresponde al tramo x137.6). Aceptado por el usuario: campo ~0.01 mT frente a 45–75 mT del imán. Mantener libre Ø17.9 en ambas caras. **Girado 180°** (etapa 4): desfase fijo de 180° en el ángulo, compensar con ZPOS. |
+| Vías en el círculo del imán | Solo las tres GND aprobadas: (154.4, 98.95), (145.3, 102.6) y (147.0, 108.38), **tapadas (tented) en ambas caras** porque el portaimán puede ser de latón o aluminio. Ninguna otra vía nueva dentro de Ø17.9. El generador lo comprueba con un `assert`. |
+| Cruces B.Cu de sensores | Opción C: cruces cortos y perpendiculares entre SCK/MOSI/MISO aceptados, con costura GND a ambos lados (tabla en «Etapa 4 — cierre: sensores»). **Cruce 12 (+3V3_A → TP303), 3.6 mm**: excepción aceptada al límite de 3 mm. INT1/INT2 por B.Cu bajo el módulo. |
 | U101 | ~11 vías/saltos B.Cu aceptados; coser el retorno en etapa 5. HGATE ~17 mm y DGATE ~25 mm aceptados por trazado paralelo a VA. **RTN pad25 nunca a GND ni a otra red**, tampoco por rellenos. |
 | Buck/U301 | C201 a VIN por C202, diagonal 8.6 mm; lazos C202 ~3.9 mm² y C201 ~26.4 mm². U301 GND pin1/C302 con vías propias, lazo ~5 mm². C206 alejado (~12.8 mm del EP) con vía propia: continuidad al plano en etapa 5. TP301 ya retirado de SW: asegurar GND continuo bajo SW. |
 | Huellas y fabricación | J401 NPTH–cobre oficial ~0.1944 mm, regla local 0.19 aceptada. Taladros térmicos existentes de 0.2 mm (U101/U201; U401 pad41 conserva 12) no autorizan vías de ruteo menores: usar 0.6/0.3. Courtyards de placement y sus excepciones aceptadas se conservan. SCL3300 DFL-12 tiene pads 0.32 mm más largos que el land pattern para soldadura manual; revisión de huella en producción pendiente, sin cambiarla ahora. C104 debajo exige separadores ≥12 mm y adhesivo. |
@@ -384,6 +434,22 @@ Todos autorizados por el usuario. Aplicados por los scripts de las etapas 1–3;
 | C402 (Codex, etapa 3) | F.Cu (189.9, 104.2) r0 | F.Cu **(189.18, 104.0) r90** | Primero junto a U401.2; pista entre bordes de 0.775 mm |
 | R401 (Codex, etapa 3) | F.Cu (162.060355, 146.485355) r90 | F.Cu **(187.0, 100.1) r270** | Pull-up EN local; pista a U401.3 de 4.964 mm entre bordes |
 
+| U503 (Claude Code, etapa 4) | F.Cu (150, 100) r0 | F.Cu (150, 100) **r180** | Salidas SPI/CS hacia el hueco U501/U503; mismo eje del imán. Firmware: desfase 180°, ZPOS |
+| C501 / C502 (etapa 4) | F.Cu (159.8 / 157.2, 109.1) r90 | misma posición, **r270** | Su pad GND quedaba contra U501.4 y U501.2 |
+| C505 (etapa 4) | F.Cu (163.71, 95.5) r90 | F.Cu **(167.05, 98.0) r0** | Recinto de alimentación de U502 |
+| C506 (etapa 4) | F.Cu (170.9, 95.04) r90 | F.Cu **(169.5, 98.2) r270** | Ídem |
+| C508 (etapa 4) | F.Cu (168.04, 91.41) r0 | F.Cu **(168.7, 90.3) r180** | Red norte de +3V3_A |
+| R502 (etapa 4) | F.Cu (163.75, 91.2) r0 | F.Cu **(171.35, 92.0) r270** | En el camino de CS_IMU por x171.35 |
+| R501 (etapa 4) | F.Cu (162.4, 109.1) r90 | F.Cu **(161.6, 110.4) r90** | CS_INC tras el cruce 5 |
+| R503 (etapa 4) | F.Cu (146.0, 95.0) r0 | F.Cu **(151.9, 104.6) r0** | CS_ROT al sur de U503 |
+| C507 (etapa 4) | F.Cu (152.4, 95.41) r0 | F.Cu **(145.3, 100.45) r270** | Lado oeste de U503 (pines 11/12) |
+| TP501 SCK (B.Cu, etapa 4) | (155.5, 112.5) | **(162.4, 91.0)** | TP accesibles, fuera del área B y del círculo del imán |
+| TP502 MOSI (B.Cu, etapa 4) | (159.0, 112.5) | **(155.8, 108.0)** | Ídem |
+| TP503 MISO (B.Cu, etapa 4) | (162.5, 112.5) | **(162.2, 108.2)** | Ídem |
+| TP504 INT1 (B.Cu, etapa 4) | (163.5, 90.0) | **(170.1, 104.6)** | Sobre la línea de INT1 |
+
+Movimientos de la etapa 4 autorizados por el usuario (opción C, 2026-10-30) y aplicados por `scripts/ruteo/etapa4_senales.py`, que también reubica las referencias de serigrafía de U502, U503 y de todas las piezas de la tabla.
+
 C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece a `placement-v1`. También se reubicaron las referencias de C401/C402/R401/C403/C404 y el texto «SIN BARNIZ» de J401 a (192,88), r0, para evitar solapes; C403 conserva su posición y orientación.
 
 **Regla:** no mover ni rotar ningún otro componente sin preguntar al usuario. Si un ruteo lo necesita, anotar la propuesta en `docs/RUTEO_AGENTE.md` y esperar la decisión. El usuario replica los cambios en su copia manual.
@@ -394,11 +460,11 @@ C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece 
 - **Barrera CAN:** ningún cobre cruza `BARRERA_CAN`, salvo los pads de U601 sobre su cuerpo. El dominio CAN (J1.3–5, D601, R602/R603/C609, R605, C607/C608, C610/C606, FB601, FB602) queda a la izquierda/abajo de la banda. GND_CAN propio, sin unirlo nunca a GND_VEH. Separación ≥ 2.5 mm (`ISO_CAN_barrera`).
 - **Antena del ESP32-S3:** nada de cobre en el keep-out de la huella (x ≥ 191.94, y 91.5–139.5). La placa tiene un recorte allí.
 - **Sensores:** **sin pistas ni vías bajo U501** (crt 154.96–163.65 × 99.45–106.54), **U502** (165.50–169.09 × 93.45–96.55) **ni U503** (146.10–153.90 × 97.20–102.80), en ninguna capa. El plano GND sí puede pasar por debajo.
-- **Imán de ROT:** círculo libre de Ø17.9 mm con centro en el eje de U503 (150.0, 100.0), **en las dos caras**. Adentro solo U503 y sus pasivos: sin tornillería, sin H5 y sin el área B. El lado del imán todavía no está decidido.
+- **Imán de ROT:** círculo libre de Ø17.9 mm con centro en el eje de U503 (150.0, 100.0), **en las dos caras**. Adentro solo U503 y sus pasivos: sin tornillería, sin H5 y sin el área B. Vías: solo las tres GND tapadas aprobadas en la etapa 4. El lado del imán todavía no está decidido.
 - **Fijaciones H1 (105,55), H2 (195,55), H3 (105,145), H4 (195,145), H5 (156,88.5):** M3, anillo de 6.4 mm sin red. Pistas y vías a ≥ 4 mm del centro (`H_zona_arandela`); otro cobre a ≥ 0.5 mm del anillo.
 - **Área B (`APOYO_CAJA_B`):** Ø8 mm en (163.5, 99.0), en B.Cu. Sin pistas, vías ni pads; el relleno de GND sí puede pasar.
 - **Potencia y DO lejos de U503:** nada de potencia (+5V, VBAT/VIN, buck) ni DO a menos de 10 mm de U503.
-  - Decisión del usuario (2026-10-29): medir los 10 mm desde el borde del cuerpo. Se acepta como única excepción el tronco existente de +5V (x 137.6), a 9.8 mm del cuerpo.
+  - Decisión del usuario (2026-10-29): medir los 10 mm desde el borde del cuerpo. Se acepta como única excepción el tronco existente de +5V: mínimo 7.6 mm del cuerpo en la esquina (147.3, 110.6) (corregido 2026-10-30; el tramo x 137.6 queda a 9.8 mm).
 - **Conformal coating:** sí. Enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`). Hay rótulos "SIN BARNIZ" en la serigrafía.
 - **Fabricación:** JLCPCB, 2 capas, 1.6 mm, 1 oz. El prototipo se arma en la variante CAN + DO + ROT. El usuario suelda el ASM330 (LGA) con aire caliente y stencil, así que hay que pedir el stencil.
 
@@ -446,7 +512,7 @@ C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece 
   - C402 y C404 a ≤1 mm entre bordes de pads; C401 en cadena detrás de C402. RC local EN a ≤5 mm entre bordes; RESET remoto se mide aparte.
   - Nada en el keep-out de antena.
 
-### Etapa 4 — Sensores y señales (no iniciada)
+### Etapa 4 — Sensores y señales (cerrada, Claude Code, 2026-10-30)
 
 Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y criterios de aceptación en «Cómo retomar», al inicio de este documento. Ese plan reemplaza las referencias antiguas a PG_3V3D→MCU y C503 como desacople de ROT.
 
@@ -460,6 +526,8 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
 - **C605 (VIO, bulk):** su camino al pin 4 es de 12.270 mm. Asegurar continuidad de GND_VEH entre su vía en (144.28,121.9), C602/C601 y los retornos de U601, y añadir costura local. Revisar que los saltos de las cuatro señales lógicas no dejen ese retorno en una isla o cuello estrecho.
 - **Puente CANH de la etapa 2:** B.Cu recto entre (114.45,115.75) y (118.2,116.595), 3.844 mm, con dos vías. Conservar GND_CAN conectado alrededor de ambos extremos y añadir costura sin invadir la barrera. El pad 3 de D601 tiene retorno corto a la vía GND_CAN (115.4375,117.25).
 - **Conexión a pads:** alivios térmicos en los pads (soldadura a mano). Conexión sólida en los pads expuestos (U201 EP y vías del EP).
+- **Islas detectadas en la verificación de la etapa 4:** eliminar o coser las **17 islas F.Cu** del grupo de sensores (entre las líneas SPI) y la **isla B.Cu de ~137 mm²** bajo la supervisión (x175–188, y129–138.5, encerrada por los carriles RESET/WDI/VMON/+5V/+3V3_D) con vías GND junto a R306/R308/C309/C310. Hay además una isla B de 1.45 mm² entre los saltos CAN_STBY/CAN_TX.
+- **Costura en sensores:** el tramo horizontal de INT1/INT2 bajo el módulo no tiene costura propia; verificar el retorno con el plano B.Cu.
 - **Las 19 vías GND sueltas de la etapa 1 tienen que quedar conectadas al plano:** C101, D102, D103, C103, C106, C107, R203, C204–C206, U301 pin 1, C302, C301, C304, R304, U302 pin 2, C306 y C307.
 - **Aceptación:**
   - DRC 0 errores, sin `via_dangling` ni islas sin conectar (`isolated_copper`).
@@ -524,7 +592,7 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 ---
 
 ## 9. Decisiones registradas y pendientes (2026-10-29)
-1. **U503:** 10 mm desde el borde del cuerpo; excepción aceptada del tronco +5V existente a 9.8 mm.
+1. **U503:** 10 mm desde el borde del cuerpo; excepción aceptada del tronco +5V existente a 7.6 mm (corregido; antes 9.8 mm).
 2. **Imán ROT:** lado sin definir; mantener libre el círculo de Ø17.9 mm en ambas caras, salvo U503 y sus pasivos previstos.
 3. **C105 PROD (EEE-FK1H102AV):** confirmar stock en la revisión del BOM; no bloquea el ruteo. La huella J16 antivibración ya acepta EEE-FK1H102AM.
 4. **TP301:** traslado ya aplicado y registrado en Cambios de ubicación; asegurar plano continuo bajo SW en etapa 5.

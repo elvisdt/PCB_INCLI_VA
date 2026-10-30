@@ -2,13 +2,21 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (etapa 4 parcial: todo salvo sensores).
+Última actualización: 2026-10-30, Claude Code (etapa 4 cerrada; la etapa 5 espera el visto bueno).
 
-## Etapa 4 parcial — Claude Code, 2026-10-30
+## Etapa 4 cerrada (sensores) — Claude Code, 2026-10-30
+- **Cerrado:** sensores con la opción C aprobada (GPIO actuales sin cambios, esquema intacto). U503 girado 180°, C501/C502 girados, C505/C506/C508/R502/R501/R503/C507 y TP501–TP504 reubicados (tabla en «Cambios de ubicación» de `RUTEO_TRASPASO.md`); referencias de serigrafía reubicadas. 12 cruces B.Cu numerados, con costura GND. DRC 0 errores (sin avisos nuevos de serigrafía), paridad 0, ERC 0 errores / 5 avisos conocidos, `verify_etapa3.py` OK. Quedan 132 conexiones, todas de masa (etapa 5).
+- **Excepciones aceptadas por el usuario:** cruce 12 (+3V3_A → TP303) de 3.6 mm; tres vías GND dentro del círculo del imán, tapadas en ambas caras; tronco +5V a 7.6 mm del cuerpo de U503 (cifra corregida, antes 9.8 mm).
+- **Firmware:** U503 girado 180° → desfase fijo de 180° en el ángulo, sin inversión del sentido de giro; se compensa con el registro ZPOS o en la calibración del cero (ver «Requisitos para el firmware»).
+- **Para la etapa 5:** eliminar o coser las 17 islas F.Cu del grupo de sensores y la isla B.Cu de ~137 mm² bajo la supervisión (vías GND junto a R306/R308/C309/C310).
+- **Replicar en ruteo-manual:** giro de U503 y movimientos de pasivos/TP de sensores, además del desvío de RESET.
+- La reasignación de GPIO del SPI (pendiente anterior) queda **descartada**: el usuario eligió la opción C.
+
+## Etapa 4 parcial — Claude Code, 2026-10-30 (histórico)
 - **Cerrado:** periféricos de U101, desvío de RESET bajo el módulo (autorizado), bus DO/PWR_FLT/LED bajo el módulo con un único cruce del par USB (autorizado), DO1/DO2, +5V a las salidas, LED, VAR_ID, WDI, VMON, R305/R307 y PG_3V3D. DRC 0 errores, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 4 — avance parcial» de `RUTEO_TRASPASO.md`.
-- **A medias:** sensores (39 conexiones: SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC).
-- **Nuevo pendiente (decisión del usuario):** reasignar los GPIO del SPI (pines 17–22, IO9–IO14, y quizá INT1/INT2) para que el SPI se rutee todo en F.Cu sin nada en B.Cu debajo. Antes de editar el esquema hay que mostrar al usuario el intercambio exacto y la verificación de ruteo. Requiere ERC y una nota para firmware (algunas señales pasan de IOMUX a la matriz GPIO).
-- **Autorizado y pendiente de aplicar:** girar 180° C501 y C502; reubicar C505, C506, C508, R502 y TP504 (≤5 mm de U502). Hay que replicarlo en ruteo-manual junto con el desvío de RESET.
+- **A medias (cerrado después):** sensores (39 conexiones: SPI/CS, INT1/INT2, +3V3_A, SCL_AEXTC/DEXTC).
+- **Descartado (el usuario eligió la opción C):** reasignar los GPIO del SPI (pines 17–22, IO9–IO14, y quizá INT1/INT2) para que el SPI se rutee todo en F.Cu sin nada en B.Cu debajo. Antes de editar el esquema hay que mostrar al usuario el intercambio exacto y la verificación de ruteo. Requiere ERC y una nota para firmware (algunas señales pasan de IOMUX a la matriz GPIO).
+- **Aplicado en el cierre de la etapa 4:** girar 180° C501 y C502; reubicar C505, C506, C508, R502 y TP504 (≤5 mm de U502). Hay que replicarlo en ruteo-manual junto con el desvío de RESET.
 - Reglas del usuario para este turno: no usar la skill agentic-sourcing; en etapa 6 usar kicad-happy solo para reportar hallazgos; avisar antes de usar cualquier otra skill.
 
 
@@ -30,7 +38,7 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 ## Retoma de ruteo — histórico de etapa 2, Codex, 2026-10-29
 - Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
 - Registrada la línea de continuidad en `AGENTS.md` y las decisiones del usuario en `docs/RUTEO_TRASPASO.md`.
-- U503: medir 10 mm desde el borde del cuerpo; excepción del tronco +5V existente a 9.8 mm.
+- U503: medir 10 mm desde el borde del cuerpo; excepción del tronco +5V existente a 9.8 mm (corregido 2026-10-30: mínimo 7.6 mm en la esquina (147.3,110.6)).
 - TP301: traslado aplicado de (140,134) a (140,131.6), B.Cu, sobre el tronco +5V y fuera del SW; retirada la bajada anterior. Registrado en «Cambios de ubicación».
 - ROT: mantener libre Ø17.9 mm en ambas caras. C105 PROD: confirmar stock en BOM, sin bloquear el ruteo.
 - R602/R603/C609 montadas en PROTO; PROD según instalación.
@@ -524,7 +532,7 @@ No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se 
 - **Las etapas 2 a 6 las sigue Codex en `ruteo-agente`.** Plan, reglas y restricciones en `docs/RUTEO_TRASPASO.md`.
 - [x] 2. CAN: terminada y aprobada por el usuario; continuidad B.Cu auditada. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
 - [x] 3. USB/MCU: cierre con cuello D− autorizado; siguiente etapa espera visto bueno.
-- [ ] 4. Sensores y señales.
+- [x] 4. Sensores y señales: cerrada (Claude Code); opción C, U503 girado 180°. La etapa 5 espera visto bueno.
 - [ ] 5. Planos.
 - [ ] 6. Cierre: DRC y paridad en 0, retornos, fabricación de prueba para JLCPCB en `fab/`.
 
@@ -539,6 +547,7 @@ Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` 
 
 - ASM330LHH: configurar `I2C_disable = 1` (CTRL4_C) y `DEVICE_CONF = 1` (CTRL9_XL); INT1/INT2 en push-pull (IO40/IO41).
 - Variante estándar: U503 no está montado; no inicializarlo (leer VAR_ID antes de tocar CS_ROT).
+- **U503 girado 180° en el PCB (etapa 4):** desfase fijo de 180° en el ángulo, sin inversión del sentido de giro. Compensarlo con el registro ZPOS o en la calibración del cero.
 
 ## Conectores J1 y J2 (confirmado por el usuario, 2026-10-27)
 Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida roscada (GF)**.
