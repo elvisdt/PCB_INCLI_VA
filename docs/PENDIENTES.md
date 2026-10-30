@@ -2,38 +2,42 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (etapa 6 en curso: teardrops, revisión de retornos, fabricación de prueba y renders hechos; quedan dos decisiones del usuario y el push; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (**ruteo terminado**: etapas 0–6 cerradas; ver «RETOMAR AQUÍ»).
 
-## RETOMAR AQUÍ — etapa 6 (cierre y fabricación), en curso
-Estado al 2026-10-30 (rama `ruteo-agente`): etapas 0–5 cerradas; etapa 6 iniciada con el visto bueno del usuario («continúa con los ruteos»). PCB con teardrops y planos rellenos y guardados. DRC 0 errores / 5 avisos conocidos, 0 sin rutear, paridad 0, ERC 0 errores / 5 avisos conocidos (sin cambios). La puede continuar el usuario, Claude Code o Codex.
+## RETOMAR AQUÍ — ruteo terminado (etapa 6 cerrada)
+Estado al 2026-10-30 (rama `ruteo-agente`, publicada en `origin`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
-**Antes de empezar:**
-1. Leer `AGENTS.md`, `docs/RUTEO_TRASPASO.md` («Cómo retomar», «Etapa 5 — cierre: planos» y «Etapa 6 — Cierre») y `git log -5`.
+**Quedan (no son ruteo):**
+- [ ] BOM con códigos LCSC (`fab/proto/bom_proto.csv` no los tiene). Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [ ] Revisión independiente con kicad-happy (solo informe, sin aplicar cambios). No estaba instalada en la sesión de cierre.
+- [ ] Rotaciones del CPL para JLC (`fab/proto/cpl_proto.csv` usa las de KiCad): revisarlas en la vista previa de JLC si se pide ensamblado.
+
+**Antes de tocar el PCB:**
+1. Leer `AGENTS.md`, `docs/RUTEO_TRASPASO.md` («Cómo retomar» y «Etapa 6 — Cierre») y `git log -5`.
 2. KiCad cerrado, sin archivos `~*.lck` (también en `sheets/`). `git status` limpio.
 3. No tocar `PCB_INCLI_VA_manual`, la rama `ruteo-manual` ni `PCB_INCLI_VA_bom`. No ejecutar `git worktree remove/prune`.
 4. No mover piezas ni editar el esquema, las reglas o las net classes sin preguntar.
 5. Antes de cada commit, revisar `git diff INCLI-VA.kicad_pro`. Si solo cambió el orden de las net classes, restaurarlo con `git checkout INCLI-VA.kicad_pro`.
-6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. `etapa5_planos.py` sí es idempotente: regenera las zonas `E5_*` y la costura. Si se ejecuta, volver a ejecutar después `etapa6_teardrops.py` (también idempotente) y `etapa6_fab.py`.
-7. Skills: no usar agentic-sourcing. En la etapa 6, kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
+6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. Son idempotentes y se encadenan así si se cambia cobre: `etapa5_planos.py` → `etapa6_costura_u401.py` → `etapa6_teardrops.py` (rellena zonas) → DRC → `etapa6_fab.py`.
+7. Skills: no usar agentic-sourcing. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
 
-**Tareas de la etapa 6:**
-- [x] Revisión de retornos de corriente (kicad-happy no está instalada en esta sesión; revisión hecha con `verify_etapa5.py` y vistas por capa). Sin hallazgos nuevos:
-  - Plano B.Cu bajo U201/L201: 99.6 %. Bajo U301/L301: 98.6 %.
-  - U601: barrera sin cobre debajo; GND_CAN en una sola isla (958 mm²), separada de GND_VEH.
-  - U101: el haz de pistas B.Cu parte el plano en islas cosidas (compromiso ya aceptado, sección 6 de `RUTEO_TRASPASO.md`). GND_VEH es una sola isla por conectividad. U101_RTN, aislada (DRC 0).
-- [ ] **Decisión del usuario:** tramos sin plano debajo (`docs/layout/ruteo/etapa5-islas.json`, `ranuras_bajo_senal_mm`). Recomendación de Claude Code: aceptarlos todos, porque son señales lentas o tramos cortos de USB FS (12 Mbit/s):
-  - INT2 9.2 mm e INT1 7.4 mm, bajo la fila de pads del módulo.
-  - USB D− 9.1 mm y D+ 6.9 mm, en el cruce del bus bajo el módulo.
-  - MCU_RST_N 6.4 mm.
-  - VS 6.3 mm y DGATE 5.8 mm.
-- [x] Teardrops: `scripts/ruteo/etapa6_teardrops.py` (habilita teardrops en los 1084 pads/vías y los genera con `kicad-cli pcb drc --refill-zones --save-board`). 697 zonas teardrop. DRC sin cambios. `verify_etapa5.py` ahora ignora las zonas teardrop en el cálculo de islas.
-- [ ] **Decisión del usuario:** los 5 avisos conocidos (`silk_overlap` Q101/U801, 2 `silk_edge_clearance`, `lib_footprint_mismatch` U401). Ninguno impide fabricar.
-- [x] Fabricación de prueba: `scripts/ruteo/etapa6_fab.py` → `fab/proto/` (gerbers + drill PTH/NPTH con mapa, `INCLI-VA_gerbers.zip` [no versionado], `stencil/` con la pasta, `bom_proto.csv` y `cpl_proto.csv` en formato JLC, `pos_kicad.csv`). BOM: 70 líneas, 133 piezas (145 símbolos − 12 DNP); CPL: 133, todas con posición. La variante CAN + DO + ROT sale del atributo `dnp`, que coincide con el campo `DNP` en las 145 piezas (R807, la única CABIN, es DNP).
-  - Sin número LCSC (sin sourcing, por la regla de skills). Las rotaciones del CPL son las de KiCad: revisarlas en la vista previa de JLC si se pide ensamblado.
-- [x] Renders finales: `docs/layout/ruteo/etapa6-top.png` y `etapa6-bottom.png`.
-- [ ] Push de `ruteo-agente`: pendiente de confirmación del usuario.
+**Etapa 6 — lo hecho (Claude Code, 2026-10-30):**
+- Retornos de corriente revisados, sin hallazgos nuevos: plano B.Cu bajo U201/L201 al 99.6 % y bajo U301/L301 al 98.6 %; barrera de U601 sin cobre; GND_CAN y GND_VEH, una isla cada una; U101_RTN aislada.
+- Teardrops: `etapa6_teardrops.py`, 697 zonas. `verify_etapa5.py` ignora las zonas teardrop en el cálculo de islas.
+- **Tramos sin plano debajo: aceptados por el usuario** (registro en `docs/layout/ruteo/etapa5-islas.json`, `ranuras_bajo_senal_mm`): INT2 9.2 mm, INT1 7.4 mm, USB D− 9.1 mm, D+ 6.9 mm, MCU_RST_N 6.4 mm, VS 6.3 mm, DGATE 5.8 mm.
+- **Avisos del DRC:**
+  - `silk_overlap` Q101 y U801: **corregidos** moviendo solo la referencia (componentes sin mover). Q101: horizontal en (117.62, 95.3), bajo el cuerpo, porque entre las serigrafías de Q101 y Q102 hay 1.12 mm y el texto ocupa 1.46. U801: de (166.0, 134.2) a (166.0, 133.6), separada de la marca de pin 1.
+  - **Excepciones aceptadas por el usuario:** 2 `silk_edge_clearance` de U401 (JLC recorta la serigrafía cerca del borde) y `lib_footprint_mismatch` de U401 (recorte intencional de la huella).
+- **Ranura del haz B.Cu bajo U401** (DO1/DO2 EN/DIAG, PWR_FLT_N, LED_G/LED_R; detalle en `docs/layout/ruteo/etapa6-ranura-u401.json`, script `verify_ranura_u401.py`):
+  - Largo 46.9 mm (y 77.9–124.7, x 173.5–184.1). Ancho 2.3–4.9 mm (mediana 3.7); hasta 9.9 mm en los abanicos de los extremos.
+  - Sobre la ranura, GND F.Cu continuo de borde a borde en 268 de 469 filas de 0.1 mm (y 88.2–96.6, 98.9–100.1 y 108.6–121.8, sobre todo).
+  - Pistas F.Cu que la cruzan: el par USB D+/D− (diagonal y 80.5–89.7; es el cruce autorizado en la etapa 4, con GND F.Cu al costado en el 76–100 % del cruce), los quiebres F.Cu de las propias redes del haz (DO2_EN, DO2_DIAG, LED_G, LED_R y PWR_FLT_N, en y 79.6–82.8), VAR_ID2 (2.5 mm) y los tramos de pad de la fila de U401 (1.5 mm cada uno).
+  - Costura: 13 vías GND nuevas (grupo `CLAUDE_ETAPA6_COSTURA`, `etapa6_costura_u401.py`). Paso máximo: 3.3 mm al este; 6.0 mm al oeste solo en y 95–101, donde F.Cu no tiene GND (meandro de USB D+ y USB D−). Ahí no va vía, por el criterio del usuario («donde haya cobre GND en F.Cu»).
+  - Pad central de U401: 12 vías a B.Cu, que llegan al plano principal (7099 mm²).
+- Fabricación de prueba (`etapa6_fab.py` → `fab/proto/`, regenerada tras la costura): gerbers y drill PTH/NPTH con mapa, `stencil/`, `bom_proto.csv` y `cpl_proto.csv` (formato JLC), `pos_kicad.csv`. BOM: 70 líneas, 133 piezas (145 − 12 DNP); CPL: 133. `INCLI-VA_gerbers.zip` no se versiona (`.gitignore`: `fab/**/*.zip`; en el commit anterior había entrado por error).
+- Renders finales: `docs/layout/ruteo/etapa6-top.png` y `etapa6-bottom.png`.
 
-**Pendientes fuera del ruteo (no bloquean la etapa 6):**
+**Pendientes fuera del ruteo:**
 - Verificar los MPN marcados «a verificar» antes de la BOM final. Confirmar el stock de C105 PROD (EEE-FK1H102AV).
 - SCL3300 (DFL-12): revisar la huella para producción; los pads son 0.32 mm más largos que el land pattern.
 - C104 va en B.Cu: la caja necesita separadores de ≥ 12 mm y adhesivo.
@@ -42,6 +46,7 @@ Estado al 2026-10-30 (rama `ruteo-agente`): etapas 0–5 cerradas; etapa 6 inici
 
 **Replicar en `ruteo-manual`** (lo hace el usuario; detalle en `RUTEO_TRASPASO.md`):
 - Movimientos de las etapas 1–4 (sección 3, «Cambios de ubicación»).
+- Etapa 6: teardrops, costura `CLAUDE_ETAPA6_COSTURA` junto al haz bajo U401 y referencias de Q101/U801 movidas.
 - C404 nuevo.
 - Desvío de RESET.
 - Giro de U503 y movimientos de los pasivos de sensores.

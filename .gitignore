@@ -4,7 +4,7 @@
 fp-info-cache
 *.kicad_prl
 _autosave-*
-fab/*.zip
+fab/**/*.zip
 .history/
 
 # Reportes generados por kicad-mcp (ERC/DRC)

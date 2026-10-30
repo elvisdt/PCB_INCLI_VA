@@ -2,7 +2,7 @@
 
 ## Cómo retomar
 
-**Actualización de Claude Code, 2026-10-30: etapa 5 CERRADA (commit `[Claude Code] ruteo etapa 5: planos ...`).** Planos rellenos y guardados, **0 conexiones sin rutear**. La lista de tareas de la etapa 6 y las reglas para retomarla están en «RETOMAR AQUÍ», en `docs/PENDIENTES.md`. Leer primero «Etapa 5 — cierre: planos», justo debajo, y luego las secciones de la etapa 4; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 6 espera el visto bueno del usuario.**
+**Actualización de Claude Code, 2026-10-30: ruteo TERMINADO (etapa 6 cerrada).** Estado final y lo que queda (LCSC, kicad-happy, rotaciones JLC) en «Etapa 6 — Cierre», más abajo, y en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`. La etapa 5 (planos, 0 conexiones sin rutear) está en «Etapa 5 — cierre: planos», justo debajo, y la etapa 4 en sus secciones; el resto de esta sección describe la entrega de la etapa 3 y sigue vigente salvo lo que allí se indica.
 
 ### Etapa 5 — cierre: planos (Claude Code, 2026-10-30)
 
@@ -585,7 +585,7 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
   - GND_VEH sin unir a GND_CAN ni a U101_RTN. Rellenos recalculados.
 
 ### Etapa 6 — Cierre
-**Estado (Claude Code, 2026-10-30):** teardrops (`scripts/ruteo/etapa6_teardrops.py`, 697 zonas), revisión de retornos sin hallazgos nuevos, fabricación de prueba (`scripts/ruteo/etapa6_fab.py` → `fab/proto/`) y renders `etapa6-*.png` hechos. DRC 0 errores / 5 avisos conocidos, paridad 0, ERC sin cambios. Quedan dos decisiones del usuario (tramos sin plano y los 5 avisos) y el push: ver «RETOMAR AQUÍ» en `docs/PENDIENTES.md`.
+**Estado (Claude Code, 2026-10-30): CERRADA, ruteo terminado.** Teardrops (`etapa6_teardrops.py`, 697 zonas), referencias de Q101/U801 movidas (silk_overlap corregido), costura de la ranura bajo U401 (`etapa6_costura_u401.py`, 13 vías, medición en `verify_ranura_u401.py` → `docs/layout/ruteo/etapa6-ranura-u401.json`), fabricación de prueba (`etapa6_fab.py` → `fab/proto/`) y renders `etapa6-*.png`. DRC 0 errores / 3 avisos aceptados (2 `silk_edge_clearance` y `lib_footprint_mismatch` de U401), paridad 0, ERC sin cambios. Tramos sin plano de la etapa 5 aceptados por el usuario. Detalle y lo que queda (LCSC, kicad-happy, rotaciones JLC) en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`.
 
 - DRC y paridad en 0. Revisar retornos de corriente: buck, U301, CAN e islas bajo U101.
 - **Teardrops:** generarlos (Edit → Edit Teardrops, o por la API) y repetir el DRC.
