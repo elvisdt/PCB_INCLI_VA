@@ -1,0 +1,291 @@
+{
+  "basis": "Relleno B.Cu temporal, no guardado en el proyecto; clearance/min thickness 0.2 mm, thermal gap/spoke 0.3 mm; sin eliminar islas.",
+  "restriction": "Courtyard de U601 y BARRERA_CAN libres; no se afirma cobre bajo el cuerpo aislante.",
+  "boundary_mm": [
+    [
+      100.5,
+      112.87
+    ],
+    [
+      122.02,
+      112.87
+    ],
+    [
+      122.02,
+      125.32
+    ],
+    [
+      123.95,
+      125.32
+    ],
+    [
+      123.95,
+      125.7
+    ],
+    [
+      124.55,
+      125.7
+    ],
+    [
+      124.55,
+      137.45
+    ],
+    [
+      100.5,
+      137.45
+    ]
+  ],
+  "segments": [
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        117.8,
+        128.85
+      ],
+      "end_mm": [
+        117.8,
+        132.699999
+      ],
+      "length_mm": 3.85,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        118.55,
+        125.325
+      ],
+      "end_mm": [
+        118.55,
+        128.1
+      ],
+      "length_mm": 2.775,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        118.55,
+        128.1
+      ],
+      "end_mm": [
+        117.8,
+        128.85
+      ],
+      "length_mm": 1.0607,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        118.725,
+        123.575
+      ],
+      "end_mm": [
+        118.725,
+        125.15
+      ],
+      "length_mm": 1.575,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        118.725,
+        125.15
+      ],
+      "end_mm": [
+        118.55,
+        125.325
+      ],
+      "length_mm": 0.2475,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        119.8,
+        122.5
+      ],
+      "end_mm": [
+        118.725,
+        123.575
+      ],
+      "length_mm": 1.5203,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        121.325,
+        122.5
+      ],
+      "end_mm": [
+        119.8,
+        122.5
+      ],
+      "length_mm": 1.525,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        121.65,
+        122.4
+      ],
+      "end_mm": [
+        121.325,
+        122.5
+      ],
+      "length_mm": 0.34,
+      "width_mm": 0.4
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        121.65,
+        125.15
+      ],
+      "end_mm": [
+        118.725,
+        125.15
+      ],
+      "length_mm": 2.925,
+      "width_mm": 0.3
+    },
+    {
+      "net": "/60_can/GNDISO_CAN",
+      "start_mm": [
+        122.0,
+        125.5
+      ],
+      "end_mm": [
+        121.65,
+        125.15
+      ],
+      "length_mm": 0.495,
+      "width_mm": 0.3
+    },
+    {
+      "net": "/60_can/V_SOIN",
+      "start_mm": [
+        121.2,
+        131.012499
+      ],
+      "end_mm": [
+        123.5,
+        128.7125
+      ],
+      "length_mm": 3.2527,
+      "width_mm": 0.3
+    },
+    {
+      "net": "/60_can/V_SOIN",
+      "start_mm": [
+        123.5,
+        121.6
+      ],
+      "end_mm": [
+        120.275,
+        121.6
+      ],
+      "length_mm": 3.225,
+      "width_mm": 0.3
+    },
+    {
+      "net": "/60_can/V_SOIN",
+      "start_mm": [
+        123.5,
+        128.7125
+      ],
+      "end_mm": [
+        123.5,
+        121.6
+      ],
+      "length_mm": 7.1125,
+      "width_mm": 0.3
+    },
+    {
+      "net": "/BUS_CAN_H",
+      "start_mm": [
+        114.45,
+        115.75
+      ],
+      "end_mm": [
+        118.2,
+        116.595
+      ],
+      "length_mm": 3.844,
+      "width_mm": 0.3
+    },
+    {
+      "net": "Net-(C609-Pad1)",
+      "start_mm": [
+        116.5,
+        122.325
+      ],
+      "end_mm": [
+        116.5,
+        127.175
+      ],
+      "length_mm": 4.85,
+      "width_mm": 0.2
+    },
+    {
+      "net": "Net-(C609-Pad1)",
+      "start_mm": [
+        116.5,
+        127.175
+      ],
+      "end_mm": [
+        115.175,
+        128.5
+      ],
+      "length_mm": 1.8738,
+      "width_mm": 0.2
+    }
+  ],
+  "total_length_by_net_mm": {
+    "/60_can/GNDISO_CAN": 16.3134,
+    "/60_can/V_SOIN": 13.5902,
+    "/BUS_CAN_H": 3.844,
+    "Net-(C609-Pad1)": 6.7238
+  },
+  "filled_regions": 1,
+  "gnd_can_vias_mm": [
+    [
+      112.6,
+      128.5
+    ],
+    [
+      115.4375,
+      117.25
+    ],
+    [
+      117.75,
+      114.67
+    ],
+    [
+      118.725,
+      119.95
+    ],
+    [
+      118.725,
+      122.55
+    ],
+    [
+      121.3,
+      132.699999
+    ],
+    [
+      121.65,
+      113.285
+    ],
+    [
+      121.65,
+      118.365
+    ]
+  ],
+  "drc_errors": 0,
+  "gnd_can_unconnected": 0
+}

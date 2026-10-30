@@ -2,7 +2,7 @@
 
 Claude Code, 2026-10-29. Este documento se lee solo, sin otros archivos. Codex sigue con las **etapas 2 a 6** en la misma rama (`ruteo-agente`). La etapa 1 está cerrada.
 
-**Actualización de Codex, 2026-10-29:** etapa 2 terminada, pendiente del visto bueno del usuario. DRC 0 errores / paridad 0 / 254 conexiones pendientes de etapas posteriores. Se usa el puente CANH autorizado; C608 a 2.145 mm aceptado. Medidas y cierre en `docs/RUTEO_AGENTE.md`. **No iniciar etapa 3 sin aprobación.** La sección 1 conserva el estado histórico del traspaso de la etapa 1.
+**Actualización de Codex, 2026-10-29:** etapa 2 aprobada por el usuario. Auditoría adicional B.Cu CAN completada: un relleno temporal conserva una sola región GND_CAN, conecta J1 y las ocho vías de retorno y da DRC 0 errores. No se ha agregado ningún plano al proyecto. Etapa 3 autorizada y comenzada parcialmente; faltan decisiones de ubicación, VBUS y ramales USB-C antes del cierre. **No iniciar etapa 4 sin aprobación.** La sección 1 conserva el estado histórico del traspaso de la etapa 1.
 
 Antes de empezar: leer `AGENTS.md`, `git log -5` y `docs/PENDIENTES.md`. Al terminar cada etapa: DRC, render de las dos caras, commit `[Codex] ruteo etapa N: ...`, `git push origin ruteo-agente`, y **esperar el visto bueno del usuario**.
 
@@ -302,7 +302,7 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 4. **TP301:** traslado autorizado fuera de la proyección del SW y sobre el tronco +5V; anotar el cambio de ubicación al aplicarlo.
 5. **Terminación CAN:** R602/R603/C609 montadas en PROTO; en PROD se definen según instalación.
 6. **Desacoples de U601:** criterio y conexiones en cadena aprobados en la sección 5, etapa 2. No cambiar ubicación, valores ni redes.
-7. **Alcance autorizado:** solo etapa 2. Al cerrarla: DRC, paridad, renders de ambas caras, tabla de distancias de desacoples y diferencia CANH/CANL, commit `[Codex]`, `git push origin ruteo-agente` y esperar visto bueno antes de la etapa 3.
+7. **Alcance autorizado actual:** etapa 2 aprobada; auditoría adicional CAN y etapa 3 autorizadas. Al cerrar etapa 3: DRC, paridad, renders de ambas caras, tabla de longitudes USB/EN y desacoples, commit `[Codex]`, `git push origin ruteo-agente` y esperar visto bueno antes de etapa 4.
 8. Cualquier otro movimiento o giro de componentes, cambio de reglas o net classes, renombre de redes o edición del esquemático requiere consulta previa.
 9. Los MPN marcados "a verificar" en `docs/PENDIENTES.md` se revisan antes de generar la BOM final.
 
@@ -311,3 +311,49 @@ pdftoppm -png -r 600 -x 2976 -y 1488 -W 850 -H 520 -singlefile /tmp/v.pdf zona  
 - **D601:** evaluado el giro de 180° sin cambiar redes. H/L pasan a coincidir con U601, pero quedan invertidos respecto de J1 y el pad GND pasa al acceso desde J1. El giro no elimina la inversión del recorrido completo; se conserva r0 y se aplica la alternativa autorizada del puente CANH con dos vías.
 - **CAN:** 22.2139 mm H / 22.2120 mm L; diferencia nominal **0.0019 mm**, entre centros de J1.3/4 y U601.14/13, incluyendo 1.6 mm por vía. Las longitudes planares son 19.0139 / 22.2120 mm; el ajuste compensa los 3.2 mm verticales de H. Ramales a terminación separados de esta métrica.
 - **Cierre:** DRC 0 errores / 42 avisos (37 vías GND esperan planos + 5 conocidos), paridad 0, 254 conexiones pendientes. Renders de ambas caras y medidas finales en `docs/layout/ruteo/etapa2-*`. Esperar visto bueno antes de etapa 3.
+
+
+### Auditoría adicional B.Cu CAN — etapa 2 aprobada
+
+El usuario pidió listar los tramos inferiores y comprobar que no fragmenten la futura isla. Se ejecutó `scripts/ruteo/audit_can_bcu.py`: copia temporal de PCB, reglas y proyecto; relleno **solo B.Cu**, clearance y espesor mínimo 0.2 mm, alivios de 0.3 mm, sin eliminar islas. La prueba conserva libre el courtyard completo de U601 y `BARRERA_CAN`, conforme a las reglas vigentes. **No hay cobre bajo el cuerpo aislante de U601**: la continuidad comprobada llega a sus retornos del lado CAN por las pistas cortas existentes. Se pidió confirmar esta interpretación de «bajo U601»; no se modificó la regla.
+
+Resultado: **1 región rellena**, las **8 vías GND_CAN dentro de ella**, **0 conexiones GND_CAN pendientes** y **DRC 0 errores** en la copia temporal. J1.5 queda unido a los retornos de U601.11/15, D601, R605, C607/C608, C609 y FB602. Ninguno de los tramos divide la isla; no se traslada ni acorta ninguno. Hay paso de retorno alrededor del puente CANH y por debajo de los extremos de GNDISO_CAN/V_SOIN. Repetir la prueba al crear los planos definitivos de etapa 5 y añadir la costura prevista. Esto comprueba la continuidad del cobre, no una simulación de impedancia o EMC.
+
+Evidencia: `docs/layout/ruteo/can-bcu-auditoria.json` y `can-bcu-auditoria.png`. Las coordenadas siguientes son absolutas KiCad, en mm. Longitudes planares; no incluyen altura de vías.
+
+| Red | Total B.Cu (mm) |
+|---|---:|
+| BUS_CAN_H | 3.8440 |
+| V_SOIN | 13.5902 |
+| GNDISO_CAN | 16.3134 |
+| Net-(C609-Pad1), punto medio de terminación | 6.7238 |
+
+| Red | Inicio (x, y) | Fin (x, y) | Longitud (mm) |
+|---|---|---|---:|
+| /60_can/GNDISO_CAN | (117.8, 128.85) | (117.8, 132.7) | 3.8500 |
+| /60_can/GNDISO_CAN | (118.55, 125.325) | (118.55, 128.1) | 2.7750 |
+| /60_can/GNDISO_CAN | (118.55, 128.1) | (117.8, 128.85) | 1.0607 |
+| /60_can/GNDISO_CAN | (118.725, 123.575) | (118.725, 125.15) | 1.5750 |
+| /60_can/GNDISO_CAN | (118.725, 125.15) | (118.55, 125.325) | 0.2475 |
+| /60_can/GNDISO_CAN | (119.8, 122.5) | (118.725, 123.575) | 1.5203 |
+| /60_can/GNDISO_CAN | (121.325, 122.5) | (119.8, 122.5) | 1.5250 |
+| /60_can/GNDISO_CAN | (121.65, 122.4) | (121.325, 122.5) | 0.3400 |
+| /60_can/GNDISO_CAN | (121.65, 125.15) | (118.725, 125.15) | 2.9250 |
+| /60_can/GNDISO_CAN | (122, 125.5) | (121.65, 125.15) | 0.4950 |
+| /60_can/V_SOIN | (121.2, 131.0125) | (123.5, 128.7125) | 3.2527 |
+| /60_can/V_SOIN | (123.5, 121.6) | (120.275, 121.6) | 3.2250 |
+| /60_can/V_SOIN | (123.5, 128.7125) | (123.5, 121.6) | 7.1125 |
+| /BUS_CAN_H | (114.45, 115.75) | (118.2, 116.595) | 3.8440 |
+| Net-(C609-Pad1) | (116.5, 122.325) | (116.5, 127.175) | 4.8500 |
+| Net-(C609-Pad1) | (116.5, 127.175) | (115.175, 128.5) | 1.8738 |
+
+### Etapa 3 — avance y decisiones solicitadas
+
+Sin movimientos de componentes ni cambios de esquema. KiCad sin archivos de bloqueo antes de editar. Se han ruteado UART J402, BOOT con R402/SW402/TP402, EN local con C403 y TP401, RESET hasta SW401 y U801/R802, alimentación de C605/U601 desde C304, y alimentación/desacople de U801 y pull-up de BOOT. U401 ya incorpora 12 taladros metalizados GND de 0.2 mm en el pad 41; se conservan. Retornos de U401.1/40 y pasivos preparados para el plano de etapa 5. GPIO3/45/46 permanecen NC según la hoja 40; GPIO0 usa R402/SW402.
+
+Pendiente de respuesta del usuario (no aplicado):
+- C402 tiene separación geométrica mínima de **1.325 mm** al pin 3V3, frente al ≤1 mm del plan. C401 está a más de 6 mm del pin y R401 a unos 49 mm de EN. Se solicitó acercar C401/C402 y trasladar R401 junto a C403, o conservar posiciones con excepciones documentadas. Registrar coordenadas definitivas en «Cambios de ubicación» si se autorizan.
+- VBUS no tiene capacitor en el esquema: solo J401, U402 y TP403. Se solicitó autorización para añadir 100 nF/50 V, 0603, con MPN ya presente, o conservar el esquema sin ese desacople. No se ha añadido componente ni cambiado la conectividad.
+- En J401 las patillas son D+/D−/D+/D−. Se propuso una excepción de cuatro vías solo en los dos ramales B6/B7, conservando el par principal en F.Cu; la geometría completa y el ajuste de longitud deben verificarse antes de dar por viable o cerrar USB. No se ha aplicado la excepción ni ruteado USB.
+
+Verificación parcial: **DRC 0 errores, paridad 0, 240 conexiones pendientes**. 49 avisos: 44 vías GND para etapa 5 y los 5 avisos conocidos. EN U401.3→C403.1: **2.8519 mm entre centros / 1.5415 mm entre bordes**, sin vías. La red remota RESET mide más: U401→SW401 **62.8093 mm** y U401→R802 **55.4803 mm**, incluyendo dos vías; el criterio EN ≤5 mm se cumple solo para el RC local, no para estos ramales impuestos por la ubicación de los controles. R401 sigue pendiente. USB y distancias finales de C401/C402 aún no son evaluables porque falta el ruteo. Evidencia parcial en `docs/layout/ruteo/etapa3-parcial-*`.

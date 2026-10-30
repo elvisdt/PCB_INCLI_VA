@@ -2,7 +2,16 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Codex (etapa 2 terminada; espera visto bueno antes de etapa 3).
+Última actualización: 2026-10-29, Codex (etapa 2 aprobada y auditada; etapa 3 parcial, decisiones pendientes).
+
+## Etapa 3 — avance actual
+- Usuario aprobó etapa 2 y autorizó solo etapa 3; no empezar etapa 4.
+- Auditoría B.Cu CAN completada en copia temporal: 1 región GND_CAN, 8 vías y J1 conectados, DRC 0 errores. Inventario con coordenadas/longitudes en `RUTEO_TRASPASO.md`; no es necesario cambiar pistas CAN. Courtyard y barrera U601 conservados sin relleno.
+- UART, BOOT, EN/C403/TP401, RESET SW401/U801/R802, alimentación CAN desde C304, alimentación U801 y retornos locales ruteados. No se movieron componentes ni se editó el esquema.
+- DRC parcial 0 errores / 49 avisos (44 vías GND + 5 conocidos), paridad 0, 240 conexiones pendientes. Renders y medidas `docs/layout/ruteo/etapa3-parcial-*`.
+- Pendientes de respuesta: acercar C401/C402 y R401 o aceptar distancias actuales; añadir desacople VBUS ausente en esquema o conservarlo; excepción propuesta para vías en ramales USB-C B6/B7. No ejecutar esos cambios sin respuesta. Aclaración pendiente sobre «bajo U601»: la regla vigente impide rellenos bajo todo su courtyard.
+- Falta USB/CC/VBUS, 3V3 hacia MCU, C401/C402 y R401; después realizar cierre completo, commit/push y esperar visto bueno antes de etapa 4.
+- El detalle que sigue conserva el historial del cierre de etapa 2.
 
 ## Retoma de ruteo — Codex, 2026-10-29
 - Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.

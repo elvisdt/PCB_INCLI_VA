@@ -248,3 +248,10 @@ Pista desde borde real del pad del pin hasta borde real del pad del capacitor. L
 - **Etapa 5, C605:** conectar sin interrupciones su vía GND_VEH (144.28,121.9) con C602/C601 y GND de U601; añadir costura en esa zona y revisar cuellos/islas producidos por los saltos lógicos. No afirmar continuidad de plano antes de generarlo.
 - **Etapa 5, CAN:** conservar continuidad GND_CAN alrededor de ambos extremos del puente H y coser la isla. No unir GNDISO_CAN directamente con GND_CAN: conservar FB602. Mantener libre la barrera y sin rellenos bajo U601.
 - **Etapa 5, TP301:** plano continuo bajo el SW de U301, ya libre del antiguo pad/pista de prueba.
+
+
+## Codex — etapa 2 aprobada, auditoría CAN y avance parcial de etapa 3
+
+Inventario B.Cu y prueba de relleno temporal documentados en `RUTEO_TRASPASO.md`: una región GND_CAN, J1 y ocho vías conectados, DRC 0 errores, sin modificaciones de pistas CAN ni de reglas. No se agregaron planos al proyecto. `audit_can_bcu.py` reproduce la prueba y su figura.
+
+Etapa 3 parcial mediante `etapa3_mcu.py`: UART, BOOT, EN local/C403, RESET remoto/TP401/U801/R802, 3V3 desde C304 al CAN y supervisor, retornos preparados. C401/C402/R401 y USB/VBUS quedan pendientes de las decisiones solicitadas y del ruteo final. No hubo movimientos ni cambios de esquemático. DRC 0 errores / 49 avisos, paridad 0, 240 conexiones pendientes. EN local 2.8519 mm entre centros; los ramales RESET remotos se informan aparte (62.8093 mm a SW401; 55.4803 mm a R802). Renders y mediciones parciales guardados. No se declara terminada la etapa 3; no iniciar etapa 4.
