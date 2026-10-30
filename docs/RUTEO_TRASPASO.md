@@ -2,7 +2,7 @@
 
 Claude Code, 2026-10-29. Este documento se lee solo, sin otros archivos. Codex sigue con las **etapas 2 a 6** en la misma rama (`ruteo-agente`). La etapa 1 está cerrada.
 
-**Actualización de Codex, 2026-10-29:** etapa 2 aprobada por el usuario. Auditoría adicional B.Cu CAN completada: un relleno temporal conserva una sola región GND_CAN, conecta J1 y las ocho vías de retorno y da DRC 0 errores. No se ha agregado ningún plano al proyecto. Etapa 3 autorizada y comenzada parcialmente; faltan decisiones de ubicación, VBUS y ramales USB-C antes del cierre. **No iniciar etapa 4 sin aprobación.** La sección 1 conserva el estado histórico del traspaso de la etapa 1.
+**Actualización de Codex, 2026-10-29:** etapa 2 aprobada y auditada. Etapa 3 avanzada con C401/C402/R401 reubicados, C404 agregado y verificado en esquema/PCB, 3V3 MCU, USB/CC/VBUS y señales completas salvo el escape final de D−. **Pendiente de autorización adicional:** cuello de 0.15 mm por 1.923 mm junto a U401, probado solo en copia temporal. El PCB guardado deja ese enlace abierto: DRC 0 errores / paridad 0 / 224 conexiones pendientes; no se declara cerrada la etapa 3. No iniciar etapa 4.
 
 Antes de empezar: leer `AGENTS.md`, `git log -5` y `docs/PENDIENTES.md`. Al terminar cada etapa: DRC, render de las dos caras, commit `[Codex] ruteo etapa N: ...`, `git push origin ruteo-agente`, y **esperar el visto bueno del usuario**.
 
@@ -117,7 +117,7 @@ Para regenerar la lista: correr el DRC (sección 8) y agrupar `unconnected_items
 ---
 
 ## 3. Cambios de ubicación respecto de `placement-v1`
-Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
+Todos autorizados por el usuario. Aplicados por los scripts de las etapas 1–3; los movimientos MCU están en `scripts/ruteo/etapa3_mcu.py`.
 
 | Pieza | placement-v1 | Ahora | Motivo |
 |---|---|---|---|
@@ -127,6 +127,11 @@ Todos autorizados por el usuario. Los aplica `scripts/ruteo/etapa1_potencia.py`.
 | TP101 (+VPROT, B.Cu) | (138.5, 65.5) | (127.6, 61.5) | Sobre el ramal de +VPROT hacia C202 |
 | Referencia de U301 | — | serigrafía en (142.2, 132.8) | Al girar la pieza quedaba sobre R301 |
 | TP301 (Codex, etapa 2 parcial) | B.Cu (140.0, 134.0) | B.Cu **(140.0, 131.6)**, r180 | Traslado autorizado al tronco +5V; retirada su bajada B.Cu bajo SW. Aplicado por `scripts/ruteo/etapa2_can.py` |
+| C401 (Codex, etapa 3) | F.Cu (189.263603, 100.013603) r0 | F.Cu **(189.2, 100.6) r90** | Bulk detrás de C402 en la cadena de 3V3; movimiento autorizado |
+| C402 (Codex, etapa 3) | F.Cu (189.9, 104.2) r0 | F.Cu **(189.18, 104.0) r90** | Primero junto a U401.2; pista entre bordes de 0.775 mm |
+| R401 (Codex, etapa 3) | F.Cu (162.060355, 146.485355) r90 | F.Cu **(187.0, 100.1) r270** | Pull-up EN local; pista a U401.3 de 4.964 mm entre bordes |
+
+C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece a `placement-v1`. También se reubicaron las referencias de C401/C402/R401/C403/C404 y el texto «SIN BARNIZ» de J401 a (192,88), r0, para evitar solapes; C403 conserva su posición y orientación.
 
 **Regla:** no mover ni rotar ningún otro componente sin preguntar al usuario. Si un ruteo lo necesita, anotar la propuesta en `docs/RUTEO_AGENTE.md` y esperar la decisión. El usuario replica los cambios en su copia manual.
 
@@ -347,7 +352,7 @@ Evidencia: `docs/layout/ruteo/can-bcu-auditoria.json` y `can-bcu-auditoria.png`.
 | Net-(C609-Pad1) | (116.5, 122.325) | (116.5, 127.175) | 4.8500 |
 | Net-(C609-Pad1) | (116.5, 127.175) | (115.175, 128.5) | 1.8738 |
 
-### Etapa 3 — avance y decisiones solicitadas
+### Etapa 3 — primer avance y decisiones solicitadas (histórico: 4bfdfef)
 
 Sin movimientos de componentes ni cambios de esquema. KiCad sin archivos de bloqueo antes de editar. Se han ruteado UART J402, BOOT con R402/SW402/TP402, EN local con C403 y TP401, RESET hasta SW401 y U801/R802, alimentación de C605/U601 desde C304, y alimentación/desacople de U801 y pull-up de BOOT. U401 ya incorpora 12 taladros metalizados GND de 0.2 mm en el pad 41; se conservan. Retornos de U401.1/40 y pasivos preparados para el plano de etapa 5. GPIO3/45/46 permanecen NC según la hoja 40; GPIO0 usa R402/SW402.
 
@@ -357,3 +362,36 @@ Pendiente de respuesta del usuario (no aplicado):
 - En J401 las patillas son D+/D−/D+/D−. Se propuso una excepción de cuatro vías solo en los dos ramales B6/B7, conservando el par principal en F.Cu; la geometría completa y el ajuste de longitud deben verificarse antes de dar por viable o cerrar USB. No se ha aplicado la excepción ni ruteado USB.
 
 Verificación parcial: **DRC 0 errores, paridad 0, 240 conexiones pendientes**. 49 avisos: 44 vías GND para etapa 5 y los 5 avisos conocidos. EN U401.3→C403.1: **2.8519 mm entre centros / 1.5415 mm entre bordes**, sin vías. La red remota RESET mide más: U401→SW401 **62.8093 mm** y U401→R802 **55.4803 mm**, incluyendo dos vías; el criterio EN ≤5 mm se cumple solo para el RC local, no para estos ramales impuestos por la ubicación de los controles. R401 sigue pendiente. USB y distancias finales de C401/C402 aún no son evaluables porque falta el ruteo. Evidencia parcial en `docs/layout/ruteo/etapa3-parcial-*`.
+
+
+### Etapa 3 — decisiones aplicadas y única excepción pendiente
+
+**Aplicado con autorización del usuario:**
+- Reubicación C401/C402 y R401 en «Cambios de ubicación». Alimentación desde C304 al MCU, en cadena pin → C402 → C401, sin derivación independiente al pin. Cada capacitor tiene vía de retorno GND; el pad 41 de U401 conserva sus 12 taladros metalizados. R401 llega al nodo EN por el este de C403, sin cruzar su pad GND.
+- **C404 nuevo en hoja 40:** 100 nF, 0603, X7R, 50 V; MPN `GCM188R71H104KA57D`, Manufacturer `Murata`, Footprint `Capacitor_SMD:C_0603_1608Metric`, Datasheet `https://www.murata.com/en-global/products/productdetail?partno=GCM188R71H104KA57D`, campo DNP vacío y atributo nativo `dnp no`. VBUS-GND_VEH; no alimenta +5V. Es el mismo componente de C402. Especificaciones contrastadas con la [ficha oficial Murata](https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GCM188R71H104KA57-01.pdf).
+- C404 se incorporó al PCB con UUID propio y vínculo a su símbolo; **paridad 0, no hizo falta F8**. `scripts/ruteo/add_c404.py` reproduce la incorporación. Cambio de esquema posterior a placement-v1, a replicar por el usuario en ruteo-manual; no se tocó esa copia.
+- USB principal F.Cu, 0.3/0.2 mm en los tramos acoplados, aperturas en pads y ajuste local de D+. Solo los ramales B6/B7 tienen vías: 2 por red, 4 en total, Ø0.6/taladro 0.3. Ubicaciones: D+ (192.2,79.37) y (190.0,82.5); D− (192.4,81.425) y (190.4,79.6). Los ramales permanecen junto a J401. Ramal B6 hasta su unión al principal: 6.7478 mm planares +3.2 mm verticales; B7: 8.2262 +3.2 mm. No se incluyen esos ramales en la longitud del recorrido principal.
+- CC1/CC2 cortos en F.Cu, sin vías; VBUS conectado a ambos grupos de contactos, U402, C404 y TP403. Retornos cortos de U402/C404, CC y J401 preparados para los planos.
+- UART, BOOT, RESET y estrapado según hoja 40; GPIO3/45/46 conservados NC. Nada en el keep-out de antena. No se modificaron reglas ni net classes.
+
+**Único punto pendiente de respuesta:** en la esquina de U401 hay 0.565 mm entre los pads 14 y 15. Para conservar D− sin vías al rodear D+, se propone un cuello de **0.15 mm** durante **1.922754 mm**, entre (173.0,107.5) → (173.2825,107.7825) → (173.6,107.7825) → (174.8,107.9). Mantiene clearance ≥0.2 mm. La pista de 0.3 mm no cabe; la alternativa de 0.15 se probó **solo en copia temporal**, con **DRC 0 errores**. No se ha aplicado al PCB principal. El enlace se deja abierto hasta la respuesta, sin conservar una infracción DRC. Evidencia: `etapa3-propuesta-usb-escape.png` y `etapa3-propuesta-usb-drc.json`; script `preview_usb_escape.py`.
+
+| Medición | Centro a centro (mm) | Pista entre bordes (mm) | Estado |
+|---|---:|---:|---|
+| USB D−, J401.A7 → U402 → U401.13 | 45.9509 | 44.6256 | **Propuesta temporal**, depende del cuello |
+| USB D+, J401.A6 → U402 → U401.14 | 45.9508 | 44.6258 | PCB guardado |
+| Diferencia D± | **0.0001** | — | Nominal, solo con el cuello propuesto; sin vías principales |
+| EN → C403 | 2.8519 | 1.5415 | PCB guardado, sin vías |
+| EN → R401 | 6.2433 | 4.9641 | PCB guardado, sin vías; ≤5 mm de pista entre bordes |
+| RESET → SW401 | 62.8093 | 61.1900 | Ramal remoto, incluye dos vías |
+| RESET → R802 | 55.4803 | 54.2548 | Ramal remoto, incluye dos vías |
+| U401.2 → C402, 100 nF | 1.9750 | **0.7750** | Primero, sin vías |
+| U401.2 → C401, 22 µF | 7.0585 | 5.6027 | En cadena detrás de C402, sin vías |
+| U402.5 → C404, 100 nF | 1.6875 | **0.5748** | Sin vías |
+| U801.5 → C801, 100 nF | 2.4946 | 1.3815 | Sin vías |
+
+Medidas extraídas del cobre mediante `verify_etapa3.py`, que vuelve a comprobar la etapa 2. Los JSON separan explícitamente `USB_actual` de `USB_proposal`; no confundir un recorrido temporal con la placa entregada.
+
+**Verificación del PCB guardado:** DRC **0 errores / 59 avisos** (52 vías GND para etapa 5, 5 avisos conocidos y 2 extremos D− pendientes), paridad **0**, **224 conexiones pendientes**. La propuesta con el cuello tiene DRC 0 errores / 57 avisos y 223 conexiones pendientes. ERC total **0 errores / 5 avisos conocidos**; hoja 40 **0 errores / 4 avisos** de SW401/SW402. `sch_visual_qa` no está disponible como herramienta ni ejecutable en esta sesión: se hizo revisión visual de la hoja completa y del sector USB/C404 exportados con KiCad, sin solapes en la zona modificada. Evidencia `etapa3-erc.json`, `etapa3-hoja40.png`, `etapa3-c404-esquema.png`; renders actualizados `etapa3-parcial-top.png` / `bottom.png`.
+
+La etapa 3 sigue abierta por la autorización del cuello. Al resolverla: aplicar únicamente la opción autorizada, repetir DRC/paridad y renders, guardar las medidas finales, commit/push y esperar visto bueno antes de etapa 4.

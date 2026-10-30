@@ -255,3 +255,10 @@ Pista desde borde real del pad del pin hasta borde real del pad del capacitor. L
 Inventario B.Cu y prueba de relleno temporal documentados en `RUTEO_TRASPASO.md`: una región GND_CAN, J1 y ocho vías conectados, DRC 0 errores, sin modificaciones de pistas CAN ni de reglas. No se agregaron planos al proyecto. `audit_can_bcu.py` reproduce la prueba y su figura.
 
 Etapa 3 parcial mediante `etapa3_mcu.py`: UART, BOOT, EN local/C403, RESET remoto/TP401/U801/R802, 3V3 desde C304 al CAN y supervisor, retornos preparados. C401/C402/R401 y USB/VBUS quedan pendientes de las decisiones solicitadas y del ruteo final. No hubo movimientos ni cambios de esquemático. DRC 0 errores / 49 avisos, paridad 0, 240 conexiones pendientes. EN local 2.8519 mm entre centros; los ramales RESET remotos se informan aparte (62.8093 mm a SW401; 55.4803 mm a R802). Renders y mediciones parciales guardados. No se declara terminada la etapa 3; no iniciar etapa 4.
+
+
+## Codex — etapa 3: decisiones aplicadas, escape USB pendiente
+
+Aplicados los movimientos autorizados de C401/C402/R401 y C404 en esquema/PCB; coordenadas y MPN completos en `RUTEO_TRASPASO.md`. C404 debe replicarse en la copia manual, que no fue modificada. ERC sin errores; paridad 0, no fue necesario F8. QA visual del esquema exportado completa; `sch_visual_qa` no está disponible en esta sesión.
+
+Ruteo y medidas completados salvo el cuello final de D− junto a U401. La prueba con 0.3 mm infringe clearance entre pads 14/15; se solicitó autorizar 0.15 mm por 1.923 mm. La copia temporal con ese cuello da DRC 0 errores, USB principal sin vías y diferencia nominal 0.0001 mm. El proyecto conserva ese enlace abierto hasta la respuesta: DRC 0 errores /59 avisos /224 conexiones pendientes. Los JSON distinguen medidas reales y propuesta. Renders de ambas caras actualizados. Etapa 3 sigue abierta; no se avanza a etapa 4.

@@ -2,16 +2,19 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-29, Codex (etapa 2 aprobada y auditada; etapa 3 parcial, decisiones pendientes).
+Última actualización: 2026-10-29, Codex (etapa 3 casi completa; pendiente autorización del escape USB local).
 
 ## Etapa 3 — avance actual
-- Usuario aprobó etapa 2 y autorizó solo etapa 3; no empezar etapa 4.
-- Auditoría B.Cu CAN completada en copia temporal: 1 región GND_CAN, 8 vías y J1 conectados, DRC 0 errores. Inventario con coordenadas/longitudes en `RUTEO_TRASPASO.md`; no es necesario cambiar pistas CAN. Courtyard y barrera U601 conservados sin relleno.
-- UART, BOOT, EN/C403/TP401, RESET SW401/U801/R802, alimentación CAN desde C304, alimentación U801 y retornos locales ruteados. No se movieron componentes ni se editó el esquema.
-- DRC parcial 0 errores / 49 avisos (44 vías GND + 5 conocidos), paridad 0, 240 conexiones pendientes. Renders y medidas `docs/layout/ruteo/etapa3-parcial-*`.
-- Pendientes de respuesta: acercar C401/C402 y R401 o aceptar distancias actuales; añadir desacople VBUS ausente en esquema o conservarlo; excepción propuesta para vías en ramales USB-C B6/B7. No ejecutar esos cambios sin respuesta. Aclaración pendiente sobre «bajo U601»: la regla vigente impide rellenos bajo todo su courtyard.
-- Falta USB/CC/VBUS, 3V3 hacia MCU, C401/C402 y R401; después realizar cierre completo, commit/push y esperar visto bueno antes de etapa 4.
-- El detalle que sigue conserva el historial del cierre de etapa 2.
+- Etapa 2 aprobada y auditada. Solo etapa 3 autorizada; no comenzar etapa 4.
+- Decisiones del usuario aplicadas: C402 primero junto a 3V3, C401 detrás, R401 junto al RC de EN; posiciones en «Cambios de ubicación» de `RUTEO_TRASPASO.md`.
+- **Cambio de esquemático posterior a placement-v1, para replicar en ruteo-manual por el usuario:** añadido **C404**, hoja 40, 100 nF, 0603, X7R, 50 V, `GCM188R71H104KA57D` (Murata), DNP vacío, VBUS–GND_VEH. Símbolo en (365.76,63.5), PCB F.Cu (189.6,81.45) r0. Huella oficial `Capacitor_SMD:C_0603_1608Metric`; campos completos. Incorporado al PCB con el path correcto, **paridad 0; no hace falta F8**. No se tocó la copia manual.
+- Ruteados 3V3 al MCU/CAN, desacoples, EN/R401/C403, RESET completo, BOOT, UART, CC1/CC2 y VBUS/C404/TP403. Las cuatro vías USB autorizadas están solo en los ramales B6/B7.
+- **Única autorización pendiente:** estrechamiento D− a 0.15 mm por 1.923 mm junto a U401, manteniendo separación ≥0.2 mm y par principal sin vías. 0.3 mm no cabe entre pads 14/15. Probado solo en copia temporal: DRC 0 errores, longitudes D−/D+ 45.9509/45.9508 mm, diferencia 0.0001 mm. Figura `docs/layout/ruteo/etapa3-propuesta-usb-escape.png`. El PCB guardado deja ese enlace abierto, sin aplicar una excepción no aprobada.
+- PCB guardado: **DRC 0 errores / 59 avisos** (52 vías de masas +5 conocidos +2 extremos USB pendientes), **paridad 0**, 224 conexiones pendientes. Copia temporal con cuello: 0 errores /57 avisos /223 conexiones pendientes.
+- ERC: **0 errores /5 avisos conocidos**; hoja 40: 0 errores /4 avisos de SW401/SW402. `sch_visual_qa` no está disponible en esta sesión; revisión visual de hoja completa y sector USB/C404 sin solapes nuevos. Evidencia `etapa3-erc.json`, `etapa3-hoja40.png`, `etapa3-c404-esquema.png`.
+- Tabla de mediciones y posiciones en `RUTEO_TRASPASO.md`; renders y medidas parciales actualizados. C402 0.775 mm al pin; C404 0.575 mm; R401 4.964 mm a EN (distancias entre bordes de pads).
+- Tras respuesta: aplicar la solución autorizada, repetir DRC/paridad/renders y medidas finales, commit/push del cierre, esperar visto bueno antes de etapa 4. `preview_usb_escape.py` solo crea una copia temporal; no confundirla con el PCB real.
+- El detalle que sigue conserva el historial anterior.
 
 ## Retoma de ruteo — Codex, 2026-10-29
 - Base: `b46f185`, rama `ruteo-agente`; solo etapa 2 autorizada. Etapas 3–6 esperan nuevos vistos buenos.
@@ -508,7 +511,7 @@ No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se 
 - [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
 - [x] 1. Potencia: cerrada (Claude Code). Cambios de ubicación: C104 a B.Cu, U301 girado 180°, C302 junto a VIN y TP101 a (127.6, 61.5).
 - **Las etapas 2 a 6 las sigue Codex en `ruteo-agente`.** Plan, reglas y restricciones en `docs/RUTEO_TRASPASO.md`.
-- [x] 2. CAN: terminada por Codex; espera visto bueno. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
+- [x] 2. CAN: terminada y aprobada por el usuario; continuidad B.Cu auditada. Puente H autorizado, C608 aceptado, DRC 0 errores / paridad 0.
 - [ ] 3. USB/MCU.
 - [ ] 4. Sensores y señales.
 - [ ] 5. Planos.
