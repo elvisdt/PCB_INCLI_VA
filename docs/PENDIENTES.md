@@ -4,7 +4,7 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 
 Última actualización: 2026-10-29, Codex (etapa 3 cerrada; traspaso preparado; etapa 4 no iniciada).
 
-## Etapa 3 — cierre actual
+## Etapa 3 — cierre actual (`a881797`)
 - Etapa 2 aprobada y auditada. Solo etapa 3 autorizada; no comenzar etapa 4.
 - Decisiones del usuario aplicadas: C402 primero junto a 3V3, C401 detrás, R401 junto al RC de EN; posiciones en «Cambios de ubicación» de `RUTEO_TRASPASO.md`.
 - **Cambio de esquemático posterior a placement-v1, para replicar en ruteo-manual por el usuario:** añadido **C404**, hoja 40, 100 nF, 0603, X7R, 50 V, `GCM188R71H104KA57D` (Murata), DNP vacío, VBUS–GND_VEH. Símbolo en (365.76,63.5), PCB F.Cu (189.6,81.45) r0. Huella oficial `Capacitor_SMD:C_0603_1608Metric`; campos completos. Incorporado al PCB con el path correcto, **paridad 0; no hace falta F8**. No se tocó la copia manual.

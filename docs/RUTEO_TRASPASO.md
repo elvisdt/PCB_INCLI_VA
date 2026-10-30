@@ -1,5 +1,226 @@
 # Traspaso del ruteo a Codex — rama `ruteo-agente`
 
+## Cómo retomar
+
+**Entrega de Codex, 2026-10-29. Etapa 3 cerrada en `a881797`; etapa 4 no iniciada.** La autorización del cuello USB ya está aplicada; no queda una propuesta pendiente. Esta sección es el estado vigente; los apartados históricos inferiores describen estados anteriores. Puede continuar el usuario, otro Codex o Claude Code, un agente por turno.
+
+Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`, este documento, `docs/PENDIENTES.md` y `git log -5`; comprobar `git status` antes de cambiar nada. **KiCad debe estar cerrado** y sin archivos `~*.lck`, también en `sheets/`. No tocar `PCB_INCLI_VA_manual`, `ruteo-manual` ni sus worktrees. No mover/girar piezas ni cambiar el esquema, reglas o net classes sin nueva autorización. Las autorizaciones aquí documentadas cubren solo los cambios ya aplicados.
+
+### Estado exacto y evidencia
+
+| Etapa | Estado | Commit de cierre |
+|---|---|---|
+| 0 — reglas/net classes | Cerrada | `36bf77f` |
+| 1 — potencia | Cerrada | `b46f185` |
+| 2 — CAN | Cerrada y aprobada; auditoría B.Cu posterior en `4bfdfef` | `be5cc7c` |
+| 3 — USB/MCU | Cerrada; C404 y movimientos en `802202d`, cuello final autorizado aplicado | `a881797` |
+| 4 — sensores/señales | No iniciada; esperar nuevo visto bueno | — |
+| 5 — planos | No iniciada | — |
+| 6 — fabricación/cierre | No iniciada | — |
+
+Base mecánica: `placement-v1` = `f472680`, más los cambios de ubicación listados abajo. El commit documental posterior a `a881797` solo completa el traspaso; no modifica el PCB.
+
+| Verificación sobre PCB/esquema guardados | Resultado final |
+|---|---|
+| DRC | **0 errores /57 avisos**: 52 `via_dangling` de masas para etapa 5 +2 `silk_overlap` (Q101/U801) +2 `silk_edge_clearance` y 1 `lib_footprint_mismatch` de U401, conocidos |
+| Paridad esquema–PCB | **0 diferencias** |
+| ERC total | **0 errores /5 avisos conocidos**: 1 `isolated_pin_label` U101_RTN y 4 `pin_to_pin` SW401/SW402; hoja 40: 0/4 |
+| Conexiones sin rutear | **223**: **108 no-GND** para etapa 4 +**107 GND_VEH y 8 GND_CAN** para etapa 5 |
+| USB principal J401→U402→U401 | D− **45.9509**, D+ **45.9508 mm**, Δ **0.0001 mm** nominal; sin vías |
+| CAN principal J1→U601 | H **22.2139**, L **22.2120 mm**, Δ **0.0019 mm**; incluye 1.6 mm por vía |
+| Renders | [Superior](layout/ruteo/etapa3-top.png) y [inferior](layout/ruteo/etapa3-bottom.png), generados y revisados |
+
+Reportes vigentes: [DRC/paridad](layout/ruteo/etapa3-drc.json), [ERC](layout/ruteo/etapa3-erc.json), [medidas y caminos](layout/ruteo/etapa3-medidas.json), [inventario de pendientes](layout/ruteo/etapa3-pendientes.json). La tabla completa USB/EN/desacoples está en «Etapa 3 — cierre final» al final del documento. `etapa3-parcial-*` y `etapa3-propuesta-*` son evidencia histórica. `sch_visual_qa` no estuvo disponible: C404 se revisó visualmente en la hoja 40 exportada por KiCad y en su ampliación; no se cambió de nuevo el esquema en el cierre.
+
+No quedan conexiones pendientes de USB, CC, VBUS, UART, EN/RESET/BOOT ni de las señales CAN. Sí quedan los retornos a planos. **DRC sin errores no significa placa terminada**: las 223 conexiones se informan por separado.
+
+### Siguiente paso: etapa 4 completa, solo tras visto bueno
+
+Cerrar las **108 conexiones no-GND** del inventario siguiente; son airwires del DRC, no número de pads ni número de redes. Preparar retornos locales cortos cuando haga falta; el cierre global de masas corresponde a etapa 5. No volver a rutear RESET/R802 ni la distribución principal MCU/CAN, ya terminadas. Completar los consumidores restantes de +3V3_D (R111/R307), +5V y la distribución analógica.
+
+| Red exacta | Conexiones pendientes | Etapa |
+|---|---:|---|
+| `+3V3_A` | 16 | 4 |
+| `+3V3_D` | 2 | 4 |
+| `+5V_VEH` | 7 | 4 |
+| `/10_power_input/CAP` | 1 | 4 |
+| `/10_power_input/ILIM` | 1 | 4 |
+| `/10_power_input/OV` | 2 | 4 |
+| `/10_power_input/SW` | 1 | 4 |
+| `/10_power_input/TMR` | 1 | 4 |
+| `/10_power_input/UVLO` | 2 | 4 |
+| `/10_power_input/VS` | 5 | 4 |
+| `/30_regulation/PG_3V3D` | 1 | 4 |
+| `/50_sensors/SCL_AEXTC` | 1 | 4 |
+| `/50_sensors/SCL_DEXTC` | 1 | 4 |
+| `/70_output_DO1/EN_5V` | 1 | 4 |
+| `/70_output_DO2/EN_5V` | 1 | 4 |
+| `/CS_IMU` | 2 | 4 |
+| `/CS_INC` | 2 | 4 |
+| `/CS_ROT` | 2 | 4 |
+| `/DO1_DIAG` | 3 | 4 |
+| `/DO1_EN` | 2 | 4 |
+| `/DO2_DIAG` | 3 | 4 |
+| `/DO2_EN` | 2 | 4 |
+| `/IMU_INT1` | 2 | 4 |
+| `/IMU_INT2` | 1 | 4 |
+| `/LED_G` | 1 | 4 |
+| `/LED_R` | 1 | 4 |
+| `/PWR_FLT_N` | 3 | 4 |
+| `/SPI_MISO` | 4 | 4 |
+| `/SPI_MOSI` | 4 | 4 |
+| `/SPI_SCK` | 4 | 4 |
+| `/VAR_ID0` | 1 | 4 |
+| `/VAR_ID1` | 1 | 4 |
+| `/VAR_ID2` | 1 | 4 |
+| `/VEH_DO1` | 3 | 4 |
+| `/VEH_DO2` | 3 | 4 |
+| `/VMON_3V3` | 3 | 4 |
+| `/VMON_5V` | 3 | 4 |
+| `/WDI` | 2 | 4 |
+| `GND_CAN` | 8 | 5 |
+| `GND_VEH` | 107 | 5 |
+| `Net-(C109-Pad1)` | 1 | 4 |
+| `Net-(D704-K)` | 3 | 4 |
+| `Net-(D754-K)` | 3 | 4 |
+| `Net-(D801-A)` | 1 | 4 |
+| `Net-(D802-A)` | 1 | 4 |
+| `Net-(R108-Pad2)` | 1 | 4 |
+| `Net-(R708-Pad2)` | 1 | 4 |
+| `Net-(R758-Pad2)` | 1 | 4 |
+
+#### Recorridos y saltos reservados de etapa 4
+- **SPI:**
+  - SPI_SCK/MOSI/MISO desde U401 hasta U501 (SCL3300), U502 (ASM330) y U503 (AS5147U), con CS_INC, CS_IMU y CS_ROT. TP501–TP503 en B.Cu.
+  - **Sin pistas ni vías bajo los sensores. SPI lejos del buck U201 y de L201/L301.**
+- **+3V3_A:**
+  - Desde C307.1 (154.56, 128.5), salida de U302, hasta U501.4/9, U502.5/8, U503.11/12, C501/C504/C505/C506/C507/C508 y R501–R503. C502 y C503 son de SCL_AEXTC/DEXTC de U501, no de +3V3_A. TP303 (162.5, 135.5) en B.Cu.
+  - IMU_INT1/2, SCL_AEXTC/DEXTC.
+- **Salidas DO (DO1/DO2):** VEH_DO1/DO2 hasta J2 (net class DO: 0.5 / 0.6 mm), EN_5V, DO*_EN, DO*_DIAG, D704/D754 y R7xx. Nada de DO a menos de 10 mm de U503.
+- **Supervisión:** WDI de U801 y VMON_3V3/VMON_5V con R305–R308/C309/C310 (RESET ya cerrado en etapa 3), LED_G/LED_R, VAR_ID0–2 y PG_3V3D (R302.2 → TP305 en (151, 148), B.Cu; U301.6 ya llega a R302.2, esta red no llega a MCU).
+- **Periféricos de U101** (todo dentro de `ZONA_U101`; los saltos siguientes son reservas de recorrido, no pistas ya creadas; contrastarlos con el cobre actual antes de ejecutarlos):
+  - **SW** (pin 3) → R106.1: F.Cu recto hacia el oeste.
+  - **UVLO** (pin 4): va al oeste por el hueco entre R106 y C109 (y ≈ 74.6), sube por x 118.9 y entra a R106.2 por la izquierda. El enlace R106.2 ↔ R107.1 cruza el par Kelvin (y 70.15/70.95, en el hueco R107/R106), así que **salta por B.Cu**: vía junto a R107.1 en (119.0, 69.3) y otra al final de la subida.
+  - **OV** (pin 5): baja por x 122.2 hasta R109.1. Desde R109.1, vía en (121.85, 79.7) → B.Cu hacia el sur por x 121.85 hasta y 85.0 → al este hasta una vía en (134.3, 85.0) → F.Cu hasta R112.2 (135.9, 92.28). Falta también R108.2 ↔ R112.1 (Net-(R108-Pad2)).
+  - **TMR** (pin 9) → C110.1: recto hacia abajo.
+  - **ILIM** (pin 11) → R110.1: por F.Cu, baja por x 126.15 y va al este por y 77.95, al oeste de HGATE.
+  - **FLT** (pin 12) → R111.2 y TP104 → MCU: cruza HGATE/OUT (x 128.78 y 129.28), así que salta por B.Cu (vía junto al pin 12, en ≈ (126.95, 77.25); vía en ≈ (130.0, 77.9) y F.Cu hasta R111.2).
+  - **EN/MODE** (pines 6/7, unidos a VS):
+    - Tramo en la esquina por F.Cu: (123.3, 75.25) → (123.3, 76.2) → pin 7.
+    - Vía en (123.3, 76.9), B.Cu hacia el norte por x 123.4 hasta y 69.85, y al este hasta la vía de VS.
+  - **CAP** (pin 23) → C108.1: vía en (124.45, 70.55) → B.Cu en "U" por y 71.35 → vía en (126.87, 70.1) → C108.1.
+  - **VS** (pin 22) → C108.2: vía en (125.25, 70.25) → B.Cu por y 69.4 → vía en (128.42, 70.1) → C108.2 → C102.1 por F.Cu.
+  - **VS → D104.3:** F.Cu desde C108.2 al este por y 69.0 hasta x 133.2, abajo hasta y 84 y a D104.3 (131.0, 84.67). Ya no cruza OUT, que ahora baja por x 129.28.
+  - Todas estas vías quedan **dentro** del arco VOUT en B.Cu (x 117.6–129.4, y 66.6–71) y lejos del arco C_ID (x 116.6–130.53, y 65.6).
+  - **GND:** pin 13 → vía en (127.75, 76.55); pin 16 → vía en (128.55, 73.4).
+  - **Vías GND de la fila R109–R111:** R109.2 → vía en (122.6, 81.5); C110.2 → (125.42, 81.4); R110.2 → (127.97, 81.4). R107.2 y C109.2 llevan vía propia.
+  - **R111.1 (+3V3_D):** sale al este por F.Cu (está fuera de los risers de HGATE/OUT).
+  - **R105.2 ↔ C109.1** (Net-(C109-Pad1)): enlace corto vertical.
+- **Aceptación:**
+  - DRC 0 errores. Ninguna pista ni vía bajo U501/U502/U503.
+  - Círculo de Ø17.9 mm libre de piezas ajenas.
+  - Potencia y DO a ≥ 10 mm del borde del cuerpo de U503; solo se conserva la excepción aprobada del tronco +5V existente a 9.8 mm.
+  - SPI a ≥ 10 mm de L201/U201/L301.
+
+Las reservas anteriores son propuestas geométricas heredadas, **no una orden de insertar vías sin revisar obstáculos**. Los enlaces UVLO, OV, FLT, EN/MODE, CAP y VS requieren los saltos B.Cu indicados; conservar Kelvin y arcos VOUT/C_ID. Los saltos CAN y USB ya están implementados, no son pendientes de etapa 4.
+
+**Criterios de cierre de etapa 4:** todas las conexiones no-GND anteriores cerradas (o excepción explícita del usuario), DRC 0 errores, paridad 0, ERC sin regresiones; regresión CAN/USB/EN/desacoples con `verify_etapa3.py`. Nada de pistas/vías bajo U501/U502/U503 en ninguna cara; círculo ROT, apoyo B, arandelas y antena respetados. SPI ≥10 mm de U201/L201/L301 y potencia/DO ≥10 mm del cuerpo de U503, salvo tronco existente +5V a 9.8 mm. Mantener barrera CAN y aislamiento absoluto de U101 pad 25. Renders de ambas caras, tabla de medidas críticas y pendientes restantes, revisar `.kicad_pro`, actualizar documentos, commit con agente y push; esperar visto bueno antes de etapa 5. No generar planos como parte de etapa 4.
+
+### Excepciones y compromisos aprobados: conservar
+
+| Tema | Decisión vigente y obligación posterior |
+|---|---|
+| C608 | **2.145 mm** entre bordes al pin U601; excepción al objetivo ≤2 mm. Sin moverlo. C601/C604/C607/C610 mantienen ≤2 mm. |
+| Desacoples grandes CAN | Pin → pequeño → grande, sin derivación independiente al grande; C602/C603/C606 conservan ubicación. C602 es **100 nF**, C603/C605/C606 son 10 µF. Cada retorno corto a su masa; C606/C610 a **GNDISO_CAN**, antes de FB602, sin puentearla hacia GND_CAN. |
+| C605 VIO | Camino de **12.2704 mm**, bulk aceptado condicionado al retorno continuo en etapa 5: vía (144.28,121.9) → C602/C601/U601, con costura local. |
+| D601 y CANH | Giro 180° evaluado: traslada el cruce al lado J1; **no se aplicó**, queda r0, DNP PROTO/PROD. Puente CANH B.Cu **3.844 mm** entre (114.45,115.75) y (118.2,116.595), dos vías. CANL sin vías; Δ≤1 mm incluyendo altura. Conservar retorno corto D601.3 a GND_CAN. |
+| B.Cu CAN y planos | Inventario completo más abajo; cuatro redes: H 3.8440, V_SOIN 13.5902, GNDISO_CAN 16.3134 y punto medio C609 6.7238 mm. Prueba temporal: **una región GND_CAN, ocho vías y J1.5 conectados, DRC 0**. No es un plano definitivo. Se conserva `ISO_sin_relleno_bajo_U601`: **sin cobre de relleno en su courtyard/cuerpo**. Repetir continuidad y añadir costura en etapa 5. |
+| USB B6/B7 | Cuatro vías totales solo en los ramales de J401: D+ (192.2,79.37)/(190,82.5); D− (192.4,81.425)/(190.4,79.6), Ø0.6/0.3. Principal A6/A7→U402→U401 sin vías; ramales no incluidos en su Δ. |
+| Cuello D− | **0.15 mm × 1.922754 mm**, F.Cu, autorizado y aplicado. (173,107.5) → (173.2825,107.7825) → (173.6,107.7825) → (174.8,107.9); clearance ≥0.2 mm. Resto USB 0.3/0.2 en tramos acoplados, aperturas de pads y ajuste D+; Δ≤0.5 mm. |
+| USB/EN y desacoples MCU | USB Full-Speed 0.3/0.2 aprobado sin impedancia controlada. C402 primero (0.7750 mm al pin entre bordes), C401 detrás en cadena; C404 0.5748 mm a U402. EN≤5 mm se aplica al RC local entre bordes (R401 4.9641, C403 1.5415), no a los ramales RESET remotos documentados. |
+| U503 | 10 mm medidos desde **borde del cuerpo**; única excepción de potencia: tronco +5V existente x137.6 a **9.8 mm**. Mantener libre Ø17.9 en ambas caras. |
+| U101 | ~11 vías/saltos B.Cu aceptados; coser el retorno en etapa 5. HGATE ~17 mm y DGATE ~25 mm aceptados por trazado paralelo a VA. **RTN pad25 nunca a GND ni a otra red**, tampoco por rellenos. |
+| Buck/U301 | C201 a VIN por C202, diagonal 8.6 mm; lazos C202 ~3.9 mm² y C201 ~26.4 mm². U301 GND pin1/C302 con vías propias, lazo ~5 mm². C206 alejado (~12.8 mm del EP) con vía propia: continuidad al plano en etapa 5. TP301 ya retirado de SW: asegurar GND continuo bajo SW. |
+| Huellas y fabricación | J401 NPTH–cobre oficial ~0.1944 mm, regla local 0.19 aceptada. Taladros térmicos existentes de 0.2 mm (U101/U201; U401 pad41 conserva 12) no autorizan vías de ruteo menores: usar 0.6/0.3. Courtyards de placement y sus excepciones aceptadas se conservan. SCL3300 DFL-12 tiene pads 0.32 mm más largos que el land pattern para soldadura manual; revisión de huella en producción pendiente, sin cambiarla ahora. C104 debajo exige separadores ≥12 mm y adhesivo. |
+| Reglas locales | Conservar excepciones PROT de sensado, zona U101, buck, Vgs y llegada a pads descritas en la tabla de reglas de sección 2. No crear clearance global sin condición. CAN acoplado a mano, sin renombrar redes para autodetección diferencial. |
+
+### Cambios posteriores a placement-v1 para replicar en ruteo-manual
+
+**La réplica no se hizo; corresponde al usuario en su copia manual.** La sección 3 contiene coordenadas originales y finales completas. Resumen (mm absolutos KiCad; rotaciones en grados):
+
+| Pieza | Cambio final autorizado | Tipo |
+|---|---|---|
+| C104 | F(138.5,75.57) r−90 → **B(106.85,71) r0**, pad1 oeste | Ubicación/cara |
+| U301 | (140.4,135.81) r90 → **r270** | Giro |
+| C302 | (139.2,139.5) r90 → **(138.1,135.875) r270** | Ubicación/giro |
+| TP101 | B(138.5,65.5) → **B(127.6,61.5)** | Ubicación |
+| TP301 | B(140,134) → **B(140,131.6) r180**; eliminar bajada anterior bajo SW | Ubicación |
+| C401 | F(189.263603,100.013603) r0 → **F(189.2,100.6) r90** | Ubicación/giro |
+| C402 | F(189.9,104.2) r0 → **F(189.18,104) r90** | Ubicación/giro |
+| R401 | F(162.060355,146.485355) r90 → **F(187,100.1) r270** | Ubicación/giro |
+| C404 | **Nuevo**: hoja 40 (365.76,63.5); PCB **F(189.6,81.45) r0**, VBUS–GND_VEH | Esquemático y PCB |
+
+C404: 100 nF, 0603, X7R, **50 V** (cumple ≥16 V), `MPN=GCM188R71H104KA57D`, `Manufacturer=Murata`, `Footprint=Capacitor_SMD:C_0603_1608Metric`, `Datasheet=https://www.murata.com/en-global/products/productdetail?partno=GCM188R71H104KA57D`, `DNP` vacío y nativo `dnp no`. Cambio de esquema registrado en PENDIENTES.md; incorporado con UUID y path de hoja correctos, **no hizo falta F8**, paridad 0. No une VBUS con +5V. No reemplazar hojas completas de la copia manual ni perder su trabajo al replicarlo.
+
+Ajustes de serigrafía asociados: referencia U301 (142.2,132.8); C401 (189.2,97.7) r0; C402 (190.9,104) r90; R401 (185.6,97.8) r0; C403 (185.55,103.5) r90; C404 (189.6,84.1) r0; «SIN BARNIZ» J401 (192,88) r0. **C403 no cambió de ubicación**. D601 tampoco se giró.
+
+### Decisiones abiertas y obligaciones futuras
+
+- Nuevo visto bueno para comenzar etapa 4. No queda autorización de etapa 3 pendiente.
+- Lado del imán ROT sin definir: mantener Ø17.9 mm libre en ambas caras, salvo U503 y pasivos previstos.
+- Velocidad CAN 250/500 kbps se define en firmware; no bloquea este ruteo.
+- R602/R603/C609 montadas en PROTO; montaje de terminación en PROD según instalación.
+- Stock de C105 PROD se confirma con el BOM, sin bloquear ruteo. Revisar también MPN «a verificar» de PENDIENTES antes del BOM final; ensamblador/stock de producción se revisarán cuando corresponda.
+- Pendientes técnicos previos, sin bloquear este cierre: validar R102 anti-pulso en 2512 contra el pulso documentado (si exige otra huella, consultar); verificar térmica/EMC y fijaciones H1–H5/apoyo B con la futura caja. Se conservan en PENDIENTES.md.
+- «Plano bajo U601»: se mantiene la regla vigente sin relleno en todo su courtyard. La auditoría prueba continuidad **hasta sus retornos**, no cobre bajo el cuerpo. Cambiar esa interpretación requiere decisión del usuario y revisión de la regla; no hacerlo por inferencia.
+- Etapa 5: continuidad bajo SW de U301, bajo buck y sensores, retorno C605 y distribución 3V3 del MCU, costura alrededor de CAN y saltos de U101; resolver las 52 vías GND colgantes actuales y las nuevas de etapa 4. Etapa 6: teardrops, verificación final y fabricación; no iniciarlas ahora.
+
+### Scripts de scripts/ruteo/ y uso correcto
+
+Usar `/usr/bin/python3` (pcbnew de KiCad 10; matplotlib para auditoría). Ejecutar desde la raíz del proyecto. Los generadores **editan el diseño**; no se usan como pruebas.
+
+| Script | Función y precaución |
+|---|---|
+| `etapa1_potencia.py INPUT OUTPUT` | Genera potencia/posiciones de etapa 1 desde base etapa 0. No es idempotente sobre la placa actual: duplicaría cobre. Solo reconstrucción deliberada en copia aislada completa. |
+| `etapa2_can.py` | Regenera grupo `CODEX_ETAPA2`, fuente/CAN/retornos y TP301. Borra/recrea sus pistas y vías por UUID; perdería ediciones manuales posteriores de ese grupo. |
+| `etapa3_mcu.py` | Regenera `CODEX_ETAPA3`, posiciones autorizadas y ruteo MCU/USB con cuello final. Requiere C404 presente y KiCad cerrado; no ejecutarlo para inspeccionar ni sobre ruteo manual posterior. |
+| `add_c404.py` | Añade C404 en esquema y PCB con campos/path; detecta si ya está. Ya aplicado. No ejecutarlo sobre la copia manual sin autorización específica. |
+| `verify_etapa2.py` | Lee PCB, reconstruye caminos/cadenas, mide desacoples y CAN incluyendo altura, comprueba dos vías H/ninguna L y Δ≤1 mm. Emite JSON. |
+| `verify_etapa3.py` | Lee **PCB guardado**, ejecuta también regresión CAN; exige USB principal cerrado/sin vías, cuatro vías de ramales, cuello exacto, Δ≤0.5 mm, EN/desacoples/cadenas y conectividad UART/CC/VBUS/3V3. Emite JSON; nunca usa propuesta temporal. |
+| `audit_can_bcu.py` | Copia PCB/.pro/.dru a temporal, rellena GND_CAN B.Cu respetando courtyard y barrera, comprueba una región/8 vías/J1 conectados y DRC 0. Escribe `can-bcu-auditoria.json/png`; no añade planos al PCB guardado. Repetir en etapa 5 y revisar cobertura si cambian retornos. |
+| `preview_usb_escape.py` | Propuesta histórica del cuello sobre copia temporal, ahora detecta el cuello existente y sale sin duplicarlo. No usar para verificar cierre; usar `verify_etapa3.py`. |
+
+Comprobación reproducible sin regenerar pistas ni sobrescribir evidencia del cierre (KiCad cerrado; salidas nuevas en /tmp):
+
+```bash
+# Desde PCB_INCLI_VA; debe mostrar ruteo-agente y árbol limpio al recibir la entrega.
+git branch --show-current
+git status --short
+git log -5 --oneline
+/usr/bin/python3 scripts/ruteo/verify_etapa2.py > /tmp/incli-can-medidas.json
+/usr/bin/python3 scripts/ruteo/verify_etapa3.py > /tmp/incli-mcu-medidas.json
+# Un solo comando ejecuta DRC y paridad esquema–PCB:
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o /tmp/incli-drc.json INCLI-VA.kicad_pcb
+kicad-cli sch erc --severity-all --format json -o /tmp/incli-erc.json INCLI-VA.kicad_sch
+kicad-cli pcb render --side top --width 1600 --height 1600 --quality basic -o /tmp/incli-top.png INCLI-VA.kicad_pcb
+kicad-cli pcb render --side bottom --width 1600 --height 1600 --quality basic -o /tmp/incli-bottom.png INCLI-VA.kicad_pcb
+git diff -- INCLI-VA.kicad_pro
+```
+
+En DRC JSON contar `violations` por severidad, `schematic_parity` y `unconnected_items` por separado. En ERC recorrer `sheets[].violations`. Para reproducir la auditoría prospectiva CAN: `/usr/bin/python3 scripts/ruteo/audit_can_bcu.py`; revisar el diff de sus artefactos porque escribe en docs. No ejecutar generadores para «comprobar» la placa. Revisar visualmente ambos renders; los planos GND todavía no existen.
+
+### Trampas conocidas antes de continuar
+
+1. **pcbnew y `.kicad_pro`:** cargar un PCB temporal y guardarlo en el proyecto puede sobrescribir `.pro` con defaults, perdiendo clases y patrones. Cargar/guardar la ruta canónica; para pruebas copiar PCB, `.pro` y `.dru` juntos a una carpeta temporal. Nunca restaurar un PCB viejo encima del actual para verificarlo.
+2. **Antes de cada commit ejecutar `git diff INCLI-VA.kicad_pro`.** KiCad CLI también puede reordenar clases. En este cierre solo cambió el orden; se comprobó equivalencia JSON ordenando por nombre y se conservó exactamente el archivo anterior. Nunca descartar cambios reales del usuario como si fueran orden.
+3. **Clearance sin condición** en `.kicad_dru` anula las separaciones de net classes; piso de fabricación en Board Setup. La última regla coincidente manda. Funciona `A.NetClass`; `A.Track_Width` no. Si dejan de actuar clases, revisar `.pro` antes de tocar reglas.
+4. **KiCad cerrado antes de editar**; ningún editor debe guardar una copia antigua encima del trabajo. No eliminar locks para forzar acceso. Usuario confirmó cierre antes de esta sesión.
+5. Eliminar grupos con `pcbnew.Remove` puede provocar fallo de SWIG; los generadores eliminan bloques por UUID antes de cargar. Regenerarlos cambia UUID: revisar geometría, no solo IDs. KiCad 10 guarda redes por nombre, no asumir códigos numéricos de versiones anteriores.
+6. Medidas CAN incluyen 1.6 mm por vía según configuración existente; USB principal no tiene vías. Separar ramales de terminación/B6/B7 y RESET remoto de recorridos principales/locales. No declarar placa completa por el código de salida 0 del CLI.
+7. Respetar siempre barrera CAN, GNDISO_CAN a través de FB602 y **U101 pad25 RTN aislado**. No arreglar avisos conocidos cambiando huellas/reglas sin autorización. No rellenar bajo courtyard U601 para satisfacer una lectura ambigua de «bajo el transceptor».
+
+---
+
 Traspaso original de Claude Code y actualización de Codex, 2026-10-29. Documento de continuidad en `ruteo-agente`; los apartados históricos conservan la evolución del proyecto.
 
 **Actualización de Codex, 2026-10-29:** etapas 0–3 cerradas; etapa 2 aprobada y auditada. El usuario autorizó el cuello D− de 0.15 mm × 1.923 mm y ya está aplicado al PCB guardado. Etapa 3: DRC 0 errores /57 avisos, paridad 0, ERC 0 errores /5 avisos; 223 conexiones pendientes (108 de etapa 4 y 115 de masas para etapa 5). No iniciar etapa 4 sin nuevo visto bueno.
@@ -10,11 +231,11 @@ Antes de empezar: leer `AGENTS.md`, `git log -5` y `docs/PENDIENTES.md`. Al term
 
 ---
 
-## 1. Estado histórico al cierre de etapa 1 (fin de la etapa 1)
+## 1. Estado histórico al cierre de etapa 1
 
 | | |
 |---|---|
-| Rama / último commit | `ruteo-agente`, ver `git log -1` (etapa 1 cerrada) |
+| Rama / commit de etapa 1 | `ruteo-agente`, `b46f185` |
 | Base de ubicación | tag `placement-v1` (f472680) + cambios de la sección 3 |
 | DRC | **0 errores**. Avisos: 19 `via_dangling` (vías GND que esperan el plano de la etapa 5), 2 `silk_overlap` (referencias de Q101 y U801, de antes), 2 `silk_edge_clearance` y 1 `lib_footprint_mismatch` de U401 (conocidos, aceptados) |
 | Paridad con el esquemático | **0** |
@@ -193,38 +414,9 @@ C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece 
   - C402 y C404 a ≤1 mm entre bordes de pads; C401 en cadena detrás de C402. RC local EN a ≤5 mm entre bordes; RESET remoto se mide aparte.
   - Nada en el keep-out de antena.
 
-### Etapa 4 — Sensores y señales
-- **SPI:**
-  - SPI_SCK/MOSI/MISO desde U401 hasta U501 (SCL3300), U502 (ASM330) y U503 (AS5147U), con CS_INC, CS_IMU y CS_ROT. TP501–TP503 en B.Cu.
-  - **Sin pistas ni vías bajo los sensores. SPI lejos del buck U201 y de L201/L301.**
-- **+3V3_A:**
-  - Desde C307.1 (154.56, 128.5), salida de U302, hasta U501.4/9, U502.5/8, U503.11/12, C501/C504/C505/C506/C507/C508 y R501–R503. C502 y C503 son de SCL_AEXTC/DEXTC de U501, no de +3V3_A. TP303 (162.5, 135.5) en B.Cu.
-  - IMU_INT1/2, SCL_AEXTC/DEXTC.
-- **Salidas DO (DO1/DO2):** VEH_DO1/DO2 hasta J2 (net class DO: 0.5 / 0.6 mm), EN_5V, DO*_EN, DO*_DIAG, D704/D754 y R7xx. Nada de DO a menos de 10 mm de U503.
-- **Supervisión:** WDI de U801 y VMON_3V3/VMON_5V con R305–R308/C309/C310 (RESET ya cerrado en etapa 3), LED_G/LED_R, VAR_ID0–2 y PG_3V3D (R302.2 → TP305 en (151, 148), B.Cu; U301.6 ya llega a R302.2, esta red no llega a MCU).
-- **Periféricos de U101** (todo dentro de `ZONA_U101`; los saltos ya están reservados):
-  - **SW** (pin 3) → R106.1: F.Cu recto hacia el oeste.
-  - **UVLO** (pin 4): va al oeste por el hueco entre R106 y C109 (y ≈ 74.6), sube por x 118.9 y entra a R106.2 por la izquierda. El enlace R106.2 ↔ R107.1 cruza el par Kelvin (y 70.15/70.95, en el hueco R107/R106), así que **salta por B.Cu**: vía junto a R107.1 en (119.0, 69.3) y otra al final de la subida.
-  - **OV** (pin 5): baja por x 122.2 hasta R109.1. Desde R109.1, vía en (121.85, 79.7) → B.Cu hacia el sur por x 121.85 hasta y 85.0 → al este hasta una vía en (134.3, 85.0) → F.Cu hasta R112.2 (135.9, 92.28). Falta también R108.2 ↔ R112.1 (Net-(R108-Pad2)).
-  - **TMR** (pin 9) → C110.1: recto hacia abajo.
-  - **ILIM** (pin 11) → R110.1: por F.Cu, baja por x 126.15 y va al este por y 77.95, al oeste de HGATE.
-  - **FLT** (pin 12) → R111.2 y TP104 → MCU: cruza HGATE/OUT (x 128.78 y 129.28), así que salta por B.Cu (vía junto al pin 12, en ≈ (126.95, 77.25); vía en ≈ (130.0, 77.9) y F.Cu hasta R111.2).
-  - **EN/MODE** (pines 6/7, unidos a VS):
-    - Tramo en la esquina por F.Cu: (123.3, 75.25) → (123.3, 76.2) → pin 7.
-    - Vía en (123.3, 76.9), B.Cu hacia el norte por x 123.4 hasta y 69.85, y al este hasta la vía de VS.
-  - **CAP** (pin 23) → C108.1: vía en (124.45, 70.55) → B.Cu en "U" por y 71.35 → vía en (126.87, 70.1) → C108.1.
-  - **VS** (pin 22) → C108.2: vía en (125.25, 70.25) → B.Cu por y 69.4 → vía en (128.42, 70.1) → C108.2 → C102.1 por F.Cu.
-  - **VS → D104.3:** F.Cu desde C108.2 al este por y 69.0 hasta x 133.2, abajo hasta y 84 y a D104.3 (131.0, 84.67). Ya no cruza OUT, que ahora baja por x 129.28.
-  - Todas estas vías quedan **dentro** del arco VOUT en B.Cu (x 117.6–129.4, y 66.6–71) y lejos del arco C_ID (x 116.6–130.53, y 65.6).
-  - **GND:** pin 13 → vía en (127.75, 76.55); pin 16 → vía en (128.55, 73.4).
-  - **Vías GND de la fila R109–R111:** R109.2 → vía en (122.6, 81.5); C110.2 → (125.42, 81.4); R110.2 → (127.97, 81.4). R107.2 y C109.2 llevan vía propia.
-  - **R111.1 (+3V3_D):** sale al este por F.Cu (está fuera de los risers de HGATE/OUT).
-  - **R105.2 ↔ C109.1** (Net-(C109-Pad1)): enlace corto vertical.
-- **Aceptación:**
-  - DRC 0 errores. Ninguna pista ni vía bajo U501/U502/U503.
-  - Círculo de Ø17.9 mm libre de piezas ajenas.
-  - Potencia y DO a ≥ 10 mm del borde del cuerpo de U503; solo se conserva la excepción aprobada del tronco +5V existente a 9.8 mm.
-  - SPI a ≥ 10 mm de L201/U201/L301.
+### Etapa 4 — Sensores y señales (no iniciada)
+
+Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y criterios de aceptación en «Cómo retomar», al inicio de este documento. Ese plan reemplaza las referencias antiguas a PG_3V3D→MCU y C503 como desacople de ROT.
 
 ### Etapa 5 — Planos
 - **B.Cu:** relleno GND_VEH en toda la placa, salvo la isla CAN, la isla RTN de U101 (la regla ya la aísla) y el keep-out de antena. Prioridad baja; el área B admite relleno.
