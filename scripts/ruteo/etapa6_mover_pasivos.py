@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """Etapa 6: movimientos de pasivos aprobados por el usuario (hallazgo 4, courtyards < 1 mm).
 
-Uso (KiCad cerrado, una sola vez, sobre el PCB de 18f17ae): /usr/bin/python3 -B scripts/ruteo/etapa6_mover_pasivos.py [PCB]
+Uso (KiCad cerrado; salta lo que ya está en su destino): /usr/bin/python3 -B scripts/ruteo/etapa6_mover_pasivos.py [PCB]
 Después: etapa6_teardrops.py (rellena zonas y teardrops), DRC y etapa6_fab.py.
 De los 6 movimientos aprobados, solo C401 pasa el DRC sin rerutear pistas de otras redes (probado uno por
-uno, en copia aislada y con zonas rellenas). C404, C507, R502 y C506 chocan con USB D±, el tronco +3V3_A o
-IMU_INT1/INT2: esperan decisión del usuario. C402 no se mueve: alejarlo 0.22 mm de U401 (lo necesario para
+uno, en copia aislada y con zonas rellenas). R502 se reemplaza por C508 (mismo par, DRC limpio; aprobado).
+C404, C507 y C506 chocan con USB D±, el tronco +3V3_A o IMU_INT1/INT2: aceptados como excepción. C402 no se mueve: alejarlo 0.22 mm de U401 (lo necesario para
 0.5 mm de courtyard) llevaría la pista al pin 3V3 de 1.97 a ~2.2 mm, por encima del límite de 2 mm.
 Reconexión de cada extremo de pista que estaba en un pad (o vía en pad) movido:
   - si el extremo viejo sigue dentro del pad movido, no se toca;
@@ -17,7 +17,8 @@ import sys
 import pcbnew as k
 
 pcb = sys.argv[1] if len(sys.argv) > 1 else 'INCLI-VA.kicad_pcb'
-MOV = {'C401': ((189.2, 100.6), (0, -0.8))}
+MOV = {'C401': ((189.2, 100.6), (0, -0.8)),
+       'C508': ((168.7, 90.3), (-0.8, 0))}     # en lugar de R502 (aprobado por el usuario)
 iu = k.FromMM
 
 b = k.LoadBoard(pcb)
@@ -26,7 +27,9 @@ log = []
 for ref, ((x0, y0), (dx, dy)) in MOV.items():
     f = b.FindFootprintByReference(ref)
     p0 = f.GetPosition()
-    assert abs(p0.x - iu(x0)) < iu(0.01) and abs(p0.y - iu(y0)) < iu(0.01), f'{ref} ya no está en la posición original'
+    if abs(p0.x - iu(x0 + dx)) < iu(0.01) and abs(p0.y - iu(y0 + dy)) < iu(0.01):
+        log.append(f'{ref}: ya está en su destino, sin cambio'); continue
+    assert abs(p0.x - iu(x0)) < iu(0.01) and abs(p0.y - iu(y0)) < iu(0.01), f'{ref} no está en la posición original'
     d = k.VECTOR2I(iu(dx), iu(dy))
     pads = list(f.Pads())
     viejos = {p.GetNumber(): k.PAD(p) for p in pads}          # copia en la posición original (para HitTest)
@@ -56,5 +59,6 @@ for ref, ((x0, y0), (dx, dy)) in MOV.items():
                 s.SetWidth(t.GetWidth()); s.SetNetCode(t.GetNetCode()); b.Add(s); g.AddItem(s)
                 log.append(f'{ref}: {t.GetNetname()} {b.GetLayerName(t.GetLayer())} tramo de {(dx ** 2 + dy ** 2) ** .5:.2f} mm')
     np = f.GetPosition(); log.append(f'{ref}: ({x0}, {y0}) -> ({np.x / 1e6:.2f}, {np.y / 1e6:.2f}); vías movidas: {len(vias)}')
+if not list(g.GetItems()): b.Remove(g)       # nada nuevo: no dejar un grupo vacío
 b.Save(pcb)
 print('\n'.join(log))

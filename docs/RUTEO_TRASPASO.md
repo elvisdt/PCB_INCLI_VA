@@ -2,7 +2,7 @@
 
 ## Cómo retomar
 
-**Actualización de Claude Code, 2026-10-30: ruteo TERMINADO (etapa 6 cerrada).** Estado final y lo que queda (LCSC, kicad-happy, rotaciones JLC) en «Etapa 6 — Cierre», más abajo, y en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`. La etapa 5 (planos, 0 conexiones sin rutear) está en «Etapa 5 — cierre: planos», justo debajo, y la etapa 4 en sus secciones; el resto de esta sección describe la entrega de la etapa 3 y sigue vigente salvo lo que allí se indica.
+**Actualización de Claude Code, 2026-10-30: PCB CERRADO (ruteo y revisión independiente terminados).** Estado final y lo que queda (LCSC, kicad-happy, rotaciones JLC) en «Etapa 6 — Cierre», más abajo, y en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`. La etapa 5 (planos, 0 conexiones sin rutear) está en «Etapa 5 — cierre: planos», justo debajo, y la etapa 4 en sus secciones; el resto de esta sección describe la entrega de la etapa 3 y sigue vigente salvo lo que allí se indica.
 
 ### Etapa 5 — cierre: planos (Claude Code, 2026-10-30)
 
@@ -585,7 +585,7 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
   - GND_VEH sin unir a GND_CAN ni a U101_RTN. Rellenos recalculados.
 
 ### Etapa 6 — Cierre
-**Hallazgos 2 y 4 (Claude Code, 2026-10-30):** imán arriba, sin mover U501/C503/TP502; de los 6 movimientos de pasivos, solo C401 pasó el DRC sin rerutear otras redes y se aplicó (`etapa6_mover_pasivos.py`); C402 queda como excepción por el límite de ≤ 2 mm; C404, C507, R502 y C506 esperan decisión. Ver `PENDIENTES.md`.
+**PCB CERRADO (Claude Code, 2026-10-30).** Hallazgos 2 y 4: imán arriba, sin mover U501/C503/TP502 (portaimán preferido Ø ≤ 8.7 mm); C401 y C508 movidos (`etapa6_mover_pasivos.py`); C402, C404, C507, C506 y 16 pares más, excepciones aceptadas. DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios. Lo siguiente es la BOM con códigos LCSC. Ver `PENDIENTES.md`.
 
 **Revisión independiente (Claude Code, 2026-10-30):** stencil sin pasta en DNP, Notes de C602, «K» de cátodo en D101–D103/D701/D751 (`etapa6_serigrafia_catodo.py`), teardrops de U601 verificados en `verify_etapa5.py`, CPL/BOM de JLC sin THT ni U401 con rotaciones por familia (`cpl_jlc.csv`, `bom_jlc.csv`). Aceptados: H5 sin acero, par CAN asimétrico, C104 a 1.6 mm del borde y placa sin V-cut. **Esperan aprobación:** círculo del imán (U501 a 4.88 mm del eje) y courtyards < 1 mm. Detalle en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`.
 
