@@ -2,7 +2,7 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (BOM con LCSC en `bom-sourcing`; **PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
 
 ## RETOMAR AQUÍ — PCB integrado en main (`pcb-v1-rc1`)
 **2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. Después, la rama `ruteo-agente` se eliminó (local y en `origin`, con `-d`: estaba integrada). **El trabajo continúa en `main`.** `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar; el worktree `PCB_INCLI_VA_bom` (`bom-sourcing`) se actualizó a `main` con fast-forward.
@@ -17,7 +17,11 @@ Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, pla
 **Quedan:**
 - [x] Hallazgo 2 (imán): resuelto, imán arriba con portaimán restringido. Ver «Revisión independiente», abajo.
 - [x] Hallazgo 4 (courtyards): C401 y C508 movidos; C402–U401, C404, C507, C506 y 16 pares más aceptados como excepción. Ver «Revisión independiente», abajo.
-- [ ] **BOM con códigos LCSC**, en el worktree `PCB_INCLI_VA_bom` (rama `bom-sourcing`). `fab/proto/bom_jlc.csv` y `bom_proto.csv` tienen MPN y fabricante, pero no LCSC. Por la regla de skills, no se usa agentic-sourcing: lo decide el usuario.
+- [x] **BOM con códigos LCSC** (Claude Code, 2026-10-30, rama `bom-sourcing`): `docs/BOM_SOURCING.md`, `fab/proto/bom_jlc_lcsc.csv` (63 líneas, 126 piezas; sin L201 ni U503), `bom/BOM_PROTO.csv`, `bom/BOM_PROD.csv`, `bom/LCSC_CART_PROTO.csv` y `bom/DIGIKEY_MOUSER.csv`. El usuario autorizó la skill agentic-sourcing **solo para consultar** (`jlc_lookup.py`, sin `sourcing.py`). Componentes por placa: PROTO USD 104.76 (5 placas) / 85.32 (100); PROD 99.45 / 83.06, sin U701/U751. No se hizo ningún pedido.
+- [ ] **Decidir los sustitutos `VERIFY`** de `docs/BOM_SOURCING.md` («Antes de subir a JLC») antes de subir la BOM. Los críticos son Q101 (AOD458 por STD18NF25), Q102 (IRLR3110Z por IPD30N10S3L-34), F101 (AEM MF2410 por Bourns SF-2410), C101, C104 y C201. U601 ADM3055EBRIZ-RL: JLC tiene solo 55 u.
+- [ ] Si se aprueban los sustitutos, pasar los MPN al esquema en `main` (campos `MPN`/`MPN_PROTO`/`Notes`). En este turno no se tocó el esquema.
+- [ ] PROD: decidir si los pasivos deben ser AEC-Q200. Los cambios a Basic y varios sustitutos no lo son.
+- [ ] Comprar a mano en DigiKey/Mouser L201 (XAL6060-333MEC) y U503 (AS5147U-HTSM): JLC/LCSC sin stock. En la vista previa de JLC, marcarlos «no montar» (siguen en `cpl_jlc.csv`).
 - [ ] **Revisión independiente** con kicad-happy u otro revisor (solo informe). La de 2026-10-30 se hizo con scripts propios porque kicad-happy no estaba instalada.
 - [ ] **Comparación con `ruteo-manual`** (trabajo del usuario en `PCB_INCLI_VA_manual`): decidir qué se conserva de cada ruteo. La lista de cambios a replicar está en «Replicar en `ruteo-manual`», abajo.
 - [ ] Confirmar en la vista previa de JLC las rotaciones de `cpl_jlc.csv`, en especial las familias sin regla en la tabla (quedan en la rotación de KiCad): TO-252 (Q101, Q102), LGA-14 (U502), DFL-12 (U501), SOT-563 (U301), diodos SMx/SOD-123, LED 0805 y SW-SMD; y C104 en la cara inferior (ensamblado de dos caras, costo extra).
@@ -30,7 +34,7 @@ Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, pla
 4. No mover piezas ni editar el esquema, las reglas o las net classes sin preguntar.
 5. Antes de cada commit, revisar `git diff INCLI-VA.kicad_pro`. Si solo cambió el orden de las net classes, restaurarlo con `git checkout INCLI-VA.kicad_pro`.
 6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. Son idempotentes y se encadenan así si se cambia cobre: `etapa5_planos.py` → `etapa6_costura_u401.py` → `etapa6_teardrops.py` (rellena zonas) → DRC → `etapa6_fab.py`.
-7. Skills: no usar agentic-sourcing. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
+7. Skills: agentic-sourcing solo para consultar (`jlc_lookup.py`) y solo si el usuario lo pide. kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
 
 **Etapa 6 — lo hecho (Claude Code, 2026-10-30):**
 - Retornos de corriente revisados, sin hallazgos nuevos: plano B.Cu bajo U201/L201 al 99.6 % y bajo U301/L301 al 98.6 %; barrera de U601 sin cobre; GND_CAN y GND_VEH, una isla cada una; U101_RTN aislada.
