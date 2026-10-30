@@ -1,4 +1,6 @@
-# Traspaso del ruteo a Codex — rama `ruteo-agente`
+# Traspaso del ruteo — historial (rama `ruteo-agente`, integrada en `main`)
+
+> **Estado actual (2026-10-30):** el ruteo terminó y se integró en `main` (merge 88860c5, tag **`pcb-v1-rc1`**). La rama `ruteo-agente` se eliminó. El trabajo continúa en `main`; lo pendiente está en «RETOMAR AQUÍ» de `docs/PENDIENTES.md`. Este documento queda como historial: las menciones a `ruteo-agente` describen cómo se trabajó, no dónde trabajar ahora. Las reglas que protegen `PCB_INCLI_VA_manual` y `ruteo-manual` siguen vigentes.
 
 ## Cómo retomar
 
@@ -131,7 +133,7 @@ Evidencia: `etapa4-parcial-drc.json`, `-erc.json`, `-medidas.json`.
 **Para replicar en ruteo-manual:** el desvío de RESET (B.Cu) y, cuando se apliquen, los movimientos de pasivos de sensores. No hay movimientos de piezas en este commit.
 
 
-Trabajar exclusivamente en `PCB_INCLI_VA`, rama `ruteo-agente`. Leer `AGENTS.md`, este documento, `docs/PENDIENTES.md` y `git log -5`; comprobar `git status` antes de cambiar nada. **KiCad debe estar cerrado** y sin archivos `~*.lck`, también en `sheets/`. No tocar `PCB_INCLI_VA_manual`, `ruteo-manual` ni sus worktrees. No mover/girar piezas ni cambiar el esquema, reglas o net classes sin nueva autorización. Las autorizaciones aquí documentadas cubren solo los cambios ya aplicados.
+Trabajar exclusivamente en `PCB_INCLI_VA`, rama `main` (durante el ruteo era `ruteo-agente`, ya integrada y eliminada). Leer `AGENTS.md`, este documento, `docs/PENDIENTES.md` y `git log -5`; comprobar `git status` antes de cambiar nada. **KiCad debe estar cerrado** y sin archivos `~*.lck`, también en `sheets/`. No tocar `PCB_INCLI_VA_manual`, `ruteo-manual` ni sus worktrees. No mover/girar piezas ni cambiar el esquema, reglas o net classes sin nueva autorización. Las autorizaciones aquí documentadas cubren solo los cambios ya aplicados.
 
 ### Estado exacto y evidencia
 
@@ -324,7 +326,7 @@ Usar `/usr/bin/python3` (pcbnew de KiCad 10; matplotlib para auditoría). Ejecut
 Comprobación reproducible sin regenerar pistas ni sobrescribir evidencia del cierre (KiCad cerrado; salidas nuevas en /tmp):
 
 ```bash
-# Desde PCB_INCLI_VA; debe mostrar ruteo-agente y árbol limpio al recibir la entrega.
+# Desde PCB_INCLI_VA; debe mostrar main y árbol limpio (durante el ruteo mostraba ruteo-agente).
 git branch --show-current
 git status --short
 git log -5 --oneline
@@ -627,7 +629,7 @@ Plan completo, inventario de las 108 conexiones no-GND, saltos reservados y crit
 
 ## 8. Cómo verificar
 ```bash
-cd PCB_INCLI_VA        # carpeta del proyecto, rama ruteo-agente
+cd PCB_INCLI_VA        # carpeta del proyecto, rama main
 # Verificar el PCB actual, sin ejecutar generadores de ruteo:
 /usr/bin/python3 scripts/ruteo/verify_etapa3.py
 # DRC + paridad (JSON):

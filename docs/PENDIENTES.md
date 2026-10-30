@@ -5,7 +5,7 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 Última actualización: 2026-10-30, Claude Code (**PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
 
 ## RETOMAR AQUÍ — PCB integrado en main (`pcb-v1-rc1`)
-**2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. La rama `ruteo-agente`, los worktrees, `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar.
+**2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. Después, la rama `ruteo-agente` se eliminó (local y en `origin`, con `-d`: estaba integrada). **El trabajo continúa en `main`.** `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar; el worktree `PCB_INCLI_VA_bom` (`bom-sourcing`) se actualizó a `main` con fast-forward.
 
 Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
 
@@ -581,7 +581,7 @@ Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). 
 - [x] Propuesta 100 × 100 adoptada como PCB principal (2026-10-28). Falta la paridad completa (ver el ítem siguiente).
 - [x] Preparar y presentar distribución preliminar de **100 × 100 mm máximo** con todos los componentes y H1–H5, separación CAN y acceso de soldadura comprobados geométricamente. Ver `LAYOUT_NOTES.md`.
 - [x] Desacoples y lazos: C601 a 1.1 mm del pin 4, L201/C203 acercados (placement-v1). Ubicación aprobada por el usuario: tag `placement-v1`.
-- [ ] Ruteo por etapas en la rama `ruteo-agente` (ver "Ruteo por etapas"). El usuario rutea aparte una copia en `PCB_INCLI_VA_manual` (rama `ruteo-manual`): **no tocarla**.
+- [x] Ruteo por etapas, terminado e integrado en `main` (`pcb-v1-rc1`; ver "Ruteo por etapas"). El usuario rutea aparte una copia en `PCB_INCLI_VA_manual` (rama `ruteo-manual`): **no tocarla**.
 - [x] C105: huella J16 verificada contra Panasonic y reemplazada por el land antivibración, que acepta EEE-FK1H102AV y EEE-FK1H102AM.
 - [ ] Verificación térmica en dos capas y ensayos eléctricos/EMC; ERC no certifica transitorios ni disipación.
 - [ ] Validar H1–H5 y el apoyo B contra la caja cuando se diseñe (ver "Requisitos para la caja"), y hacer el ensayo de vibración.
@@ -623,7 +623,8 @@ Coordenadas de KiCad en mm; la placa ocupa (100, 50)–(200, 150), 100 × 100 mm
   - Tornillo e inserto de H5 no magnéticos (inoxidable A2/A4, latón o nylon).
 - **Coating:** enmascarar J1, J2, J401 y J402 (zonas en `User.Comments`).
 
-## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`)
+## Ruteo por etapas (rama `ruteo-agente`, desde `placement-v1`) — histórico
+Terminado: integrado en `main` (88860c5, tag `pcb-v1-rc1`); la rama se eliminó.
 No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se anota en `docs/RUTEO_AGENTE.md`. Al final de cada etapa: DRC, render de las dos caras, commit, `git push origin ruteo-agente` y esperar el visto bueno del usuario.
 - [x] 0. Reglas: net classes, pares diferenciales, vía 0.3/0.6 mm y teardrops (aprobada, 36bf77f).
 - [x] 1. Potencia: cerrada (Claude Code). Cambios de ubicación: C104 a B.Cu, U301 girado 180°, C302 junto a VIN y TP101 a (127.6, 61.5).

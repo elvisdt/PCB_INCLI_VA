@@ -1,4 +1,4 @@
-El ruteo del PCB lo continúa Codex en la rama ruteo-agente. Leer docs/RUTEO_TRASPASO.md antes de empezar.
+El trabajo continúa en `main`. El PCB está ruteado y cerrado en el tag `pcb-v1-rc1`; la rama `ruteo-agente` se integró en `main` y se eliminó. Estado y pendientes: `docs/PENDIENTES.md` («RETOMAR AQUÍ»); historial del ruteo: `docs/RUTEO_TRASPASO.md`.
 
 # INCLI-VA — reglas para los agentes (Claude Code y Codex)
 
@@ -53,6 +53,7 @@ Esta revisión es un demo que se va a soldar a mano. Hasta que el usuario indiqu
 ## Trabajo entre agentes
 Este proyecto lo trabajan dos agentes, Claude Code y Codex, por turnos. Estas reglas valen para los dos (`CLAUDE.md` solo importa este archivo).
 - La carpeta PCB_INCLI_VA_manual y la rama ruteo-manual son del usuario (ruteo y reubicación manual en curso). Ningún agente las lee para editar, las modifica, hace commit, rebase, merge ni push sobre ellas, ni ejecuta git worktree remove/prune, salvo pedido explícito del usuario.
+- Rama de trabajo: `main`. La BOM con códigos LCSC se trabaja en el worktree `PCB_INCLI_VA_bom` (rama `bom-sourcing`). No recrear `ruteo-agente`.
 - Nunca editar el mismo archivo en paralelo: un agente por turno.
 - Al empezar el turno: leer `git log` (los últimos commits) y `docs/PENDIENTES.md`.
 - Al terminar el turno:
