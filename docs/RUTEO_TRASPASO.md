@@ -2,7 +2,7 @@
 
 ## Cómo retomar
 
-**Actualización de Claude Code, 2026-10-30: etapa 5 CERRADA (commit `[Claude Code] ruteo etapa 5: planos ...`).** Planos rellenos y guardados, **0 conexiones sin rutear**. Leer primero «Etapa 5 — cierre: planos», justo debajo, y luego las secciones de la etapa 4; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 6 espera el visto bueno del usuario.**
+**Actualización de Claude Code, 2026-10-30: etapa 5 CERRADA (commit `[Claude Code] ruteo etapa 5: planos ...`).** Planos rellenos y guardados, **0 conexiones sin rutear**. La lista de tareas de la etapa 6 y las reglas para retomarla están en «RETOMAR AQUÍ», en `docs/PENDIENTES.md`. Leer primero «Etapa 5 — cierre: planos», justo debajo, y luego las secciones de la etapa 4; el resto de esta sección describe el estado de entrega de la etapa 3 y sigue vigente salvo lo que allí se indica. **La etapa 6 espera el visto bueno del usuario.**
 
 ### Etapa 5 — cierre: planos (Claude Code, 2026-10-30)
 

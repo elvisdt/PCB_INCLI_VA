@@ -2,7 +2,56 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (etapa 5 cerrada; la etapa 6 espera el visto bueno).
+Última actualización: 2026-10-30, Claude Code (etapa 5 cerrada; la etapa 6 queda pendiente para otra sesión o agente; ver «RETOMAR AQUÍ»).
+
+## RETOMAR AQUÍ — etapa 6 (cierre y fabricación), pendiente
+Estado al 2026-10-30 (commit `bd24c27`, rama `ruteo-agente`): etapas 0–5 cerradas. PCB con planos rellenos y guardados. DRC 0 errores / 5 avisos conocidos, 0 sin rutear, paridad 0, ERC 0 errores / 5 avisos conocidos. **La etapa 6 no empezó: requiere el visto bueno explícito del usuario.** La puede continuar el usuario, Claude Code o Codex.
+
+**Antes de empezar:**
+1. Leer `AGENTS.md`, `docs/RUTEO_TRASPASO.md` («Cómo retomar», «Etapa 5 — cierre: planos» y «Etapa 6 — Cierre») y `git log -5`.
+2. KiCad cerrado, sin archivos `~*.lck` (también en `sheets/`). `git status` limpio.
+3. No tocar `PCB_INCLI_VA_manual`, la rama `ruteo-manual` ni `PCB_INCLI_VA_bom`. No ejecutar `git worktree remove/prune`.
+4. No mover piezas ni editar el esquema, las reglas o las net classes sin preguntar.
+5. Antes de cada commit, revisar `git diff INCLI-VA.kicad_pro`. Si solo cambió el orden de las net classes, restaurarlo con `git checkout INCLI-VA.kicad_pro`.
+6. **No volver a ejecutar** `etapa1_potencia.py` ni `etapa3_mcu.py`: este último recrearía la rama sur de VBUS que encierra el GND de C404. `etapa5_planos.py` sí es idempotente: regenera las zonas `E5_*` y la costura.
+7. Skills: no usar agentic-sourcing. En la etapa 6, kicad-happy solo para revisar e informar hallazgos, sin aplicarlos. Avisar antes de usar cualquier otra skill.
+
+**Tareas de la etapa 6:**
+- [ ] Revisión con kicad-happy (solo informe) y retornos de corriente: buck U201/L201, U301/L301, CAN e islas bajo U101.
+- [ ] Revisar con el usuario los tramos sin plano debajo que se registraron en la etapa 5 (`docs/layout/ruteo/etapa5-islas.json`, `ranuras_bajo_senal_mm`):
+  - INT2 9.2 mm e INT1 7.4 mm, bajo la fila de pads del módulo.
+  - USB D− 9.1 mm y D+ 6.9 mm, en el cruce del bus bajo el módulo.
+  - MCU_RST_N 6.4 mm.
+  - VS 6.3 mm y DGATE 5.8 mm.
+- [ ] Teardrops y nuevo DRC. Después de cambiar cobre, volver a rellenar las zonas: `etapa5_planos.py` o `kicad-cli pcb drc --refill-zones`.
+- [ ] Decidir sobre los 5 avisos conocidos: `silk_overlap` Q101/U801, 2 `silk_edge_clearance` y `lib_footprint_mismatch` de U401.
+- [ ] Fabricación de prueba en `fab/`:
+  - Gerbers, drill, CPL (`pos`) y BOM, con la variante de prototipo CAN + DO + ROT y DNP según el campo.
+  - Stencil.
+- [ ] Renders finales, actualizar `RUTEO_TRASPASO.md` y este archivo, commit con el agente y push.
+
+**Pendientes fuera del ruteo (no bloquean la etapa 6):**
+- Verificar los MPN marcados «a verificar» antes de la BOM final. Confirmar el stock de C105 PROD (EEE-FK1H102AV).
+- SCL3300 (DFL-12): revisar la huella para producción; los pads son 0.32 mm más largos que el land pattern.
+- C104 va en B.Cu: la caja necesita separadores de ≥ 12 mm y adhesivo.
+- Firmware: U503 está girado 180°, lo que da un desfase fijo de 180° (compensar con ZPOS). La velocidad CAN se define en firmware. El modo SPI de cada sensor está en «Requisitos para el firmware».
+- Lado del imán de ROT sin definir: mantener libre el círculo de Ø17.9 mm en ambas caras.
+
+**Replicar en `ruteo-manual`** (lo hace el usuario; detalle en `RUTEO_TRASPASO.md`):
+- Movimientos de las etapas 1–4 (sección 3, «Cambios de ubicación»).
+- C404 nuevo.
+- Desvío de RESET.
+- Giro de U503 y movimientos de los pasivos de sensores.
+- Cambio de VBUS/C404 de la etapa 5.
+- Zonas `E5_*` y las reglas `Planos_*` del `.kicad_dru`, si se quieren los mismos planos.
+
+**Verificación rápida (sin modificar el PCB):**
+```bash
+kicad-cli pcb drc --schematic-parity --severity-all --format json -o /tmp/drc.json INCLI-VA.kicad_pcb
+kicad-cli sch erc --severity-all --format json -o /tmp/erc.json INCLI-VA.kicad_sch
+/usr/bin/python3 -B scripts/ruteo/verify_etapa3.py > /tmp/v3.json
+/usr/bin/python3 -B scripts/ruteo/verify_etapa5.py > /tmp/v5.json
+```
 
 ## Etapa 5 cerrada (planos) — Claude Code, 2026-10-30
 - **Cerrado:** zonas GND_VEH (B.Cu en toda la placa, F.Cu donde cabe), GND_CAN (ambas caras, solo dominio aislado) y U101_RTN (isla B.Cu), rellenas y guardadas. 321 vías de costura. DRC 0 errores / 5 avisos conocidos, **0 sin rutear**, 0 `via_dangling`, paridad 0, ERC sin cambios, `verify_etapa3.py` OK. Detalle en «Etapa 5 — cierre: planos» de `RUTEO_TRASPASO.md`.
