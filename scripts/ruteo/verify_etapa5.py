@@ -18,7 +18,7 @@ def componentes(b, nets=NETS):
     for net in nets:
         nodes, polys = [], []
         for z in b.Zones():
-            if z.GetIsRuleArea() or z.GetNetname() != net: continue
+            if z.GetIsRuleArea() or z.IsTeardropArea() or z.GetNetname() != net: continue  # teardrop: parte de su pad/vía
             for L in (F, B):
                 if not z.IsOnLayer(L): continue
                 s = z.GetFilledPolysList(L)
