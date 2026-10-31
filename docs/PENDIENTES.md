@@ -2,9 +2,23 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**plan de compra: 3 juegos, todo en LCSC + DigiKey/Mouser, soldado a mano**; F101 verificado; L201: alternativa XGL6060; consolidación de pasivos; TP de la cara inferior rotulados, TP406/TP505 GND con agujero, R803/R804 2.2 kΩ; antes: rótulos de J402 y J401; después de rc4, sin tag; **tag `pcb-v1-rc4`**: logo Volnyx en B.Silkscreen, ejes de la placa en F.Silkscreen, zona reservada para Hunter (rc5); rc3: fiduciales FID1–FID3, máscara roja; `bom/LCSC_BOM_COMPLETO_PROTO.csv`; sustitutos en el esquema y el PCB, tag `pcb-v1-rc2`; BOM con LCSC; **PCB integrado en `main`, tag `pcb-v1-rc1`**; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-30, Claude Code (**`pcb-v1-rc5` enviada a fabricación**; ver «RETOMAR AQUÍ»).
 
-## RETOMAR AQUÍ — PCB integrado en main (`pcb-v1-rc1`)
+## RETOMAR AQUÍ — `pcb-v1-rc5` enviada a fabricación (2026-10-30)
+**Versión cerrada para fabricar:** tag **`pcb-v1-rc5`** en 7b8a62e (`main`), sin el logo de Hunter. La zona reservada de la cara inferior (16 × 6 mm en (123.5, 106.5), User.Comments) queda para la **rev B**.
+- Verificado antes del tag: working tree limpio y al día con `origin/main`. DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos.
+- **Archivo para JLC:** `fab/proto/INCLI-VA_gerbers.zip` (no se versiona; 12 archivos, sha256 `ab71d2e742e459ca971a7f165ef109dde94857b3f0e1b4772ed578c64b123e65`), idéntico byte a byte a `fab/proto/gerbers/` del tag. Si falta, regenerarlo con `/usr/bin/python3 -B scripts/ruteo/etapa6_fab.py` sobre el tag.
+- **Pedido:** JLC solo fabrica la PCB (2 capas, FR4, 1.6 mm, 1 oz, máscara roja, ENIG, 100 × 100 mm, sin panel, sin V-cut) y el stencil Top (`fab/proto/stencil/`). Componentes: 3 juegos, `bom/LCSC_BOM_COMPLETO_PROTO.csv` (USD 286.65) + `bom/DIGIKEY_MOUSER.csv` (≈ USD 51.12), todo soldado a mano. Los archivos de ensamblado de JLC (`bom_jlc_lcsc.csv`, `cpl_jlc.csv`) quedan como alternativa.
+- Contenido respecto de rc1: fiduciales FID1–FID3, máscara roja, logo Volnyx y ejes de la placa (rc4); rótulos de J402/J401, TP rotulados, TP406/TP505 GND con agujero, nota de medición del CAN, LEDs a 2.2 kΩ y consolidación de pasivos (rc5).
+
+**Pendientes:**
+- [ ] **Logo de Hunter → rev B**, en la zona reservada (falta el archivo en `docs/reference/logos/`).
+- [ ] **L201:** el usuario pide **muestras a Coilcraft**. XGL6060-333MEC es una alternativa aprobable con la misma huella (ver `docs/BOM_SOURCING.md`); el esquemático sigue con XAL6060-333MEC hasta que se decida.
+- [ ] **Revisión independiente** (kicad-happy u otro revisor, solo informe).
+- [ ] **Bring-up del prototipo:** rieles por TP, CAN medido contra GND_CAN (J1 pin 5), prueba de ejes de 6 posiciones (U501/U502), LEDs.
+- [ ] **Firmware:** requisitos en «Requisitos para el firmware» (SPI por sensor, transformación de ejes, brillo de LED por PWM, watchdog, U503 a 180°).
+
+## Historia — PCB integrado en main (`pcb-v1-rc1`)
 **2026-10-30:** el usuario aprobó el PCB. `ruteo-agente` (a7a2b9b) se integró en `main` con merge `--no-ff` (88860c5, sin conflictos; `origin/main` no tenía commits propios). Tag **`pcb-v1-rc1`** en ese commit. En `main`: árbol idéntico a `ruteo-agente`; DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0; ERC sin cambios; `verify_etapa3/5` OK y con la misma salida. Después, la rama `ruteo-agente` se eliminó (local y en `origin`, con `-d`: estaba integrada). **El trabajo continúa en `main`.** `ruteo-manual` y `PCB_INCLI_VA_manual` siguen sin tocar; el worktree `PCB_INCLI_VA_bom` (`bom-sourcing`) se actualizó a `main` con fast-forward.
 
 Estado del PCB (igual que en `ruteo-agente`): ruteo completo, con teardrops, planos rellenos y costura. DRC 0 errores / 3 avisos aceptados (abajo), 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos (sin cambios). Fabricación de prueba en `fab/proto/`.
