@@ -3783,6 +3783,128 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 154.94 175.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "40f7f4cb-5405-447d-ab05-6dd4ee3332be")
+		(property "Reference" "TP505"
+			(at 156.21 170.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND_VEH"
+			(at 156.21 172.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm"
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "N/A (pad de prueba)"
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "-"
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Punto de prueba de GND_VEH con agujero (pad 2.5 mm, taladro 1.2 mm) para el caiman o la punta de masa del osciloscopio; admite un lazo de alambre o un Keystone 5001 soldado a mano. Fuera del BOM y del CPL de JLC."
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a53a10dc-880a-40f3-9acb-cd80f88dc3db")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4"
+					(reference "TP505")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "INCLI-VA:+3V3_A")
 		(at 83.82 185.42 0)
 		(unit 1)
@@ -7739,6 +7861,83 @@
 		)
 	)
 	(symbol
+		(lib_id "INCLI-VA:GND_VEH")
+		(at 154.94 175.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "f63055a4-ea98-4db2-9735-302308ee9373")
+		(property "Reference" "#PWR590"
+			(at 154.94 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND_VEH"
+			(at 154.94 179.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "15e33b99-05ac-4c87-b7d3-64a2a045182a")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4"
+					(reference "#PWR590")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "INCLI-VA:+3V3_A")
 		(at 76.2 90.17 90)
 		(unit 1)
@@ -7889,205 +8088,6 @@
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4"
 					(reference "#PWR504")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 154.94 175.26 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "40f7f4cb-5405-447d-ab05-6dd4ee3332be")
-		(property "Reference" "TP505"
-			(at 156.21 170.18 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND_VEH"
-			(at 156.21 172.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_D2.5mm_Drill1.2mm"
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "N/A (pad de prueba)"
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "-"
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "-"
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Punto de prueba de GND_VEH con agujero (pad 2.5 mm, taladro 1.2 mm) para el caiman o la punta de masa del osciloscopio; admite un lazo de alambre o un Keystone 5001 soldado a mano. Fuera del BOM y del CPL de JLC."
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a53a10dc-880a-40f3-9acb-cd80f88dc3db")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4"
-					(reference "TP505")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "INCLI-VA:GND_VEH")
-		(at 154.94 175.26 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "f63055a4-ea98-4db2-9735-302308ee9373")
-		(property "Reference" "#PWR590"
-			(at 154.94 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND_VEH"
-			(at 154.94 179.07 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 154.94 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "15e33b99-05ac-4c87-b7d3-64a2a045182a")
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3985e6d4-83de-4a87-a0f1-257500c83de4"
-					(reference "#PWR590")
 					(unit 1)
 				)
 			)

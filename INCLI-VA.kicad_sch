@@ -1552,6 +1552,246 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
+		(at 142.24 256.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0a0c11dd-824c-4e9c-83c1-d221ce11d604")
+		(property "Reference" "H5"
+			(at 144.78 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_M3"
+			(at 144.78 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.kicad.org/libraries/"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (agujero PTH sin red)"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A"
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
+			(at 142.24 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:Fiducial")
+		(at 182.88 256.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "55a6fbae-b6a4-4d63-9d9d-c271f7c33744")
+		(property "Reference" "FID2"
+			(at 185.42 255.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Fiducial"
+			(at 185.42 257.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Fiducial:Fiducial_1mm_Mask2mm"
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.kicad.org/libraries/"
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Fiducial Marker"
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (fiducial de cobre, sin componente)"
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A"
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Fiducial global de JLCPCB: cobre 1 mm, abertura de mascara 2 mm (huella oficial Fiducial_1mm_Mask2mm), en F.Cu. SIN red y fuera del BOM y del CPL (JLC los toma de los Gerbers). Sin serigrafia encima. Tres esquinas no alineadas, fuera del keep-out de la antena de U401. En el esquematico para que 'Update PCB from Schematic' no los borre."
+			(at 182.88 256.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
+					(reference "FID2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
 		(at 121.92 256.54 0)
 		(unit 1)
 		(body_style 1)
@@ -1791,247 +2031,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 60.96 256.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b82457be-6fa9-4bc1-8f7f-a4a292999c54")
-		(property "Reference" "H1"
-			(at 63.5 255.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole_M3"
-			(at 63.5 257.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "N/A (agujero PTH sin red)"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "N/A"
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
-			(at 60.96 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 142.24 256.54 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "0a0c11dd-824c-4e9c-83c1-d221ce11d604")
-		(property "Reference" "H5"
-			(at 144.78 255.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole_M3"
-			(at 144.78 257.81 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "N/A (agujero PTH sin red)"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "N/A"
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "DNP" ""
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
-			(at 142.24 256.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(instances
-			(project "INCLI-VA"
-				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "H5")
-					(unit 1)
-				)
-			)
-		)
-	)
-
-	(symbol
 		(lib_id "Mechanical:Fiducial")
 		(at 162.56 256.54 0)
 		(unit 1)
@@ -2152,18 +2151,18 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:Fiducial")
-		(at 182.88 256.54 0)
+		(lib_id "Mechanical:MountingHole")
+		(at 60.96 256.54 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files no)
+		(in_pos_files yes)
 		(dnp no)
-		(uuid "55a6fbae-b6a4-4d63-9d9d-c271f7c33744")
-		(property "Reference" "FID2"
-			(at 185.42 255.27 0)
+		(uuid "b82457be-6fa9-4bc1-8f7f-a4a292999c54")
+		(property "Reference" "H1"
+			(at 63.5 255.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2173,8 +2172,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Fiducial"
-			(at 185.42 257.81 0)
+		(property "Value" "MountingHole_M3"
+			(at 63.5 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2185,8 +2184,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Fiducial:Fiducial_1mm_Mask2mm"
-			(at 182.88 256.54 0)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2197,7 +2196,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.kicad.org/libraries/"
-			(at 182.88 256.54 0)
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2207,8 +2206,8 @@
 				)
 			)
 		)
-		(property "Description" "Fiducial Marker"
-			(at 182.88 256.54 0)
+		(property "Description" ""
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2218,8 +2217,8 @@
 				)
 			)
 		)
-		(property "MPN" "N/A (fiducial de cobre, sin componente)"
-			(at 182.88 256.54 0)
+		(property "MPN" "N/A (agujero PTH sin red)"
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2230,7 +2229,7 @@
 			)
 		)
 		(property "Manufacturer" "N/A"
-			(at 182.88 256.54 0)
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2241,7 +2240,7 @@
 			)
 		)
 		(property "DNP" ""
-			(at 182.88 256.54 0)
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2251,8 +2250,8 @@
 				)
 			)
 		)
-		(property "Notes" "Fiducial global de JLCPCB: cobre 1 mm, abertura de mascara 2 mm (huella oficial Fiducial_1mm_Mask2mm), en F.Cu. SIN red y fuera del BOM y del CPL (JLC los toma de los Gerbers). Sin serigrafia encima. Tres esquinas no alineadas, fuera del keep-out de la antena de U401. En el esquematico para que 'Update PCB from Schematic' no los borre."
-			(at 182.88 256.54 0)
+		(property "Notes" "Agujero de fijacion M3 (3.2 mm) metalizado, anillo de 6.4 mm en ambas caras (huella oficial MountingHole_3.2mm_M3_Pad). SIN red: el simbolo no tiene pin, el anillo queda flotante y no une GND_VEH ni GND_CAN. Regla DRC: cobre a >= 0.5 mm del anillo y sin pistas ni vias a menos de 4 mm del centro (arandela). Posicion: ver docs/LAYOUT_NOTES.md."
+			(at 60.96 256.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2265,7 +2264,7 @@
 		(instances
 			(project "INCLI-VA"
 				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3"
-					(reference "FID2")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -2283,7 +2282,7 @@
 		(dnp no)
 		(uuid "fa467cfc-3ec9-4983-88c9-01ada84c7f64")
 		(property "Reference" "FID3"
-			(at 205.73999999999998 255.27 0)
+			(at 205.74 255.27 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2294,7 +2293,7 @@
 			)
 		)
 		(property "Value" "Fiducial"
-			(at 205.73999999999998 257.81 0)
+			(at 205.74 257.81 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
