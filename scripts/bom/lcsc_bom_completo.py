@@ -2,7 +2,7 @@
 """BOM completa del prototipo para "Upload a BOM" de lcsc.com: bom/LCSC_BOM_COMPLETO_PROTO.csv.
 
 Uso (desde la carpeta del proyecto): /usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py [JUEGOS] [--solo-costo]
-  JUEGOS: placas + 1 de repuesto (por defecto 6 = 5 + 1). --solo-costo: calcula el costo sin escribir el archivo.
+  JUEGOS: placas + 1 de repuesto (por defecto 3 = 2 + 1, decisión del usuario del 2026-10-30). --solo-costo: calcula el costo sin escribir el archivo.
 Compra principal (desde 2026-10-30): JLC solo fabrica la PCB y el stencil; todo se compra en LCSC y se suelda a mano.
 Entrada: bom/BOM_PROTO.csv (variante PROTO, ya sin DNP). Solo las líneas con código LCSC; lo de DigiKey/Mouser
 queda en bom/DIGIKEY_MOUSER.csv.
@@ -14,7 +14,7 @@ jlc_lookup.py de agentic-sourcing, solo consulta). Las líneas con stock de lcsc
 import csv, json, math, sys, time, urllib.request
 
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
-PLACAS = int(args[0]) if args else 6
+PLACAS = int(args[0]) if args else 3
 SOLO_COSTO = '--solo-costo' in sys.argv
 MIN_PASIVO_CHICO = 20
 # Sustitutos solo para la compra en lcsc.com (el original no tiene stock en lcsc.com; JLC sigue montando el

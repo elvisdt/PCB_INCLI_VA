@@ -5,23 +5,47 @@ Consulta: **2026-10-30**. Decisiones del usuario sobre los sustitutos: **2026-10
 ## Plan de compra vigente (usuario, 2026-10-30) — RESUMEN
 **JLC solo fabrica la PCB y el stencil Top; todos los componentes se compran en LCSC y se sueldan a mano.** Los archivos de ensamblado de JLC (`fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 58 líneas, 123 piezas) se mantienen al día como alternativa, pero no se compara el costo de ensamblado.
 
-| Compra | Archivo | 6 juegos (5 placas + 1) | 3 juegos (2 placas + 1) |
-|---|---|---|---|
-| **LCSC** (todo lo que está en lcsc.com) | `bom/LCSC_BOM_COMPLETO_PROTO.csv` («Upload a BOM»: LCSC Part Number, Quantity, Manufacturer Part Number, Description, Designator) | 62 líneas, 2509 piezas, **USD 552.43** | 2312 piezas, **USD 286.65** |
-| **DigiKey/Mouser** (sin stock en LCSC) | `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROTO mano + PROD) | 5 líneas × 6 u, **≈ USD 99.54** | ≈ USD 49.77 |
-| **Total componentes** | | **≈ USD 651.97** | **≈ USD 336.42** |
-| por juego | | ≈ USD 108.66 | ≈ USD 112.14 |
-| **por placa armada** (repuesto incluido) | | **≈ USD 130.39** (÷ 5) | ≈ USD 168.21 (÷ 2) |
+**Cantidad: 3 juegos (2 placas + 1 de repuesto)**, decisión del usuario del 2026-10-30.
 
-- LCSC: precio de lcsc.com en el escalón de cada cantidad (consulta en vivo del 2026-10-30), sin envío ni impuestos. Cantidad = por placa × juegos; pasivos 0402/0603 al menos 20 por la merma al soldar a mano; después se sube al pedido mínimo y al múltiplo de lcsc.com. Regenerar con `/usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py [JUEGOS]` (`--solo-costo` para no escribir el archivo). Sin avisos de stock.
-- **DigiKey/Mouser: precios estimados, a verificar** en sus sitios antes de comprar (no se pudieron leer en vivo):
-  - U503 AS5147U-HTSM ≈ 8.44 (Mouser)
+| Compra | Archivo | 3 juegos (2 placas + 1) |
+|---|---|---|
+| **LCSC** (todo lo que está en lcsc.com) | `bom/LCSC_BOM_COMPLETO_PROTO.csv` («Upload a BOM»: LCSC Part Number, Quantity, Manufacturer Part Number, Description, Designator) | 62 líneas, 2312 piezas, **USD 286.65** |
+| **DigiKey/Mouser** (sin stock en LCSC) | `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROTO mano + PROD, columna `Qty_PROTO_3_juegos`) | 5 líneas × 3 u, **≈ USD 51.12** |
+| **Total componentes** | | **≈ USD 337.77** |
+| por juego (÷ 3) | | ≈ USD 112.59 |
+| **por placa armada** (÷ 2, repuesto incluido) | | **≈ USD 168.89** |
+
+Referencia: con 6 juegos (5 + 1) eran USD 552.43 + ≈ 102 = ≈ USD 654 (≈ USD 131 por placa); el costo por placa baja con más juegos por los mínimos de pedido de LCSC.
+
+- LCSC: precio de lcsc.com en el escalón de cada cantidad (consulta en vivo del 2026-10-30), sin envío ni impuestos. Cantidad = por placa × 3; pasivos 0402/0603 al menos 20 por la merma al soldar a mano; después se sube al pedido mínimo y al múltiplo de lcsc.com. Regenerar con `/usr/bin/python3 -B scripts/bom/lcsc_bom_completo.py [JUEGOS]` (por defecto 3; `--solo-costo` para no escribir el archivo). Sin avisos de stock.
+- **DigiKey/Mouser (USD por unidad, a verificar en sus sitios antes de comprar):**
+  - U503 AS5147U-HTSM ≈ 8.44 (Mouser 985-AS5147U-HTSM)
   - Q101 STD18NF25 ≈ 2.79 (DigiKey)
-  - Q102 IPD30N10S3L34ATMA1 ≈ 1.50 (Farnell como referencia)
-  - F101 SF-2410FPA200W-2 ≈ 1.03 (otra corriente de la misma familia)
-  - **L201 XAL6060-333MEC ≈ 2.83 (lista de LCSC): DigiKey lo marca «Not Available» y sugiere XGL6060-333MEC; hay que pedir cotización a Coilcraft o buscarlo en Mouser.** Cambiar L201 por otra serie es una decisión de diseño (buck de U201), pendiente.
-- Los cinco **siguen sin stock en lcsc.com** (consulta 2026-10-30: XAL6060-333MEC C5119929, AS5147U-HTSM C38675951, STD18NF25 C183634, IPD30N10S3L34ATMA1 C148263, SF-2410FPA200W-2 C3159902, todos con 0).
-- No incluye la PCB, el stencil ni el envío. `bom/A_MANO_PROTO.csv` y `bom/LCSC_CART_PROTO.csv` quedan como historia (lista a mano cuando JLC montaba).
+  - Q102 IPD30N10S3L34ATMA1 ≈ 1.50 (estimado con el precio de Farnell)
+  - **F101 SF-2410FPA200W-2 ≈ 1.48** (DigiKey, INR 124.62 a 1 u, 963 en stock; pieza exacta). Bourns SF-2410FPA-W rev. 10/26: **2 A, 250 VDC**, 100 A de corte a 250 VDC, 0.042 Ω típ., AEC-Q200. En esta serie, de 4 A para arriba son de 125 VDC, así que no sirven. El MPN del esquemático y el de `DIGIKEY_MOUSER.csv` es el correcto. El precio anterior (1.03) era de otra pieza de la familia y se corrigió.
+  - **L201 XAL6060-333MEC ≈ 2.83** (precio de lista de LCSC). DigiKey lo marca «Not Available»: ver la alternativa XGL6060-333MEC, abajo.
+- Los cinco **siguen sin stock en lcsc.com** (consulta 2026-10-30): XAL6060-333MEC C5119929, AS5147U-HTSM C38675951, STD18NF25 C183634, IPD30N10S3L34ATMA1 C148263 y SF-2410FPA200W-2 C3159902.
+- No incluye la PCB, el stencil ni el envío. `bom/A_MANO_PROTO.csv` y `bom/LCSC_CART_PROTO.csv` quedan como historia (eran la lista a mano de cuando JLC montaba).
+
+### L201: XGL6060-333MEC como alternativa aprobable (sin cambiar el esquemático)
+Fuentes: Coilcraft XAL60xx (Doc. 887, revisado 02/25/26) y XGL6060 (Doc. 1621, revisado 02/19/26). **El usuario pedirá muestras a Coilcraft.**
+
+| | XAL6060-333MEC (actual) | XGL6060-333MEC (alternativa) | Qué necesita el buck (U201 LMR38010, 5 V / 1 A, 400 kHz) |
+|---|---|---|---|
+| Inductancia | 33 µH ±20 % | 33 µH ±20 % | 33 µH (TI, tabla 9-1) |
+| DCR típ. / máx. | 95.7 / 105 mΩ | **63.1 / 69.5 mΩ** | Menos es mejor: pérdida a 1 A de 0.105 W contra 0.070 W |
+| Isat | 3.7 A (caída del 30 %) | 2.0 A (10 %), 3.1 A (20 %), **4.0 A (30 %)** | > límite high-side máx. de 1.9 A. Pico normal ≈ 1.17 A (ΔI ≈ 0.33 A a 38 V) |
+| Irms (+20 °C / +40 °C) | 2.7 / 3.6 A | **3.6 / 4.9 A** | ≥ 1 A |
+| Tensión de operación | 60 V | **80 V** | SW ≤ 38.4 V (corte por OV) |
+| Cuerpo L × W × H máx. | 6.56 × 6.36 × 6.1 mm | 6.71 × 6.51 × 6.1 mm (+0.15 mm en L y W) | Huella `Inductor_SMD:L_Coilcraft_XAL6060-XXX`, courtyard 7.35 × 7.15 mm |
+| Terminales | 1.25 × 2.79 mm, separación 5.0 mm | iguales | — |
+| Land pattern recomendado | 4.04 / 1.43 × 5.50 mm | **idéntico** | — |
+| Calificación y temperatura | AEC-Q200, –40 a +125 °C | AEC-Q200, –40 a +125 °C | — |
+| Stock (2026-10-30) | DigiKey «Not Available»; LCSC/JLC 0 | LCSC/JLC 0 (C3911607); consultar DigiKey/Mouser/Coilcraft | — |
+
+- **Compatible con la misma huella:** mismos terminales y land pattern. El cuerpo, 0.15 mm más grande, sigue dentro del courtyard (margen de 0.32 mm por lado) y queda a ≥ 1.45 mm de los courtyards vecinos (C204, C203, C201, U201). Medido en el PCB con el cuerpo del XGL centrado en la huella.
+- **Eléctricamente igual o mejor:** misma inductancia, así que el lazo interno del LMR38010 y el ripple no cambian; Isat (al 30 %) e Irms más altos, DCR un 34 % más baja y tensión de operación de 80 V. Con 1.9 A (límite de corriente) la inductancia cae menos del 10 %.
+- **Estado: alternativa aprobable**, pendiente de las muestras de Coilcraft. El esquemático sigue con XAL6060-333MEC; si se adopta, se cambian el `MPN` (y `Alt_MPN`) sin tocar la huella.
 
 ### Consolidación de pasivos (aprobada, aplicada el 2026-10-30)
 Solo cambian valor y campos; ninguna huella cambia. Script: `scripts/bom/consolidar_pasivos.py`.
