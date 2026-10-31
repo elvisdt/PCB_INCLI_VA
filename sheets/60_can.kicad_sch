@@ -12,6 +12,184 @@
 		(comment 2 "Inclinómetro de chasis CAN/BLE — INCLI-VA")
 	)
 	(lib_symbols
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -1777,7 +1955,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "BLOQUE 60 - CAN AISLADO (ADM3055E, barrera 2)   [Variant=CAN]\nFuente: datasheet ADI ADM3055E/ADM3057E Rev. D (tablas 10 y 12, PCB layout).\n\n  U601  ADM3055EBRIZ: CAN aislado con isoPower. VCC <- +5V_VEH (180 mA tip / 260 mA max en dominante), VIO <- +3V3_D.\n  Desacople (tabla 10): VCC 10 uF + 0.1 uF | VIO 0.01 + 0.1 uF | VISOIN 0.01 + 0.1 uF | VISOOUT 0.22 + 10 uF a GNDISO.\n  FB601 VISOOUT -> VISOIN y FB602 GNDISO -> GND2 (~2 kohm a 100 MHz-1 GHz; reducen emisiones, no son funcionales).\n  RS -> GND2 por R605 (0 ohm = velocidad completa; 47k = control de pendiente).  AUXIN -> GND1 (sin uso), AUXOUT sin conexion.\n  STBY: pull-up R604 -> arranca en standby hasta que el firmware baje CAN_STBY.  SILENT: pull-down R601 (normal).\n  Terminacion partida R602 + R603 + C609: montar solo en nodos de extremo del bus.\n  D601 ESD2CAN24-Q1 (SOT-23): DNP. El ADM3055E ya integra IEC 61000-4-2 +-8 kV y +-40 V de falla en CANH/CANL.\n\nCAN clasico (J1939) desde el TWAI del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nLayout: capacitores a < 2 mm de los pines; verificar el land pattern SOIC-20W contra el plano RI-20-1 (creepage de la barrera 2)."
+	(text "BLOQUE 60 - CAN AISLADO (ADM3055E, barrera 2)   [Variant=CAN]\nFuente: datasheet ADI ADM3055E/ADM3057E Rev. D (tablas 10 y 12, PCB layout).\n\n  U601  ADM3055EBRIZ: CAN aislado con isoPower. VCC <- +5V_VEH (180 mA tip / 260 mA max en dominante), VIO <- +3V3_D.\n  Desacople (tabla 10): VCC 10 uF + 0.1 uF | VIO 0.01 + 0.1 uF | VISOIN 0.01 + 0.1 uF | VISOOUT 0.22 + 10 uF a GNDISO.\n  FB601 VISOOUT -> VISOIN y FB602 GNDISO -> GND2 (~2 kohm a 100 MHz-1 GHz; reducen emisiones, no son funcionales).\n  RS -> GND2 por R605 (0 ohm = velocidad completa; 47k = control de pendiente).  AUXIN -> GND1 (sin uso), AUXOUT sin conexion.\n  STBY: pull-up R604 -> arranca en standby hasta que el firmware baje CAN_STBY.  SILENT: pull-down R601 (normal).\n  Terminacion partida R602 + R603 + C609 (siempre montada) con JP601 en serie con R602: abierto = sin terminacion,\n  unido con estano = 120 ohm (nodo en el extremo del bus). JP601 en la cara inferior; se configura en banco, antes de la caja.\n  D601 ESD2CAN24-Q1 (SOT-23): DNP. El ADM3055E ya integra IEC 61000-4-2 +-8 kV y +-40 V de falla en CANH/CANL.\n\nCAN clasico (J1939) desde el TWAI del ESP32-S3: CAN_TX/CAN_RX directo al ADM3055E.\nLayout: capacitores a < 2 mm de los pines; verificar el land pattern SOIC-20W contra el plano RI-20-1 (creepage de la barrera 2)."
 		(exclude_from_sim no)
 		(at 20.32 20.32 0)
 		(effects
@@ -1885,16 +2063,6 @@
 			(type default)
 		)
 		(uuid "1be6e8f0-48ea-4711-807a-2377c6e867b3")
-	)
-	(wire
-		(pts
-			(xy 284.48 101.6) (xy 281.94 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c31d560-0c32-48ba-9831-23bc0df4cb1c")
 	)
 	(wire
 		(pts
@@ -2634,7 +2802,7 @@
 	)
 	(hierarchical_label "BUS_CAN_H"
 		(shape bidirectional)
-		(at 281.94 101.6 180)
+		(at 274.32 101.6 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2686,6 +2854,152 @@
 			(justify right)
 		)
 		(uuid "edd2a7aa-3c7b-4339-b488-94e4bbac0e4e")
+	)
+	(label "CAN_TERM_H"
+		(at 284.48 101.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e98422c1-123c-487d-82ba-3f96e2603f6e")
+	)
+	(text "JP601 TERM CAN (cara inferior): abierto = sin terminacion;\nunido con estano = 120 ohm (nodo en el extremo del bus).\nConfigurar en banco, antes de la caja."
+		(exclude_from_sim no)
+		(at 260.35 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a9fe74d6-c2ea-47c1-aba0-140e391e87c2")
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 279.4 101.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "9429cd62-d5c9-42fb-8bef-3c378ac5d522")
+		(property "Reference" "JP601"
+			(at 279.4 99.06 0)
+			
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TERM_CAN"
+			(at 279.4 104.14 0)
+			
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "N/A (puente de soldadura en el PCB)"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "N/A (cobre de la placa)"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Selector de terminacion CAN (puente de soldadura, ABIERTO por defecto), en serie con R602, cara inferior. Abierto = sin terminacion. Unido con estano = terminacion partida de 120 ohm activa (nodo en el extremo del bus). Se configura en banco, antes de montar la placa en la caja. Sin componente: fuera del BOM y del CPL. Con JP601 abierto, CANL sigue viendo R603 + C609 a GND_CAN (carga de modo comun asimetrica, sin carga en DC)."
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Variant" "CAN"
+			(at 279.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cdd51a41-5f73-4c2f-939b-6bab91190e50")
+		)
+		(pin "2"
+			(uuid "fcd9d876-9853-4ff7-8701-972d058857e0")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/3036af0c-b072-4a36-8ec1-d374aba21569"
+					(reference "JP601")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "INCLI-VA:GND_VEH")
@@ -7000,7 +7314,7 @@
 				)
 			)
 		)
-		(property "Notes" "Terminacion partida 2 x 60.4 ohm + C609. Montar solo en nodos de extremo del bus."
+		(property "Notes" "Terminacion partida 2 x 60.4 ohm + C609, siempre montada; se activa uniendo JP601 (en serie con R602). JP601 abierto = sin terminacion."
 			(at 284.48 127 0)
 			(hide yes)
 			(show_name no)
@@ -7225,7 +7539,7 @@
 				)
 			)
 		)
-		(property "Notes" "Terminacion partida 2 x 60.4 ohm + C609. Montar solo en nodos de extremo del bus (si el nodo no termina, R602/R603/C609 DNP)."
+		(property "Notes" "Terminacion partida 2 x 60.4 ohm + C609, siempre montada; se activa uniendo JP601 (en serie con R602). JP601 abierto = sin terminacion."
 			(at 284.48 107.95 0)
 			(hide yes)
 			(show_name no)

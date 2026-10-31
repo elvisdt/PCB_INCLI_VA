@@ -2,9 +2,27 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-31, Claude Code (**`pcb-v1-rc6`: grupo A de la revisión externa + JLCDFM**; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-31, Claude Code (**`pcb-v1-rc7`: JP601, selector de terminación CAN**; ver «RETOMAR AQUÍ»).
 
-## RETOMAR AQUÍ — `pcb-v1-rc6` (Claude Code, 2026-10-30/31)
+## RETOMAR AQUÍ — `pcb-v1-rc7` (Claude Code, 2026-10-31)
+**Versión para fabricar:** tag **`pcb-v1-rc7`** = rc6 + el commit del usuario 459a6df (esquema y serigrafía) + **JP601**, selector de terminación CAN por puente de soldadura (pedido y posición aprobados por el usuario). Reemplaza a rc6.
+- **Archivo para JLC:** `fab/proto/INCLI-VA_gerbers.zip` (no se versiona; 12 archivos, sha256 `b3f07b7668cc5e63a93266e575f0d8aa9f33e6211a5a51061225882e4e59a5bd`), idéntico byte a byte a `fab/proto/gerbers/`. Mismas opciones que rc6. JP601 no lleva pasta ni componente: fuera de `bom_*.csv`, `cpl_jlc.csv` y `pos_kicad.csv`; BOM de compra sin cambios.
+- **JP601** (hoja 60, `Jumper:SolderJumper_2_Open`; huella `Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm`, la de 2 pads más grande de la librería oficial): **abierto por defecto**, en serie con R602 (pin 1 = BUS_CAN_H, pin 2 = red nueva `/60_can/CAN_TERM_H` → R602.1). Abierto = sin terminación; **unido con estaño = terminación partida de 120 Ω activa** (nodo en el extremo del bus). Se configura en banco, antes de montar la placa en la caja. R602, R603 y C609 quedan siempre montadas (Notes actualizados).
+  - Cara inferior, centro (114.6, 125.3), dentro de la isla GND_CAN, debajo de R602/R603; sin mover componentes. CANH: pista F.Cu cortada en (116.8, 123.5) → vía V1 (115.25, 123.5) → pad este. R602.1 → (113.3, 122.9) → vía V2 (114.3, 123.9, entre los rótulos de R602 y R603) → pad oeste. Plano GND_CAN de B.Cu sin partir (una isla). Lejos de H3, del área B y del círculo del imán.
+  - Máscara abierta en los dos pads y el hueco (la de la huella). «TERM CAN» en B.Silkscreen, 0.8/0.15 mm, espejado (se lee desde abajo), debajo de los pads; referencia JP601 en B.Fab. Render: `docs/layout/rc7/jp601_cara_inferior.png`.
+  - Con JP601 abierto, CANL sigue viendo R603 + C609 a GND_CAN y CANH no ve nada: sin carga en DC, carga de modo común asimétrica. Para dejar el bus sin ninguna carga haría falta un segundo puente en serie con R603 (anotado en Revisión B).
+  - `INCLI-VA.kicad_dru`: `/60_can/CAN_TERM_H` agregada a las dos listas de `ISO_CAN_barrera` (sin eso, 25 errores de 2.5 mm).
+- **Verificado antes del tag:** ERC 0 errores / 5 avisos conocidos (sin cambios; nada en la hoja 60; revisión visual del PDF de la hoja 60). DRC 0 errores / 3 avisos aceptados, 0 sin rutear, **paridad 0**. 716 teardrops. `verify_etapa5`: una isla por red, 0 teardrops entre filas de U601. `verify_etapa3`: OK. `verify_etapa2` ajustado a rc7: CANH con 3 vías (+V1) y la rama de terminación de CANH medida hasta el pad de JP601 (11.75 → 12.43 mm). `INCLI-VA.kicad_pro` sin cambios. Antes del relleno, `main` (459a6df) daba 3 errores de teardrop contra GND_VEH (< 0.01 mm, rellenos viejos): desaparecen al rellenar.
+- **Scripts:** `scripts/rc7/` sobre 459a6df: `rc7_esquema.py` → `rc7_jp601_pcb.py` (con `--prueba` sobre una copia para el render previo) → `scripts/ruteo/etapa6_teardrops.py` (rellena) → `rc7_campos.py` (Notes de R602/R603) → DRC con paridad → `scripts/ruteo/etapa6_fab.py`. KiCad 10 + Python 3.14: después de `b.Remove()` los wrappers SWIG de la placa fallan; borrar al final, justo antes de `Save()`.
+
+**Pendientes:**
+- [ ] **Pedido rc7** (decisión del usuario): subir `fab/proto/INCLI-VA_gerbers.zip`; revisar el informe DFM de JLC (JP601: dos pads con máscara abierta en la cara inferior, sin pasta).
+- [ ] **Bring-up** (plan de `docs/REVISION_EXTERNA.md` §E.1): medir VS (TP105), VA (TP106), UVLO (TP107), HGATE−VA (R105/Q101.1) y FLT (TP104) con 12 V / 100 mA; arranque ~7.0 V, corte ~6.44 V. **CAN: soldar JP601 (unir con estaño) para probar con terminación** en el banco (nodo en el extremo del bus; medir ~60 Ω entre CANH y CANL con el otro extremo terminado, o ~120 Ω sin él, con la placa apagada). En los nodos que no son extremo, dejarlo abierto antes de la caja.
+- [ ] **L201:** muestras de Coilcraft (XAL6060 vs. XGL6060), igual que en rc5.
+- [ ] **Firmware:** requisitos en «Requisitos para el firmware» y en `README.md`.
+- [ ] Comparación con `ruteo-manual` (usuario): replicar también rc6 y rc7 (JP601, vías V1/V2, regla `ISO_CAN_barrera`).
+
+## Historia — `pcb-v1-rc6` (Claude Code, 2026-10-30/31)
 **Versión para fabricar:** tag **`pcb-v1-rc6`**. Corrige el grupo A de `docs/REVISION_EXTERNA.md` y del informe JLCDFM (`docs/reference/dfm/JLCDFM_INCLI-VA_rc.pdf`), aprobado por el usuario. Reemplaza a rc5: **si rc5 ya se pidió, esas placas necesitan el retrabajo R-01 (obligatorio) y R-02 (recomendado) de la revisión externa.**
 - **Archivo para JLC:** `fab/proto/INCLI-VA_gerbers.zip` (no se versiona; 12 archivos, sha256 `136b58740287f352ad55da7e3f6c4dd06a2671423eaf6f6313aa8ccaaf686c3b`), idéntico byte a byte a `fab/proto/gerbers/`. Mismas opciones que rc5 (2 capas, FR4, 1.6 mm, 1 oz, máscara roja, ENIG, sin panel, sin V-cut, stencil Top). La cara inferior ahora tiene pasta en C104, R106 y R113: se sueldan a mano, alcanza con el stencil superior.
 - **Verificado antes del tag:** ERC 0 errores / 5 avisos conocidos (sin cambios; hoja 10: solo el aviso conocido de `U101_RTN`). DRC 0 errores / 3 avisos aceptados, 0 sin rutear, **paridad 0**. 710 teardrops. `verify_etapa5`: una isla por red (GND_VEH, GND_CAN, U101_RTN), 0 teardrops entre filas de U601, 0 cobre en la antena; costura GND_VEH p95 4.91 → 4.62 mm. `verify_etapa3`: OK; solo cambian en µm los tramos corridos por J-02 (par USB: diferencia de largo 0.0001 → 0.0063 mm). `INCLI-VA.kicad_pro` sin cambios.
@@ -19,7 +37,7 @@ Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agente
 - **J-03:** 64 textos movidos (referencias y rótulos de placa) fuera de agujeros de vías, aberturas y orificios, 0.8/0.15 mm; «SIN BARNIZ» junto al borde inferior: se corrió la vía de costura que tenía debajo. Los demás «SIN BARNIZ» quedan a 0.14 mm de agujeros (no los pisan). Rótulos VS/VA/UVLO de los TP nuevos en B.Silkscreen.
 
 **Pendientes:**
-- [ ] **Pedido rc6** (decisión del usuario): subir `fab/proto/INCLI-VA_gerbers.zip`; revisar el informe DFM nuevo de JLC contra la tabla de abajo.
+- [x] ~~Pedido rc6~~: reemplazado por rc7 (ver arriba). Los pendientes que siguen se trasladaron a «RETOMAR AQUÍ».
 - [ ] **Bring-up** (plan de `docs/REVISION_EXTERNA.md` §E.1): medir VS (TP105), VA (TP106), UVLO (TP107), HGATE−VA (R105/Q101.1) y FLT (TP104) con 12 V / 100 mA; arranque ~7.0 V, corte ~6.44 V.
 - [ ] **L201:** muestras de Coilcraft (XAL6060 vs. XGL6060), igual que en rc5.
 - [ ] **Firmware:** requisitos en «Requisitos para el firmware» y en `README.md` (agregados NOISESET y TLH en rc6).
@@ -75,6 +93,7 @@ Detalle y evidencia de cada punto en `docs/REVISION_EXTERNA.md` (tabla B y §D).
 - [ ] **J-09/J-13** Contornos de serigrafía de 0.15 mm (huellas propias) y vías fuera de los pads de desacople/TP.
 - [ ] Grado automotriz en PROD (§D-14 de la revisión externa): BAV23CQ (Diodes) para D104, USBLC6-2SC6Y, AEC-Q101 en D102/D103/D701/D751, etc.
 - [ ] Logo de Hunter en la zona reservada.
+- [ ] **rc7:** segundo puente en serie con R603 (o puente de 3 pads) si se quiere que «sin terminación» deje el bus sin carga de modo común; JP601 hoy solo corta la rama de CANH.
 
 
 ## Historia — `pcb-v1-rc5` enviada a fabricación (2026-10-30)

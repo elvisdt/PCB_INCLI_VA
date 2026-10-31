@@ -49,7 +49,8 @@ def graph(net):
 
 def route(p,q):
     assert p.GetNetname()==q.GetNetname()
-    g=graph(p.GetNetname());start=node(xy(p.GetPosition()),F);finish=node(xy(q.GetPosition()),F)
+    lp=F if p.IsOnLayer(F) else B  # rc7: JP601 esta en B.Cu
+    g=graph(p.GetNetname());start=node(xy(p.GetPosition()),lp);finish=node(xy(q.GetPosition()),F)
     todo=[(0,start)];dist={start:0};prev={}
     while todo:
         d,u=heapq.heappop(todo)
@@ -88,9 +89,11 @@ if out['CANH'] and out['CANL']:
     out['CAN_delta_planar_mm']=round(abs(out['CANH']['centerline_mm']-out['CANH']['via_vertical_mm']-out['CANL']['centerline_mm']+out['CANL']['via_vertical_mm']),4)
     assert out['CAN_delta_total_mm'] <= 1
     out['CAN_vias']={n:sum(isinstance(t,k.PCB_VIA) and t.GetNetname()==net for t in b.GetTracks()) for n,net in [('CANH','/BUS_CAN_H'),('CANL','/BUS_CAN_L')]}
-    assert out['CAN_vias']=={'CANH':2,'CANL':0}
+    assert out['CAN_vias']=={'CANH':3,'CANL':0}  # rc7: + via V1 de CANH a JP601 (cara inferior)
     out['termination_branches_mm']={}
-    for name,ref,rpin,upin in [('CANH','R602',1,14),('CANL','R603',2,13)]:
+    # rc7: la rama de CANH termina en JP601 (puente abierto en serie con R602); se mide hasta su pad de CANH
+    jp_canh=next(p.GetNumber() for p in b.FindFootprintByReference('JP601').Pads() if p.GetNetname()=='/BUS_CAN_H')
+    for name,ref,rpin,upin in [('CANH','JP601',jp_canh,14),('CANL','R603',2,13)]:
         path=route(pad(ref,rpin),pad('U601',upin))['path']
         main=set(out[name]['path']);length=0
         for a,z in zip(path,path[1:]):

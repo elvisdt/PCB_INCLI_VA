@@ -11,7 +11,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 | `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1-N8R2 (único MCU), USB-C nativo con ESD, UART0, BOOT/RESET |
 | `sheets/40_mcu_kw45` | Solo referencia: no está en la jerarquía |
 | `sheets/50_sensors` | SCL3300-D01 (inclinómetro), ASM330LHH (IMU), AS5147U (ángulo de pluma, solo variante ROT) en SPI compartido |
-| `sheets/60_can` | ADM3055E (CAN aislado con isoPower, único aislamiento de la placa) desde el TWAI del ESP32-S3 (CAN clásico, J1939). Terminación partida 2 × 60.4 Ω + 4.7 nF. ESD externo ESD2CAN24-Q1 como DNP |
+| `sheets/60_can` | ADM3055E (CAN aislado con isoPower, único aislamiento de la placa) desde el TWAI del ESP32-S3 (CAN clásico, J1939). Terminación partida 2 × 60.4 Ω + 4.7 nF, activada con JP601 (puente de soldadura en la cara inferior, abierto por defecto; unido = 120 Ω, nodo en el extremo del bus). ESD externo ESD2CAN24-Q1 como DNP |
 | `sheets/70_output_ch` | 1 canal low-side (drenador abierto, relé externo), instanciado 2 veces (DO1, DO2): buffer 74AHCT1G126 (3.3 → 5 V), DMN10H220LQ 100 V, zener de gate y SMAJ58A. Sin latch de sobrecorriente (retirado); diagnóstico como huella DNP en PROTO |
 | `sheets/80_supervision` | U801 TPS3828-33-Q1 (supervisor de +3V3_D + watchdog, WDI ← IO17), LED verde/rojo (DNP en PROD), VAR_ID0/1/2 por 0 Ω a GND |
 | `lib/` | Librería propia: símbolos (`INCLI-VA.kicad_sym`), huellas (`.pretty`), 3D |
