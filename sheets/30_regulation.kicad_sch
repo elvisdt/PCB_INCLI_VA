@@ -6160,7 +6160,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_OUT del buck, 10 V X7R. 0805 por DC bias. Presupuesto de 47 uF en +3V3_D (TI sin Bode): 22 uF aquí + 22 uF + 100 nF en el módulo (40_mcu) + ~0.5 uF de desacoples = ~44.6 uF. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "C_OUT del buck, 10 V X7R. 0805 por DC bias. Presupuesto de 47 uF en +3V3_D (TI sin Bode): 22 uF aquí + 22 uF + 100 nF en el módulo (40_mcu) + ~0.5 uF de desacoples = ~44.6 uF, más 10 uF de C605 (hoja 60) = ~54.6 uF nominal; con DC bias probablemente < 47 uF: verificar el escalón 0.1 -> 0.6 A en el bring-up. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
 			(at 189.23 102.87 0)
 			(hide yes)
 			(show_name no)

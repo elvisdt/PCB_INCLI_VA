@@ -2,9 +2,83 @@
 
 Leer al empezar cada turno y actualizar al terminarlo (ver "Trabajo entre agentes" en `AGENTS.md`).
 
-Última actualización: 2026-10-30, Claude Code (**`pcb-v1-rc5` enviada a fabricación**; ver «RETOMAR AQUÍ»).
+Última actualización: 2026-10-31, Claude Code (**`pcb-v1-rc6`: grupo A de la revisión externa + JLCDFM**; ver «RETOMAR AQUÍ»).
 
-## RETOMAR AQUÍ — `pcb-v1-rc5` enviada a fabricación (2026-10-30)
+## RETOMAR AQUÍ — `pcb-v1-rc6` (Claude Code, 2026-10-30/31)
+**Versión para fabricar:** tag **`pcb-v1-rc6`**. Corrige el grupo A de `docs/REVISION_EXTERNA.md` y del informe JLCDFM (`docs/reference/dfm/JLCDFM_INCLI-VA_rc.pdf`), aprobado por el usuario. Reemplaza a rc5: **si rc5 ya se pidió, esas placas necesitan el retrabajo R-01 (obligatorio) y R-02 (recomendado) de la revisión externa.**
+- **Archivo para JLC:** `fab/proto/INCLI-VA_gerbers.zip` (no se versiona; 12 archivos, sha256 `136b58740287f352ad55da7e3f6c4dd06a2671423eaf6f6313aa8ccaaf686c3b`), idéntico byte a byte a `fab/proto/gerbers/`. Mismas opciones que rc5 (2 capas, FR4, 1.6 mm, 1 oz, máscara roja, ENIG, sin panel, sin V-cut, stencil Top). La cara inferior ahora tiene pasta en C104, R106 y R113: se sueldan a mano, alcanza con el stencil superior.
+- **Verificado antes del tag:** ERC 0 errores / 5 avisos conocidos (sin cambios; hoja 10: solo el aviso conocido de `U101_RTN`). DRC 0 errores / 3 avisos aceptados, 0 sin rutear, **paridad 0**. 710 teardrops. `verify_etapa5`: una isla por red (GND_VEH, GND_CAN, U101_RTN), 0 teardrops entre filas de U601, 0 cobre en la antena; costura GND_VEH p95 4.91 → 4.62 mm. `verify_etapa3`: OK; solo cambian en µm los tramos corridos por J-02 (par USB: diferencia de largo 0.0001 → 0.0063 mm). `INCLI-VA.kicad_pro` sin cambios.
+- **Scripts:** `scripts/rc6/` en este orden, sobre el esquema y el PCB de `pcb-v1-rc5`: `rc6_esquema.py` → `rc6_pcb.py` (sincronización tipo F8 desde la netlist: no hizo falta abrir KiCad) → relleno (`kicad-cli pcb drc --refill-zones --save-board`) → `rc6_costura.py` → `rc6_dfm.py --pasada2` → `rc6_ajustes.py` → `rc6_j02b.py` → `scripts/ruteo/etapa6_teardrops.py` → DRC → `scripts/ruteo/etapa6_fab.py` → `rc6_bom.py` → `scripts/bom/lcsc_bom_completo.py 3`.
+- **BOM:** `bom/LCSC_BOM_COMPLETO_PROTO.csv` 62 líneas, 2295 piezas, USD 288.65 (3 juegos). JLC (alternativa): 58 líneas, 124 piezas. Detalle de piezas nuevas en `docs/BOM_SOURCING.md` («Cambios de rc6»).
+
+**Qué cambió en rc6**
+- **Esquema (hoja 10):** R-01 UVLO desde VBAT_F (R113 + R106 51 kΩ 1206, R107 9.53 kΩ, U101.3 SW con no-connect); R-02 D104 = BAV23C (símbolo oficial `Diode:BAV70`, mismo pinout; A1 = R102/D103, A2 = VA, K = VS); R-26 TP105 VS, TP106 VA, TP107 UVLO. Verificado contra SNOSDF6 (tabla 5-1 p. 3, §7.3.2.1 p. 16, fig. 8-1 p. 24, §8.2.2.4 p. 26 —el texto dice «from SW pin» y contradice la figura—), ST DS6601 Rev. 6 (STD18NF25: VGS(th) 2–4 V, RDS(on) 140/165 mΩ a 10 V), Nexperia BAV23C v.8 y Diodes DS30042 Rev. 23-2 (datasheets en `docs/datasheets/`). `sch_visual_qa` no está disponible: revisión visual del PDF de la hoja 10 (rótulo de D104 corrido para no pisar el de R102).
+- **PCB, sin mover componentes existentes** (C109/R105 no se movieron: la búsqueda mostró que no abría lugar). R106 (1206) y R113 en la cara inferior junto a TP102 (registro en `docs/RUTEO_TRASPASO.md`, «Cambios de ubicación»). UVLO por B.Cu: y = 90 → x = 111 (por fuera del DGATE) → y = 74.5 → vía sobre la UVLO existente (118.9, 74.4); 8.9 mm (x = 111, y 74.5–90) quedan sin plano GND en F.Cu porque ahí F.Cu es C105 (VOUT), la pista VA y la pestaña de Q102; 10 vías de costura GND_VEH donde F.Cu y B.Cu tienen GND. Render antes/después: `docs/layout/rc6/bcu_entrada_rc5_rc6.png`. VA a D104.2 por F.Cu (x = 132.1, 0.25 mm).
+- **J-01:** 16 de 17 vías separadas a 0.15 mm (SW401.1, SW402.1, C506.2, U601.1/.2/.9/.10, U402.2, U401.1, U801.2, R603.1, C606.2, D601.1/.3, R601.1, C310.1 con tramo nuevo). **Excepción:** C403.2 (vía GND que se solapa con el pad GND del 0603, pegado a U401): sin lugar en 7 direcciones hasta 1.45 mm; misma red, vía tapada.
+- **J-02:** tramos corridos (D601.2, U201.2, R104.2, U401.14, U501.5, R801.1, C508.1, R109.1, U801.5, C401.1) a ≥ 0.11 mm de la abertura (criterio del contorno interior, el de JLC). **Excepciones (B):** D601.1 (CAN_H, 0.028 mm; correrlo lo acerca a la vía GND_CAN de la barrera), C306.1 y D102.1 (corridos, pero su punta queda a 0.08 y 0.033 mm) y el EP de U201 (0.054): en los cuatro, lo expuesto es la punta de un tramo de la misma red que el pad.
+- **J-03:** 64 textos movidos (referencias y rótulos de placa) fuera de agujeros de vías, aberturas y orificios, 0.8/0.15 mm; «SIN BARNIZ» junto al borde inferior: se corrió la vía de costura que tenía debajo. Los demás «SIN BARNIZ» quedan a 0.14 mm de agujeros (no los pisan). Rótulos VS/VA/UVLO de los TP nuevos en B.Silkscreen.
+
+**Pendientes:**
+- [ ] **Pedido rc6** (decisión del usuario): subir `fab/proto/INCLI-VA_gerbers.zip`; revisar el informe DFM nuevo de JLC contra la tabla de abajo.
+- [ ] **Bring-up** (plan de `docs/REVISION_EXTERNA.md` §E.1): medir VS (TP105), VA (TP106), UVLO (TP107), HGATE−VA (R105/Q101.1) y FLT (TP104) con 12 V / 100 mA; arranque ~7.0 V, corte ~6.44 V.
+- [ ] **L201:** muestras de Coilcraft (XAL6060 vs. XGL6060), igual que en rc5.
+- [ ] **Firmware:** requisitos en «Requisitos para el firmware» y en `README.md` (agregados NOISESET y TLH en rc6).
+- [ ] Comparación con `ruteo-manual` (usuario): replicar también los cambios de rc6 (tabla de abajo y «Cambios de ubicación»).
+
+**Hallazgos de `docs/REVISION_EXTERNA.md` y del informe JLCDFM (`docs/reference/dfm/JLCDFM_INCLI-VA_rc.pdf`): clasificación y acción tomada.**
+Grupo A = corregido en rc6 · B = aceptado con justificación · C = revisión B.
+
+| ID | Origen | Sev. | Grupo | Acción tomada |
+|---|---|---|---|---|
+| R-01 | Externa | Bloq. | A | UVLO desde VBAT_F: R113 + R106 (51 k, 1206, cara inferior junto a TP102), R107 9.53 k (corte 6.44 V, subida 7.02 V), U101.3 (SW) con no-connect. Pista UVLO en B.Cu por el borde norte del plano J1/D102–Q101/Q102 (y 90 → x 111 → y 74.5), 10 vías de costura. Verificado contra SNOSDF6 tabla 5-1, §7.3.2.1 y fig. 8-1 |
+| R-02 | Externa | Bloq. (reclasificado) | A | D104 = BAV23C (doble, cátodo común): A2–K es el D1 de la fig. 8-1 (VA → VS). Pista VA de 0.25 mm por x = 132.1 hasta D104.2. Con D1, HGATE−VA ≈ 10.3–13.5 V (antes 2.5–5.4 V; STD18NF25 VGS(th) 2–4 V, RDS(on) especificada a 10 V) |
+| R-26 | Externa | Men. | A | TP105 VS, TP106 VA, TP107 UVLO en la cara inferior, con rótulo |
+| C-1…C-14, R-17, R-29 | Externa | Men. | A | Notes de C109, J2, TP403, C304, C401, U401, R708/R709 (= R758/R759), D703 (= D753); README (C105 = DNP PROTO, brownout, NOISESET, TLH del SCL3300, variantes de U401); REVISION_CODEX (fila de U101); esta tabla (C-2, C-4, C-5, C-12) |
+| J-01 | JLCDFM «Via to pad» | Danger | A | 16 de 17 vías separadas de los pads a 0.15 mm cobre a cobre (= franja de máscara, vías tapadas), con su tramo de conexión; excepción C403.2. Detalle en «Qué cambió en rc6» |
+| J-02 | JLCDFM «Mask opening exposing trace» | Danger | A | Tramos corridos a ≥ 0.11 mm de la abertura; excepciones D601.1, C306.1, D102.1 y EP de U201 (misma red). Detalle en «Qué cambió en rc6» |
+| J-03 | JLCDFM «Silkscreen to hole / to pad» | Danger | A | 64 textos movidos fuera de agujeros, aberturas y orificios (0.8/0.15 mm) y una vía de costura corrida bajo «SIN BARNIZ». Detalle en «Qué cambió en rc6» |
+| J-04 | JLCDFM «Negative soldermask expansion» (50) | Warning | B | En el diseño hay 0 pads con margen negativo y en los Gerbers ninguna abertura es menor que su pad. Son los rayos del alivio térmico y las pistas que salen de la abertura: artefacto del análisis |
+| J-05 | JLCDFM «Fiducial null» (3) | Warning | B | FID1–FID3: 1 mm de cobre, 2 mm de máscara, ≥ 5.4 mm del borde, no alineados. «null» = sin valor medido; JLC no ensambla |
+| J-06 | JLCDFM «Slot width» 0.6 mm (4) | Danger | B | Ranuras de la carcasa de J401, huella oficial del USB-C. JLC fabrica ranuras metalizadas de ≥ 0.5 mm |
+| J-07 | JLCDFM «Annular ring» 0.15 mm (100) | Warning | B | Vías 0.3/0.6 mm; mínimo de JLC 0.13 mm |
+| J-08 | JLCDFM «Pad spacing» / «Soldermask bridge» 0.15 mm | Warning | B | U502 y U301 (paso fino); puente mínimo de JLC con máscara roja y 1 oz: 0.10 mm |
+| J-09 | JLCDFM «Silkscreen line width» 0.12 mm (100) | Warning | B | Contornos de las huellas oficiales; los textos son de 0.15 mm (regla `JLC_serigrafia`) |
+| J-10 | JLCDFM «Silkscreen to pad» (contornos) | Danger | B | Líneas de librería (L101, U501, SW401/402, U101, F101, TP); JLC las recorta sobre las aberturas |
+| J-11 | JLCDFM (contornos sobre vías) | — | B | Líneas, no textos: no afectan la legibilidad |
+| J-12 | JLCDFM «Mask opening with multiple segments» (5), «tht to smd» (2) | Warning | B | Pads compuestos; informativo |
+| J-13 | Análisis propio | — | B | Vías enteras dentro de pads de TP y desacoples: se sueldan a mano; corregir en la rev. B |
+| R-03, R-07, R-17 | Externa | Imp./Men. | B | Se verifican en el ensayo (plan de `docs/REVISION_EXTERNA.md` §E) |
+| R-20, R-21, R-22, R-23, R-30 | Externa | Men. | B | Ya aceptados antes (ranura bajo U401, courtyards < 1 mm, texto de 0.8 mm, vía en pad de EP, C602) |
+| R-04…R-16, R-18, R-19, R-24, R-25, R-27, R-28 | Externa | Imp./Men./Sug. | C | Ver «Revisión B» |
+
+## Revisión B (grupo C de la revisión externa + JLCDFM; no se hace en rc6)
+Detalle y evidencia de cada punto en `docs/REVISION_EXTERNA.md` (tabla B y §D).
+- [ ] **R-04** DO con protección de cortocircuito (low-side protegido AEC-Q100 apto para 24 V, clamp ≥ 60 V) y comportamiento con batería invertida.
+- [ ] **R-05** DIAG con etapa de transistor (o divisor a ADC con clamp), en lugar del zener BZX84-C3V3.
+- [ ] **R-06 / R-19** Arranque en PROD con C105: C109 de 220–330 nF o EN del buck retrasado; UVLO de caída en ~5.5 V para el cold crank de 12 V.
+- [ ] **R-07** Electrolítico de 22–47 µF / 50 V o RC amortiguador en +VPROT junto a U201.
+- [ ] **R-08** EMC del isoPower (180 MHz en DAB III): 4 capas con capacidad de costura o CAN no aislado (TCAN1044A-Q1). Pre-escaneo primero.
+- [ ] **R-09** Variantes FPWM (LMR38010FSQDDARQ1, TPS62A02A-Q1) si el ensayo conducido lo pide.
+- [ ] **R-10** J2 junto a J1 (o un solo conector) con los TVS de DO junto al GND de entrada.
+- [ ] **R-11** Temperatura máxima del producto y grado del MCU (ESP32-S3-WROOM-1 no es AEC-Q100, 85 °C).
+- [ ] **R-12** Huella opcional 1 MΩ ‖ 4.7 nF (≥ 1 kV) entre GND_CAN y GND_VEH.
+- [ ] **R-13** R602/R603 en 1206. **R-14** D601 montado en PROD.
+- [ ] **R-15** Alimentación desde VBUS (diodo OR, DNP en PROD).
+- [ ] **R-16** TPS62A02: Cin, Cout y divisor de FB pegados al CI. **R-30** C602 a ≤ 2 mm.
+- [ ] **R-18** Medición de VBAT e IMON por ADC.
+- [ ] **R-20** Haz de B.Cu bajo U401 por F.Cu o alrededor del módulo. **R-21** courtyards ≥ 1 mm. **R-22** serigrafía funcional ≥ 1.0 mm. **R-23** via-in-pad rellenas (PROD).
+- [ ] **R-24** C104 a la cara superior o banco de perfil bajo.
+- [ ] **R-25** Decidir si sigue el requisito de 202 V sin suprimir; si sigue, R102 anti-pulso calificada.
+- [ ] **R-27** TVS/crowbar en +5V_VEH si el FMEA lo pide. **R-28** amarre del arnés (caja).
+- [ ] **R-03** Si el ensayo del pulso 1 da C–A > ~82 V: D102 → TVS− de 28 V (SMBJ28A).
+- [ ] **rc6:** R113/R106 a la cara superior cuando se reordene la entrada; UVLO por F.Cu con plano debajo (hoy 8.9 mm de B.Cu sin plano en F.Cu, x = 111, y 74.5–90). TP de VS/VA/UVLO con agujero si se usan con caimán.
+- [ ] **J-09/J-13** Contornos de serigrafía de 0.15 mm (huellas propias) y vías fuera de los pads de desacople/TP.
+- [ ] Grado automotriz en PROD (§D-14 de la revisión externa): BAV23CQ (Diodes) para D104, USBLC6-2SC6Y, AEC-Q101 en D102/D103/D701/D751, etc.
+- [ ] Logo de Hunter en la zona reservada.
+
+
+## Historia — `pcb-v1-rc5` enviada a fabricación (2026-10-30)
+*(rc5 tiene el error R-01: la placa no arranca sin el retrabajo de `docs/REVISION_EXTERNA.md`. Reemplazada por rc6.)*
 **Versión cerrada para fabricar:** tag **`pcb-v1-rc5`** en 7b8a62e (`main`), sin el logo de Hunter. La zona reservada de la cara inferior (16 × 6 mm en (123.5, 106.5), User.Comments) queda para la **rev B**.
 - Verificado antes del tag: working tree limpio y al día con `origin/main`. DRC 0 errores / 3 avisos aceptados, 0 sin rutear, paridad 0. ERC 0 errores / 5 avisos conocidos.
 - **Archivo para JLC:** `fab/proto/INCLI-VA_gerbers.zip` (no se versiona; 12 archivos, sha256 `ab71d2e742e459ca971a7f165ef109dde94857b3f0e1b4772ed578c64b123e65`), idéntico byte a byte a `fab/proto/gerbers/` del tag. Si falta, regenerarlo con `/usr/bin/python3 -B scripts/ruteo/etapa6_fab.py` sobre el tag.
@@ -268,7 +342,7 @@ Cerradas; antes figuraban como abiertas.
   - D701: SMCJ188A → **SMAJ58A**. No conduce con 58 V; recorta el pico inductivo a ≤ 93.6 V, por debajo de los 100 V de Q701.
   - **U701 74AHCT1G126** (nuevo): lleva EN de 3.3 V (MCU) a EN_5V, porque el DMN10H220LQ especifica su RDS a 4.5 V. R711 de 100 k es el pull-down de la entrada. C702 desacopla.
   - **D704** (nuevo): zener de 12 V, MMSZ5242B, como protección de gate (VGS máx ±16 V).
-  - Latch de sobrecorriente (Q702, Q703, D702, R704–R707, C701): `DNP = PROTO,PROD` hasta validar el disparo (REVISION_CODEX I1). R701 (1 Ω) se monta igual.
+  - Latch de sobrecorriente (Q702, Q703, D702, R704–R707, C701): `DNP = PROTO,PROD` hasta validar el disparo (REVISION_CODEX I1). R701 (1 Ω) se monta igual. *(Histórico: el latch y R701 se retiraron el 2026-10-28.)*
   - Diagnóstico (R708–R710, D703): `DNP = PROTO`. D703 pasa a BZX84-C3V3 porque DIAG irá directo a un GPIO del ESP32.
   - **Limitación:** en vehículos sin supresión de load dump, las salidas DO no quedan protegidas. Con 202 V a través de la bobina, D701 tendría que absorber ~8 J.
 - **`10_power_input`:**
@@ -294,6 +368,10 @@ Pulsos según ISO 7637-2 (anexo A, 24 V): pulso 1 −600 V / 50 Ω; 2a hasta +11
 | R102 10 k (2512) | 0.64 W durante 50 µs; ~0 W en el load dump | — | D103 casi no conduce a 58 V |
 | D103 SMAJ51A (VS) | recorta a 57–63 V | VS máx. abs. 70 V | pulso 2a |
 | R108, R112 51 k (1206) | ~70 V cada una | 200 V | pulso 2a |
+| R113, R106 51 k (1206, rc6, UVLO) | ~65 V cada una (pulso 2a); ~93 V y 0.19 W con 202 V | 200 V | pulso 2a / load dump sin suprimir |
+| D104 BAV23C (rc6; A2 = VA, K = VS) | ≤ 63 V (load dump, VS recortado por D103); ~110 V (pulso 1) | VR 200 V, VRRM 250 V | load dump / pulso 1 |
+| U101 C–A / OUT–VS | ~79–81 V / ~−78 V (calc., sin verificar) | 85 V / −65 V máx. abs. | pulso 1 (R-03 de `docs/REVISION_EXTERNA.md`: medir en el ensayo) |
+| VS (U101) | VA − VF con Q101 encendido (rc6); antes solo VBAT − I(Q)·10 k − VF ≈ 3.5–4.7 V a 12 V | 4–65 V | régimen (R-02) |
 | Q102 (VDS) | ~85 V | 100 V | pulso 1 (VOUT + recorte) |
 | +VPROT y lo que cuelga de él | ≤ umbral de OV (38.4 o 34.2 V) | C106 de 50 V | corte del LM74930 |
 
@@ -607,7 +685,7 @@ Pedido explícito del usuario (esquemático raíz, PCB y `.kicad_dru`). Detalle 
 - Verificación: DRC 0 errores (3 avisos conocidos de U401), paridad 0, 358 sin rutear. ERC 0 errores. `sch_visual_qa` de la raíz: PASS.
 - ERC: 4 avisos `pin_to_pin` nuevos en `40_mcu`. Vienen del símbolo de SW401/SW402 que cambió el usuario (pines "Unspecified"). Son inofensivos y quedan para cuando se revise ese símbolo.
 - **Decisiones abiertas:**
-  - Lado del imán de ROT: sigue sin definir. Se dejan libres las dos caras; H5 y B dejan libre un círculo de Ø17.9 mm alrededor del eje.
+  - Lado del imán de ROT: *(histórico)* decidido el 2026-10-30: imán arriba (F.Cu). H5 y B dejan libre un círculo de Ø17.9 mm alrededor del eje.
   - Visto bueno a la ubicación para empezar el ruteo.
 
 ## Correcciones sobre `1ff3419` — Claude Code, 2026-10-29
@@ -651,7 +729,7 @@ Solo verificación y documentación; no se tocó el PCB (KiCad estaba abierto). 
 - [x] Opción de banco D401/JP401 eliminada del esquemático y del PCB.
 
 ## Decisiones del usuario aún abiertas
-- Lado del imán de ROT. Mientras no se defina, quedan libres las dos caras alrededor del eje de U503.
+- ~~Lado del imán de ROT~~: decidido el 2026-10-30, imán arriba (F.Cu), con portaimán restringido («Requisitos para la caja»).
 - Disponibilidad de EEE-FK1H102AV (C105 PROD) y del resto de los MPN marcados "a verificar".
 
 ## Requisitos para la caja (la caja aún no está diseñada)
@@ -695,6 +773,8 @@ No se mueven ni rotan componentes respecto de `placement-v1`; si hace falta, se 
 - [ ] 6. Cierre: DRC y paridad en 0, retornos, fabricación de prueba para JLCPCB en `fab/`.
 
 ## Requisitos para el firmware (SPI de 50_sensors)
+Agregado en rc6 (C-14 de `docs/REVISION_EXTERNA.md`, también en `README.md`): **AS5147U** en modo 3.3 V con el bit **NOISESET** = 1 (DS000639 v1-04, fig. 8) y CRC/paridad en todas las tramas; **SCL3300** con TLH ≥ 10 µs (CSB alto) entre tramas, respuesta en la trama siguiente y CRC en cada respuesta (Doc. 4921).
+
 Bus SPI compartido (SPI2/FSPI: SCK IO12, MOSI IO11, MISO IO13). Un `spi_device` por sensor, cada uno con su modo y su frecuencia:
 
 | Sensor | CS | Modo SPI | f máx. | Fuente |
@@ -768,7 +848,7 @@ Phoenix Contact COMBICON **MSTBV 2,5**, **vertical**, paso **5.08 mm** y **brida
 ## Notas para el próximo turno
 - **pcbnew en scripts:** `LoadBoard()` de un PCB fuera de la carpeta del proyecto, seguido de `Save()` dentro del proyecto, sobrescribe `INCLI-VA.kicad_pro` con valores por defecto (se pierden las net classes). Cargar siempre el archivo del proyecto. Verificar `git diff INCLI-VA.kicad_pro` antes de cada commit.
 - **Reglas DRC:** una regla de clearance sin condición anula las net classes. La propiedad para la net class es `A.NetClass`.
-- Variante ROT: U503, C507 y R503 tienen `dnp yes` y el campo `Variant = ROT`. En la variante ROT la placa va centrada sobre el eje del pivote.
+- Variante ROT: U503, C507 y R503 tienen `DNP` vacío y `Variant = ROT`: el prototipo los monta (CAN + DO + ROT); están en el BOM y en la posición. En la variante ROT la placa va centrada sobre el eje del pivote.
 - Huella del SCL3300 (easyeda2kicad DFL-12): pads 0.32 mm más largos que el land pattern de Murata, para soldar a mano; en producción volver al de Murata.
 - Pines del ESP32-S3: la tabla aprobada y sus criterios están en un texto de la hoja 40. No mover señales críticas a GPIO1–14/17/18 (glitch de encendido) ni a strapping.
 - Opción de banco D401/JP401 eliminada. USB no alimenta +5V_VEH; usar la entrada vehicular para energizar la placa.

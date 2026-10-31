@@ -3,13 +3,20 @@
 Consulta: **2026-10-30**. Decisiones del usuario sobre los sustitutos: **2026-10-30**. Claude Code, rama `bom-sourcing`, PCB `pcb-v1-rc1`. No se hizo ningún pedido. El esquema no se modificó: el paso de los sustitutos aceptados a `MPN_PROTO`/LCSC queda para otra sesión.
 
 ## Plan de compra vigente (usuario, 2026-10-30) — RESUMEN
-**JLC solo fabrica la PCB y el stencil Top; todos los componentes se compran en LCSC y se sueldan a mano.** Los archivos de ensamblado de JLC (`fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 58 líneas, 123 piezas) se mantienen al día como alternativa, pero no se compara el costo de ensamblado.
+**JLC solo fabrica la PCB y el stencil Top; todos los componentes se compran en LCSC y se sueldan a mano.** Los archivos de ensamblado de JLC (`fab/proto/bom_jlc_lcsc.csv` + `fab/proto/cpl_jlc.csv`, 58 líneas, 124 piezas desde rc6) se mantienen al día como alternativa, pero no se compara el costo de ensamblado.
 
 **Cantidad: 3 juegos (2 placas + 1 de repuesto)**, decisión del usuario del 2026-10-30.
 
+**Cambios de rc6 (2026-10-30/31, R-01 y R-02 de `docs/REVISION_EXTERNA.md`; stock consultado con `jlc_lookup.py`, solo lectura):**
+- R106 pasa de 100 kΩ 0603 a **51 kΩ 1206** y se agrega **R113** (51 kΩ 1206): misma línea que R108/R112 (PROTO Yageo RC1206FR-0751KL C114947, PROD AC1206FR-0751KL C144484). La línea de 100 kΩ 0603 queda con 11 piezas.
+- R107: **9.53 kΩ** (PROTO UNI-ROYAL 0603WAF9531T5E C23127; PROD Yageo AC0603FR-079K53L C228113, 3200 en lcsc.com).
+- D104: **BAV23C** (doble, cátodo común). PROTO **Diodes BAV23C-7-F (C150732, 5450 en lcsc.com)**, DS30042 Rev. 23-2 verificado (pinout 1 A1, 2 A2, 3 K; VRRM 250 V, VR 200 V, IFM 400 mA). PROD Nexperia BAV23C,215 (C282370): **0 en lcsc.com y en JLC** el 2026-10-30, comprar en DigiKey/Mouser; para grado automotriz evaluar BAV23CQ (Diodes).
+- TP105–TP107: pads de prueba, fuera del BOM.
+- R106 y R113 van en la **cara inferior** (como C104): soldar a mano.
+
 | Compra | Archivo | 3 juegos (2 placas + 1) |
 |---|---|---|
-| **LCSC** (todo lo que está en lcsc.com) | `bom/LCSC_BOM_COMPLETO_PROTO.csv` («Upload a BOM»: LCSC Part Number, Quantity, Manufacturer Part Number, Description, Designator) | 62 líneas, 2312 piezas, **USD 286.65** |
+| **LCSC** (todo lo que está en lcsc.com) | `bom/LCSC_BOM_COMPLETO_PROTO.csv` («Upload a BOM»: LCSC Part Number, Quantity, Manufacturer Part Number, Description, Designator) | 62 líneas, 2295 piezas, **USD 288.65** (rc6, 2026-10-31) |
 | **DigiKey/Mouser** (sin stock en LCSC) | `bom/DIGIKEY_MOUSER.csv` (`Uso` = PROTO mano + PROD, columna `Qty_PROTO_3_juegos`) | 5 líneas × 3 u, **≈ USD 51.12** |
 | **Total componentes** | | **≈ USD 337.77** |
 | por juego (÷ 3) | | ≈ USD 112.59 |

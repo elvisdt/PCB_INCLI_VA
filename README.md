@@ -5,7 +5,7 @@ Proyecto KiCad 10 jerárquico. Hoja raíz: `INCLI-VA.kicad_sch` (00_top).
 ## Estructura
 | Ruta | Contenido |
 |---|---|
-| `sheets/10_power_input` | Conectores Phoenix MSTB 2,5 de 5.08 mm GF (J1, J2), fusible F101 SF-2410FPA200W-2, LM74930-Q1 (diodo ideal, corte por OV, breaker de 1 A), TVS, filtro LC → +VPROT. C105 (hold-up) es huella DNP |
+| `sheets/10_power_input` | Conectores Phoenix MSTB 2,5 de 5.08 mm GF (J1, J2), fusible F101 SF-2410FPA200W-2, LM74930-Q1 (diodo ideal, corte por OV, breaker de 1 A), TVS, filtro LC → +VPROT. C105 (hold-up): `DNP = PROTO`, se monta en PROD. Desde rc6: UVLO desde VBAT_F (R113 + R106) y D104 = BAV23C (D1 de VA a VS, TI fig. 8-1) |
 | `sheets/20_buck_5v` | Buck no aislado U201 LMR38010SQDDARQ1 (PROTO: LMR38010SDDAR): +VPROT → +5V_VEH, 5.02 V / 1 A a 400 kHz. Sin pines jerárquicos |
 | `sheets/30_regulation` | Desde el riel de 5 V: buck TPS62A02-Q1 → +3V3_D, LDO LP5907-Q1 → +3V3_A, divisores VMON |
 | `sheets/40_mcu_esp32s3` | MCU ESP32-S3-WROOM-1-N8R2 (único MCU), USB-C nativo con ESD, UART0, BOOT/RESET |
@@ -42,7 +42,10 @@ CAN: TWAI nativo (CAN clásico, J1939) directo al ADM3055E; no hay controlador C
 
 ## Requisitos para el firmware
 - Salidas DO1/DO2 (`70_output_ch`): no hay latch de sobrecorriente (retirado el 2026-10-28); un corto de la carga a +V no queda limitado por hardware. El diagnóstico (DIAG) es DNP en PROTO y se monta en PROD.
-- Arranque del motor en vehículos de 12 V y load dump de 24 V (corte por OV del LM74930, ≤ 350 ms): sin C105 (DNP) la placa se reinicia. El firmware debe arrancar limpio tras un brownout (sin estado corrupto, salidas abiertas hasta reinicializar).
+- Arranque del motor en vehículos de 12 V y load dump de 24 V (corte por OV del LM74930, ≤ 350 ms): sin C105 (DNP en PROTO) la placa se reinicia (vale desde rc6; en rc5 la placa no arrancaba por el UVLO, hallazgo R-01). El firmware debe arrancar limpio tras un brownout (sin estado corrupto, salidas abiertas hasta reinicializar).
 - Watchdog externo (U801): patear WDI (IO17) cada ≤ 0.5 s (timeout mínimo 0.9 s). Una vez inicializado, no dejar IO17 en alta impedancia (eso deshabilita el watchdog), salvo antes de dormir más de 0.9 s.
 - VAR_ID (IO4 = ID0, IO5 = ID1, IO8 = ID2): activar los pull-ups internos y leer al arrancar. ID1 ID0: 11 base | 10 CAN | 01 solo DO | 00 CAN + DO. ID2 reservado para CABIN. ROT se detecta por SPI (AS5147U responde).
+- AS5147U (modo 3.3 V): poner a 1 el bit **NOISESET** (DS000639 v1-04, fig. 8) y usar CRC/paridad en todas las tramas.
+- SCL3300: protocolo fuera de trama (la respuesta llega en la trama siguiente), **TLH ≥ 10 µs** con CSB alto entre tramas (Doc. 4921, tiempos SPI), CRC en cada respuesta y secuencia de arranque (SW reset, modo, espera, STATUS limpio). Modos 1 o 2 para el rango completo.
+- No reemplazar U401 por variantes de flash de 1.8 V ni de PSRAM octal (IO35–IO37 e IO47/IO48).
 - Radio: stack BLE **NimBLE**; WiFi desactivado en operación normal (solo para OTA en taller). El hardware se dimensiona igual con WiFi activo.

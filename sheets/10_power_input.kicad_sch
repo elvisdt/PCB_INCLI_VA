@@ -1528,10 +1528,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Diode:BAS21"
-			(pin_numbers
-				(hide yes)
-			)
+		(symbol "Diode:BAV70"
 			(pin_names
 				(hide yes)
 			)
@@ -1541,6 +1538,17 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "D"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "BAV70"
 				(at 0 2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1550,28 +1558,7 @@
 					)
 				)
 			)
-			(property "Value" "BAS21"
-				(at 0 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
 			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-				(at 0 -4.445 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.diodes.com/assets/Datasheets/Ds12004.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1582,7 +1569,18 @@
 					)
 				)
 			)
-			(property "Description" "250V, 0.4A, High-speed Switching Diode, SOT-23"
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAV70_SER.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Dual 100V 215mA high-speed switching diodes, common cathode, SOT-23"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1615,10 +1613,10 @@
 					)
 				)
 			)
-			(symbol "BAS21_0_1"
+			(symbol "BAV70_0_1"
 				(polyline
 					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
+						(xy -3.81 1.27) (xy -1.27 0) (xy -3.81 -1.27) (xy -3.81 1.27) (xy -3.81 1.27) (xy -3.81 1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -1630,19 +1628,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
+						(xy -3.81 0) (xy 3.81 0)
 					)
 					(stroke
 						(width 0)
@@ -1652,11 +1638,68 @@
 						(type none)
 					)
 				)
-			)
-			(symbol "BAS21_1_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -1.27) (xy 1.27 0) (xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.81 -1.27) (xy 3.81 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
+					(at -7.62 0 0)
+					(length 3.81)
 					(name "A"
 						(effects
 							(font
@@ -1672,11 +1715,10 @@
 						)
 					)
 				)
-				(pin no_connect line
-					(at -1.27 0 0)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
+				(pin passive line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "A"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1692,7 +1734,7 @@
 					)
 				)
 				(pin passive line
-					(at -3.81 0 0)
+					(at 0 -5.08 90)
 					(length 2.54)
 					(name "K"
 						(effects
@@ -1712,6 +1754,7 @@
 			)
 			(embedded_fonts no)
 		)
+
 		(symbol "Diode:SM6T33A"
 			(pin_numbers
 				(hide yes)
@@ -3662,12 +3705,7 @@
 		(color 0 0 0 0)
 		(uuid "149cd817-fa4f-4da5-bcc1-f15f60a4ff9a")
 	)
-	(junction
-		(at 153.67 88.9)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "190d1b6c-b235-4e62-a07d-b30016c1765c")
-	)
+	
 	(junction
 		(at 245.11 128.27)
 		(diameter 0)
@@ -3842,16 +3880,7 @@
 		)
 		(uuid "50adae33-eceb-4812-a33a-ee747d938286")
 	)
-	(wire
-		(pts
-			(xy 153.67 88.9) (xy 156.21 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "58f1ca70-a535-446e-b149-a6d02f917146")
-	)
+	
 	(wire
 		(pts
 			(xy 252.73 76.2) (xy 261.62 76.2)
@@ -3922,16 +3951,7 @@
 		)
 		(uuid "a6c37d8f-b4a3-46d3-aa62-dc8178138881")
 	)
-	(wire
-		(pts
-			(xy 163.83 88.9) (xy 168.91 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b161d165-bc9d-471c-9519-3f42c26fa8f6")
-	)
+	
 	(wire
 		(pts
 			(xy 105.41 83.82) (xy 115.57 83.82)
@@ -4212,16 +4232,7 @@
 		)
 		(uuid "5328198b-f323-4cf8-86a7-7f54f0c9cd75")
 	)
-	(label "SW"
-		(at 113.03 129.54 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "58a55e11-0cd6-4370-bb04-f66df7107266")
-	)
+	
 	(label "VS"
 		(at 208.28 104.14 90)
 		(effects
@@ -4362,15 +4373,9 @@
 		)
 		(uuid "c5d6204d-339a-46df-84cd-d24dafd9d324")
 	)
-	(label "SW"
-		(at 194.31 120.65 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "ce5fe983-1b72-441d-b426-40f0a4d8f457")
+	(no_connect
+		(at 194.31 120.65)
+		(uuid "958b58f8-68fa-4885-8dfa-3cdea400c6ad")
 	)
 	(label "VS"
 		(at 168.91 170.18 270)
@@ -8055,7 +8060,7 @@
 				)
 			)
 		)
-		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, VERIFICAR en phoenixcontact.com) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2. Montaje: soldar a mano; comprar en LCSC (C480552)."
+		(property "Notes" "Header vertical MSTBV 2,5/2-GF-5,08 (1777073, confirmado) con brida roscada; enchufe MSTB 2,5/2-STF-5,08 (1777989). Pines: 1 DO1, 2 DO2 (low-side; drenador hasta 58 V + pico inductivo recortado < 100 V). Colocar la proteccion de 70_output junto a J2. Montaje: soldar a mano; comprar en LCSC (C480552)."
 			(at 100.33 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -8903,7 +8908,7 @@
 				)
 			)
 		)
-		(property "Notes" "C_dVdT (TI ec. 2): Iinrush = C_OUT x 55 uA / C_dVdT. Con C105 montado (~1.07 mF): 0.59 A < breaker 1 A (con 10 nF eran 5.9 A y disparaba). Sin C105: ~34 mA. Arranque ~60 ms. 100 V en 0603. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
+		(property "Notes" "C_dVdT (TI ec. 2): Iinrush = C_OUT x 55 uA / C_dVdT. Con C105 montado (~1.07 mF): 0.59 A más la carga del buck durante la rampa (~0.15-0.25 A) contra el breaker de 0.88-1.07 A (V(SNS_TH) 1.08-1.32 V): margen de ~0.1 A, ensayar en PROD (rev. B: 220-330 nF) (con 10 nF eran 5.9 A y disparaba). Sin C105: ~34 mA. Arranque ~60 ms. 100 V en 0603. PROTO (2026-10-30, consolidacion): un solo MPN para los 100 nF 0603: 100 V X7R (FH 0603B104K101NT, LCSC C88219), sin AEC-Q200. PROD: Murata GCM188R72A104KA64D (100 V, AEC-Q200). Mismo valor y tolerancia."
 			(at 189.23 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -9006,7 +9011,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100k"
+		(property "Value" "51k"
 			(at 115.57 134.62 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9017,7 +9022,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9049,7 +9054,7 @@
 				)
 			)
 		)
-		(property "MPN" "AC0603FR-07100KL"
+		(property "MPN" "AC1206FR-0751KL"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9071,7 +9076,7 @@
 				)
 			)
 		)
-		(property "Notes" "PROTO (2026-10-30): UNI-ROYAL 0603WAF1003T5E (LCSC C25803, JLC basic), misma especificación, sin AEC-Q200."
+		(property "Notes" "R1 de UVLO (TI SNOSDF6 fig. 8-1, R1 a VBAT): R113 + R106 en serie desde VBAT_F (rc6, hallazgo R-01: antes salía de SW, que es VA, y el LM74930 no podía encender Q101). 1206 por tensión/potencia: ~93 V y 0.19 W cada una con load dump de 202 V. Cara inferior, junto a TP102. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9093,7 +9098,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C116674"
+		(property "LCSC" "C144484"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9104,7 +9109,7 @@
 				)
 			)
 		)
-		(property "MPN_PROTO" "0603WAF1003T5E"
+		(property "MPN_PROTO" "RC1206FR-0751KL"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9115,18 +9120,7 @@
 				)
 			)
 		)
-		(property "Manufacturer_PROTO" "UNI-ROYAL"
-			(at 113.03 133.35 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC_PROTO" "C25803"
+		(property "LCSC_PROTO" "C114947"
 			(at 113.03 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -9920,7 +9914,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "9.31k"
+		(property "Value" "9.53k"
 			(at 115.57 142.24 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9963,7 +9957,7 @@
 				)
 			)
 		)
-		(property "MPN" "AC0603FR-079K31L"
+		(property "MPN" "AC0603FR-079K53L"
 			(at 113.03 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -9985,7 +9979,7 @@
 				)
 			)
 		)
-		(property "Notes" "UVLO de caída ~6.5 V."
+		(property "Notes" "R2 de UVLO. Con R113 + R106 = 102 kΩ desde VBAT_F: corte 0.55 V x (102k + 9.53k) / 9.53k = 6.44 V, subida 0.6 V x 111.53k / 9.53k = 7.02 V (SNOSDF6 §6.5: VUVLOF 0.533-0.573 V, VUVLOR 0.585-0.63 V -> 6.24-6.71 V / 6.85-7.37 V). rc6: 9.31k -> 9.53k. PROTO (2026-10-30): UNI-ROYAL 0603WAF9531T5E (LCSC C23127), misma especificación, sin AEC-Q200."
 			(at 113.03 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -10007,7 +10001,40 @@
 				)
 			)
 		)
-		(property "LCSC" "C144630"
+		(property "LCSC" "C228113"
+			(at 113.03 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "0603WAF9531T5E"
+			(at 113.03 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "UNI-ROYAL"
+			(at 113.03 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C23127"
 			(at 113.03 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -10770,8 +10797,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:BAS21")
-		(at 160.02 88.9 180)
+		(lib_id "Diode:BAV70")
+		(at 161.29 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10781,7 +10808,7 @@
 		(dnp no)
 		(uuid "df913ce4-5895-4333-85da-92a372ebd913")
 		(property "Reference" "D104"
-			(at 165.1 87.63 0)
+			(at 170.18 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10791,8 +10818,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAS21"
-			(at 165.1 90.17 0)
+		(property "Value" "BAV23C"
+			(at 176.53 82.55 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10803,7 +10830,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 160.02 88.9 0)
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10813,8 +10840,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAS19_BAS20_BAS21.pdf"
-			(at 160.02 88.9 0)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BAV23C.pdf"
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10825,7 +10852,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 160.02 88.9 0)
+			(at 161.29 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10834,8 +10861,8 @@
 				)
 			)
 		)
-		(property "MPN" "BAS21,215"
-			(at 160.02 88.9 0)
+		(property "MPN" "BAV23C,215"
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10846,7 +10873,7 @@
 			)
 		)
 		(property "Manufacturer" "Nexperia"
-			(at 160.02 88.9 0)
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10856,8 +10883,8 @@
 				)
 			)
 		)
-		(property "Notes" "Bloqueo de VS en polaridad inversa (D1 de la ref. TI)."
-			(at 160.02 88.9 0)
+		(property "Notes" "D104 = BAV23C (doble, cátodo común): A1-K bloquea VS en polaridad inversa (como antes el BAS21) y A2-K es el D1 de TI SNOSDF6 fig. 8-1 (VA -> VS): con Q101 encendido VS = VA - VF, y HGATE-VA llega a ~11-13 V (rc6, hallazgo R-02: solo por R102 = 10 k, VS quedaba 6.7-7.8 V por debajo de VBAT y HGATE-VA en ~2.5-5.4 V). Nexperia BAV23C v.8 (2023-04): VR 200 V, VRRM 250 V, IF 225 mA; ve <= ~110 V en el pulso 1 y <= 63 V en el load dump. Símbolo oficial Diode:BAV70 (mismo pinout 1 A1, 2 A2, 3 K y huella SOT-23). Sin stock en lcsc.com (2026-10-30). PROTO (2026-10-30): Diodes Inc. BAV23C-7-F (LCSC C150732), DS30042 Rev. 23-2: mismo pinout, VRRM 250 V, VR 200 V, IFM 400 mA, sin AEC-Q101 (PROD automotriz: BAV23CQ de Diodes, a evaluar)."
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10868,7 +10895,7 @@
 			)
 		)
 		(property "DNP" ""
-			(at 160.02 88.9 0)
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10878,8 +10905,41 @@
 				)
 			)
 		)
-		(property "LCSC" "C8661"
-			(at 160.02 88.9 0)
+		(property "LCSC" "C282370"
+			(at 161.29 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "BAV23C-7-F"
+			(at 161.29 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer_PROTO" "Diodes Incorporated"
+			(at 161.29 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C150732"
+			(at 161.29 83.82 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11573,4 +11633,600 @@
 			)
 		)
 	)
-)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 113.03 125.73 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "69c85416-40cf-4fc2-8c28-40a42af72590")
+		(property "Reference" "R113"
+			(at 115.57 124.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "51k"
+			(at 115.57 127 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-AC_51_RoHS_L_12.pdf"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 113.03 125.73 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC1206FR-0751KL"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "R1 de UVLO (TI SNOSDF6 fig. 8-1, R1 a VBAT): R113 + R106 en serie desde VBAT_F (rc6, hallazgo R-01: antes salía de SW, que es VA, y el LM74930 no podía encender Q101). 1206 por tensión/potencia: ~93 V y 0.19 W cada una con load dump de 202 V. Cara inferior, junto a TP102. PROTO (2026-10-30): Yageo RC1206FR-0751KL (LCSC C114947, JLC extended), misma especificación, sin AEC-Q200."
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C144484"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN_PROTO" "RC1206FR-0751KL"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC_PROTO" "C114947"
+			(at 113.03 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5d200f41-fd80-4226-a33e-5dd5113696ef")
+		)
+		(pin "2"
+			(uuid "b483d441-363b-47e7-95d6-3f6534a9b927")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
+					(reference "R113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "VBAT_F"
+		(at 113.03 121.92 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d70a04cd-9aae-4d1f-9737-59a21ff633bf")
+	)
+	(junction
+		(at 153.67 83.82)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f26ff3b4-8948-47d9-ac4b-cb76d7d672c4")
+	)
+	(wire
+		(pts
+			(xy 161.29 88.9) (xy 168.91 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6da09d6f-3a6c-4e7a-a835-a61186d857c9")
+	)
+	(wire
+		(pts
+			(xy 168.91 83.82) (xy 168.91 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee4ccb05-c926-4bf6-8743-20f89de25508")
+	)
+	(label "VA"
+		(at 168.91 81.28 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fa13d1b7-36e9-417a-8c5b-5e2d2f4ea983")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 242.57 166.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "81aa2e3f-43b3-43cb-a778-6eae90fff5c8")
+		(property "Reference" "TP105"
+			(at 243.84 162.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "VS"
+			(at 243.84 160.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "N/A (pad de prueba)"
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 242.57 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "-"
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Punto de prueba de VS (pad en la cara inferior, no va al BOM). rc6, hallazgo R-26: bring-up de la protección de entrada (VS, VA, UVLO)."
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 242.57 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2b7a4d9c-e990-42c9-9ce8-8a63e76ad9ae")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
+					(reference "TP105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "VS"
+		(at 242.57 166.37 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8dcb21f6-5076-4657-b784-57023835dfd9")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 255.27 166.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6aba2bae-0327-4d13-9991-1e64a9633d7a")
+		(property "Reference" "TP106"
+			(at 256.54 162.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "VA"
+			(at 256.54 160.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "N/A (pad de prueba)"
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 255.27 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "-"
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Punto de prueba de VA (pad en la cara inferior, no va al BOM). rc6, hallazgo R-26: bring-up de la protección de entrada (VS, VA, UVLO)."
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 255.27 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3373bef9-8231-4ca4-bd5c-d995608e5181")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
+					(reference "TP106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "VA"
+		(at 255.27 166.37 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5ec05f22-fba6-4dd1-94b1-03db2820043c")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 267.97 166.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a1282694-7f76-441d-98d3-c60e0770918f")
+		(property "Reference" "TP107"
+			(at 269.24 162.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "UVLO"
+			(at 269.24 160.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "N/A (pad de prueba)"
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 267.97 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "-"
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Punto de prueba de UVLO (pad en la cara inferior, no va al BOM). rc6, hallazgo R-26: bring-up de la protección de entrada (VS, VA, UVLO)."
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DNP" ""
+			(at 267.97 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "db15853e-0563-4fde-80b3-4690f29e360b")
+		)
+		(instances
+			(project "INCLI-VA"
+				(path "/7fd92c2b-4254-4d73-93ba-bfde861bede3/4b8ecaf5-3402-41a7-b174-dcc5b5a5cc30"
+					(reference "TP107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "UVLO"
+		(at 267.97 166.37 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0f71d91f-3328-49ae-99e0-606ae476265b")
+	))

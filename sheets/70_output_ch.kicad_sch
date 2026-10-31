@@ -4072,7 +4072,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tension: el drenador llega a ~250 V; dos en serie, ~125 V cada una."
+		(property "Notes" "1206 por tension: Q701/Q751 son de 100 V y D701/D751 recortan a <= 93.6 V (lo de ~250 V venía del FDD7N25LZ); el 1206 sigue dando margen."
 			(at 248.92 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -4990,7 +4990,7 @@
 				)
 			)
 		)
-		(property "Notes" "Diagnostico (DNP en prototipo): limita DIAG a 3.3 V para el GPIO del ESP32 (antes 5V1 para el ISO7763)."
+		(property "Notes" "Diagnostico (DNP en prototipo): protege el GPIO del ESP32. Con ~30 uA (drenador a 12 V) el zener no fija 3.3 V y DIAG puede leer bajo con la carga presente (hallazgo R-05): rediseñar en la rev. B."
 			(at 259.08 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -5555,7 +5555,7 @@
 				)
 			)
 		)
-		(property "Notes" "1206 por tension: el drenador llega a ~250 V; dos en serie, ~125 V cada una."
+		(property "Notes" "1206 por tension: Q701/Q751 son de 100 V y D701/D751 recortan a <= 93.6 V (lo de ~250 V venía del FDD7N25LZ); el 1206 sigue dando margen."
 			(at 248.92 99.06 0)
 			(hide yes)
 			(show_name no)

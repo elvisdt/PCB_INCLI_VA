@@ -505,6 +505,15 @@ Movimientos de la etapa 4 autorizados por el usuario (opción C, 2026-10-30) y a
 
 C404 es un componente nuevo autorizado: F.Cu **(189.6,81.45) r0**. No pertenece a `placement-v1`. También se reubicaron las referencias de C401/C402/R401/C403/C404 y el texto «SIN BARNIZ» de J401 a (192,88), r0, para evitar solapes; C403 conserva su posición y orientación.
 
+**rc6 (Claude Code, 2026-10-30, `scripts/rc6/`, aprobado por el usuario):** ningún componente existente se movió. C109 y R105 se iban a correr hacia abajo (autorizado), pero la búsqueda mostró que no abría lugar, así que no se tocaron. Cambios de huella y piezas nuevas:
+
+| Pieza | Antes (rc5) | Ahora (rc6) | Motivo |
+|---|---|---|---|
+| R106 (R1 de UVLO, 51 k) | F.Cu 0603 (120.4, 72.57) r90, SW -> UVLO | **B.Cu 1206 (117.4, 90.0)** | R-01: el divisor sale de VBAT_F (R113 + R106), no de SW |
+| R113 (nuevo, 51 k) | — | **B.Cu 1206 (122.0, 92.4)**, pad 1 (VBAT_F) a TP102 | R-01 |
+| TP105 VS / TP106 VA / TP107 UVLO (nuevos) | — | **B.Cu (123.0, 83.25) / (118.3, 85.0) / (113.0, 90.0)** | R-26, bring-up de la protección de entrada |
+| D104 | BAS21 | **BAV23C** en la misma huella y posición; pad 2 = VA | R-02 (D1 de TI fig. 8-1) |
+
 **Regla:** no mover ni rotar ningún otro componente sin preguntar al usuario. Si un ruteo lo necesita, anotar la propuesta en `docs/RUTEO_AGENTE.md` y esperar la decisión. El usuario replica los cambios en su copia manual.
 
 ---

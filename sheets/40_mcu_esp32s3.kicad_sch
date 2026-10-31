@@ -5647,7 +5647,7 @@
 				)
 			)
 		)
-		(property "Notes" "Desacople bulk del módulo en 3V3 (Espressif). 0805 por DC bias. Parte del presupuesto de 47 uF de +3V3_D (22 uF en C304 + 22 uF aquí + desacoples); no agregar más bulk sin revisar la estabilidad del TPS62A02-Q1. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
+		(property "Notes" "Desacople bulk del módulo en 3V3 (Espressif). 0805 por DC bias. Parte del presupuesto de 47 uF de +3V3_D (22 uF en C304 + 22 uF aquí + 10 uF de C605 en la hoja 60 + desacoples = ~54.6 uF nominal; con DC bias probablemente < 47 uF: verificar el escalón 0.1 -> 0.6 A en el bring-up); no agregar más bulk sin revisar la estabilidad del TPS62A02-Q1. MPN a verificar (disponibilidad y especificación) antes de congelar el BOM."
 			(at 190.5 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -6052,7 +6052,7 @@
 				)
 			)
 		)
-		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8). Montaje: soldar a mano; comprar en LCSC (C2913204)."
+		(property "Notes" "8 MB flash quad + 2 MB PSRAM quad, antena PCB, -40 a +85 C (las variantes R8/R16 con PSRAM octal llegan solo a 65 C). PSRAM quad: IO35-IO37 libres (WROOM-1 v1.8, tabla 3-1, nota b). LCSC C2913204. Pad 41 (EPAD) y pines 1/40 a GND_VEH. Antena al borde de la placa con keepout (ver nota de layout). IMPORTANTE: IO35-IO37 se usan como GPIO (DO1_EN, DO2_EN, DO1_DIAG); solo es valido con PSRAM quad (N8R2) o sin PSRAM. NO reemplazar por variantes con PSRAM octal (R8) ni con flash de 1.8 V (variantes «V»): IO47/IO48 (CAN_TX/CAN_RX) están en el dominio VDD_SPI y quedarían a 1.8 V frente al VIO de 3.3 V del ADM3055E. Montaje: soldar a mano; comprar en LCSC (C2913204)."
 			(at 200.66 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -6628,7 +6628,7 @@
 				)
 			)
 		)
-		(property "Notes" "Punto de prueba de VBUS (no alimenta la placa salvo con D401 + JP401)."
+		(property "Notes" "Punto de prueba de VBUS (no alimenta la placa: D401 y JP401 se eliminaron)."
 			(at 350.52 121.92 0)
 			(hide yes)
 			(show_name no)
